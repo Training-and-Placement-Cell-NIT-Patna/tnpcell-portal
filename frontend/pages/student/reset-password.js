@@ -24,6 +24,9 @@ export default function ResetPasswordStudent({ token = '' }) {
     const data = await res.json()
     if (res.ok) {
       toast.success('Password changed successfully')
+      setOldPass('')
+      setNewPass("")
+      setConfirmPass("")
     } else {
       if (res.status === 403) {
         toast.error('Old password is incorrect')
@@ -64,6 +67,7 @@ export default function ResetPasswordStudent({ token = '' }) {
                       id='old_pass'
                       autoComplete='password'
                       required
+                      placeholder='Old Password'
                       className='mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md'
                     />
                   </div>
@@ -88,6 +92,7 @@ export default function ResetPasswordStudent({ token = '' }) {
                       pattern='(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}'
                       autoComplete=''
                       required
+                      placeholder='New Password'
                       className='mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md'
                     />
                   </div>
@@ -107,6 +112,7 @@ export default function ResetPasswordStudent({ token = '' }) {
                       pattern='(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}'
                       autoComplete=''
                       required
+                      placeholder='Confirm Password'
                       className='mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md'
                     />
                   </div>
