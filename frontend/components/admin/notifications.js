@@ -11,11 +11,18 @@ const Notifications = () => {
   useEffect(() => {
     axios.get(`${API_URL}/api/notifications`).then((res) => {
       setNotifications(res.data.data); 
+    }).catch((err)=>{
+      console.log(err);
+      toast.error("Something went wrong!!")
     });
   }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if(title.length===0 && description.length ===0){
+      toast.info("Enter correctly details")
+      return 
+    }
     await  axios.post(`${API_URL}/api/notifications`, {
         data: {
           title :title, 
