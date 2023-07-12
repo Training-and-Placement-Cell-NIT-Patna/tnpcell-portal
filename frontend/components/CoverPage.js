@@ -174,7 +174,7 @@ function CoverPage() {
       </div>
       <main>
         {/* carousel  start */}
-        <div ref={slideRef} className="w-full select-none absolute">
+        <div ref={slideRef} className="w-full select-none">
           <div className="aspect-w-16 aspect-h-7">
             <img src={carouselImage[currentIndex]} alt="" />
             <div className="absolute top-3/4 ">
@@ -230,7 +230,7 @@ function CoverPage() {
               <ChevronDoubleRightIcon className="w-7 h-7 text-white bg-gray-800 rounded-full p-1" />
             </button>
           </div>
-          <div className="hidden lg:flex  lg:absolute top-3 right-0 bg-yellow-400 font-medium px-2  rounded-l-lg py-1 animate-bounce">
+          <div className="hidden lg:flex  lg:absolute top-24 right-0 bg-yellow-400 font-medium px-2  rounded-l-lg py-1 animate-bounce">
             <a className="" href="/Brochure2022_NIT-Patna.pdf " download>
               Download Brochure and Proforma{" "}
             </a>
