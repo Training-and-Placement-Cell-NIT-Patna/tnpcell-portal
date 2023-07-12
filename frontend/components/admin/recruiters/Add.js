@@ -1,11 +1,11 @@
-import Image from 'next/image'
-import AuthContext from '@/context/AuthContext'
+// import Image from 'next/image'
+// import AuthContext from '@/context/AuthContext'
 import { useContext, useState, useEffect } from 'react'
 import { toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 
-import Link from 'next/link'
-import axios from 'axios'
+// import Link from 'next/link'
+// import axios from 'axios'
 import { API_URL } from '@/config/index'
 
 export default function AddRecruiterComponent({ token = '' }) {
@@ -39,17 +39,13 @@ export default function AddRecruiterComponent({ token = '' }) {
       })
 
       const data = await res.json()
-      console.log(
-        JSON.stringify({
-          username,
-          email,
-          password,
-          role,
-        })
-      )
 
       if (res.ok) {
         toast.success('Recruiter added successfully!')
+        setConfirmPassword('');
+        setEmail('');
+        setPassword('');
+        setUsername('')
       } else {
         toast.error('Something went wrong!')
       }
@@ -66,7 +62,7 @@ export default function AddRecruiterComponent({ token = '' }) {
                 Recruiter Details
               </h3>
               <p className='mt-1 text-sm text-gray-500'>
-                Deatils about the recruiter
+                Details about the recruiter
               </p>
             </div>
             <div className='mt-5 md:mt-0 md:col-span-2'>
