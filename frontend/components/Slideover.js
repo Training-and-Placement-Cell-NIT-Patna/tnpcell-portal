@@ -5,35 +5,35 @@ import { BellIcon, XIcon } from '@heroicons/react/outline'
 import axios from 'axios'
 import { API_URL } from '@/config/index'
 
-const team = [
-  {
-    name: 'Leslie Alexander',
-    handle: 'lesliealexander',
-    href: '#',
-    imageUrl:
-      'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
-    status: 'online',
-  },
-  // More people...
-]
+// const team = [
+//   {
+//     name: 'Leslie Alexander',
+//     handle: 'lesliealexander',
+//     href: '#',
+//     imageUrl:
+//       'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
+//     status: 'online',
+//   },
+//   // More people...
+// ]
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
 // fetch data from API
 
-export default function Slideover({ open = false, setOpen }) {
+export default function SlideOver({ open = false, setOpen }) {
   const [notifications, setNotifications] = useState([])
+  // function to fetch the notification 
   const fetchNotifications = async () => {
     const res = await axios.get(
       `${API_URL}/api/notifications?populate=*&sort=createdAt:desc`
     )
-    return res.data.data
+    // return res.data.data
+    setNotifications(res.data.data)
   }
   useEffect(() => {
-    fetchNotifications().then((data) => {
-      setNotifications(data)
-    })
+    fetchNotifications()
   }, [])
   return (
     <Transition.Root show={open} as={Fragment}>
@@ -127,10 +127,10 @@ export default function Slideover({ open = false, setOpen }) {
                                 <p className='text-sm text-gray-500'>
                                   {notification.attributes.description}
                                 </p>
-
+{/* 
                                 <p className='truncate text-sm text-gray-500 capitalize'>
                                   {'@' + notification.attributes.user}
-                                </p>
+                                </p> */}
                                 {/* Add Date notification was added */}
                                 <p className='truncate text-sm text-gray-500 capitalize'>
                                   {new Date(
