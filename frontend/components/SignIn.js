@@ -4,11 +4,10 @@ import { useContext, useState, useEffect } from "react";
 import Link from "next/link";
 import Nav from "@/components/Nav";
 import { BaseGridSerializingSession } from "ag-grid-community";
-import axios from 'axios'
+import axios from "axios";
 import { API_URL } from "../config";
 
 export default function SignIn() {
-
   const notificationMethods = [
     { id: "company", title: "Company" },
     { id: "student", title: "Student" },
@@ -26,7 +25,6 @@ export default function SignIn() {
 
   const [newReg, allowNewReg] = useState(true);
 
-
   // Password toggle handler
   const togglePassword = () => {
     // When the handler is invoked
@@ -34,31 +32,23 @@ export default function SignIn() {
     setPasswordShown(!passwordShown);
   };
 
-
   useEffect(() => {
-
     fetch(`${API_URL}/api/setting`, {
-      method: 'GET',
+      method: "GET",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
     })
       .then((res) => res.json())
       .then((data) => {
-
-        console.log("hello", data)
-
-        allowNewReg(data.data.attributes.registrations_allowed)
-
+        allowNewReg(data.data?.attributes?.registrations_allowed);
       })
-
 
       .catch((err) => {
-        console.log(err)
-        // toast.error('Unable to fetch tpc_guidelines')
-      })
-  }, [])
-
+        console.log(err);
+        toast.error("Unable to fetch tpc_guidelines");
+      });
+  }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -69,7 +59,7 @@ export default function SignIn() {
     <div className=" bg-cover bg-no-repeat ">
       <Nav />
 
-      <div className="min-h-full flex md:flex-row cm:flex-col sm:px-6 lg:px-8 m-5">
+      <div className="min-h-full md:flex md:flex-row cm:flex-col sm:px-6 lg:px-8 m-5">
         <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md ">
           <div className="sm:mx-auto sm:w-full sm:max-w-md backdrop-blur rounded-md p-7 mt-5 h-[35rem]">
             <div className=" text-center ">
@@ -88,7 +78,7 @@ export default function SignIn() {
             <h2 className="text-center font-extrabold text-3xl uppercase text-Black my-5">
               NIT Patna
             </h2>
-            <p className="m-3 text-gray-900 font-serif">
+            <p className="m-3 text-gray-900 font-serif text-justify">
               The Training and Placement cell of NIT PATNA forms an integral
               part in shaping the careers of the students of the institute. It
               organizes and coordinates campus placement program to fulfill its
@@ -101,15 +91,9 @@ export default function SignIn() {
         <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md h-screen backdrop-opacity-60 bg-white/30 ">
           <div className="py-8 mt-5 shadow sm:rounded-lg sm:px-10 g-blur-md h-[35rem] p-7">
             <div>
-              <p className="mt-2 text-center text-3xl font-bold font-sans pb-7 text-black ">
+              <h1 className="mt-2 text-center text-3xl font-bold font-sans pb-7 text-black ">
                 Login
-                {/* Login Or{" "}
-                <Link href="/account/studentRegistration">
-                  <a className="font-medium text-yellow-500 hover:text-orange-500 font-bold">
-                    New Student Registration
-                  </a>
-                </Link> */}
-              </p>
+              </h1>
               <label
                 htmlFor="role"
                 className="block text-sm font-medium text-slate-700 py-2"
@@ -221,7 +205,6 @@ export default function SignIn() {
             <div>
               {newReg ? (
                 <p className="p-3 text-white">
-
                   Or{" "}
                   <Link href="/account/studentRegistration">
                     <a className=" text-yellow-500 hover:text-orange-500 font-bold">
@@ -230,15 +213,13 @@ export default function SignIn() {
                   </Link>
                 </p>
               ) : (
-                ''
+                ""
               )}
-
             </div>
 
             <div>
               {newReg ? (
                 <p className="p-3">
-
                   Or{" "}
                   <Link href="/account/RecruiterSignUp">
                     <a className=" text-yellow-500 hover:text-orange-500 font-bold">
@@ -247,16 +228,12 @@ export default function SignIn() {
                   </Link>
                 </p>
               ) : (
-                ''
+                ""
               )}
-
             </div>
-
-
           </div>
         </div>
       </div>
     </div>
   );
-
 }
