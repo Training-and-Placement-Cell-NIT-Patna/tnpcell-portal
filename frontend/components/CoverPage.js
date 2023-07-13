@@ -44,6 +44,7 @@ const carouselImage = [
   "/images/img1.jpg",
   "/images/img2.jpg",
   "/images/img3.jpg",
+  "/images/img4.jpg",
 ];
 
 function CoverPage() {
@@ -56,7 +57,7 @@ function CoverPage() {
   const removeAnimation = () => {
     slideRef.current.classList.remove("fade-anim");
   };
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
   useEffect(() => {
     slideRef.current.addEventListener("animationend", removeAnimation);
     startSlider();
@@ -69,9 +70,8 @@ function CoverPage() {
   };
 
   const handleOnNextClick = () => {
-    i = (i + 1) % carouselImage.length;
+    i = (currentIndex + carouselImage.length +1) % carouselImage.length;
     setCurrentIndex(i);
-    // slideRef.current.classList.add('fade-anim');
     slideRef.current?.classList.add("fade-anim");
   };
 
@@ -201,7 +201,11 @@ function CoverPage() {
             <div className=" bg-black/50 md:p-10 w-1/3 h-1/2 md:h-1/4">
               <h1 className="text-white font-bold text-md md:text-4xl">
                 <Typewriter
-                  words={["Placement idhar hi karwayenge :D"]}
+                  words={[
+                    "Welcome to",
+                    "Training and Placement cell",
+                    "NIT Patna",
+                  ]}
                   cursor={true}
                   cursorColor="#F9F54B"
                   loop={5}
@@ -245,7 +249,7 @@ function CoverPage() {
         <Process />
       </div>
       <div id="WhyUS">
-        <WhyUS />
+        {/* <WhyUS /> */}
       </div>
       <Footer />
     </>
