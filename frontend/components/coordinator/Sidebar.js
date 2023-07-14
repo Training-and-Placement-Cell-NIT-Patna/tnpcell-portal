@@ -1,6 +1,6 @@
 /* This example requires Tailwind CSS v2.0+ */
 import { Fragment, useState, useContext } from 'react'
-import { Dialog, Transition } from '@headlessui/react'
+// import { Dialog, Transition } from '@headlessui/react'
 import {
   BriefcaseIcon,
   CalendarIcon,
@@ -113,7 +113,7 @@ export default function Sidebar({ heading = '', children }) {
             </Link>
           ))}
         </ul>
-        <div className='p-5'>
+        <div className='p-5 cursor-pointer'>
           <a
             onClick={() => logout()}
             className={classNames(
