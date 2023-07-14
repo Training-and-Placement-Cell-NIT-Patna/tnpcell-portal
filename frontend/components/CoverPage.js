@@ -11,6 +11,7 @@ import WhyUS from "./LandingPageElements/WhyUS";
 import { Typewriter } from "react-simple-typewriter";
 import Image from "next/image";
 import Link from "next/link";
+import ProfessorIncharge from "./LandingPageElements/ProfessorIncharge";
 
 const MENU_LIST = [
   {
@@ -70,7 +71,7 @@ function CoverPage() {
   };
 
   const handleOnNextClick = () => {
-    i = (currentIndex + carouselImage.length +1) % carouselImage.length;
+    i = (currentIndex + carouselImage.length + 1) % carouselImage.length;
     setCurrentIndex(i);
     slideRef.current?.classList.add("fade-anim");
   };
@@ -245,12 +246,13 @@ function CoverPage() {
       <div id="about">
         <About />
       </div>
+      <div>
+        <ProfessorIncharge />
+      </div>
       <div id="process">
         <Process />
       </div>
-      <div id="WhyUS">
-        {/* <WhyUS /> */}
-      </div>
+      <div id="WhyUS">{/* <WhyUS /> */}</div>
       <Footer />
     </>
   );
