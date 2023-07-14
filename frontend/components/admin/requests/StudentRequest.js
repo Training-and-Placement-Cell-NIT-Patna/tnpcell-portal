@@ -102,7 +102,7 @@ export default function StudentRequest({ token = '' }) {
     },
     {
       headerName: 'Program',
-      field: 'attributes.program.data.attributes.program_name',
+      field: 'attributes.program.data?.attributes?.program_name',
     },
     {
       headerName: 'Course',
