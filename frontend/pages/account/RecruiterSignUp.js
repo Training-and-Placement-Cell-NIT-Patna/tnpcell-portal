@@ -98,7 +98,7 @@ const handleInputChange = (e) => {
             Placement Portal
           </h2>
           <p className='mt-2 text-center text-sm text-gray-600'>
-          Let's get you registered Or{' '}
+          Let&apos;s get you registered Or{' '}
             <Link href='/'>
               <a className='font-medium text-indigo-600 hover:text-indigo-500'>
                 Login
@@ -144,7 +144,7 @@ const handleInputChange = (e) => {
                   htmlFor='recruiter_name'
                   className='block text-sm font-medium text-gray-700'
                 >
-                  Recruiter's Name
+                  Recruiter&apos;s Name
                 </label>
                 <div className='mt-1'>
                   <input
@@ -200,7 +200,7 @@ const handleInputChange = (e) => {
                     onChange={handleInputChange}
                     id='email'
                     name='email'
-                    //  pattern='.+@iitp\.ac\.in'
+                    //  pattern='.+@nitp\.ac\.in'
                     type='email'
                     autoComplete='email'
                     required
