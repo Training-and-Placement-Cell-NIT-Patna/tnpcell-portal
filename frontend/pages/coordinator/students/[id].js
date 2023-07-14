@@ -61,10 +61,9 @@ export default function StudentProfilePage({
     })
       .then((res) => res.json())
       .then((resp) => {
-       console.log("eligible jobs=> ")
-       console.log(resp)
+      //  console.log("eligible jobs=> ")
+        // console.log(resp)
         setEligibleJobs(resp)
-      //  console.log("fuck")
      // console.log(resp.data)
       })
       
