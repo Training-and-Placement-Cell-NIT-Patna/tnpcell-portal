@@ -102,15 +102,10 @@ export default function StudentRegistration({ token = '' }) {
           toast.error('No token included')
           return
         }
-
         const profile = await res.json()
         console.log(JSON.stringify(profile, null, 2))
         toast.error(profile?.error.name)
       } else {
-
-
-
-
         const profile = await res.json()
         toast.success('Profile Submitted for Approval')
         router.push(`/student/profile`)
@@ -138,17 +133,17 @@ export default function StudentRegistration({ token = '' }) {
     })
       .then((res) => res.json())
       .then((data) => {
-        setPrograms(data.data)
+        setPrograms(data?.data)
       })
   }, [])
 
   useEffect(() => {
     programs.map((program) => {
       if (program.id === parseFloat(values.program)) {
-        setCourses(program.attributes.courses.data)
+        setCourses(program?.attributes?.courses?.data)
       }
     })
-  }, [values.program])
+  }, [values?.program])
 
   return (
     <form onSubmit={handleSubmit}>
@@ -178,6 +173,7 @@ export default function StudentRegistration({ token = '' }) {
                     type='text'
                     name='roll'
                     id='roll'
+                    readOnly={true}
                     autoComplete='roll'
                     required
                     className='mt-0 block w-full px-0.5 border-0 border-b-2 border-blue-900 '
@@ -210,7 +206,7 @@ export default function StudentRegistration({ token = '' }) {
                     htmlFor='father_name'
                     className='block text-sm font-medium text-gray-700'
                   >
-                    Father's Name
+                    Father&apos;s Name
                   </label>
                   <input
                     value={values.father_name}
@@ -229,7 +225,7 @@ export default function StudentRegistration({ token = '' }) {
                     htmlFor='father_occupation'
                     className='block text-sm font-medium text-gray-700'
                   >
-                    Father's Occupation
+                    Father&apos;s Occupation
                   </label>
                   <input
                     value={values.father_occupation}
@@ -250,7 +246,7 @@ export default function StudentRegistration({ token = '' }) {
                     htmlFor='mother_name'
                     className='block text-sm font-medium text-gray-700'
                   >
-                    Mother's Name
+                    Mother&apos;s Name
                   </label>
                   <input
                     value={values.mother_name}
@@ -268,7 +264,7 @@ export default function StudentRegistration({ token = '' }) {
                     htmlFor='mother_occupation'
                     className='block text-sm font-medium text-gray-700'
                   >
-                    Mother's Occupation
+                    Mother&apos;s Occupation
                   </label>
                   <input
                     value={values.mother_occupation}
@@ -311,12 +307,12 @@ export default function StudentRegistration({ token = '' }) {
                     disabled
                     value={values.institute_email_id}
                     onChange={handleInputChange}
-                    pattern='.+@iitp\.ac\.in'
+                    pattern='.+@nitp\.ac\.in'
                     type='email'
                     name='institute_email_id'
                     id='institute_email_id'
                     autoComplete='email'
-                    placeholder='Ex: 1234xx21@iitp.ac.in'
+                    placeholder='Ex: 1234xx21@nitp.ac.in'
                     required
                     className='mt-0 block w-full px-0.5 border-0 border-b-2 border-blue-900 focus:ring-0 focus:border-stone-500'
                   />
@@ -432,7 +428,7 @@ export default function StudentRegistration({ token = '' }) {
                     htmlFor='type_of_disability'
                     className='block text-sm font-medium text-gray-700'
                   >
-                    Type Of Diability (If PWD)
+                    Type Of Disability (If PWD)
                   </label>
                   <input
                     value={values.type_of_disability}
@@ -470,7 +466,7 @@ export default function StudentRegistration({ token = '' }) {
                     htmlFor='disability_certificate'
                     className='block text-sm font-medium text-gray-700'
                   >
-                  Disibility Certificate (IF PWD)
+                  Disability Certificate (IF PWD)
                   </label>
                   <input
                     value={values.disability_certificate}
@@ -479,7 +475,7 @@ export default function StudentRegistration({ token = '' }) {
                     name='disability_certificate'
                     id='disability_certificate'
                     autoComplete='disability_certificate'
-                    placehlder='Drive Link'
+                    placeholder='Drive Link'
                     className='mt-0 block w-full px-0.5 border-0 border-b-2 text-sm text-gray-600 border-gray-300 focus:ring-0 focus:border-stone-500'
                   />
                 </div>
@@ -682,7 +678,7 @@ export default function StudentRegistration({ token = '' }) {
                     htmlFor='correspondance_address'
                     className='block text-sm font-medium text-gray-700'
                   >
-                    Correspondance Address
+                    correspondence Address
                   </label>
                   <input
                     value={values.correspondance_address}
@@ -852,7 +848,7 @@ export default function StudentRegistration({ token = '' }) {
                   className='mt-0 block w-full px-0.5 border-0 border-b-2 border-gray-300 focus:ring-0 focus:border-stone-500'
                 >
                   <option value=''>Select Course</option>
-                  {courses.map((course) => (
+                  {courses?.map((course) => (
                     <option key={course.id} value={course.id}>
                       {course.attributes.course_name}
                     </option>
