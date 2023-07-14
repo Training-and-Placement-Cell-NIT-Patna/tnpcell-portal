@@ -30,7 +30,7 @@ export default function RecruitersSection({ recruiters = '', token = '' }) {
         <div className='-ml-4 -mt-2 flex items-center justify-between flex-wrap sm:flex-nowrap'>
           <div className='ml-4 mt-2'>
             <h3 className='text-lg leading-6 font-medium text-gray-900'>
-              Recruiter
+              Recruiters
             </h3>
           </div>
           <div className='ml-4 mt-2 flex-shrink-0'>
@@ -87,7 +87,7 @@ export default function RecruitersSection({ recruiters = '', token = '' }) {
                       <td className='px-6 py-4 whitespace-nowrap text-right text-sm font-medium'>
                         <Link href={`/admin/recruiters/details/${recruiter.email}`}>
                           <button className='text-indigo-600 hover:text-indigo-900 cursor-pointer'>
-                            Details
+                            Details 
                           </button>
                         </Link>
                       </td>

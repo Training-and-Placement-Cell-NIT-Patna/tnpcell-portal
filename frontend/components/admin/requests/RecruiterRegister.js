@@ -77,7 +77,6 @@ export default function RecruiterRegister({ token = '' }) {
 
     const data = await res.json()
 
-    console.log("fuck=>",data)
 
     if (res.ok) {
       setRecruiter(data.data)
