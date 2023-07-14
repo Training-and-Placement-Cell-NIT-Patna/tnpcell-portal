@@ -157,7 +157,7 @@ export default function StudentApplied({ token = '', id = '' }) {
     {
       headerName: 'Program',
       field:
-        'attributes.student.data.attributes.program.data.attributes.program_name',
+        'attributes.student.data?.attributes?.program.data?.attributes?.program_name',
     },
     {
       headerName: 'Course',

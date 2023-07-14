@@ -9,8 +9,8 @@ export default function RegisteredGraph({ student = [], title = '' }) {
 
   useEffect(() => {
     const occurences = student.reduce(function (r, row) {
-      r[row.attributes.program.data.attributes.program_name] =
-        ++r[row.attributes.program.data.attributes.program_name] || 1
+      r[row.attributes.program.data?.attributes?.program_name] =
+        ++r[row.attributes.program.data?.attributes?.program_name] || 1
       return r
     }, {})
 
