@@ -1,11 +1,11 @@
-import Image from 'next/image'
-import AuthContext from '@/context/AuthContext'
-import { useContext, useState, useEffect } from 'react'
+// import Image from 'next/image'
+// import AuthContext from '@/context/AuthContext'
+import { useState } from 'react'
 import { toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 
-import Link from 'next/link'
-import axios from 'axios'
+// import Link from 'next/link'
+// import axios from 'axios'
 import { API_URL } from '@/config/index'
 
 export default function AddCoordinatorComponent({ token = '' }) {
@@ -39,17 +39,13 @@ export default function AddCoordinatorComponent({ token = '' }) {
       })
 
       const data = await res.json()
-      console.log(
-        JSON.stringify({
-          username,
-          email,
-          password,
-          role,
-        })
-      )
 
       if (res.ok) {
-        toast.success('Coordinator added successfully!')
+        toast.success('Coordinator added successfully!');
+        setUsername(''); 
+        setEmail(''); 
+        setPassword('');
+        setConfirmPassword('')
       } else {
         toast.error('Something went wrong!')
       }
@@ -66,7 +62,7 @@ export default function AddCoordinatorComponent({ token = '' }) {
                 Coordinator Details
               </h3>
               <p className='mt-1 text-sm text-gray-500'>
-                Deatils about the coordinator
+                Details about the coordinator
               </p>
             </div>
             <div className='mt-5 md:mt-0 md:col-span-2'>
