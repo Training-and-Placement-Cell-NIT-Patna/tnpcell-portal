@@ -190,7 +190,7 @@ export default function StudentProfileEdit({ token = '', student }) {
                     htmlFor='father_name'
                     className='block text-sm font-medium text-gray-700'
                   >
-                    Father's Name
+                    Father&apos;s Name
                   </label>
                   <input
                     disabled
@@ -210,7 +210,7 @@ export default function StudentProfileEdit({ token = '', student }) {
                     htmlFor='father_occupation'
                     className='block text-sm font-medium text-gray-700'
                   >
-                    Father's Occupation
+                    Father&apos;s Occupation
                   </label>
                   <input
                   disabled
@@ -232,7 +232,7 @@ export default function StudentProfileEdit({ token = '', student }) {
                     htmlFor='mother_name'
                     className='block text-sm font-medium text-gray-700'
                   >
-                    Mother's Name
+                    Mother&apos;s Name
                   </label>
                   <input
                   disabled
@@ -251,7 +251,7 @@ export default function StudentProfileEdit({ token = '', student }) {
                     htmlFor='mother_occupation'
                     className='block text-sm font-medium text-gray-700'
                   >
-                    Mother's Occupation
+                    Mother&apos;s Occupation
                   </label>
                   <input
                     disabled
@@ -471,7 +471,7 @@ export default function StudentProfileEdit({ token = '', student }) {
                     name='disability_certificate'
                     id='disability_certificate'
                     autoComplete='disability_certificate'
-                    placehlder='Drive Link'
+                    placeholder='Drive Link'
                     className='mt-0 block w-full px-0.5 border-0 border-b-2 text-sm text-gray-600 border-gray-300 focus:ring-0 focus:border-stone-500'
                   />
                 </div>
