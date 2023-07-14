@@ -6,8 +6,8 @@ import CoverPage from '@/components/CoverPage'
 
 export default function Home({
   title = 'Training and Placement Cell NIT Patna',
-  keywords = '',
-  description = '',
+  keywords = 'NIT Patna || Training || Placement || Cell || NIT Patna || NIT Patna Average Package',
+  description = 'Training and Placement Cell NIT Patna || NIT Patna',
 }) {
   return (
     <>
