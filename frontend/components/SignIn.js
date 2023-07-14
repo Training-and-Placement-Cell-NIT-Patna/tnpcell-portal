@@ -3,9 +3,10 @@ import AuthContext from "@/context/AuthContext";
 import { useContext, useState, useEffect } from "react";
 import Link from "next/link";
 import Nav from "@/components/Nav";
-import { BaseGridSerializingSession } from "ag-grid-community";
-import axios from "axios";
+// import { BaseGridSerializingSession } from "ag-grid-community";
+// import axios from "axios";
 import { API_URL } from "../config";
+import { toast } from "react-toastify";
 
 export default function SignIn() {
   const notificationMethods = [
@@ -52,7 +53,7 @@ export default function SignIn() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    login({ username, password, role });
+    login({ username, password, role }); //role bhejne ki need nhi ill correct it later
   };
 
   return (
@@ -132,6 +133,7 @@ export default function SignIn() {
                     onChange={(e) => setUsername(e.target.value)}
                     id="username"
                     name="username"
+                    placeholder="Roll Number"
                     type="text"
                     autoComplete="username"
                     required
@@ -153,6 +155,7 @@ export default function SignIn() {
                     onChange={(e) => setPassword(e.target.value)}
                     id="password"
                     name="password"
+                    placeholder="Password"
                     type={passwordShown ? "text" : "password"}
                     autoComplete="current-password"
                     required
