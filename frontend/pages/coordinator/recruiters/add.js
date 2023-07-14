@@ -1,4 +1,4 @@
-import Breadcrumbs from '@/components/coordinatorBreadcrumbs'
+import Breadcrumbs from '@/components/coordinator/Breadcrumbs'
 import AddRecruitersComponent from '@/components/coordinator/recruiters/Add'
 import Layout from '@/components/coordinator/Layout'
 import { parseCookies } from '@/helpers/index'
