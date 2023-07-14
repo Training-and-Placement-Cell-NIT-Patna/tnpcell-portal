@@ -1,0 +1,6 @@
+{
+    "cors":{
+        "enabled":true, 
+        "origin":"*"
+    }
+}
