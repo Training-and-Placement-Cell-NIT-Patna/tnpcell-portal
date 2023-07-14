@@ -3,7 +3,7 @@ import { useState } from 'react'
 import { toast } from 'react-toastify'
 import { API_URL } from '@/config/index'
 import 'react-toastify/dist/ReactToastify.css'
-import { useRouter } from 'next/router'
+// import { useRouter } from 'next/router'
 import Link from 'next/link'
 
 export default function ForgotPassword() {
@@ -82,7 +82,7 @@ export default function ForgotPassword() {
                     onChange={(e) => setEmail(e.target.value.toLowerCase())}
                     id='email'
                     name='email'
-                    pattern='.+@iitp\.ac\.in'
+                    pattern='.+@nitp\.ac\.in'
                     type='text'
                     autoComplete='email'
                     required
