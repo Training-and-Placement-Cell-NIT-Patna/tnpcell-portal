@@ -45,7 +45,7 @@ export default function ForgotPassword() {
               className='mx-auto'
               width={100}
               height={100}
-              alt='NIT Patna'
+              alt='NIT Patna Logo'
               src='/images/logo.svg'
             />
           </div>
@@ -59,8 +59,8 @@ export default function ForgotPassword() {
           <p className='mt-2 text-center text-sm text-gray-600'>
             Forgot Password (Only for Students)
           </p>
-          <p className='mt-2 text-center text-sm text-indigo-600'>
-            <Link href='/' className='cursor-pointer text-indigo-600'>
+          <p className='mt-2 text-center text-sm text-yellow-600'>
+            <Link href='/' className='cursor-pointer text-yellow-600'>
               <a>Go to Login</a>
             </Link>
           </p>
@@ -95,7 +95,7 @@ export default function ForgotPassword() {
               <div>
                 <button
                   type='submit'
-                  className='w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500'
+                  className='w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-yellow-600 hover:bg-yellow-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500'
                 >
                   Get password reset email
                 </button>
