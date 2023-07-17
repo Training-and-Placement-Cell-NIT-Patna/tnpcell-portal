@@ -85,10 +85,10 @@ export default function Sidebar({ heading = '', children }) {
             src='/images/logo.png'
             className='float-left block'
           />
-          <h1 className={`text-[#555701b2] origin-left p-2 pl-2 font-serif font-semibold text-xl duration-300 ${!sidebarOpen && "hidden"}`}>Coordinator</h1>
+          <h1 className={`origin-left p-2 pl-2 font-serif font-semibold text-xl duration-300 ${!sidebarOpen && "hidden"}`}>Coordinator</h1>
         </div>
 
-        <ul className='pt-4 p-5'>
+        <ul className='p-5 overflow-y-scroll no-scrollbar'>
           {navigation.map((item) => (
             <Link href={item.href} key={item.name}>
               <a

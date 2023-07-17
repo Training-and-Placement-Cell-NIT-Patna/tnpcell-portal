@@ -87,7 +87,7 @@ export default function Sidebar({ heading = "", children }) {
             </h1>
           </div>
 
-          <ul className="pt-4 p-5 overflow-y-scroll h-96">
+          <ul className="pt-4 p-5 overflow-y-scroll no-scrollbar h-96">
             {navigation.map((item) => (
               <Link href={item.href} key={item.id}>
                 <a

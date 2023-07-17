@@ -1,5 +1,6 @@
 /* This example requires Tailwind CSS v2.0+ */
 import { Fragment, useState, useContext } from 'react'
+import { API_URL } from "@/config/index";
 import {
   BriefcaseIcon,
   DocumentTextIcon,
@@ -101,7 +102,7 @@ export default function Sidebar({ heading = '', children }) {
             </Link>
           ))}
         </ul>
-        <div className='p-5'>
+        <div className='p-5 cursor-pointer'>
           <a
             onClick={() => logout()}
             className={classNames(
@@ -130,7 +131,8 @@ export default function Sidebar({ heading = '', children }) {
                 <img
                   className='h-8 w-8 rounded-full m-4'
                   src='https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80'
-                  alt=''
+                  // src={API_URL + user.profile_pic.url}
+                  alt='student-profile'
                 />
               </div>
               <div className='px-4'>
