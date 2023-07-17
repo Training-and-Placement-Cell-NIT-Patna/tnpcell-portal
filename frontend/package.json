@@ -20,6 +20,7 @@
     "axios": "^0.27.2",
     "chart.js": "^3.8.0",
     "cookie": "^0.4.2",
+    "lottie-react": "^2.4.0",
     "moment": "^2.29.4",
     "next": "^12.1.6",
     "qs": "^6.10.3",
@@ -28,7 +29,8 @@
     "react-dom": "18.1.0",
     "react-icons": "^4.10.1",
     "react-simple-typewriter": "^5.0.1",
-    "react-toastify": "^9.0.1"
+    "react-toastify": "^9.0.1",
+    "sharp": "^0.32.3"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.7",
