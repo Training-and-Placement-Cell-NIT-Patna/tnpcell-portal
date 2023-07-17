@@ -101,7 +101,7 @@ export default function EditJob({ token = '', job = '' }) {
         body: JSON.stringify({ data: values }),
       })
 
-      console.log(JSON.stringify({ data: values }))
+      // console.log(JSON.stringify({ data: values }))
 
       
 
@@ -153,7 +153,7 @@ export default function EditJob({ token = '', job = '' }) {
       })
       .catch((err) => console.log(err))
 
-    console.log(eligibleCourses)
+    // console.log(eligibleCourses)
   }, [])
 
 

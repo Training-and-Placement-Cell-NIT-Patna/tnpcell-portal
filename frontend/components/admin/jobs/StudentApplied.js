@@ -9,9 +9,7 @@ import Link from 'next/link'
 
 export default function StudentApplied({ token = '', id = ''}) {
 
-  console.log(token)
 
-  console.log(id)
 
   const [students, setStudents] = useState([])
   const gridRef = useRef()
@@ -36,99 +34,99 @@ export default function StudentApplied({ token = '', id = ''}) {
 
 
 
-  const handlePlacedIntern_2m = async () => {
-    // Only use visible/filtered + selected rows
-    const selectedRows = gridRef.current.api
-      .getSelectedNodes()
-      .filter((node) => node.displayed)
-      .map((node) => node.data)
-    const selectedStudents = selectedRows.map(
-      (row) => row.attributes.student.data.attributes.name
-    )
-    if (
-      confirm(
-        `Are you sure you want to place these students? ${selectedStudents}`
-      )
-    ) {
-      selectedRows.map((row) => {
-        fetch(`${API_URL}/api/applications/${row.id}`, {
-          method: 'PUT',
-          headers: {
-            'Content-Type': 'application/json',
-            Authorization: `Bearer ${token}`,
-          },
-          body: JSON.stringify({
-            data: {
-              status: 'selected',
-            },
-          }),
-        })
-          .then((res) => res.json())
-          .then((data) => {
-            toast.success(
-              `${row.attributes.student.data.attributes.name} marked as placed`
-            )
-          })
-          .catch((err) => {
-            console.log(err)
-            toast.error(
-              `${row.attributes.student.data.attributes.name} failed to place`
-            )
-          })
-      })
-      fetchData()
-    }
-  }
+  // const handlePlacedIntern_2m = async () => {
+  //   // Only use visible/filtered + selected rows
+  //   const selectedRows = gridRef.current.api
+  //     .getSelectedNodes()
+  //     .filter((node) => node.displayed)
+  //     .map((node) => node.data)
+  //   const selectedStudents = selectedRows.map(
+  //     (row) => row.attributes.student.data.attributes.name
+  //   )
+  //   if (
+  //     confirm(
+  //       `Are you sure you want to place these students? ${selectedStudents}`
+  //     )
+  //   ) {
+  //     selectedRows.map((row) => {
+  //       fetch(`${API_URL}/api/applications/${row.id}`, {
+  //         method: 'PUT',
+  //         headers: {
+  //           'Content-Type': 'application/json',
+  //           Authorization: `Bearer ${token}`,
+  //         },
+  //         body: JSON.stringify({
+  //           data: {
+  //             status: 'selected',
+  //           },
+  //         }),
+  //       })
+  //         .then((res) => res.json())
+  //         .then((data) => {
+  //           toast.success(
+  //             `${row.attributes.student.data.attributes.name} marked as placed`
+  //           )
+  //         })
+  //         .catch((err) => {
+  //           console.log(err)
+  //           toast.error(
+  //             `${row.attributes.student.data.attributes.name} failed to place`
+  //           )
+  //         })
+  //     })
+  //     fetchData()
+  //   }
+  // }
 
 
   
-  const handlePlacedIntern_6m = async () => {
-    // Only use visible/filtered + selected rows
-    const selectedRows = gridRef.current.api
-      .getSelectedNodes()
-      .filter((node) => node.displayed)
-      .map((node) => node.data)
-    const selectedStudents = selectedRows.map(
-      (row) => row.attributes.student.data.attributes.name
-    )
-    if (
-      confirm(
-        `Are you sure you want to place these students? ${selectedStudents}`
-      )
-    ) {
-      selectedRows.map((row) => {
-        fetch(`${API_URL}/api/applications/${row.id}`, {
-          method: 'PUT',
-          headers: {
-            'Content-Type': 'application/json',
-            Authorization: `Bearer ${token}`,
-          },
-          body: JSON.stringify({
-            data: {
-              status: 'selected',
-            },
-          }),
-        })
-          .then((res) => res.json())
-          .then((data) => {
-            toast.success(
-              `${row.attributes.student.data.attributes.name} marked as placed`
-            )
-          })
-          .catch((err) => {
-            console.log(err)
-            toast.error(
-              `${row.attributes.student.data.attributes.name} failed to place`
-            )
-          })
-      })
-      fetchData()
-    }
-  }
+  // const handlePlacedIntern_6m = async () => {
+  //   // Only use visible/filtered + selected rows
+  //   const selectedRows = gridRef.current.api
+  //     .getSelectedNodes()
+  //     .filter((node) => node.displayed)
+  //     .map((node) => node.data)
+  //   const selectedStudents = selectedRows.map(
+  //     (row) => row.attributes.student.data.attributes.name
+  //   )
+  //   if (
+  //     confirm(
+  //       `Are you sure you want to place these students? ${selectedStudents}`
+  //     )
+  //   ) {
+  //     selectedRows.map((row) => {
+  //       fetch(`${API_URL}/api/applications/${row.id}`, {
+  //         method: 'PUT',
+  //         headers: {
+  //           'Content-Type': 'application/json',
+  //           Authorization: `Bearer ${token}`,
+  //         },
+  //         body: JSON.stringify({
+  //           data: {
+  //             status: 'selected',
+  //           },
+  //         }),
+  //       })
+  //         .then((res) => res.json())
+  //         .then((data) => {
+  //           toast.success(
+  //             `${row.attributes.student.data.attributes.name} marked as placed`
+  //           )
+  //         })
+  //         .catch((err) => {
+  //           console.log(err)
+  //           toast.error(
+  //             `${row.attributes.student.data.attributes.name} failed to place`
+  //           )
+  //         })
+  //     })
+  //     fetchData()
+  //   }
+  // }
 
 
 
-  const handlePlacedFte = async () => {
+  const handlePlaced = async () => {
     // Only use visible/filtered + selected rows
     const selectedRows = gridRef.current.api
       .getSelectedNodes()
@@ -349,9 +347,6 @@ export default function StudentApplied({ token = '', id = ''}) {
       },
     })
     const data = await res.json()
-
-    console.log("stud applied=>")
-    console.log(data.data)
     setStudents(data.data)
   }
 
@@ -468,7 +463,7 @@ const [columnDefs] = useState([
   },
   {
     headerName: 'Program',
-    field: 'attributes.program.data.attributes.program_name',
+    field: 'attributes.program.data?.attributes?.program_name',
     cellStyle: (params) => ({ borderRight: '2px solid #ccc',  }),
   
   },
@@ -531,30 +526,30 @@ const [columnDefs] = useState([
   //   headerName: 'Registered For',
   //   field: 'attributes.registered_for',
   // },
-  {
-    headerName: 'Resume',
-    field: 'attributes.resume',
-    cellStyle: (params) => ({ borderRight: '2px solid #ccc',  }),
+  // {
+  //   headerName: 'Resume',
+  //   field: 'attributes.resume',
+  //   cellStyle: (params) => ({ borderRight: '2px solid #ccc',  }),
 
-    cellRenderer: function (params) {
-      return (
-        <div>
-          {params.value.data ? (
-            <a
-              href={API_URL + params.value.data.attributes.url}
-              target='_blank'
-              rel='noreferrer'
-              className='inline-flex items-center py-1.5 border border-transparent text-xs font-medium rounded-full shadow-sm text-indigo-600 hover:text-indigo-700 focus:text-indigo-800'
-            >
-              Resume
-            </a>
-          ) : (
-            <span>NA</span>
-          )}
-        </div>
-      )
-    },
-  },
+  //   cellRenderer: function (params) {
+  //     return (
+  //       <div>
+  //         {params.value.data ? (
+  //           <a
+  //             href={API_URL + params.value.data.attributes.url}
+  //             target='_blank'
+  //             rel='noreferrer'
+  //             className='inline-flex items-center py-1.5 border border-transparent text-xs font-medium rounded-full shadow-sm text-indigo-600 hover:text-indigo-700 focus:text-indigo-800'
+  //           >
+  //             Resume
+  //           </a>
+  //         ) : (
+  //           <span>NA</span>
+  //         )}
+  //       </div>
+  //     )
+  //   },
+  // },
   {
     headerName: 'Resume',
     field: 'attributes.resume_link',
@@ -954,7 +949,7 @@ return (
 
           <button
             type='button'
-            onClick={handlePlacedIntern_2m}
+            onClick={handlePlaced}
             className='order-0 inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 sm:order-1 sm:ml-3'
           >
             Intern (2M)
@@ -962,7 +957,7 @@ return (
 
           <button
             type='button'
-            onClick={handlePlacedIntern_6m}
+            onClick={handlePlaced}
             className='order-0 inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 sm:order-1 sm:ml-3'
           >
             Intern (6M)
@@ -970,7 +965,7 @@ return (
 
           <button
             type='button'
-            onClick={handlePlacedFte}
+            onClick={handlePlaced}
             className='order-0 inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 sm:order-1 sm:ml-3'
           >
             FTE
