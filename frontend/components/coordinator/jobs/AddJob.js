@@ -53,8 +53,8 @@ export default function AddJob({ token = '' }) {
   const [jaf, setJaf] = useState('')
 
   useEffect(() => {
-    programs.map((program) => {
-      program.attributes.courses.data.map((course) => {
+    programs?.map((program) => {
+      program?.attributes?.courses?.data?.map((course) => {
         setEligibleCourses((prev) => new Set([...prev, parseInt(course.id)]))
       })
     })
@@ -546,10 +546,10 @@ export default function AddJob({ token = '' }) {
                       >
                         <fieldset>
                           <legend className='block text-sm font-medium text-gray-900'>
-                            {program.attributes.program_name}
+                            {program?.attributes?.program_name}
                           </legend>
                           <div className='pt-6 space-y-3'>
-                            {program.attributes.courses.data.map((course) => (
+                            {program?.attributes?.courses?.data.map((course) => (
                               <div
                                 key={course.id}
                                 className='flex items-center'
