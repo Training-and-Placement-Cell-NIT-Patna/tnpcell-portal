@@ -71,7 +71,7 @@ function WhyUS() {
         <h5 className=' text-red-900 m-6 text-sm' data-aos='fade-in'> Why Recruit at NIT Patna?</h5>
         <h1 className='text-4xl w-96 mx-auto leading-normal  font-bold mb-12' data-aos='zoom-in-up'> Benefit and Cuture of our Institute</h1>
       </div>
-      <div className='flex items-center p-10 mb-8 bg-gradient-to-r from-slate-500 to-yellow-100'>
+      <div className='flex items-center p-10 bg-gradient-to-r from-slate-500 to-yellow-100'>
         <ChevronLeftIcon className='w-10 opacity-50 hover:opacity-100 cursor-pointer' onClick={sliderLeft} />
         <div id='slider' className="overflow-x-scroll whitespace-nowrap  no-scrollbar flex w-screen py-2">
           {data.map((item) => (

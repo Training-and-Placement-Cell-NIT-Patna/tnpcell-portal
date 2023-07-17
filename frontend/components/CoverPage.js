@@ -12,6 +12,7 @@ import { Typewriter } from "react-simple-typewriter";
 import Image from "next/image";
 import Link from "next/link";
 import ProfessorIncharge from "./LandingPageElements/ProfessorIncharge";
+import Statics from "./LandingPageElements/Statics";
 
 const MENU_LIST = [
   {
@@ -158,11 +159,11 @@ function CoverPage() {
           </div>
           {isOpen ? (
             <>
-              <div className="md:hidden relative h-10 bg-red-950">
+              <div className="md:hidden relative h-10 z-50 bg-red-950">
                 <div className="">
                   {MENU_LIST.map((menu) => (
                     <a href={menu.href} key={menu.idx}>
-                      <p className="text-[#858383] bg-red-950 hover:bg-[#67101075] self-center p-3 rounded-md text-sm font-medium hover:text-yellow-200">
+                      <p className="text-[#858383] bg-red-950 self-center p-3 text-sm font-medium hover:text-yellow-200">
                         {menu.text}
                       </p>
                     </a>
@@ -227,7 +228,7 @@ function CoverPage() {
               </div>
             </div>
           </div>
-          <div className="absolute top-1/2 transform -translate-y-1.2 flex w-full px-3 justify-between items-center">
+          <div className="absolute top-1/2 transform -translate-y-1.2 w-full px-3 justify-between items-center hidden md:flex">
             <button onClick={handleOnPrevClick} type="button">
               <ChevronDoubleLeftIcon className="w-7 h-7 text-white bg-gray-800 rounded-full p-1" />
             </button>
@@ -249,10 +250,15 @@ function CoverPage() {
       <div>
         <ProfessorIncharge />
       </div>
+      <div>
+        <Statics/>
+      </div>
       <div id="process">
         <Process />
       </div>
-      <div id="WhyUS">{/* <WhyUS /> */}</div>
+      <div id="WhyUS">
+        <WhyUS />
+      </div>
       <Footer />
     </>
   );
