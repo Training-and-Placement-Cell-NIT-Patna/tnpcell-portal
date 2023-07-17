@@ -9,9 +9,6 @@ import Link from 'next/link'
 
 export default function EligibleStudents({ token = '', id = '',job = {}}) {
 
-  console.log(token)
-
-  console.log(id)
 
   const [students, setStudents] = useState([])
 
@@ -130,9 +127,6 @@ const fetchData = async () => {
   })
   const data = await res.json()
 
-  console.log("elig students=>")
-
-  console.log(data)
 
   setStudents(data)
 }
