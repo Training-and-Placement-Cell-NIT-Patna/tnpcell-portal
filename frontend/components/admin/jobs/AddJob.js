@@ -54,7 +54,7 @@ export default function AddJob({ token = '' }) {
 
   useEffect(() => {
     programs.map((program) => {
-      program.attributes.courses.data.map((course) => {
+      program?.attributes?.courses?.data?.map((course) => {
         setEligibleCourses((prev) => new Set([...prev, parseInt(course.id)]))
       })
     })
@@ -550,7 +550,7 @@ export default function AddJob({ token = '' }) {
                             {program.attributes.program_name}
                           </legend>
                           <div className='pt-6 space-y-3'>
-                            {program.attributes.courses.data.map((course) => (
+                            {program?.attributes?.courses?.data?.map((course) => (
                               <div
                                 key={course.id}
                                 className='flex items-center'
@@ -603,7 +603,7 @@ export default function AddJob({ token = '' }) {
                     Basic Salary
                   </label>
                   <input
-                    value={values.details_of_pay_package.basic_salary}
+                    value={values?.details_of_pay_package?.basic_salary}
                     onChange={handleContactThreeInputChange}
                     type='text'
                     name='basic_salary'
@@ -621,7 +621,7 @@ export default function AddJob({ token = '' }) {
                     Allowance
                   </label>
                   <input
-                    value={values.details_of_pay_package.allowance}
+                    value={values?.details_of_pay_package?.allowance}
                     onChange={handleContactThreeInputChange}
                     type='text'
                     name='allowance'
@@ -639,7 +639,7 @@ export default function AddJob({ token = '' }) {
                     Perks
                   </label>
                   <input
-                    value={values.details_of_pay_package.perks}
+                    value={values?.details_of_pay_package?.perks}
                     onChange={handleContactThreeInputChange}
                     type='text'
                     name='perks'
@@ -657,7 +657,7 @@ export default function AddJob({ token = '' }) {
                     CTC
                   </label>
                   <input
-                    value={values.details_of_pay_package.ctc}
+                    value={values?.details_of_pay_package?.ctc}
                     onChange={handleContactThreeInputChange}
                     type='text'
                     name='ctc'
@@ -694,7 +694,7 @@ export default function AddJob({ token = '' }) {
                     Name
                   </label>
                   <input
-                    value={values.hr.name}
+                    value={values?.hr?.name}
                     onChange={handleContactFourInputChange}
                     type='text'
                     name='name'
@@ -712,7 +712,7 @@ export default function AddJob({ token = '' }) {
                     Email
                   </label>
                   <input
-                    value={values.hr.mail_id}
+                    value={values?.hr?.mail_id}
                     onChange={handleContactFourInputChange}
                     type='email'
                     name='mail_id'
@@ -730,7 +730,7 @@ export default function AddJob({ token = '' }) {
                     	Telephone/ Mobile
                   </label>
                   <input
-                    value={values.hr.mobile_no}
+                    value={values?.hr?.mobile_no}
                     onChange={handleContactFourInputChange}
                     type='text'
                     name='mobile_no'
