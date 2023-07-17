@@ -1,108 +1,99 @@
-import { React, useEffect } from "react";
+import {React, useEffect} from 'react'
 import {
-  ChevronLeftIcon,
-  ChevronRightIcon,
+  ChevronLeftIcon, ChevronRightIcon,
   AcademicCapIcon,
   CodeIcon,
   DesktopComputerIcon,
   SortAscendingIcon,
   OfficeBuildingIcon,
   ClockIcon,
-} from "@heroicons/react/solid";
-import AOS from "aos";
-import "aos/dist/aos.css";
+} from '@heroicons/react/solid'
+import AOS from 'aos';
+import 'aos/dist/aos.css'
+import Lottie from "lottie-react";
+import culture from '/public/lottie/culture.json'
+import coding from '/public/lottie/coding.json'
+import workshop from '/public/lottie/workshop.json'
+import technical from '/public/lottie/technical.json'
+import faculty from 'public/lottie/faculty.json'
+import allRoundDevelopment from 'public/lottie/allRoundDevelopment.json'
 const data = [
   {
-    icon: AcademicCapIcon,
-    title: "Best of the best make it!!",
-    desc: "The students are admitted through the esteemed JEE Mains and represents the Top 2% of the candidates that appear for the exam nationwide, they are handpicked from the garden of knowledge and critical thinking. These students are enriched with both qualitative and quantitative skills, thus they make up for the best in class.",
+    // icon: AcademicCapIcon,
+    icon:culture,
+    title: 'Best of the best make it!!',
+    desc: 'The students are admitted through the esteemed JEE Mains and represents the Top 2% of the candidates that appear for the exam nationwide, they are handpicked from the garden of knowledge and critical thinking. These students are enriched with both qualitative and quantitative skills, thus they make up for the best in class.',
   },
   {
-    icon: CodeIcon,
-    title: "Coding Culture",
-    desc: "Students from NIT Patna dominate the leader boards of Codechef, Codeforces, Hackerrank, Leetcode etc. Our Coding clubs regularly organize coding competitions on various platforms to help the students strengthen their coding skills. The Google Developer Student Clubs (DSC) of NIT Patna and the Hackslash Club powered by Mozilla frequently organize workshops on trending technologies in Machine learning and Web/Android Development.",
+    icon: coding,
+    title: 'Coding Culture',
+    desc: 'Students from NIT Patna dominate the leader boards of Codechef, Codeforces, Hackerrank, Leetcode etc. Our Coding clubs regularly organize coding competitions on various platforms to help the students strengthen their coding skills. The Google Developer Student Clubs (DSC) of NIT Patna and the Hackslash Club powered by Mozilla frequently organize workshops on trending technologies in Machine learning and Web/Android Development.',
   },
   {
-    icon: SortAscendingIcon,
-    title: "Workshop and Industrial Lecture",
-    desc: "The students are admitted through the esteemed JEE Mains and represents the Top 2% of the candidates that appear for the exam nationwide, they are handpicked from the garden of knowledge and critical thinking. These students are enriched with both qualitative and quantitative skills, thus they make up for the best in class.",
+    icon: workshop,
+    title: 'Workshop and Industrial',
+    desc: 'NIT Patna regularly conducts workshops, industrial lectures and Conferences for Mechanical, Civil, Electrical, Electronics and Computer Science Departments. Students get to interact with pioneers in the respective fields which not only helps them to find their interest but also helps them to choose better career options. Some of the latest workshops and conferences include “Soft computing techniques”, “International Conference on renewable resources”, “Aatmanirbhar Bharat: A road-map for inclusive growth” and “Deep learning and its applications”.',
   },
   {
-    icon: DesktopComputerIcon,
-    title: "Technical Clubs",
-    desc: "The students are admitted through the esteemed JEE Mains and represents the Top 2% of the candidates that appear for the exam nationwide, they are handpicked from the garden of knowledge and critical thinking. These students are enriched with both qualitative and quantitative skills, thus they make up for the best in class.",
+    icon: technical,
+    title: 'Technical Clubs',
+    desc: 'NIT Patna technical clubs provide expertise and intercollegiate contests. The American Society of Student Section (ASME) of NIT Patna and the SAE club hold regular training and workshops for mechanical engineering. The IEEE student branch regularly hosts distinguished lectures , hardware hackathons and problem solving using R&D, IoT etc. The ISIE (Imperial Society of Innovative Engineers ) India NIT Patna works on renewable sources of energy. The CESC clubs conducts AutoCAD, design and drafting etc workshops for Civil engineering students.',
   },
   {
-    icon: OfficeBuildingIcon,
-    title: "World Class Faculty!",
-    desc: "The students are admitted through the esteemed JEE Mains and represents the Top 2% of the candidates that appear for the exam nationwide, they are handpicked from the garden of knowledge and critical thinking. These students are enriched with both qualitative and quantitative skills, thus they make up for the best in class.",
+    icon: faculty,
+    title: 'World Class Faculty!',
+    desc: 'NIT Patna is constituted by the best faculties of India who hold exceptional teaching skills and methodologies. Apart from delivering quality education, they motivate students to engage in cutting edge research and are highly inclined towards ideation and innovation',
   },
   {
-    icon: ClockIcon,
-    title: "All Round Development",
-    desc: "The students are admitted through the esteemed JEE Mains and represents the Top 2% of the candidates that appear for the exam nationwide, they are handpicked from the garden of knowledge and critical thinking. These students are enriched with both qualitative and quantitative skills, thus they make up for the best in class.",
+    icon: allRoundDevelopment,
+    title: 'All Round Development',
+    desc: 'Participation in Extracurricular Activities throughout the year leads to 360 degree development of an individual. Our annual technical and cultural fest, Corona and Melange, lets the students prepare hard and show their extra curricular skills. Students also participate in NSS and NCC and spread awareness in the society.',
   },
-];
+
+]
 
 function WhyUS() {
   useEffect(() => {
-    AOS.init({ duration: 1000 });
-  }, []);
+    AOS.init({ duration: 1000 })
+  }, [])
   const sliderLeft = () => {
-    var slider = document.getElementById("slider");
-    slider.scrollLeft = slider.scrollLeft - 500;
-  };
+    var slider = document.getElementById('slider')
+    slider.scrollLeft = slider.scrollLeft - 320
+  }
   const sliderRight = () => {
-    var slider = document.getElementById("slider");
-    slider.scrollLeft = slider.scrollLeft + 500;
-  };
+    var slider = document.getElementById('slider')
+    slider.scrollLeft = slider.scrollLeft + 320
+  }
 
   return (
     <>
-      <div className="text-center py-10 bg-yellow-100 ">
-        <h5 className=" text-red-900 m-6 text-sm" data-aos="fade-in">
-          {" "}
-          Why Recruit at NIT Patna?
-        </h5>
-        <h1
-          className="text-4xl w-96 mx-auto leading-normal  font-bold mb-12"
-          data-aos="zoom-in-up"
-        >
-          {" "}
-          Benefit and Culture of our Institute
-        </h1>
+      <div className='text-center py-10 bg-gradient-to-r from-slate-500 to-yellow-100'>
+        <h5 className=' text-red-900 m-6 text-sm' data-aos='fade-in'> Why Recruit at NIT Patna?</h5>
+        <h1 className='text-4xl w-96 mx-auto leading-normal  font-bold mb-12' data-aos='zoom-in-up'> Benefit and Cuture of our Institute</h1>
       </div>
-      <div className="flex items-center p-10 mb-8 bg-yellow-100 ">
-        <ChevronLeftIcon
-          className="w-10 opacity-50 hover:opacity-100 cursor-pointer"
-          onClick={sliderLeft}
-        />
-        <div
-          id="slider"
-          className="overflow-x-scroll whitespace-nowrap scroll flex w-full py-2"
-        >
+      <div className='flex items-center p-10 mb-8 bg-gradient-to-r from-slate-500 to-yellow-100'>
+        <ChevronLeftIcon className='w-10 opacity-50 hover:opacity-100 cursor-pointer' onClick={sliderLeft} />
+        <div id='slider' className="overflow-x-scroll whitespace-nowrap  no-scrollbar flex w-screen py-2">
           {data.map((item) => (
-            <div
-              className="bg-white grid m-2 mx-4 cursor-pointer hover:scale-105 ease-in-out duration-300 justify-items-center rounded-md shadow-2xl "
-              data-aos="zoom-in"
-              key={item.title}
-            >
-              <item.icon className=" h-24 w-24 inline-block p-2 cursor-pointer hover:scale-105 ease-in-out duration-300 text-yellow-800" />
-              <h2 className="font-bold text-2xl p-4">{item.title}</h2>
-              <div className="inline-block p-4 whitespace-normal text-sm">
-                {item.desc}
-              </div>
+            <div className='bg-white/10 grid m-2 mx-4 cursor-pointer hover:scale-105 ease-in-out duration-300 justify-items-center rounded-md shadow-2xl ' data-aos='zoom-in' key={item.title}>
+
+              {/* <item.icon className=' h-24 w-24 inline-block p-2 cursor-pointer hover:scale-105 ease-in-out duration-300 text-red-900' /> */}
+              <Lottie
+                animationData={item.icon}
+                className="flex justify-center items-center w-1/2"
+                loop={true}
+              />
+              <h2 className='font-bold text-2xl w-[20rem] text-center'>{item.title}</h2>
+              <div className='inline-block p-4 whitespace-normal text-sm text-justify'>{item.desc}</div>
             </div>
-          ))}
+          ))
+          }
         </div>
 
-        <ChevronRightIcon
-          className="h-10 w-10 opacity-50 hover:opacity-100 cursor-pointer"
-          onClick={sliderRight}
-        />
+        <ChevronRightIcon className='h-10 w-10 opacity-50 hover:opacity-100 cursor-pointer' onClick={sliderRight} />
       </div>
     </>
-  );
+  )
 }
 
-export default WhyUS;
+export default WhyUS
