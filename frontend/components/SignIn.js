@@ -53,7 +53,7 @@ export default function SignIn() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    login({ username, password, role }); //role bhejne ki need nhi ill correct it later
+    login({ username, password }); //role bhejne ki need nhi ill correct it later
   };
 
   return (
@@ -95,7 +95,7 @@ export default function SignIn() {
               <h1 className="mt-2 text-center text-3xl font-bold font-sans pb-7 text-black ">
                 Login
               </h1>
-              <label
+              {/* <label
                 htmlFor="role"
                 className="block text-sm font-medium text-slate-700 py-2"
               >
@@ -111,8 +111,7 @@ export default function SignIn() {
                 <option value="company">Company</option>
                 <option value="student">Student</option>
                 <option value="coordinator">Coordinator</option>
-                {/* <option value="alumn">Alumn</option> */}
-              </select>
+              </select> */}
             </div>
             <form
               className="space-y-5"
@@ -133,7 +132,7 @@ export default function SignIn() {
                     onChange={(e) => setUsername(e.target.value)}
                     id="username"
                     name="username"
-                    placeholder="Roll Number"
+                    placeholder="Username"
                     type="text"
                     autoComplete="username"
                     required
