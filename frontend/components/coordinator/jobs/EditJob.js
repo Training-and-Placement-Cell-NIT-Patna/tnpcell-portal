@@ -168,7 +168,7 @@ export default function EditJob({ token = '', job = '' }) {
                       Company
                     </label>
                     <p className='mt-1 block w-full py-2 px-3 border border-red-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm'>
-                      {company.data.attributes.company_name}
+                      {company?.data?.attributes?.company_name}
                     </p>
                   </div>
                   <div className='col-span-6 sm:col-span-3'>
@@ -413,7 +413,7 @@ export default function EditJob({ token = '', job = '' }) {
                               {program.attributes.program_name}
                             </legend>
                             <div className='pt-6 space-y-3'>
-                              {program.attributes.courses.data.map((course) => (
+                              {program?.attributes?.courses?.data?.map((course) => (
                                 <div
                                   key={course.id}
                                   className='flex items-center'
@@ -481,7 +481,7 @@ export default function EditJob({ token = '', job = '' }) {
                   <input
                     disabled
 
-                    value={values.details_of_pay_package.basic_salary}
+                    value={values?.details_of_pay_package?.basic_salary}
                     // onChange={handleContactThreeInputChange}
                     type='text'
                     name='basic_salary'
@@ -501,7 +501,7 @@ export default function EditJob({ token = '', job = '' }) {
                   <input
                     disabled
 
-                    value={values.details_of_pay_package.allowance}
+                    value={values?.details_of_pay_package?.allowance}
                     // onChange={handleContactThreeInputChange}
                     type='text'
                     name='allowance'
@@ -521,7 +521,7 @@ export default function EditJob({ token = '', job = '' }) {
                   <input
                     disabled
 
-                    value={values.details_of_pay_package.perks}
+                    value={values?.details_of_pay_package?.perks}
                     // onChange={handleContactThreeInputChange}
                     type='text'
                     name='perks'
@@ -541,7 +541,7 @@ export default function EditJob({ token = '', job = '' }) {
                   <input
                     disabled
 
-                    value={values.details_of_pay_package.ctc}
+                    value={values?.details_of_pay_package?.ctc}
                     // onChange={handleContactThreeInputChange}
                     type='text'
                     name='ctc'
@@ -582,7 +582,7 @@ export default function EditJob({ token = '', job = '' }) {
                   <input
                     disabled
 
-                    value={values.hr.name}
+                    value={values?.hr?.name}
                     // onChange={handleContactFourInputChange}
                     type='text'
                     name='name'
@@ -602,7 +602,7 @@ export default function EditJob({ token = '', job = '' }) {
                   <input
                     disabled
 
-                    value={values.hr.mail_id}
+                    value={values?.hr?.mail_id}
                     // onChange={handleContactFourInputChange}
                     type='email'
                     name='mail_id'
@@ -622,7 +622,7 @@ export default function EditJob({ token = '', job = '' }) {
                   <input
                     disabled
 
-                    value={values.hr.mobile_no}
+                    value={values?.hr?.mobile_no}
                     // onChange={handleContactFourInputChange}
                     type='text'
                     name='mobile_no'
