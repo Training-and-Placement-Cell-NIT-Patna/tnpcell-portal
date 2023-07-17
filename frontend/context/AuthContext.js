@@ -4,18 +4,12 @@ import { API_URL, NEXT_URL } from '@/config/index'
 import { toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 
-// import { axios} from axios
-
 const AuthContext = createContext()
 
 export const AuthProvider = ({ children }) => {
-
   const router = useRouter()
-
   const [user, setUser] = useState(null)
-
   const [role, setRole] = useState('student')
-
   const [error, setError] = useState(null)
 
   useEffect(() => {
@@ -23,40 +17,27 @@ export const AuthProvider = ({ children }) => {
   }, [])
 
   //register user
-
-
-
   const register = async (user) => {
-
-    user.role=role;
-    
-     const res = await fetch(`${API_URL}/api/student/register-student`, {
-   // const res = await fetch(`${API_URL}/api/users`, {
+    const res = await fetch(`${API_URL}/api/student/register-student`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify(user),
     })
-  
-
     if (res.ok) {
-
       const data = await res.json()
-
       setUser(data)
-
       setRole(data.role)
-
       toast.success('Registration Successful!')
-        // redirect after 3 seconds
+      // redirect after 3 seconds
       setTimeout(() => {
-        router.push('/')
+        router.push('/loginPage')
       }, 3000)
     } else {
-      console.log('res', res)
+      // console.log('res', res)
       const data = await res.json()
-      console.log('data', data)
+      // console.log('data', data)
       toast.error('Registration Failed!')
       toast.error(data?.error?.message)
     }
@@ -85,13 +66,10 @@ export const AuthProvider = ({ children }) => {
   //   })
   //   .catch((err) => {
   //     console.log(err)
-  //   })
-
+  //   }
 
   //login user
-
-
-  const login = async ({ username: identifier, password, role }) => {
+  const login = async ({ username: identifier, password }) => {
     const res = await fetch(`${NEXT_URL}/api/login`, {
       method: 'POST',
       headers: {
@@ -100,54 +78,30 @@ export const AuthProvider = ({ children }) => {
       body: JSON.stringify({
         identifier,
         password,
-        role,
       }),
     })
-
     const data = await res.json()
 
-
     if (res.ok) {
-
       setUser(data.user)
-
-      if(data.role!=role){
-
-        console.log(data)
-        
-        console.log(data.role)
-
-        console.log(role)
-
-        toast.error("Invalid Account Type");
-
-      }
-
-
-      else{
-
       setRole(data.role)
-
-      if (role === 'student') {   // student=>public
+      if (data.role === 'student') {
         router.push('student/profile')
-      } else if (role === 'admin') {
-        router.push('/admin/home')
-      } else if (role === 'coordinator') {
+      } else if (data.role === 'admin') {
+        router.push('admin/home')
+      } else if (data.role === 'coordinator') {
         router.push('coordinator/home')
-      } else if(role=='company'){
-        router.push('company/add')
-      } else if(role=='alumn'){
-        router.push('alumn/profile')
       }
-      else {
+      else if(data.role==='company'){
+        // error are there check the componenet or page
+        router.push('company/add')
+      } else {
         toast.error(data.error)
       }
-    } 
-  }
-  else {
+    } else {
       toast.error(data.error)
     }
-}
+  }
 
   //logout user
   const logout = async (user) => {
