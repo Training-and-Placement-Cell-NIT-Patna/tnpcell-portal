@@ -61,24 +61,24 @@ export default function PlacedGraph({ student = [] }) {
     )
     // Count occurences of each program
     a1.forEach((item) => {
-      a1occurences[item.attributes?.program.data?.attributes?.program_name] =
-        (a1occurences[item.attributes?.program.data?.attributes?.program_name] ||
+      a1occurences[item.attributes?.program?.data?.attributes?.program_name] =
+        (a1occurences[item.attributes?.program?.data?.attributes?.program_name] ||
           0) + 1
     })
     a2.forEach((item) => {
-      a2occurences[item.attributes?.program.data?.attributes?.program_name] =
-        (a2occurences[item.attributes?.program.data?.attributes?.program_name] ||
+      a2occurences[item.attributes?.program?.data?.attributes?.program_name] =
+        (a2occurences[item.attributes?.program?.data?.attributes?.program_name] ||
           0) + 1
     })
     x.forEach((item) => {
-      xoccurences[item.attributes?.program.data?.attributes?.program_name] =
-        (xoccurences[item.attributes?.program.data?.attributes?.program_name] ||
+      xoccurences[item.attributes?.program?.data?.attributes?.program_name] =
+        (xoccurences[item.attributes?.program?.data?.attributes?.program_name] ||
           0) + 1
     })
     unplaced.forEach((item) => {
-      unplacedoccurences[item.attributes?.program.data?.attributes?.program_name] =
+      unplacedoccurences[item.attributes?.program?.data?.attributes?.program_name] =
         (unplacedoccurences[
-          item.attributes?.program.data?.attributes?.program_name
+          item.attributes?.program?.data?.attributes?.program_name
         ] || 0) + 1
     })
     setA1(a1occurences)
