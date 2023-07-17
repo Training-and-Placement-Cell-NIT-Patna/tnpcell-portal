@@ -45,7 +45,7 @@ function About() {
           </h1>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 max-w-5xl mx-auto gap-10 group place-items-center">
-          <div className="bg-white/10 group-hover:blur-sm hover:!blur-none mx-5 md:mx-0 cursor-pointer p-8 rounded-sm  flex flex-col place-items-center  group-hover:scale-[0.85] hover:!scale-100">
+          <div className="bg-white/10  hover:!blur-none mx-5 md:mx-0 cursor-pointer p-8 rounded-sm  flex flex-col place-items-center  group-hover:scale-[0.85] hover:!scale-100">
             <div className="flex justify-center ">
             <Lottie
                 animationData={aim}
@@ -61,7 +61,7 @@ function About() {
               organizations they joined.
             </p>
           </div>
-          <div className="grid place-items-center bg-white/10 cursor-pointer mx-5 md:mx-0 p-8 rounded-sm group-hover:blur-sm hover:!blur-none group-hover:scale-[0.85] hover:!scale-100">
+          <div className="grid place-items-center bg-white/10 cursor-pointer mx-5 md:mx-0 p-8 rounded-sm  hover:!blur-none group-hover:scale-[0.85] hover:!scale-100">
             <div className="flex justify-center">
               {/* <PaperAirplaneIcon className="h-20 w-20 rotate-45 m-4 text-yellow-300" /> */}
               <Lottie
@@ -75,7 +75,7 @@ function About() {
             To achieve 100% placement for students through dedication, attitude and complete involvement is our mission. T&P Cell NIT Patna arranges and coordinates various programmes that aim at moulding the students so as to meet the industry expectations in career building and in turn bring laurels to the parent institution. Inviting corporations for pre-placement talks on the campus followed by final placements, and overseeing the process to its end,is the responsibility of the T&P Cell.
             </p>
           </div>
-          <div className="grid place-items-center bg-white/10  cursor-pointer p-8 mx-5 md:mx-0 rounded-sm group-hover:blur-sm hover:!blur-none group-hover:scale-[0.85] hover:!scale-100">
+          <div className="grid place-items-center bg-white/10  cursor-pointer p-8 mx-5 md:mx-0 rounded-sm  hover:!blur-none group-hover:scale-[0.85] hover:!scale-100">
             <div className="flex justify-center">
              {/* < <LightBulbIcon className="h-20 w-20 white m-4 text-yellow-300" />> */}
              <Lottie
