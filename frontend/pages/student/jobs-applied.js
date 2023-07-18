@@ -88,7 +88,7 @@ export default function JobsApplied({ token = '' }) {
               href={API_URL + params.value}
               target='_blank'
               rel='noreferrer'
-              className='inline-flex items-center py-1.5 border border-transparent text-xs font-medium rounded-full shadow-sm text-indigo-600 hover:text-indigo-700 focus:text-indigo-800'
+              className='inline-flex items-center py-1.5 border border-transparent text-xs font-medium rounded-full shadow-sm text-yellow-600 hover:text-yellow-700 focus:text-yellow-800'
             >
               View JAF
             </a>

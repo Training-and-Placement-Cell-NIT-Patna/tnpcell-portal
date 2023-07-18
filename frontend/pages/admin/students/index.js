@@ -160,7 +160,7 @@ export default function Students({ token }) {
                 href={API_URL + params.value.data.attributes.url}
                 target='_blank'
                 rel='noreferrer'
-                className='inline-flex items-center py-1.5 border border-transparent text-xs font-medium rounded-full shadow-sm text-indigo-600 hover:text-indigo-700 focus:text-indigo-800'
+                className='inline-flex items-center py-1.5 border border-transparent text-xs font-medium rounded-full shadow-sm text-yellow-600 hover:text-yellow-700 focus:text-yellow-800'
               >
                 Resume
               </a>
@@ -182,7 +182,7 @@ export default function Students({ token }) {
                 href={params.value}
                 target='_blank'
                 rel='noreferrer'
-                className='inline-flex items-center py-1.5 border border-transparent text-xs font-medium rounded-full shadow-sm text-indigo-600 hover:text-indigo-700 focus:text-indigo-800'
+                className='inline-flex items-center py-1.5 border border-transparent text-xs font-medium rounded-full shadow-sm text-yellow-600 hover:text-yellow-700 focus:text-yellow-800'
               >
                 Resume Link
               </a>
@@ -627,8 +627,8 @@ export default function Students({ token }) {
               onClick={onBtExport}
               className='inline-flex items-center px-4 py-2
               border border-transparent text-xs font-medium rounded shadow-sm
-              text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none
-              focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500'
+              text-white bg-yellow-600 hover:bg-yellow-700 focus:outline-none
+              focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500'
             >
               Export
             </button>
