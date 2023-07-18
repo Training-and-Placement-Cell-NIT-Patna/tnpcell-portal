@@ -104,7 +104,7 @@ export default function FileUpload({ token }) {
                     id='resume_link'
                     autoComplete='resume_link'
                     required
-                    className='flex-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full min-w-0 rounded-none rounded-r-md sm:text-sm border-gray-300'
+                    className='flex-1 focus:ring-yellow-500 focus:border-yellow-500 block w-full min-w-0 rounded-none rounded-r-md sm:text-sm border-gray-300'
                   />
                 </div>
               </div>
@@ -146,7 +146,7 @@ export default function FileUpload({ token }) {
                     <div className='pt-10 flex text-sm text-gray-600'>
                       <label
                         htmlFor='resume'
-                        className='relative cursor-pointer bg-white rounded-md font-medium text-indigo-600 hover:text-indigo-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500'
+                        className='relative cursor-pointer bg-white rounded-md font-medium text-yellow-600 hover:text-yellow-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-yellow-500'
                       >
                         <span>Upload a file</span>
                         <input
@@ -173,7 +173,7 @@ export default function FileUpload({ token }) {
           <div className='flex justify-end'>
             <button
               type='submit'
-              className='ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500'
+              className='ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-yellow-600 hover:bg-yellow-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500'
             >
               Submit Resume
             </button>
@@ -207,7 +207,7 @@ export default function FileUpload({ token }) {
                     id='transcript_link'
                     autoComplete='transcript_link'
                     required
-                    className='flex-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full min-w-0 rounded-none rounded-r-md sm:text-sm border-gray-300'
+                    className='flex-1 focus:ring-yellow-500 focus:border-yellow-500 block w-full min-w-0 rounded-none rounded-r-md sm:text-sm border-gray-300'
                   />
                 </div>
               </div>
@@ -219,7 +219,7 @@ export default function FileUpload({ token }) {
           <div className='flex justify-end'>
             <button
               type='submit'
-              className='ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500'
+              className='ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-yellow-600 hover:bg-yellow-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500'
             >
               Submit Transcript
             </button>
@@ -252,7 +252,7 @@ export default function FileUpload({ token }) {
                     id='cover_letter_link'
                     autoComplete='cover_letter_link'
                     required
-                    className='flex-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full min-w-0 rounded-none rounded-r-md sm:text-sm border-gray-300'
+                    className='flex-1 focus:ring-yellow-500 focus:border-yellow-500 block w-full min-w-0 rounded-none rounded-r-md sm:text-sm border-gray-300'
                   />
                 </div>
               </div>

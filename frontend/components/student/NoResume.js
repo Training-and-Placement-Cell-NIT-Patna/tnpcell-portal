@@ -10,7 +10,7 @@ export default function NotApproved() {
       <div className='mt-4'>
         <Link href='/student/resume'>
           <a className='block text-sm font-medium text-gray-700'>
-            <button className='bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded'>
+            <button className='bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded'>
               Upload Resume
             </button>
           </a>

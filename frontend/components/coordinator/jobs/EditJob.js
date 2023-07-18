@@ -62,7 +62,7 @@ export default function EditJob({ token = '', job = '' }) {
                     target='_blank'
                     rel='noreferrer'
                   >
-                    <p className='inline-flex items-center px-3.5 py-2 mt-2 border border-transparent text-sm leading-4 font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500'>
+                    <p className='inline-flex items-center px-3.5 py-2 mt-2 border border-transparent text-sm leading-4 font-medium rounded-md shadow-sm text-white bg-yellow-600 hover:bg-yellow-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500'>
                       View JAF
                     </p>
                   </a>
@@ -115,7 +115,7 @@ export default function EditJob({ token = '', job = '' }) {
                   <div className='flex text-sm text-gray-600'>
                     <label
                       htmlFor='jaf'
-                      className='relative cursor-pointer bg-white rounded-md font-medium text-indigo-600 hover:text-indigo-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500'
+                      className='relative cursor-pointer bg-white rounded-md font-medium text-yellow-600 hover:text-yellow-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-yellow-500'
                     >
 
                       <input
@@ -135,7 +135,7 @@ export default function EditJob({ token = '', job = '' }) {
               </div>
               <button
                 type='submit'
-                className='inline-flex items-center px-3.5 py-2 mt-2 border border-transparent text-sm leading-4 font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500'
+                className='inline-flex items-center px-3.5 py-2 mt-2 border border-transparent text-sm leading-4 font-medium rounded-md shadow-sm text-white bg-yellow-600 hover:bg-yellow-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500'
               >
                 Update
               </button>
@@ -167,7 +167,7 @@ export default function EditJob({ token = '', job = '' }) {
                     >
                       Company
                     </label>
-                    <p className='mt-1 block w-full py-2 px-3 border border-red-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm'>
+                    <p className='mt-1 block w-full py-2 px-3 border border-red-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-yellow-500 focus:border-yellow-500 sm:text-sm'>
                       {company?.data?.attributes?.company_name}
                     </p>
                   </div>
@@ -186,7 +186,7 @@ export default function EditJob({ token = '', job = '' }) {
                       name='job_title'
                       id='job_title'
                       autoComplete='job_title'
-                      className='mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-red-300 rounded-md'
+                      className='mt-1 focus:ring-yellow-500 focus:border-yellow-500 block w-full shadow-sm sm:text-sm border-red-300 rounded-md'
                     />
                   </div>
                   <div className='col-span-6 sm:col-span-2'>
@@ -200,7 +200,7 @@ export default function EditJob({ token = '', job = '' }) {
                       name='classification'
                       // onChange={handleInputChange}
                       value={values.classification}
-                      className='mt-1 block w-full py-2 px-3 border border-red-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm'
+                      className='mt-1 block w-full py-2 px-3 border border-red-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-yellow-500 focus:border-yellow-500 sm:text-sm'
                     >
                       <option value=''>Select Classification</option>
                       <option value='A1'>A1</option>
@@ -220,7 +220,7 @@ export default function EditJob({ token = '', job = '' }) {
                       name='category'
                       // onChange={handleInputChange}
                       value={values.category}
-                      className='mt-1 block w-full py-2 px-3 border border-red-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm'
+                      className='mt-1 block w-full py-2 px-3 border border-red-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-yellow-500 focus:border-yellow-500 sm:text-sm'
                     >
                       <option value=''>Select</option>
                       <option value='Internship'>Internship</option>
@@ -239,7 +239,7 @@ export default function EditJob({ token = '', job = '' }) {
                       name='job_status'
                       // onChange={handleInputChange}
                       value={values.job_status}
-                      className='mt-1 block w-full py-2 px-3 border border-red-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm'
+                      className='mt-1 block w-full py-2 px-3 border border-red-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-yellow-500 focus:border-yellow-500 sm:text-sm'
                     >
                       <option value=''>Select</option>
                       <option value='open'>open</option>
@@ -264,7 +264,7 @@ export default function EditJob({ token = '', job = '' }) {
                       name='min_X_marks'
                       id='min_X_marks'
                       autoComplete='min_X_marks'
-                      className='mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-red-300 rounded-md'
+                      className='mt-1 focus:ring-yellow-500 focus:border-yellow-500 block w-full shadow-sm sm:text-sm border-red-300 rounded-md'
                     />
                   </div>
 
@@ -286,7 +286,7 @@ export default function EditJob({ token = '', job = '' }) {
                       name='min_XII_marks'
                       id='min_XII_marks'
                       autoComplete='min_XII_marks'
-                      className='mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-red-300 rounded-md'
+                      className='mt-1 focus:ring-yellow-500 focus:border-yellow-500 block w-full shadow-sm sm:text-sm border-red-300 rounded-md'
                     />
                   </div>
 
@@ -308,7 +308,7 @@ export default function EditJob({ token = '', job = '' }) {
                       name='min_cpi'
                       id='min_cpi'
                       autoComplete='min_cpi'
-                      className='mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-red-300 rounded-md'
+                      className='mt-1 focus:ring-yellow-500 focus:border-yellow-500 block w-full shadow-sm sm:text-sm border-red-300 rounded-md'
                     />
                   </div>
                   <div className='col-span-6 sm:col-span-2'>
@@ -326,7 +326,7 @@ export default function EditJob({ token = '', job = '' }) {
                       name='start_date'
                       id='start_date'
                       autoComplete='start_date'
-                      className='mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-red-300 rounded-md'
+                      className='mt-1 focus:ring-yellow-500 focus:border-yellow-500 block w-full shadow-sm sm:text-sm border-red-300 rounded-md'
                     />
                   </div>
                   <div className='col-span-6 sm:col-span-2'>
@@ -344,7 +344,7 @@ export default function EditJob({ token = '', job = '' }) {
                       name='last_date'
                       id='last_date'
                       autoComplete='last_date'
-                      className='mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-red-300 rounded-md'
+                      className='mt-1 focus:ring-yellow-500 focus:border-yellow-500 block w-full shadow-sm sm:text-sm border-red-300 rounded-md'
                     />
                   </div>
                   <div className='col-span-6 sm:col-span-2'>
@@ -359,7 +359,7 @@ export default function EditJob({ token = '', job = '' }) {
                       name='only_for_female'
                       // onChange={handleInputChange}
                       value={values.only_for_female}
-                      className='mt-1 block w-full py-2 px-3 border border-red-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm'
+                      className='mt-1 block w-full py-2 px-3 border border-red-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-yellow-500 focus:border-yellow-500 sm:text-sm'
                     >
                       <option value='false'>No</option>
                       <option value='true'>Yes</option>
@@ -377,7 +377,7 @@ export default function EditJob({ token = '', job = '' }) {
                       name='only_for_pwd'
                       // onChange={handleInputChange}
                       value={values.only_for_pwd}
-                      className='mt-1 block w-full py-2 px-3 border border-red-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm'
+                      className='mt-1 block w-full py-2 px-3 border border-red-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-yellow-500 focus:border-yellow-500 sm:text-sm'
                     >
                       <option value='false'>No</option>
                       <option value='true'>Yes</option>
@@ -395,7 +395,7 @@ export default function EditJob({ token = '', job = '' }) {
                       name='only_for_ews'
                       // onChange={handleInputChange}
                       value={values.only_for_ews}
-                      className='mt-1 block w-full py-2 px-3 border border-red-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm'
+                      className='mt-1 block w-full py-2 px-3 border border-red-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-yellow-500 focus:border-yellow-500 sm:text-sm'
                     >
                       <option value='false'>No</option>
                       <option value='true'>Yes</option>
@@ -427,7 +427,7 @@ export default function EditJob({ token = '', job = '' }) {
                                       course.id
                                     )}
                                     // onChange={handleCheckboxChange}
-                                    className='h-4 w-4 border-red-300 rounded text-indigo-600 focus:ring-indigo-500'
+                                    className='h-4 w-4 border-red-300 rounded text-yellow-600 focus:ring-yellow-500'
                                   />
                                   <label
                                     htmlFor={`${course.id}`}
@@ -487,7 +487,7 @@ export default function EditJob({ token = '', job = '' }) {
                     name='basic_salary'
                     id='basic_salary'
                     autoComplete='basic_salary'
-                    className='mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md'              
+                    className='mt-1 focus:ring-yellow-500 focus:border-yellow-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md'              
                   />
                 </div>
 
@@ -507,7 +507,7 @@ export default function EditJob({ token = '', job = '' }) {
                     name='allowance'
                     id='allowance'
                     autoComplete='allowance'
-                    className='mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md'
+                    className='mt-1 focus:ring-yellow-500 focus:border-yellow-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md'
                   />
                 </div>
 
@@ -527,7 +527,7 @@ export default function EditJob({ token = '', job = '' }) {
                     name='perks'
                     id='perks'
                     autoComplete='perks'
-                    className='mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md'
+                    className='mt-1 focus:ring-yellow-500 focus:border-yellow-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md'
                   />
                 </div>
 
@@ -547,7 +547,7 @@ export default function EditJob({ token = '', job = '' }) {
                     name='ctc'
                     id='ctc'
                     autoComplete='ctc'
-                    className='mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md'
+                    className='mt-1 focus:ring-yellow-500 focus:border-yellow-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md'
                   />
                 </div>
               </div>
@@ -588,7 +588,7 @@ export default function EditJob({ token = '', job = '' }) {
                     name='name'
                     id='name'
                     autoComplete='name'
-                    className='mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md'
+                    className='mt-1 focus:ring-yellow-500 focus:border-yellow-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md'
                   />
                 </div>
 
@@ -608,7 +608,7 @@ export default function EditJob({ token = '', job = '' }) {
                     name='mail_id'
                     id='mail_id'
                     autoComplete='email'
-                    className='mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md'
+                    className='mt-1 focus:ring-yellow-500 focus:border-yellow-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md'
                   />
                 </div>
 
@@ -628,7 +628,7 @@ export default function EditJob({ token = '', job = '' }) {
                     name='mobile_no'
                     id='mobile_no'
                     autoComplete='tel-national'
-                    className='mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md'
+                    className='mt-1 focus:ring-yellow-500 focus:border-yellow-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md'
                   />
                 </div>
               </div>
