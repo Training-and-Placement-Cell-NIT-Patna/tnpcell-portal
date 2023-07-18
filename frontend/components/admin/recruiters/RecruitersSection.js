@@ -37,7 +37,7 @@ export default function RecruitersSection({ recruiters = '', token = '' }) {
             <Link href={`/admin/recruiters/add`}>
               <a
                 type='button'
-                className='relative inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500'
+                className='relative inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-yellow-600 hover:bg-yellow-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500'
               >
                 Create new
               </a>
@@ -86,7 +86,7 @@ export default function RecruitersSection({ recruiters = '', token = '' }) {
 
                       <td className='px-6 py-4 whitespace-nowrap text-right text-sm font-medium'>
                         <Link href={`/admin/recruiters/details/${recruiter.email}`}>
-                          <button className='text-indigo-600 hover:text-indigo-900 cursor-pointer'>
+                          <button className='text-yellow-600 hover:text-yellow-900 cursor-pointer'>
                             Details 
                           </button>
                         </Link>
@@ -94,7 +94,7 @@ export default function RecruitersSection({ recruiters = '', token = '' }) {
 
                       <td className='px-6 py-4 whitespace-nowrap text-right text-sm font-medium'>
                         <Link href={`/admin/recruiters/${recruiter.id}`}>
-                          <button className='text-indigo-600 hover:text-indigo-900 cursor-pointer'>
+                          <button className='text-yellow-600 hover:text-yellow-900 cursor-pointer'>
                             Edit
                           </button>
                         </Link>
@@ -103,7 +103,7 @@ export default function RecruitersSection({ recruiters = '', token = '' }) {
                       <td className='px-6 py-4 whitespace-nowrap text-right text-sm font-medium'>
                         <button
                           onClick={() => handleDelete(recruiter.id)}
-                          className='text-indigo-600 hover:text-indigo-900 cursor-pointer'
+                          className='text-yellow-600 hover:text-yellow-900 cursor-pointer'
                         >
                           Delete
                         </button>

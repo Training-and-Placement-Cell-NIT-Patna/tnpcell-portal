@@ -37,7 +37,7 @@ export default function CoordinatorsSection({ coordinators = '', token = '' }) {
             <Link href={`/admin/coordinators/add`}>
               <a
                 type='button'
-                className='relative inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500'
+                className='relative inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-yellow-600 hover:bg-yellow-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500'
               >
                 Create new
               </a>
@@ -83,7 +83,7 @@ export default function CoordinatorsSection({ coordinators = '', token = '' }) {
                       </td>
                       <td className='px-6 py-4 whitespace-nowrap text-right text-sm font-medium'>
                         <Link href={`/admin/coordinators/${coordinator.id}`}>
-                          <button className='text-indigo-600 hover:text-indigo-900 cursor-pointer'>
+                          <button className='text-yellow-600 hover:text-yellow-900 cursor-pointer'>
                             Edit
                           </button>
                         </Link>
@@ -92,7 +92,7 @@ export default function CoordinatorsSection({ coordinators = '', token = '' }) {
                       <td className='px-6 py-4 whitespace-nowrap text-right text-sm font-medium'>
                         <button
                           onClick={() => handleDelete(coordinator.id)}
-                          className='text-indigo-600 hover:text-indigo-900 cursor-pointer'
+                          className='text-yellow-600 hover:text-yellow-900 cursor-pointer'
                         >
                           Delete
                         </button>

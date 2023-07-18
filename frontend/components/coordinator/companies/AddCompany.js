@@ -133,7 +133,7 @@ export default function AddCompany({ token = '' }) {
                     id='company_name'
                     autoComplete='company_name'
                     required
-                    className='mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md'
+                    className='mt-1 focus:ring-yellow-500 focus:border-yellow-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md'
                   />
                 </div>
                 <div className='col-span-6 sm:col-span-3'>
@@ -150,7 +150,7 @@ export default function AddCompany({ token = '' }) {
                     name='company_address'
                     id='company_address'
                     autoComplete='company_address'
-                    className='mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md'
+                    className='mt-1 focus:ring-yellow-500 focus:border-yellow-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md'
                   />
                 </div>
 
@@ -168,7 +168,7 @@ export default function AddCompany({ token = '' }) {
                     name='remarks'
                     id='remarks'
                     autoComplete='remarks'
-                    className='mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md'
+                    className='mt-1 focus:ring-yellow-500 focus:border-yellow-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md'
                   />
                 </div>
               </div>
@@ -202,7 +202,7 @@ export default function AddCompany({ token = '' }) {
                     name='name'
                     id='name'
                     autoComplete='name'
-                    className='mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md'
+                    className='mt-1 focus:ring-yellow-500 focus:border-yellow-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md'
                   />
                 </div>
 
@@ -220,7 +220,7 @@ export default function AddCompany({ token = '' }) {
                     name='mail_id'
                     id='mail_id'
                     autoComplete='email'
-                    className='mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md'
+                    className='mt-1 focus:ring-yellow-500 focus:border-yellow-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md'
                   />
                 </div>
 
@@ -238,7 +238,7 @@ export default function AddCompany({ token = '' }) {
                     name='mobile_no'
                     id='mobile_no'
                     autoComplete='tel-national'
-                    className='mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md'
+                    className='mt-1 focus:ring-yellow-500 focus:border-yellow-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md'
                   />
                 </div>
                 <div className='col-span-6 sm:col-span-3'>
@@ -255,7 +255,7 @@ export default function AddCompany({ token = '' }) {
                     name='designation'
                     id='designation'
                     autoComplete='designation'
-                    className='mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md'
+                    className='mt-1 focus:ring-yellow-500 focus:border-yellow-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md'
                   />
                 </div>
               </div>
@@ -289,7 +289,7 @@ export default function AddCompany({ token = '' }) {
                     name='name'
                     id='name'
                     autoComplete='name'
-                    className='mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md'
+                    className='mt-1 focus:ring-yellow-500 focus:border-yellow-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md'
                   />
                 </div>
 
@@ -307,7 +307,7 @@ export default function AddCompany({ token = '' }) {
                     name='mail_id'
                     id='mail_id'
                     autoComplete='email'
-                    className='mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md'
+                    className='mt-1 focus:ring-yellow-500 focus:border-yellow-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md'
                   />
                 </div>
 
@@ -325,7 +325,7 @@ export default function AddCompany({ token = '' }) {
                     name='mobile_no'
                     id='mobile_no'
                     autoComplete='tel-national'
-                    className='mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md'
+                    className='mt-1 focus:ring-yellow-500 focus:border-yellow-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md'
                   />
                 </div>
                 <div className='col-span-6 sm:col-span-3'>
@@ -342,7 +342,7 @@ export default function AddCompany({ token = '' }) {
                     name='designation'
                     id='designation'
                     autoComplete='designation'
-                    className='mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md'
+                    className='mt-1 focus:ring-yellow-500 focus:border-yellow-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md'
                   />
                 </div>
               </div>
@@ -376,7 +376,7 @@ export default function AddCompany({ token = '' }) {
                     name='name'
                     id='name'
                     autoComplete='name'
-                    className='mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md'
+                    className='mt-1 focus:ring-yellow-500 focus:border-yellow-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md'
                   />
                 </div>
 
@@ -394,7 +394,7 @@ export default function AddCompany({ token = '' }) {
                     name='mail_id'
                     id='mail_id'
                     autoComplete='email'
-                    className='mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md'
+                    className='mt-1 focus:ring-yellow-500 focus:border-yellow-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md'
                   />
                 </div>
 
@@ -412,7 +412,7 @@ export default function AddCompany({ token = '' }) {
                     name='mobile_no'
                     id='mobile_no'
                     autoComplete='tel-national'
-                    className='mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md'
+                    className='mt-1 focus:ring-yellow-500 focus:border-yellow-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md'
                   />
                 </div>
                 <div className='col-span-6 sm:col-span-3'>
@@ -429,7 +429,7 @@ export default function AddCompany({ token = '' }) {
                     name='designation'
                     id='designation'
                     autoComplete='designation'
-                    className='mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md'
+                    className='mt-1 focus:ring-yellow-500 focus:border-yellow-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md'
                   />
                 </div>
               </div>
@@ -440,7 +440,7 @@ export default function AddCompany({ token = '' }) {
         <div className='flex justify-end'>
           <button
             type='submit'
-            className='ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500'
+            className='ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-yellow-600 hover:bg-yellow-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500'
           >
             Add
           </button>

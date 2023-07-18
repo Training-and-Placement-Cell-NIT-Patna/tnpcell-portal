@@ -59,9 +59,9 @@ export default function Nav() {
                 onClick={tab.fn}
                 className={classNames(
                   open && tab.name === "Notifications"
-                    ? "border-indigo-500 text-indigo-600"
+                    ? "border-yellow-500 text-yellow-600"
                     : "border-transparent text-yellow-500 hover:text-yellow-600 border-yellow-500",
-                  "whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm cursor-pointer transition duration-150 ease-in-out select-none focus:outline-none focus:text-indigo-800 focus:border-indigo-700"
+                  "whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm cursor-pointer transition duration-150 ease-in-out select-none focus:outline-none focus:text-yellow-800 focus:border-yellow-700"
                 )}
                 aria-current={tab.current ? "page" : undefined}
               >
@@ -72,10 +72,10 @@ export default function Nav() {
             <div className="flex-grow" />
             <a
               onClick={toggleSlideOver}
-              className="whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm cursor-pointer transition duration-150 ease-in-out select-none focus:outline-none focus:text-indigo-800 focus:border-indigo-700"
+              className="whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm cursor-pointer transition duration-150 ease-in-out select-none focus:outline-none focus:text-yellow-800 focus:border-yellow-700"
             >
               {/* Animate bell icon */}
-              <BellIcon className="h-6 w-6 text-gray-500 hover:text-indigo-700 animate-colors" />
+              <BellIcon className="h-6 w-6 text-gray-500 hover:text-yellow-700 animate-colors" />
             </a>
           </nav>
         </div>

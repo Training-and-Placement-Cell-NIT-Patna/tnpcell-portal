@@ -232,7 +232,7 @@ export default function AddJob({ token = "" }) {
                       name="company"
                       required
                       onChange={handleInputChange}
-                      className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                      className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-yellow-500 focus:border-yellow-500 sm:text-sm"
                     >
                       <option value="">Select Company</option>
                       {companies
@@ -267,7 +267,7 @@ export default function AddJob({ token = "" }) {
                     name="company_category"
                     id="company_category"
                     autoComplete="company_category"
-                    className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                    className="mt-1 focus:ring-yellow-500 focus:border-yellow-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                   />
                 </div>
 
@@ -289,7 +289,7 @@ export default function AddJob({ token = "" }) {
                     name="industry_sector"
                     id="industry_sector"
                     autoComplete="industry_sector"
-                    className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                    className="mt-1 focus:ring-yellow-500 focus:border-yellow-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                   />
                 </div>
 
@@ -308,7 +308,7 @@ export default function AddJob({ token = "" }) {
                     id="job_title"
                     autoComplete="job_title"
                     required
-                    className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                    className="mt-1 focus:ring-yellow-500 focus:border-yellow-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                   />
                 </div>
 
@@ -327,7 +327,7 @@ export default function AddJob({ token = "" }) {
                     name="jaf"
                     id="jaf"
                     autoComplete="jaf"
-                    className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                    className="mt-1 focus:ring-yellow-500 focus:border-yellow-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                   />
                 </div>
 
@@ -342,7 +342,7 @@ export default function AddJob({ token = "" }) {
                     name="classification"
                     onChange={handleInputChange}
                     required
-                    className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                    className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-yellow-500 focus:border-yellow-500 sm:text-sm"
                   >
                     <option value="none">Select Classification</option>
                     <option value="tier1">Tier1</option>
@@ -362,7 +362,7 @@ export default function AddJob({ token = "" }) {
                     name="category"
                     onChange={handleInputChange}
                     required
-                    className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                    className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-yellow-500 focus:border-yellow-500 sm:text-sm"
                   >
                     <option value="">Select</option>
                     <option value="Internship (2 Month)">
@@ -386,7 +386,7 @@ export default function AddJob({ token = "" }) {
                     name="job_status"
                     required
                     onChange={handleInputChange}
-                    className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                    className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-yellow-500 focus:border-yellow-500 sm:text-sm"
                   >
                     <option value="">Select</option>
                     <option value="open">open</option>
@@ -413,7 +413,7 @@ export default function AddJob({ token = "" }) {
                     name="min_X_marks"
                     id="min_X_marks"
                     autoComplete="min_X_marks"
-                    className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                    className="mt-1 focus:ring-yellow-500 focus:border-yellow-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                   />
                 </div>
 
@@ -434,7 +434,7 @@ export default function AddJob({ token = "" }) {
                     name="min_XII_marks"
                     id="min_XII_marks"
                     autoComplete="min_XII_marks"
-                    className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                    className="mt-1 focus:ring-yellow-500 focus:border-yellow-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                   />
                 </div>
 
@@ -455,7 +455,7 @@ export default function AddJob({ token = "" }) {
                     name="min_cpi"
                     id="min_cpi"
                     autoComplete="min_cpi"
-                    className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                    className="mt-1 focus:ring-yellow-500 focus:border-yellow-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                   />
                 </div>
                 <div className="col-span-6 sm:col-span-2">
@@ -472,7 +472,7 @@ export default function AddJob({ token = "" }) {
                     name="start_date"
                     id="start_date"
                     autoComplete="start_date"
-                    className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                    className="mt-1 focus:ring-yellow-500 focus:border-yellow-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                   />
                 </div>
 
@@ -490,7 +490,7 @@ export default function AddJob({ token = "" }) {
                     name="last_date"
                     id="last_date"
                     autoComplete="last_date"
-                    className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                    className="mt-1 focus:ring-yellow-500 focus:border-yellow-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                   />
                 </div>
                 <div className="col-span-6 sm:col-span-2">
@@ -503,7 +503,7 @@ export default function AddJob({ token = "" }) {
                   <select
                     name="only_for_female"
                     onChange={handleInputChange}
-                    className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                    className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-yellow-500 focus:border-yellow-500 sm:text-sm"
                   >
                     <option value="false">No</option>
                     <option value="true">Yes</option>
@@ -519,7 +519,7 @@ export default function AddJob({ token = "" }) {
                   <select
                     name="only_for_pwd"
                     onChange={handleInputChange}
-                    className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                    className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-yellow-500 focus:border-yellow-500 sm:text-sm"
                   >
                     <option value="false">No</option>
                     <option value="true">Yes</option>
@@ -535,7 +535,7 @@ export default function AddJob({ token = "" }) {
                   <select
                     name="only_for_ews"
                     onChange={handleInputChange}
-                    className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                    className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-yellow-500 focus:border-yellow-500 sm:text-sm"
                   >
                     <option value="false">No</option>
                     <option value="true">Yes</option>
@@ -564,7 +564,7 @@ export default function AddJob({ token = "" }) {
                                   onChange={handleCheckboxChange}
                                   type="checkbox"
                                   defaultChecked={course.id}
-                                  className="h-4 w-4 border-gray-300 rounded text-indigo-600 focus:ring-indigo-500"
+                                  className="h-4 w-4 border-gray-300 rounded text-yellow-600 focus:ring-yellow-500"
                                 />
                                 <label
                                   htmlFor={`${course.id}`}
@@ -611,7 +611,7 @@ export default function AddJob({ token = "" }) {
                     name="basic_salary"
                     id="basic_salary"
                     autoComplete="basic_salary"
-                    className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                    className="mt-1 focus:ring-yellow-500 focus:border-yellow-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                   />
                 </div>
 
@@ -629,7 +629,7 @@ export default function AddJob({ token = "" }) {
                     name="allowance"
                     id="allowance"
                     autoComplete="allowance"
-                    className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                    className="mt-1 focus:ring-yellow-500 focus:border-yellow-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                   />
                 </div>
 
@@ -647,7 +647,7 @@ export default function AddJob({ token = "" }) {
                     name="perks"
                     id="perks"
                     autoComplete="tel-national"
-                    className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                    className="mt-1 focus:ring-yellow-500 focus:border-yellow-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                   />
                 </div>
 
@@ -665,7 +665,7 @@ export default function AddJob({ token = "" }) {
                     name="ctc"
                     id="ctc"
                     autoComplete="tel-national"
-                    className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                    className="mt-1 focus:ring-yellow-500 focus:border-yellow-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                   />
                 </div>
               </div>
@@ -699,7 +699,7 @@ export default function AddJob({ token = "" }) {
                     name="name"
                     id="name"
                     autoComplete="name"
-                    className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                    className="mt-1 focus:ring-yellow-500 focus:border-yellow-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                   />
                 </div>
 
@@ -717,7 +717,7 @@ export default function AddJob({ token = "" }) {
                     name="mail_id"
                     id="mail_id"
                     autoComplete="email"
-                    className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                    className="mt-1 focus:ring-yellow-500 focus:border-yellow-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                   />
                 </div>
 
@@ -735,7 +735,7 @@ export default function AddJob({ token = "" }) {
                     name="mobile_no"
                     id="mobile_no"
                     autoComplete="tel-national"
-                    className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                    className="mt-1 focus:ring-yellow-500 focus:border-yellow-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                   />
                 </div>
               </div>
@@ -746,7 +746,7 @@ export default function AddJob({ token = "" }) {
         <div className="flex justify-end">
           <button
             type="submit"
-            className="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+            className="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-yellow-600 hover:bg-yellow-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500"
           >
             Add
           </button>
@@ -754,7 +754,7 @@ export default function AddJob({ token = "" }) {
           <button>
             <a
               onClick={() => logout()}
-              className="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 cursor-pointer"
+              className="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-yellow-600 hover:bg-yellow-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500 cursor-pointer"
             >
               Logout
             </a>
