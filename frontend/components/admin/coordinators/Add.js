@@ -83,7 +83,7 @@ export default function AddCoordinatorComponent({ token = '' }) {
                     autoComplete='username'
                     placeholder='Username used to login'
                     required
-                    className='mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md'
+                    className='mt-1 focus:ring-yellow-500 focus:border-yellow-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md'
                   />
                 </div>
                 <div className='col-span-6 sm:col-span-3'>
@@ -102,7 +102,7 @@ export default function AddCoordinatorComponent({ token = '' }) {
                     autoComplete='email'
                     placeholder='Use email different than student email'
                     required
-                    className='mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md'
+                    className='mt-1 focus:ring-yellow-500 focus:border-yellow-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md'
                   />
                 </div>
 
@@ -121,7 +121,7 @@ export default function AddCoordinatorComponent({ token = '' }) {
                     id='password'
                     autoComplete='password'
                     required
-                    className='mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md'
+                    className='mt-1 focus:ring-yellow-500 focus:border-yellow-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md'
                   />
                 </div>
                 <div className='col-span-6 sm:col-span-3'>
@@ -139,7 +139,7 @@ export default function AddCoordinatorComponent({ token = '' }) {
                     id='confirmPassword'
                     autoComplete=''
                     required
-                    className='mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md'
+                    className='mt-1 focus:ring-yellow-500 focus:border-yellow-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md'
                   />
                 </div>
               </div>
@@ -149,7 +149,7 @@ export default function AddCoordinatorComponent({ token = '' }) {
         <div className='flex justify-end'>
           <button
             type='submit'
-            className='ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500'
+            className='ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-yellow-600 hover:bg-yellow-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500'
           >
             Add
           </button>

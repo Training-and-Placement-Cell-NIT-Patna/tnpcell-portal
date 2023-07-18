@@ -66,7 +66,7 @@ export default function SlideOver({ open = false, setOpen }) {
                       <div className='ml-3 flex h-7 items-center'>
                         <button
                           type='button'
-                          className='rounded-md bg-white text-gray-400 hover:text-gray-500 focus:ring-2 focus:ring-indigo-500'
+                          className='rounded-md bg-white text-gray-400 hover:text-gray-500 focus:ring-2 focus:ring-yellow-500'
                           onClick={() => setOpen(false)}
                         >
                           <span className='sr-only'>Close panel</span>
@@ -113,7 +113,7 @@ export default function SlideOver({ open = false, setOpen }) {
                                   className={classNames(
                                     notification.attributes.user === 'admin'
                                       ? 'bg-red-400'
-                                      : 'bg-indigo-400',
+                                      : 'bg-yellow-400',
                                     'absolute top-0 right-0 block h-2.5 w-2.5 rounded-full ring-2 ring-white'
                                   )}
                                   aria-hidden='true'
