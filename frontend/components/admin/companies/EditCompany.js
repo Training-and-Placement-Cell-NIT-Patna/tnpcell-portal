@@ -48,7 +48,7 @@ export default function EditCompany({ token = '', company = '' }) {
     setValues({
       ...values,
       ['contact1']: {
-        ...values.contact1,
+        ...values?.contact1,
         [name]: value,
       },
     })
@@ -58,7 +58,7 @@ export default function EditCompany({ token = '', company = '' }) {
     setValues({
       ...values,
       ['contact2']: {
-        ...values.contact2,
+        ...values?.contact2,
         [name]: value,
       },
     })
@@ -68,7 +68,7 @@ export default function EditCompany({ token = '', company = '' }) {
     setValues({
       ...values,
       ['contact3']: {
-        ...values.contact3,
+        ...values?.contact3,
         [name]: value,
       },
     })
@@ -97,7 +97,7 @@ export default function EditCompany({ token = '', company = '' }) {
                     Company Name
                   </label>
                   <input
-                    value={values.company_name}
+                    value={values?.company_name}
                     onChange={handleInputChange}
                     type='text'
                     name='company_name'
@@ -115,7 +115,7 @@ export default function EditCompany({ token = '', company = '' }) {
                     Company address
                   </label>
                   <textarea
-                    value={values.company_address}
+                    value={values?.company_address}
                     onChange={handleInputChange}
                     type='text'
                     name='company_address'
@@ -133,7 +133,7 @@ export default function EditCompany({ token = '', company = '' }) {
                     Remarks
                   </label>
                   <input
-                    value={values.remarks}
+                    value={values?.remarks}
                     onChange={handleInputChange}
                     type='text'
                     name='remarks'
@@ -167,7 +167,7 @@ export default function EditCompany({ token = '', company = '' }) {
                     Full Name
                   </label>
                   <input
-                    value={values.contact1.name}
+                    value={values?.contact1?.name}
                     onChange={handleContactOneInputChange}
                     type='text'
                     name='name'
@@ -185,7 +185,7 @@ export default function EditCompany({ token = '', company = '' }) {
                     Email
                   </label>
                   <input
-                    value={values.contact1.mail_id}
+                    value={values?.contact1?.mail_id}
                     onChange={handleContactOneInputChange}
                     type='text'
                     name='mail_id'
@@ -203,7 +203,7 @@ export default function EditCompany({ token = '', company = '' }) {
                     Mobile Number
                   </label>
                   <input
-                    value={values.contact1.mobile_no}
+                    value={values?.contact1?.mobile_no}
                     onChange={handleContactOneInputChange}
                     type='text'
                     name='mobile_no'
@@ -221,7 +221,7 @@ export default function EditCompany({ token = '', company = '' }) {
                     Designation
                   </label>
                   <input
-                    value={values.contact1.designation}
+                    value={values?.contact1?.designation}
                     onChange={handleContactOneInputChange}
                     type='text'
                     name='designation'
@@ -255,7 +255,7 @@ export default function EditCompany({ token = '', company = '' }) {
                     Full Name
                   </label>
                   <input
-                    value={values.contact2.name}
+                    value={values?.contact2?.name}
                     onChange={handleContactTwoInputChange}
                     type='text'
                     name='name'
@@ -273,7 +273,7 @@ export default function EditCompany({ token = '', company = '' }) {
                     Email
                   </label>
                   <input
-                    value={values.contact2.mail_id}
+                    value={values?.contact2?.mail_id}
                     onChange={handleContactTwoInputChange}
                     type='text'
                     name='mail_id'
@@ -291,7 +291,7 @@ export default function EditCompany({ token = '', company = '' }) {
                     Mobile Number
                   </label>
                   <input
-                    value={values.contact2.mobile_no}
+                    value={values?.contact2?.mobile_no}
                     onChange={handleContactTwoInputChange}
                     type='text'
                     name='mobile_no'
@@ -308,7 +308,7 @@ export default function EditCompany({ token = '', company = '' }) {
                     Designation
                   </label>
                   <input
-                    value={values.contact2.designation}
+                    value={values?.contact2?.designation}
                     onChange={handleContactTwoInputChange}
                     type='text'
                     name='designation'
@@ -342,7 +342,7 @@ export default function EditCompany({ token = '', company = '' }) {
                     Full Name
                   </label>
                   <input
-                    value={values.contact3.name}
+                    value={values?.contact3?.name}
                     onChange={handleContactThreeInputChange}
                     type='text'
                     name='name'
@@ -360,7 +360,7 @@ export default function EditCompany({ token = '', company = '' }) {
                     Email
                   </label>
                   <input
-                    value={values.contact3.mail_id}
+                    value={values?.contact3?.mail_id}
                     onChange={handleContactThreeInputChange}
                     type='text'
                     name='mail_id'
@@ -378,7 +378,7 @@ export default function EditCompany({ token = '', company = '' }) {
                     Mobile Number
                   </label>
                   <input
-                    value={values.contact3.mobile_no}
+                    value={values?.contact3?.mobile_no}
                     onChange={handleContactThreeInputChange}
                     type='text'
                     name='mobile_no'
@@ -395,7 +395,7 @@ export default function EditCompany({ token = '', company = '' }) {
                     Designation
                   </label>
                   <input
-                    value={values.contact3.designation}
+                    value={values?.contact3?.designation}
                     onChange={handleContactThreeInputChange}
                     type='text'
                     name='designation'
