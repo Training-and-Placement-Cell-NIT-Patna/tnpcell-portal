@@ -6,7 +6,7 @@ import { ArrowDownIcon } from "@heroicons/react/outline";
 const steps = [
   {
     index: 1,
-    title: "REGISTRATION",
+    title: "Registration",
     description: "Recruiter share these details on ",
     links: "/account/RecruiterSignUp",
     st1: "Companies Full Name",
@@ -56,24 +56,24 @@ function Process() {
       </div>
       <div className="text-center text-xl font-serif m-3">
         Recruiter should follow following steps to register on{" "}
-        <span className="font-bold">Training and placement cell, NITP</span>
+        <span className="font-bold">Training and placement cell, NIT Patna</span>
       </div>
       <div className="grid justify-items-center">
         <div className="p-5 grid justify-items-center">
           {steps.map((item) => (
             <div
-              className="grid justify-items-center md:w-1/2"
+              className=" mockup-browser no-scrollbar justify-items-center md:w-1/2"
               key={item.index}
             >
               <div
                 className="p-5 grid justify-items-center"
                 data-aos={`${item.index % 2 ? "slide-left" : "slide-right"}`}
               >
-                <div className="shadow-2xl rounded-lg ">
-                  <div className="bg-yellow-300 p-3 text-center text-red-900 font-bold">
-                    {item.title}
+                <div className="">
+                  <div className="mockup-browser-toolbar">
+                  <div className="input">{item.title}</div>
                   </div>
-                  <div className="p-4 m-1">
+                  <div className=" justify-center px-4 py-16 bg-base-200">
                     {item.description}
                     {item.links && (
                       <a
