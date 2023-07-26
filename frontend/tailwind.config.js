@@ -1,4 +1,7 @@
 module.exports = {
+  daisyui: {
+		themes: ["light"] //only light theme
+	},
   content: [
     './pages/**/*.{js,ts,jsx,tsx}',
     './components/**/*.{js,ts,jsx,tsx}',
