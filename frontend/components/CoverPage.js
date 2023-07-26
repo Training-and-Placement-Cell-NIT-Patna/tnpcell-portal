@@ -13,6 +13,7 @@ import Image from "next/image";
 import Link from "next/link";
 import ProfessorIncharge from "./LandingPageElements/ProfessorIncharge";
 import Statics from "./LandingPageElements/Statics";
+import CompaniesMarquee from "./LandingPageElements/CompaniesMarquee";
 
 const MENU_LIST = [
   {
@@ -38,7 +39,7 @@ const MENU_LIST = [
   {
     idx: 5,
     text: "Contact Us",
-    href: "/",
+    href: "/contactus",
   },
 ];
 
@@ -102,14 +103,18 @@ function CoverPage() {
             </div>
 
             <div className="hidden lg:block h-10">
-              <div className="flex flex-row-reverse items-center my-2">
-                {MENU_LIST.map((menu) => (
-                  <a href={menu.href} key={menu.idx}>
-                    <p className="text-[#858383] hover:bg-[#67101075] self-center p-3 rounded-md text-sm font-medium hover:text-yellow-200">
-                      {menu.text}
-                    </p>
-                  </a>
-                ))}
+              <div className="flex flex-row-reverse items-center my-2 mr-5">
+                {MENU_LIST.map((menu) => {
+                  return (
+                    <>
+                      <a href={menu.href} key={menu.idx}>
+                        <p className="text-[#858383] hover:bg-[#67101075] self-center p-3 rounded-md text-sm font-medium hover:text-yellow-200">
+                          {menu.text}
+                        </p>
+                      </a>
+                    </>
+                  );
+                })}
               </div>
             </div>
             <div className="flex lg:hidden ">
@@ -188,7 +193,7 @@ function CoverPage() {
                 ></path>
               </svg>
             </div>
-            <div className="absolute top-3/4">
+            <div className="absolute top-3/4 mt-2">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 150">
                 <path
                   fill="#ffff"
@@ -205,7 +210,7 @@ function CoverPage() {
                 <Typewriter
                   words={[
                     "Welcome to",
-                    "Training and Placement cell",
+                    "Training and Placement Cell",
                     "NIT Patna",
                   ]}
                   cursor={true}
@@ -251,7 +256,10 @@ function CoverPage() {
         <ProfessorIncharge />
       </div>
       <div>
-        <Statics/>
+        <Statics />
+      </div>
+      <div>
+        <CompaniesMarquee />
       </div>
       <div id="process">
         <Process />
