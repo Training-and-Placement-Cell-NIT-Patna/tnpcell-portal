@@ -9,8 +9,9 @@ Icon
 .Spotlight-V100
 .Trashes
 ._*
-
-
+.env.example
+.env.production
+.env
 ############################
 # Linux
 ############################
