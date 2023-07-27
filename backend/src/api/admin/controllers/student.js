@@ -56,7 +56,7 @@ module.exports = {
     async get_eligible_jobs(ctx) {
         const { roll } = ctx.query;
 
-        // console.log("done")
+
 
         if (!roll) {
             return ctx.badRequest(null, [{ messages: [{ id: "Missing roll number", received_roll: roll || null }] }]);
@@ -72,7 +72,9 @@ module.exports = {
             return ctx.notFound(null, [{ messages: [{ id: "Student not found" }] }]);
         }
 
-        const { id, approved, X_marks, XII_marks, cpi} = student_self;
+        const { id, approved, X_marks, XII_marks, cpi,
+            //  registered_for
+         } = student_self;
 
         if (approved !== "approved") {
             return ctx.badRequest(null, [{ messages: [{ id: "Account not approved yet" }] }]);
@@ -117,7 +119,7 @@ module.exports = {
 
         eligible_jobs = eligible_jobs.filter((_, index) => is_eligible[index]);
 
-        // console.log("pp"+eligible_jobs)
+
 
         ctx.body = eligible_jobs;
 
