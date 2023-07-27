@@ -32,9 +32,9 @@ export default function StudentProfileEdit({ token = "", student }) {
 
     // })
 
-    // console.log("ID=>" + id);
-
-    // id=String(id)
+    // console.log("ID=>",id ,typeof(id) );
+    // console.log(JSON.stringify({ data: values }))
+    id=String(id)
 
     if (confirm("Are you sure you want to edit student profile?")) {
       const res = await fetch(`${API_URL}/api/students/${id}`, {
@@ -56,7 +56,6 @@ export default function StudentProfileEdit({ token = "", student }) {
 
         const profile = await res.json();
 
-        // console.log("pagal" + profile);
 
         toast.error(profile?.error.name);
       } else {
@@ -200,7 +199,7 @@ export default function StudentProfileEdit({ token = "", student }) {
                     <button
                       type="submit"
                       form="placedStatus"
-                      className="mt-2 inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-800 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700 transition ease-in-out duration-150"
+                      className="mt-2 inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-white bg-yellow-600 hover:bg-yellow-800 focus:outline-none focus:border-yellow-700 focus:shadow-outline-indigo active:bg-yellow-700 transition ease-in-out duration-150"
                     >
                       Change Placed Status
                     </button>
@@ -278,7 +277,7 @@ export default function StudentProfileEdit({ token = "", student }) {
                       id="roll"
                       autoComplete="roll"
                       required
-                      className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                      className="mt-1 focus:ring-yellow-500 focus:border-yellow-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                     />
                   </div>
 
@@ -297,7 +296,7 @@ export default function StudentProfileEdit({ token = "", student }) {
                       id="name"
                       autoComplete="name"
                       required
-                      className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                      className="mt-1 focus:ring-yellow-500 focus:border-yellow-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                     />
                   </div>
 
@@ -390,7 +389,7 @@ export default function StudentProfileEdit({ token = "", student }) {
                       id="personal_email_id"
                       autoComplete="email"
                       required
-                      className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                      className="mt-1 focus:ring-yellow-500 focus:border-yellow-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                     />
                   </div>
                   <div className="col-span-6 sm:col-span-3">
@@ -408,7 +407,7 @@ export default function StudentProfileEdit({ token = "", student }) {
                       id="institute_email_id"
                       autoComplete="email"
                       required
-                      className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                      className="mt-1 focus:ring-yellow-500 focus:border-yellow-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                     />
                   </div>
                   <div className="col-span-6 sm:col-span-3">
@@ -426,7 +425,7 @@ export default function StudentProfileEdit({ token = "", student }) {
                       name="mobile_number_1"
                       id="mobile_number_1"
                       autoComplete="tel-national"
-                      className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                      className="mt-1 focus:ring-yellow-500 focus:border-yellow-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                     />
                   </div>
                   <div className="col-span-6 sm:col-span-3">
@@ -444,7 +443,7 @@ export default function StudentProfileEdit({ token = "", student }) {
                       id="mobile_number_2"
                       autoComplete="tel-national"
                       required
-                      className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                      className="mt-1 focus:ring-yellow-500 focus:border-yellow-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                     />
                   </div>
                   <div className="col-span-6 sm:col-span-3">
@@ -461,7 +460,7 @@ export default function StudentProfileEdit({ token = "", student }) {
                       name="gender"
                       autoComplete="gender"
                       required
-                      className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                      className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-yellow-500 focus:border-yellow-500 sm:text-sm"
                     >
                       <option>Select</option>
                       <option>female</option>
@@ -483,7 +482,7 @@ export default function StudentProfileEdit({ token = "", student }) {
                       name="category"
                       autoComplete="category"
                       required
-                      className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                      className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-yellow-500 focus:border-yellow-500 sm:text-sm"
                     >
                       <option value="">Select</option>
                       <option value="general">General</option>
@@ -508,7 +507,7 @@ export default function StudentProfileEdit({ token = "", student }) {
                       name="pwd"
                       autoComplete="pwd"
                       required
-                      className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                      className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-yellow-500 focus:border-yellow-500 sm:text-sm"
                     >
                       <option>Select</option>
                       <option value={true}>Yes</option>
@@ -584,7 +583,7 @@ export default function StudentProfileEdit({ token = "", student }) {
                       id="date_of_birth"
                       autoComplete="date_of_birth"
                       required
-                      className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                      className="mt-1 focus:ring-yellow-500 focus:border-yellow-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                     />
                   </div>
 
@@ -663,7 +662,7 @@ export default function StudentProfileEdit({ token = "", student }) {
                       id="address"
                       autoComplete="address"
                       required
-                      className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
+                      className="shadow-sm focus:ring-yellow-500 focus:border-yellow-500 block w-full sm:text-sm border-gray-300 rounded-md"
                     />
                   </div>
 
@@ -869,7 +868,7 @@ export default function StudentProfileEdit({ token = "", student }) {
                       name="rank"
                       id="rank"
                       autoComplete="rank"
-                      className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                      className="mt-1 focus:ring-yellow-500 focus:border-yellow-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                     />
                   </div>
                   <div className="col-span-6 sm:col-span-3">
@@ -886,7 +885,7 @@ export default function StudentProfileEdit({ token = "", student }) {
                       name="categoryRank"
                       id="categoryRank"
                       autoComplete="categoryRank"
-                      className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                      className="mt-1 focus:ring-yellow-500 focus:border-yellow-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                     />
                   </div>
 
@@ -905,7 +904,7 @@ export default function StudentProfileEdit({ token = "", student }) {
                       name='registered_for'
                       autoComplete='registered_for'
                       required
-                      className='mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm'
+                      className='mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-yellow-500 focus:border-yellow-500 sm:text-sm'
                     >
                       <option>Select</option>
                       <option>Internship</option>
@@ -928,7 +927,7 @@ export default function StudentProfileEdit({ token = "", student }) {
                       name="program"
                       autoComplete="program"
                       required
-                      className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                      className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-yellow-500 focus:border-yellow-500 sm:text-sm"
                     >
                       <option>Select</option>
                       {programs.map((program) => (
@@ -953,7 +952,7 @@ export default function StudentProfileEdit({ token = "", student }) {
                       name="course"
                       autoComplete="course"
                       required
-                      className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                      className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-yellow-500 focus:border-yellow-500 sm:text-sm"
                     >
                       <option>Select</option>
                       {courses.map((course) => (
@@ -1145,7 +1144,7 @@ export default function StudentProfileEdit({ token = "", student }) {
                       name="spi_1"
                       id="spi_1"
                       autoComplete="spi_1"
-                      className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                      className="mt-1 focus:ring-yellow-500 focus:border-yellow-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                     />
                   </div>
 
@@ -1164,7 +1163,7 @@ export default function StudentProfileEdit({ token = "", student }) {
                       name="spi_2"
                       id="spi_2"
                       autoComplete=""
-                      className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                      className="mt-1 focus:ring-yellow-500 focus:border-yellow-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                     />
                   </div>
 
@@ -1183,7 +1182,7 @@ export default function StudentProfileEdit({ token = "", student }) {
                       name="spi_3"
                       id="spi_3"
                       autoComplete=""
-                      className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                      className="mt-1 focus:ring-yellow-500 focus:border-yellow-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                     />
                   </div>
                   <div className="col-span-6 sm:col-span-2">
@@ -1201,7 +1200,7 @@ export default function StudentProfileEdit({ token = "", student }) {
                       name="spi_4"
                       id="spi_4"
                       autoComplete=""
-                      className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                      className="mt-1 focus:ring-yellow-500 focus:border-yellow-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                     />
                   </div>
                   <div className="col-span-6 sm:col-span-2">
@@ -1219,7 +1218,7 @@ export default function StudentProfileEdit({ token = "", student }) {
                       name="spi_5"
                       id="spi_5"
                       autoComplete=""
-                      className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                      className="mt-1 focus:ring-yellow-500 focus:border-yellow-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                     />
                   </div>
                   <div className="col-span-6 sm:col-span-2">
@@ -1237,7 +1236,7 @@ export default function StudentProfileEdit({ token = "", student }) {
                       name="spi_6"
                       id="spi_6"
                       autoComplete=""
-                      className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                      className="mt-1 focus:ring-yellow-500 focus:border-yellow-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                     />
                   </div>
                   <div className="col-span-6 sm:col-span-2">
@@ -1255,7 +1254,7 @@ export default function StudentProfileEdit({ token = "", student }) {
                       name="spi_7"
                       id="spi_7"
                       autoComplete=""
-                      className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                      className="mt-1 focus:ring-yellow-500 focus:border-yellow-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                     />
                   </div>
                   <div className="col-span-6 sm:col-span-2">
@@ -1273,7 +1272,7 @@ export default function StudentProfileEdit({ token = "", student }) {
                       name="spi_8"
                       id="spi_8"
                       autoComplete=""
-                      className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                      className="mt-1 focus:ring-yellow-500 focus:border-yellow-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                     />
                   </div>
 
@@ -1314,7 +1313,7 @@ export default function StudentProfileEdit({ token = "", student }) {
                       name="cpi"
                       id="cpi"
                       autoComplete=""
-                      className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                      className="mt-1 focus:ring-yellow-500 focus:border-yellow-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                     />
                   </div>
 
@@ -1411,7 +1410,7 @@ export default function StudentProfileEdit({ token = "", student }) {
                       name="bachelor_marks"
                       id="bachelor_marks"
                       autoComplete=""
-                      className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                      className="mt-1 focus:ring-yellow-500 focus:border-yellow-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                     />
                   </div>
                   <div className="col-span-6 sm:col-span-2">
@@ -1428,7 +1427,7 @@ export default function StudentProfileEdit({ token = "", student }) {
                       name="master_marks"
                       id="master_marks"
                       autoComplete=""
-                      className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                      className="mt-1 focus:ring-yellow-500 focus:border-yellow-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                     />
                   </div>
                   <div className="col-span-6 sm:col-span-2">
@@ -1449,7 +1448,7 @@ export default function StudentProfileEdit({ token = "", student }) {
                       autoComplete="admission_year"
                       placeholder="Ex: 2022"
                       required
-                      className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                      className="mt-1 focus:ring-yellow-500 focus:border-yellow-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                     />
                   </div>
                 </div>
@@ -1480,7 +1479,7 @@ export default function StudentProfileEdit({ token = "", student }) {
                           href={`${API_URL}${resume.data.attributes.url}`}
                           target="_blank"
                           rel="noreferrer"
-                          className="font-medium text-indigo-600 hover:text-indigo-500 px-2"
+                          className="font-medium text-yellow-600 hover:text-yellow-500 px-2"
                         >
                           Download
                         </a>
@@ -1488,13 +1487,13 @@ export default function StudentProfileEdit({ token = "", student }) {
                           href={newStudent.resume_link}
                           target="_blank"
                           rel="noreferrer"
-                          className="font-medium text-indigo-600 hover:text-indigo-500"
+                          className="font-medium text-yellow-600 hover:text-yellow-500"
                         >
                           Google Drive Link
                         </a>
                       </div>
                     ) : (
-                      <p className="font-medium text-indigo-600 hover:text-indigo-500">
+                      <p className="font-medium text-yellow-600 hover:text-yellow-500">
                         NA
                       </p>
                     )}
@@ -1506,7 +1505,7 @@ export default function StudentProfileEdit({ token = "", student }) {
           <div className="flex justify-end">
             <button
               type="submit"
-              className="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+              className="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-yellow-600 hover:bg-yellow-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500"
             >
               Edit
             </button>
