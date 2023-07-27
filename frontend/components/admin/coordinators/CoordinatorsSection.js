@@ -14,7 +14,7 @@ export default function CoordinatorsSection({ coordinators = '', token = '' }) {
     }
     if (confirm('Are you sure you want to delete this coordinator?')) {
       const res = await fetch(`${API_URL}/api/users/${id}`, config)
-      console.log(token)
+      // console.log(token)
       if (res.status === 200) {
         toast.info('Coordinator deleted successfully!')
         router.reload()
