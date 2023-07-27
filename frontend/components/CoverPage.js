@@ -184,7 +184,7 @@ function CoverPage() {
         <div ref={slideRef} className="w-full select-none">
           <div className="aspect-w-16 aspect-h-7">
             <img src={carouselImage[currentIndex]} alt="" />
-            <div className="absolute top-3/4 ">
+            <div className="absolute top-3/4 w-full">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 150">
                 <path
                   fill="#820000"
@@ -193,7 +193,7 @@ function CoverPage() {
                 ></path>
               </svg>
             </div>
-            <div className="absolute top-3/4 mt-2">
+            <div className="absolute top-3/4 mt-4">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 150">
                 <path
                   fill="#ffff"
@@ -229,7 +229,7 @@ function CoverPage() {
                 <Link href="/loginPage">Student Registration</Link>
               </div>
               <div className="rounded-lg bg-amber-400 m-2 p-3 border-2 border-white font-semibold text-sm">
-                <Link href="/loginPage">Company Registration</Link>
+                <Link href="/account/RecruiterSignUp">Company Registration</Link>
               </div>
             </div>
           </div>
@@ -241,9 +241,9 @@ function CoverPage() {
               <ChevronDoubleRightIcon className="w-7 h-7 text-white bg-gray-800 rounded-full p-1" />
             </button>
           </div>
-          <div className="hidden lg:flex  lg:absolute top-24 right-0 bg-yellow-400 font-medium px-2  rounded-l-lg py-1 animate-bounce">
+          <div className="hidden lg:flex  lg:absolute top-24 right-24 bg-yellow-400 font-medium px-2  rounded-lg py-1 animate-bounce">
             <a className="" href="/Brochure2022_NIT-Patna.pdf " download>
-              Download Brochure and Proforma{" "}
+              Download Brochure{" "}
             </a>
             <DocumentDownloadIcon className="h-7 w-7 p-1 " />
           </div>
