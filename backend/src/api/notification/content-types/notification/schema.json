@@ -17,13 +17,6 @@
     },
     "description": {
       "type": "text"
-    },
-    "user": {
-      "type": "enumeration",
-      "enum": [
-        "admin",
-        "coordinator"
-      ]
     }
   }
 }
