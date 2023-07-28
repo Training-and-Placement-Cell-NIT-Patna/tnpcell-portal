@@ -28,9 +28,13 @@ export default function AdminSettings({ token = "" }) {
         }),
       })
         .then((res) => res.json())
-
         .then((data) => {
-          toast.success("Successfully Updated");
+          if (data.data) {
+            toast.success("Successfully Updated");
+          }
+          else {
+            toast.error("Something Went Wrong!");
+          }
         })
         .catch((err) => {
           toast.error("Something Went Wrong!");
