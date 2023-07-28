@@ -1,0 +1,17 @@
+version: "3.4"
+
+services:
+  postgres:
+    container_name: tnp-db
+    image: postgres
+    ports:
+      - 5432:5432
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_DB: tnp-test
+      POSTGRES_PASSWORD: '2006001'
+
+volumes:
+  postgres_data:
