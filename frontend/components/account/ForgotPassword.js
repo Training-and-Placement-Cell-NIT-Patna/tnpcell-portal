@@ -46,7 +46,7 @@ export default function ForgotPassword() {
               width={100}
               height={100}
               alt='NIT Patna Logo'
-              src='/images/logo.svg'
+              src='/images/logo.png'
             />
           </div>
 
@@ -60,7 +60,7 @@ export default function ForgotPassword() {
             Forgot Password (Only for Students)
           </p>
           <p className='mt-2 text-center text-sm text-yellow-600'>
-            <Link href='/' className='cursor-pointer text-yellow-600'>
+            <Link href='/loginPage' className='cursor-pointer text-yellow-600'>
               <a>Go to Login</a>
             </Link>
           </p>

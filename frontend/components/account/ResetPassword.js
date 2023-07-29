@@ -41,7 +41,7 @@ export default function ResetPassword() {
       )
       // redirect to login page after 5 seconds
       setTimeout(() => {
-        router.push('/')
+        router.push('/loginPage')
       }, 5000)
     } else {
       console.log('error: ', res)
