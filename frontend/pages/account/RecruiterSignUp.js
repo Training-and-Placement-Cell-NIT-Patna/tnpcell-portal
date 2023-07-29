@@ -13,17 +13,18 @@ recuiter contact no
 */
 
 import Image from 'next/image'
-import {useState} from 'react'
+import { useState } from 'react'
 import { toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import { API_URL } from '@/config/index'
 import { useRouter } from 'next/router'
 
 import Link from 'next/link'
+import Head from 'next/head'
 
-export default function SignUpRecuiter({ token = ''}) {
+export default function SignUpRecuiter({ token = '' }) {
 
-  const [values, setValues]= useState({
+  const [values, setValues] = useState({
     company: '',
     recruiter_name: '',
     email: '',
@@ -55,13 +56,13 @@ export default function SignUpRecuiter({ token = ''}) {
           toast.error('No token included')
           return
         }
-         
+
         // console.log("xy")
         const profile = await res.json()
         // console.log(JSON.stringify(profile, null, 2))
         toast.error(profile?.error.name)
       } else {
-        
+
         toast.success('Registered ! We Contact You Soon')
 
         // console.log("yz")
@@ -70,15 +71,18 @@ export default function SignUpRecuiter({ token = ''}) {
         router.push(`/loginPage`)
       }
     }
-}
+  }
 
-const handleInputChange = (e) => {
-  const { name, value } = e.target
-  setValues({ ...values, [name]: value })
-}
+  const handleInputChange = (e) => {
+    const { name, value } = e.target
+    setValues({ ...values, [name]: value })
+  }
 
   return (
     <>
+      <Head>
+        <title>Recruiter SingUp</title>
+      </Head>
       <div className='min-h-full flex flex-col justify-center py-12 sm:px-6 lg:px-8'>
         <div className='sm:mx-auto sm:w-full sm:max-w-md'>
           <div className='mx-auto text-center'>
@@ -98,7 +102,7 @@ const handleInputChange = (e) => {
             Placement Portal
           </h2>
           <p className='mt-2 text-center text-sm text-gray-600'>
-          Let&apos;s get you registered Or{' '}
+            Let&apos;s get you registered Or{' '}
             <Link href='/'>
               <a className='font-medium text-yellow-600 hover:text-yellow-500'>
                 Login
