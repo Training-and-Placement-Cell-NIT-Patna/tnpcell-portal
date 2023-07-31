@@ -307,6 +307,9 @@
     "fte_status": {
       "type": "boolean",
       "default": false
+    },
+    "category_link": {
+      "type": "string"
     }
   }
 }
