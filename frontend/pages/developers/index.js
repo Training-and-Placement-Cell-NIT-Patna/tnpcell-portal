@@ -1,43 +1,44 @@
 import CardComp from "@/components/developers/CardComp";
+import Head from "next/head";
 const Developers = () => {
   const developersData = [
     {
       name: "Rajan Kumar",
       aboutL: "lorem ipsum",
-      role: "Full-stack Developer ",
-      twitter: "",
+      role: "Full-stack Developer || DevOps Engineer",
+      twitter: "https://twitter.com/Cr7_rajan",
       linkedin: "",
-      image: "",
-      portfolio:'https://rajan.live'
+      image: "/developers/rajan.jpg",
+      portfolio: 'https://rajan.live'
     },
     {
-      name: "Rajan Kumar",
+      name: "Rajdeep Nagar",
       aboutL: "lorem ipsum",
       role: "Full-stack Developer ",
       twitter: "",
       linkedin: "",
-      image: "",
+      image: "/developers/rajdeep.jpg",
     },
     {
-      name: "Rajan Kumar",
+      name: "Ayushi Gupta",
       aboutL: "lorem ipsum",
-      role: "Full-stack Developer ",
-      twitter: "",
-      linkedin: "",
-      image: "",
-    },
-    {
-      name: "Rajan Kumar",
-      aboutL: "lorem ipsum",
-      role: "Full-stack Developer ",
+      role: "Frontend Engineer",
       twitter: "",
       linkedin: "",
       image: "",
     },
     {
-      name: "Rajan Kumar",
+      name: "Sahitya",
       aboutL: "lorem ipsum",
-      role: "Full-stack Developer ",
+      role: "Frontend Developer",
+      twitter: "",
+      linkedin: "",
+      image: "",
+    },
+    {
+      name: "Ashutosh",
+      aboutL: "lorem ipsum",
+      role: "Frontend-Developer",
       twitter: "",
       linkedin: "",
       image: "",
@@ -45,6 +46,9 @@ const Developers = () => {
   ];
   return (
     <>
+      <Head>
+        <title>Developers | T&P</title>
+      </Head>
       <div className="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
         <div className="max-w-xl mb-10 md:mx-auto sm:text-center lg:max-w-2xl md:mb-12">
           <div>
