@@ -226,7 +226,7 @@ function CoverPage() {
                 <Link href="/loginPage">Login</Link>
               </div>
               <div className="rounded-lg bg-amber-400 m-2 p-3 border-2 border-white font-semibold text-sm">
-                <Link href="/loginPage">Student Registration</Link>
+                <Link href="/account/studentRegistration">Student Registration</Link>
               </div>
               <div className="rounded-lg bg-amber-400 m-2 p-3 border-2 border-white font-semibold text-sm">
                 <Link href="/account/RecruiterSignUp">Company Registration</Link>
