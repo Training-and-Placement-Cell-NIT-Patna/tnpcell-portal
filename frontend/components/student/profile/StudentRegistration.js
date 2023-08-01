@@ -14,6 +14,7 @@ export default function StudentRegistration({ token = '' }) {
     mobile_number_2: '',
     gender: '',
     category: '',
+    category_link: '',
     father_name: '',
     father_occupation: '',
     mother_name: '',
@@ -22,7 +23,7 @@ export default function StudentRegistration({ token = '' }) {
     height: '',
     weight: '',
     type_of_disability: '',
-    disibilaty_percentage: '',
+    disability_percentage: '',
     address: '',
     domicile: '',
     city: '',
@@ -94,7 +95,7 @@ export default function StudentRegistration({ token = '' }) {
         },
         body: JSON.stringify({ data: values }),
       })
-      console.log(JSON.stringify({ data: values }))
+      // console.log(JSON.stringify({ data: values }))
 
 
       if (!res.ok) {
@@ -112,12 +113,15 @@ export default function StudentRegistration({ token = '' }) {
       }
     }
   }
-
   const handleInputChange = (e) => {
     const { name, value } = e.target
     setValues({ ...values, [name]: value })
   }
-
+  //function to handle pwd checkbox
+  const handlePwdChange = (e) => {
+    const { name, value } = e.target
+    setValues({ ...values, [name]: !values.pwd })
+  }
   const [programs, setPrograms] = useState([])
 
   const [courses, setCourses] = useState([])
@@ -138,13 +142,17 @@ export default function StudentRegistration({ token = '' }) {
   }, [])
 
   useEffect(() => {
+    setValues(prevState => ({
+      ...prevState,
+      disability_percentage: '',
+      type_of_disability: '',
+    }));
     programs.map((program) => {
       if (program.id === parseFloat(values.program)) {
         setCourses(program?.attributes?.courses?.data)
       }
     })
-  }, [values?.program])
-
+  }, [values?.program, values.pwd])
   return (
     <form onSubmit={handleSubmit}>
       <div className=' min-h-full mt-2'>
@@ -152,14 +160,14 @@ export default function StudentRegistration({ token = '' }) {
           <div className='my-4'>
 
             <div className='mt-5 md:mt-0 md:col-span-2 shadow-xl bg-white p-4'>
-              <h3 className='text-2xl font-bold leading-6 text-blue-900 p-2'>
+              <h3 className='text-2xl font-bold leading-6 text-blue-900 py-2'>
                 Personal Information
               </h3>
-              <span className='m-1 text-sm font-medium text-red-600 '>
-                * Student Personal Information, account will be active after admin
+              <span className='my-1 text-sm font-medium text-red-600 '>
+                Student Personal Information, account will be active after admin
                 approval.
               </span>
-              <div className='grid grid-cols-9 gap-6'>
+              <div className='grid grid-cols-6 gap-4'>
                 <div className='col-span-9 sm:col-span-3'>
                   <label
                     htmlFor='roll'
@@ -400,7 +408,27 @@ export default function StudentRegistration({ token = '' }) {
                     <option value='ews'>EWS</option>
                   </select>
                 </div>
-
+                {values.category !== 'general' ? (<>
+                  <div>
+                    <label
+                      htmlFor='category_link'
+                      className='block text-sm font-medium text-gray-700'
+                    >
+                      Category Certificate<span className='text-red-700'>*</span>
+                    </label>
+                    <input
+                      value={values.category_link}
+                      onChange={handleInputChange}
+                      type='text'
+                      name='category_link'
+                      id='category_link'
+                      placeholder='Drive Link'
+                      autoComplete='tel-national'
+                      required={values.category !== 'general' ? true : false}
+                      className='mt-0 block w-full px-0.5 border-0 border-b-2 border-gray-300 focus:ring-0 focus:border-stone-500'
+                    />
+                  </div>
+                </>) : null}
                 <div className='col-span-2 sm:col-span-1'>
                   <label
                     htmlFor='pwd'
@@ -410,7 +438,7 @@ export default function StudentRegistration({ token = '' }) {
                   </label>
                   <select
                     value={values.pwd}
-                    onChange={handleInputChange}
+                    onChange={handlePwdChange}
                     id='pwd'
                     name='pwd'
                     autoComplete='pwd'
@@ -422,65 +450,69 @@ export default function StudentRegistration({ token = '' }) {
                   </select>
                 </div>
 
+                {values.pwd ? (<>
 
-                <div className='col-span-9 sm:col-span-3'>
-                  <label
-                    htmlFor='type_of_disability'
-                    className='block text-sm font-medium text-gray-700'
-                  >
-                    Type Of Disability (If PWD)
-                  </label>
-                  <input
-                    disabled={values.pwd ? false : true}
-                    onChange={handleInputChange}
-                    value={values.type_of_disability}
-                    type='text'
-                    name='type_of_disability'
-                    id='type_of_disability'
-                    autoComplete='type_of_disability'
-                    className='mt-0 block w-full px-0.5 border-0 border-b-2 border-blue-900 '
-                  />
-                </div>
-
-
-                <div className='col-span-9 sm:col-span-3'>
-                  <label
-                    htmlFor='disability_percentage'
-                    className='block text-sm font-medium text-gray-700'
-                  >
-                    Disability Percentage (If PWD)
-                  </label>
-                  <input
-                    value={values.disability_percentage}
-                    type='text'
-                    name='disability_percentage'
-                    id='disability_percentage'
-                    autoComplete='disability_percentage'
-                    className='mt-0 block w-full px-0.5 border-0 border-b-2 border-blue-900 '
-                  />
-                </div>
+                  <div className='col-span-9 sm:col-span-3'>
+                    <label
+                      htmlFor='type_of_disability'
+                      className='block text-sm font-medium text-gray-700'
+                    >
+                      Type Of Disability (If PWD)<span className='text-red-700'>*</span>
+                    </label>
+                    <input
+                      disabled={values.pwd ? false : true}
+                      onChange={handleInputChange}
+                      value={values.type_of_disability}
+                      type='text'
+                      name='type_of_disability'
+                      id='type_of_disability'
+                      autoComplete='type_of_disability'
+                      className='mt-0 block w-full px-0.5 border-0 border-b-2 border-blue-900 '
+                    />
+                  </div>
 
 
+                  <div className='col-span-9 sm:col-span-3'>
+                    <label
+                      htmlFor='disability_percentage'
+                      className='block text-sm font-medium text-gray-700'
+                    >
+                      Disability Percentage (If PWD)<span className='text-red-700'>*</span>
+                    </label>
+                    <input
+                      disabled={values.pwd ? false : true}
+                      value={values.disability_percentage}
+                      onChange={handleInputChange}
+                      type='text'
+                      name='disability_percentage'
+                      id='disability_percentage'
+                      autoComplete='disability_percentage'
+                      className='mt-0 block w-full px-0.5 border-0 border-b-2 border-blue-900 '
+                    />
+                  </div>
 
 
-                <div className='col-span-3 sm:col-span-1'>
-                  <label
-                    htmlFor='disability_certificate'
-                    className='block text-sm font-medium text-gray-700'
-                  >
-                    Disability Certificate (IF PWD)
-                  </label>
-                  <input
-                    value={values.disability_certificate}
-                    onChange={handleInputChange}
-                    type='text'
-                    name='disability_certificate'
-                    id='disability_certificate'
-                    autoComplete='disability_certificate'
-                    placeholder='Drive Link'
-                    className='mt-0 block w-full px-0.5 border-0 border-b-2 text-sm text-gray-600 border-gray-300 focus:ring-0 focus:border-stone-500'
-                  />
-                </div>
+
+
+                  <div className='col-span-3 sm:col-span-1'>
+                    <label
+                      htmlFor='disability_certificate'
+                      className='block text-sm font-medium text-gray-700'
+                    >
+                      Disability Certificate (IF PWD)
+                    </label>
+                    <input
+                      value={values.disability_certificate}
+                      onChange={handleInputChange}
+                      type='text'
+                      name='disability_certificate'
+                      id='disability_certificate'
+                      autoComplete='disability_certificate'
+                      placeholder='Drive Link'
+                      className='mt-0 block w-full px-0.5 border-0 border-b-2 text-sm text-gray-600 border-gray-300 focus:ring-0 focus:border-stone-500'
+                    />
+                  </div>
+                </>) : (<></>)}
 
 
 
@@ -581,7 +613,8 @@ export default function StudentRegistration({ token = '' }) {
                   >
                     Permanent Address<span className='text-red-700'>*</span>
                   </label>
-                  <textarea
+                  <input
+                    type='text'
                     value={values.address}
                     onChange={handleInputChange}
                     rows={2}
@@ -680,7 +713,7 @@ export default function StudentRegistration({ token = '' }) {
                     htmlFor='correspondance_address'
                     className='block text-sm font-medium text-gray-700'
                   >
-                    correspondence Address<span className='text-red-700'>*</span>
+                    Correspondence Address<span className='text-red-700'>*</span>
                   </label>
                   <input
                     value={values.correspondance_address}
@@ -776,30 +809,20 @@ export default function StudentRegistration({ token = '' }) {
                     className='mt-0 block w-full px-0.5 border-0 border-b-2 text-sm text-gray-600 border-gray-300 focus:ring-0 focus:border-stone-500'
                   />
                 </div>
-
-
-
-
-
-
-
-
-
-
               </div>
             </div>
           </div>
           <div className='mt-9 md:mt-0 md:col-span-2 shadow-xl bg-white p-5'>
             <div className='py-5'>
-              <h3 className='text-2xl font-bold leading-6 text-blue-900 p-2'>
+              <h3 className='text-2xl font-bold leading-6 text-blue-900 py-2'>
                 Academic Details
               </h3>
               <p className='mt-1 text-sm font-medium text-rose-700'>
-                *Student Academic Information, account will be active after admin
+                Student Academic Information, account will be active after admin
                 approval.
               </p>
             </div>
-            <div className='grid grid-cols-10 gap-6'>
+            <div className='grid grid-cols-6 gap-6'>
               <div className='col-span-8 sm:col-span-2'>
                 <label
                   htmlFor='rank'
