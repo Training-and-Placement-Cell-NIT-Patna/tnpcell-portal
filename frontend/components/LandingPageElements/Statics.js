@@ -69,7 +69,7 @@ function Statics() {
         <>
             <section className='py-20'>
                 <div className='text-center py-10'>
-                    <h1 className='text-center text-5xl font-serif font-semibold'>Seat Matrix</h1>
+                    <h1 className='text-center text-5xl font-serif font-semibold text-red-900'>Seat Matrix</h1>
                 </div>
                 <div className='md:flex'>
                     <div className='md:w-1/2'>
@@ -86,7 +86,7 @@ function Statics() {
                     </div>
                 </div>
                 <div className='py-10'>
-                    <h1 className='text-center text-5xl font-serif font-semibold'>Placement Statistics</h1>
+                    <h1 className='text-center text-5xl font-serif font-semibold text-red-900'>Placement Statistics</h1>
                 </div>
                 <div className='md:flex'>
                     <div className='md:w-1/2'>
