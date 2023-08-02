@@ -245,8 +245,9 @@
     "XII_marksheet": {
       "type": "string"
     },
-    "disabilty_certificate": {
-      "type": "string"
+    "disability_certificate": {
+      "type": "string",
+      "required": false
     },
     "driving_licience_link": {
       "type": "string"

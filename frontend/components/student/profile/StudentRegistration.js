@@ -8,6 +8,7 @@ export default function StudentRegistration({ token = '' }) {
   const [values, setValues] = useState({
     name: '',
     roll: '',
+    user_relation:'',
     personal_email_id: '',
     institute_email_id: '',
     mobile_number_1: '',
@@ -75,6 +76,7 @@ export default function StudentRegistration({ token = '' }) {
   if (user && user.username) {
     values.roll = user.username
     values.institute_email_id = user.email
+    values.user_relation = user.username
   }
 
   const handleSubmit = async (e) => {
@@ -85,7 +87,7 @@ export default function StudentRegistration({ token = '' }) {
     //   element === ''
 
     // })
-
+    
     if (confirm('Are you sure you want to submit for approval?')) {
       const res = await fetch(`${API_URL}/api/student/submit-for-approval`, {
         method: 'POST',
@@ -95,7 +97,7 @@ export default function StudentRegistration({ token = '' }) {
         },
         body: JSON.stringify({ data: values }),
       })
-      // console.log(JSON.stringify({ data: values }))
+      //console.log(JSON.stringify({ data: values }))
 
 
       if (!res.ok) {
@@ -142,17 +144,20 @@ export default function StudentRegistration({ token = '' }) {
   }, [])
 
   useEffect(() => {
-    setValues(prevState => ({
-      ...prevState,
-      disability_percentage: '',
-      type_of_disability: '',
-    }));
     programs.map((program) => {
       if (program.id === parseFloat(values.program)) {
         setCourses(program?.attributes?.courses?.data)
       }
     })
-  }, [values?.program, values.pwd])
+  }, [values?.program])
+  useEffect(() => {
+    setValues(prevState => ({
+      ...prevState,
+      disability_percentage: '',
+      type_of_disability: '',
+      disability_certificate: '',
+    }));
+  }, [values.pwd])
   return (
     <form onSubmit={handleSubmit}>
       <div className=' min-h-full mt-2'>
@@ -296,6 +301,7 @@ export default function StudentRegistration({ token = '' }) {
                   <input
                     value={values.personal_email_id}
                     onChange={handleInputChange}
+                    placeholder='example@gmail.com'
                     type='email'
                     name='personal_email_id'
                     id='personal_email_id'
@@ -337,8 +343,11 @@ export default function StudentRegistration({ token = '' }) {
                   <input
                     value={values.mobile_number_1}
                     onChange={handleInputChange}
-                    type='number'
+                    type='text'
                     name='mobile_number_1'
+                    maxLength={10}
+                    pattern='[0-9]+'
+                    placeholder='Mobile Number'
                     id='mobile_number_1'
                     autoComplete='tel-national'
                     className='mt-0 block w-full px-0.5 border-0 border-b-2 border-gray-300 focus:ring-0 focus:border-stone-500'
@@ -354,8 +363,11 @@ export default function StudentRegistration({ token = '' }) {
                   <input
                     value={values.mobile_number_2}
                     onChange={handleInputChange}
-                    type='number'
+                    type='text'
                     name='mobile_number_2'
+                    placeholder='Mobile Number'
+                    maxLength={10}
+                    pattern="[0-9]+"
                     id='mobile_number_2'
                     autoComplete='tel-national'
                     required
@@ -463,6 +475,7 @@ export default function StudentRegistration({ token = '' }) {
                       disabled={values.pwd ? false : true}
                       onChange={handleInputChange}
                       value={values.type_of_disability}
+                      required={values.pwd ? true : false}
                       type='text'
                       name='type_of_disability'
                       id='type_of_disability'
@@ -482,7 +495,10 @@ export default function StudentRegistration({ token = '' }) {
                     <input
                       disabled={values.pwd ? false : true}
                       value={values.disability_percentage}
+                      required={values.pwd ? true : false}
                       onChange={handleInputChange}
+                      placeholder='Ex: 60'
+                      pattern='[0-9]+'
                       type='text'
                       name='disability_percentage'
                       id='disability_percentage'
@@ -499,10 +515,12 @@ export default function StudentRegistration({ token = '' }) {
                       htmlFor='disability_certificate'
                       className='block text-sm font-medium text-gray-700'
                     >
-                      Disability Certificate (IF PWD)
+                      Disability Certificate (IF PWD)<span className='text-red-700'>*</span>
                     </label>
                     <input
+                      disabled={values.pwd ? false : true}
                       value={values.disability_certificate}
+                      required={values.pwd ? true : false}
                       onChange={handleInputChange}
                       type='text'
                       name='disability_certificate'
@@ -513,10 +531,6 @@ export default function StudentRegistration({ token = '' }) {
                     />
                   </div>
                 </>) : (<></>)}
-
-
-
-
 
                 <div className='col-span-3 sm:col-span-1'>
                   <label
@@ -552,7 +566,7 @@ export default function StudentRegistration({ token = '' }) {
                     name='blood_group'
                     id='blood_group'
                     autoComplete='blood_group'
-                    placeholder='E.g- A+'
+                    placeholder='Ex:- A+'
                     required
                     className='mt-0 block w-full px-0.5 border-0 border-b-2 text-sm text-gray-600 border-gray-300 focus:ring-0 focus:border-stone-500'
                   />
@@ -572,8 +586,9 @@ export default function StudentRegistration({ token = '' }) {
                     type='text'
                     name='height'
                     id='height'
+                    pattern="[0-9]+(\.[0-9]+)?"
                     autoComplete='height'
-                    placeholder='In cm (E.g 68.9)'
+                    placeholder='In cm (Ex: 68.9)'
                     required
                     className='mt-0 block w-full px-0.5 border-0 border-b-2 text-sm text-gray-600 border-gray-300 focus:ring-0 focus:border-stone-500'
                   />
@@ -594,8 +609,9 @@ export default function StudentRegistration({ token = '' }) {
                     type='text'
                     name='weight'
                     id='weight'
+                    pattern="[0-9]+(\.[0-9]+)?"
                     autoComplete='weight'
-                    placeholder='In Kg (E.g - 58)'
+                    placeholder='In Kg (E.x: - 58)'
                     required
                     className='mt-0 block w-full px-0.5 border-0 border-b-2 text-sm text-gray-600 border-gray-300 focus:ring-0 focus:border-stone-500'
                   />
@@ -702,6 +718,8 @@ export default function StudentRegistration({ token = '' }) {
                     name='pin_code'
                     id='pin_code'
                     autoComplete='pin_code'
+                    maxLength={6}
+                    pattern="[0-9]+"
                     required
                     className='mt-0 block w-full px-0.5 border-0 border-b-2 text-sm text-gray-600 border-gray-300 focus:ring-0 focus:border-stone-500'
                   />
@@ -738,9 +756,11 @@ export default function StudentRegistration({ token = '' }) {
                   <input
                     value={values.aadhar_no}
                     onChange={handleInputChange}
+                    pattern="[0-9]+"
                     maxLength={12}
                     minLength={12}
                     type='text'
+                    placeholder='XXXXXXXXXXXX'
                     name='aadhar_no'
                     id='aadhar_no'
                     autoComplete='aadhar_no'
@@ -764,6 +784,7 @@ export default function StudentRegistration({ token = '' }) {
                     name='driving_licience_no'
                     id='driving_licience_no'
                     autoComplete='driving_licience_no'
+                    maxLength={16}
                     // required
                     className='mt-0 block w-full px-0.5 border-0 border-b-2 text-sm text-gray-600 border-gray-300 focus:ring-0 focus:border-stone-500'
                   />
@@ -805,6 +826,8 @@ export default function StudentRegistration({ token = '' }) {
                     name='pancard_no'
                     id='pancard_no'
                     autoComplete='pancard_no'
+                    pattern="[A-Z]{5}[0-9]{4}[A-Z]"
+                    maxLength={10}
                     // required
                     className='mt-0 block w-full px-0.5 border-0 border-b-2 text-sm text-gray-600 border-gray-300 focus:ring-0 focus:border-stone-500'
                   />
@@ -951,6 +974,7 @@ export default function StudentRegistration({ token = '' }) {
                   type='text'
                   name='X_board'
                   id='X_board'
+                  placeholder='Ex: CBSE'
                   // min={33}
                   // max={100}
                   // step='.01'
@@ -976,7 +1000,10 @@ export default function StudentRegistration({ token = '' }) {
                   type='text'
                   name='X_YOP'
                   id='X_YOP'
+                  pattern="^\d*\.?\d+$" 
+                  maxLength={4}
                   autoComplete='X_YOP'
+                  placeholder='Ex: 2019'
                   required
                   className='mt-0 block w-full px-0.5 border-0 border-b-2 text-sm text-gray-600 border-gray-300 focus:ring-0 focus:border-stone-500'
                 />
@@ -1044,6 +1071,7 @@ export default function StudentRegistration({ token = '' }) {
                   name='XII_board'
                   id='XII_board'
                   autoComplete='XII_board'
+                  placeholder='Ex: CBSE'
                   required
                   className='mt-0 block w-full px-0.5 border-0 border-b-2 text-sm text-gray-600 border-gray-300 focus:ring-0 focus:border-stone-500'
                 />
@@ -1062,6 +1090,9 @@ export default function StudentRegistration({ token = '' }) {
                   onChange={handleInputChange}
                   type='text'
                   name='XII_YOP'
+                  pattern="^\d*\.?\d+$" 
+                  placeholder='Ex: 2021'
+                  maxLength={4}
                   id='XII_YOP'
                   autoComplete='XII_YOP'
                   required
@@ -1409,7 +1440,7 @@ export default function StudentRegistration({ token = '' }) {
                   htmlFor='all_sem_marksheet'
                   className='block text-sm font-medium text-gray-700'
                 >
-                  All Sem Marksheets
+                  All Sem Marksheets<span className='text-red-700'>*</span>
                 </label>
                 <input
                   value={values.all_sem_marksheet}
@@ -1438,6 +1469,7 @@ export default function StudentRegistration({ token = '' }) {
                   type='text'
                   name='total_backlogs'
                   id='total_backlogs'
+                  pattern="[0-9]+"
                   autoComplete='total_backlogs'
                   placeholder='Ex: 0,1'
                   required
@@ -1460,6 +1492,8 @@ export default function StudentRegistration({ token = '' }) {
                   type='text'
                   name='current_backlogs'
                   id='current_backlogs'
+                  placeholder='Ex: 0,1'
+                  pattern="[0-9]+"
                   autoComplete='current_backlogs'
                   required
                   className='mt-0 block w-full px-0.5 border-0 border-b-2 text-sm text-gray-600 border-gray-300 focus:ring-0 focus:border-stone-500'
@@ -1472,7 +1506,7 @@ export default function StudentRegistration({ token = '' }) {
                   htmlFor='current_status'
                   className='block text-sm font-medium text-gray-700'
                 >
-                  Current Status
+                  Current Status<span className='text-red-700'>*</span>
                 </label>
                 <input
                   value={values.current_status}
