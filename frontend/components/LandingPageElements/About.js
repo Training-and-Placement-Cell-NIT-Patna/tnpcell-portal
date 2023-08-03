@@ -1,12 +1,4 @@
 import React from "react";
-// import {
-//   ChevronDoubleLeftIcon,
-//   ChevronDoubleRightIcon,
-//   DocumentDownloadIcon,
-//   PaperAirplaneIcon,
-//   LightBulbIcon,
-//   PencilAltIcon,
-// } from "@heroicons/react/outline";
 import Lottie from "lottie-react";
 import eye from "public/lottie/eye.json";
 import aim from "public/lottie/aim.json";
@@ -15,15 +7,12 @@ function About() {
   return (
     <div>
       <div className="text-center mt-5">
-        <h1 className="font-bold text-4xl text-[#510505] font-serif underline underline-offset-4">
+        <h1 className="font-bold text-2xl lg:text-4xl text-[#510505] font-serif underline underline-offset-4">
           About Us
         </h1>
         <div className="text-center">
-          <div>
-            <img src="" />
-          </div>
           <div className="text-center">
-            <p className="px-5 md:px-10 py-28 indent-5 text-justify md:text-center">
+            <p className="px-5 md:px-10 pt-10 pb-28 md:indent-5 text-justify md:text-center">
               The Training and Placement cell of NIT PATNA forms an integral
               part in shaping the careers of the students of the institute. It
               organizes and coordinates campus placement program to fulfill its
@@ -32,13 +21,7 @@ function About() {
               college employees. National Institute of Technology, Patna , also
               known as NIT Patna, is an Institute of National Importance . NIT
               Patna marked its humble beginning in 1886 and it is the 6th Oldest
-              Engineering Institute of India. It is an autonomous institute
-              functioning directly under Ministry of Human Resource Development,
-              Government of India. It is one of the top 100 institutes (ranked
-              92) for engineering and technology in India according to NIRF 2020
-              ranking. NIT Patna offers undergraduate, post graduate and
-              doctorate courses in Computer Science, Electronics and
-              Communication, Electrical, Mechanical and Civil engineering.
+              Engineering Institute of India.
             </p>
           </div>
         </div>
