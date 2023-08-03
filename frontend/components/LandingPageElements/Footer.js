@@ -18,7 +18,7 @@ function Footer() {
           <h2 className="font-bold p-2 text-xl pl-0 text-white">Know Us</h2>
           <ul>
             <li>
-              <Link href="/">Director's Desk</Link>
+              <Link href="/developers">Technical Team</Link>
             </li>
             <li>
               <Link href="/">NIRF</Link>
