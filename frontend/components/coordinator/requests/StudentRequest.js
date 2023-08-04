@@ -156,14 +156,15 @@ export default function StudentRequest({ token = '' }) {
           </h2>
         </div>
       </div>
-      <div className='ag-theme-alpine mt-4' style={{ height: 300 }}>
+      <div className="ag-theme-alpine mt-4" style={{ height: '300px', width: '100%' }}>
         <AgGridReact
           rowData={students}
           columnDefs={columnDefs}
           defaultColDef={{ sortable: true }}
-          domLayout= 'autoHeight'
+          alwaysShowVerticalScroll={true}
+          domLayout="autoHeight"
           headerClass="my-header-class"
-        ></AgGridReact>
+        />
       </div>
     </div>
   )
