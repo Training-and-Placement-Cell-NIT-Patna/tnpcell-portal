@@ -36,8 +36,9 @@ export default function StudentProfileEdit({ token = '', student }) {
                 Personal Information
               </h3>
               <p className='mt-1 text-sm text-gray-500'>
-                Student Personal Information, account will be active after admin
+                Student Personal Information, account will be active after your
                 approval.
+                <img src={`${API_URL}${student?.attributes?.profile_pic?.data?.attributes?.url}`} />
               </p>
             </div>
             <div className='mt-5 md:mt-0 md:col-span-2'>
@@ -87,63 +88,63 @@ export default function StudentProfileEdit({ token = '', student }) {
 
 
                 <div className='col-span-6 sm:col-span-3'>
-                    <label
-                      htmlFor='internship_status_2'
-                      className='block text-sm font-medium text-gray-700'
-                    >
-                      Internship Status (2 Month)
-                    </label>
-                    <select
-                      name='internship_status_2'
-                      id='internship_status_2'
-                      className='block w-full px-3 py-2 rounded-md text-gray-700 bg-white border border-gray-300 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 sm:text-sm sm:leading-5'
-                      value={values.internship_status_2}
-                      onChange={handleInputChange}
-                    >
-                      <option value='false'>Not Got Internship</option>
-                      <option value='true'>Got Internship</option>
-                    </select>
-                  </div>
+                  <label
+                    htmlFor='internship_status_2'
+                    className='block text-sm font-medium text-gray-700'
+                  >
+                    Internship Status (2 Month)
+                  </label>
+                  <select
+                    name='internship_status_2'
+                    id='internship_status_2'
+                    className='block w-full px-3 py-2 rounded-md text-gray-700 bg-white border border-gray-300 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 sm:text-sm sm:leading-5'
+                    value={values.internship_status_2}
+                    onChange={handleInputChange}
+                  >
+                    <option value='false'>Not Got Internship</option>
+                    <option value='true'>Got Internship</option>
+                  </select>
+                </div>
 
 
-                  <div className='col-span-6 sm:col-span-3'>
-                    <label
-                      htmlFor='internship_status_6_m'
-                      className='block text-sm font-medium text-gray-700'
-                    >
-                      Internship Status (6 Month)
-                    </label>
-                    <select
-                      name='internship_status_6_m'
-                      id='internship_status_6_m'
-                      className='block w-full px-3 py-2 rounded-md text-gray-700 bg-white border border-gray-300 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 sm:text-sm sm:leading-5'
-                      value={values.internship_status_6_m}
-                      onChange={handleInputChange}
-                    >
-                      <option value='false'>Not Got Internship</option>
-                      <option value='true'>Got Internship</option>
-                    </select>
-                  </div>
+                <div className='col-span-6 sm:col-span-3'>
+                  <label
+                    htmlFor='internship_status_6_m'
+                    className='block text-sm font-medium text-gray-700'
+                  >
+                    Internship Status (6 Month)
+                  </label>
+                  <select
+                    name='internship_status_6_m'
+                    id='internship_status_6_m'
+                    className='block w-full px-3 py-2 rounded-md text-gray-700 bg-white border border-gray-300 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 sm:text-sm sm:leading-5'
+                    value={values.internship_status_6_m}
+                    onChange={handleInputChange}
+                  >
+                    <option value='false'>Not Got Internship</option>
+                    <option value='true'>Got Internship</option>
+                  </select>
+                </div>
 
 
-                  <div className='col-span-6 sm:col-span-3'>
-                    <label
-                      htmlFor='fte_status'
-                      className='block text-sm font-medium text-gray-700'
-                    >
-                      FTE Status
-                    </label>
-                    <select
-                      name='fte_status'
-                      id='fte_status'
-                      className='block w-full px-3 py-2 rounded-md text-gray-700 bg-white border border-gray-300 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 sm:text-sm sm:leading-5'
-                      value={values.fte_status}
-                      onChange={handleInputChange}
-                    >
-                      <option value='false'>Not Got FTE</option>
-                      <option value='true'>Got FTE</option>
-                    </select>
-                  </div>
+                <div className='col-span-6 sm:col-span-3'>
+                  <label
+                    htmlFor='fte_status'
+                    className='block text-sm font-medium text-gray-700'
+                  >
+                    FTE Status
+                  </label>
+                  <select
+                    name='fte_status'
+                    id='fte_status'
+                    className='block w-full px-3 py-2 rounded-md text-gray-700 bg-white border border-gray-300 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 sm:text-sm sm:leading-5'
+                    value={values.fte_status}
+                    onChange={handleInputChange}
+                  >
+                    <option value='false'>Not Got FTE</option>
+                    <option value='true'>Got FTE</option>
+                  </select>
+                </div>
 
 
                 <div className='col-span-6 sm:col-span-3'>
@@ -213,7 +214,7 @@ export default function StudentProfileEdit({ token = '', student }) {
                     Father&apos;s Occupation
                   </label>
                   <input
-                  disabled
+                    disabled
                     value={values.father_occupation}
                     onChange={handleInputChange}
                     type='text'
@@ -235,7 +236,7 @@ export default function StudentProfileEdit({ token = '', student }) {
                     Mother&apos;s Name
                   </label>
                   <input
-                  disabled
+                    disabled
                     value={values.mother_name}
                     onChange={handleInputChange}
                     type='text'
@@ -424,7 +425,7 @@ export default function StudentProfileEdit({ token = '', student }) {
                     Type Of Diability (If PWD)
                   </label>
                   <input
-                  disabled
+                    disabled
                     value={values.type_of_disability}
                     type='text'
                     name='type_of_disability'
@@ -443,7 +444,7 @@ export default function StudentProfileEdit({ token = '', student }) {
                     Disability Percentage (If PWD)
                   </label>
                   <input
-                  disabled
+                    disabled
                     value={values.disability_percentage}
                     type='text'
                     name='disability_percentage'
@@ -455,16 +456,16 @@ export default function StudentProfileEdit({ token = '', student }) {
 
 
 
-                
-              <div className='col-span-3 sm:col-span-1'>
+
+                <div className='col-span-3 sm:col-span-1'>
                   <label
                     htmlFor='disability_certificate'
                     className='block text-sm font-medium text-gray-700'
                   >
-                  Disibility Certificate (IF PWD)
+                    Disibility Certificate (IF PWD)
                   </label>
                   <input
-                  disabled
+                    disabled
                     value={values.disability_certificate}
                     onChange={handleInputChange}
                     type='text'
@@ -503,7 +504,7 @@ export default function StudentProfileEdit({ token = '', student }) {
 
 
 
-                
+
                 <div className='col-span-3 sm:col-span-1'>
                   <label
                     htmlFor='blood_group'
@@ -618,7 +619,7 @@ export default function StudentProfileEdit({ token = '', student }) {
                   />
                 </div>
 
-                 
+
                 <div className='col-span-3 sm:col-span-1'>
                   <label
                     htmlFor='city'
@@ -756,7 +757,7 @@ export default function StudentProfileEdit({ token = '', student }) {
                     htmlFor='driving_licience_link'
                     className='block text-sm font-medium text-gray-700'
                   >
-                  Driving Licience
+                    Driving Licience
                   </label>
                   <input
                     disabled
@@ -768,7 +769,7 @@ export default function StudentProfileEdit({ token = '', student }) {
                     id='driving_licience_link'
                     autoComplete='driving_licience_link'
                     placeholder='Drive Link'
-                  
+
                     className='mt-0 block w-full px-0.5 border-0 border-b-2 text-sm text-gray-600 border-gray-300 focus:ring-0 focus:border-stone-500'
                   />
                 </div>
@@ -855,7 +856,7 @@ export default function StudentProfileEdit({ token = '', student }) {
                     className='mt-1 focus:ring-green-500 focus:border-green-500 block w-full shadow-sm sm:text-sm border-red-300 rounded-md'
                   />
                 </div>
-{/* 
+                {/* 
                 <div className='col-span-6 sm:col-span-3'>
                   <label
                     htmlFor='registered_for'
@@ -1078,30 +1079,30 @@ export default function StudentProfileEdit({ token = '', student }) {
                   />
                 </div>
 
-                
-              <div className='col-span-2 sm:col-span-1'>
-                <label
-                  htmlFor='spi_9'
-                  className='block text-sm font-medium text-gray-700'
-                >
-                  SPI-9
-                </label>
-                <input
+
+                <div className='col-span-2 sm:col-span-1'>
+                  <label
+                    htmlFor='spi_9'
+                    className='block text-sm font-medium text-gray-700'
+                  >
+                    SPI-9
+                  </label>
+                  <input
                     disabled
 
-                  value={values.spi_9}
-                  onChange={handleInputChange}
-                  type='number'
-                  min={2}
-                  max={10}
-                  step='.01'
-                  placeholder='Ex: 8.86'
-                  name='spi_9'
-                  id='spi_9'
-                  autoComplete='spi_9'
-                  className='mt-0 block w-full px-0.5 border-0 border-b-2 border-gray-300 focus:ring-0 focus:border-stone-500'
-                />
-              </div>
+                    value={values.spi_9}
+                    onChange={handleInputChange}
+                    type='number'
+                    min={2}
+                    max={10}
+                    step='.01'
+                    placeholder='Ex: 8.86'
+                    name='spi_9'
+                    id='spi_9'
+                    autoComplete='spi_9'
+                    className='mt-0 block w-full px-0.5 border-0 border-b-2 border-gray-300 focus:ring-0 focus:border-stone-500'
+                  />
+                </div>
 
 
                 <div className='col-span-6 sm:col-span-2'>
@@ -1126,35 +1127,35 @@ export default function StudentProfileEdit({ token = '', student }) {
 
 
 
-                
-              <div className='col-span-5 sm:col-span-2'>
-                <label
-                  htmlFor='X_board'
-                  className='block text-sm font-medium text-gray-700'
-                >
-                  X Board
-                </label>
-                <input
+
+                <div className='col-span-5 sm:col-span-2'>
+                  <label
+                    htmlFor='X_board'
+                    className='block text-sm font-medium text-gray-700'
+                  >
+                    X Board
+                  </label>
+                  <input
                     disabled
 
-                  value={values.X_board}
-                  onChange={handleInputChange}
-                  type='text'
-                  name='X_board'
-                  id='X_board'
-                  // min={33}
-                  // max={100}
-                  // step='.01'
-                  autoComplete='X_board'
-                  // placeholder='In percentage Ex: 88.5'
-                  required
-                  className='mt-0 block w-full px-0.5 border-0 border-b-2 border-gray-300 focus:ring-0 focus:border-stone-500'
-                />
-              </div>
+                    value={values.X_board}
+                    onChange={handleInputChange}
+                    type='text'
+                    name='X_board'
+                    id='X_board'
+                    // min={33}
+                    // max={100}
+                    // step='.01'
+                    autoComplete='X_board'
+                    // placeholder='In percentage Ex: 88.5'
+                    required
+                    className='mt-0 block w-full px-0.5 border-0 border-b-2 border-gray-300 focus:ring-0 focus:border-stone-500'
+                  />
+                </div>
 
 
 
-              <div className='col-span-3 sm:col-span-1'>
+                <div className='col-span-3 sm:col-span-1'>
                   <label
                     htmlFor='X_YOP'
                     className='block text-sm font-medium text-gray-700'
@@ -1213,7 +1214,7 @@ export default function StudentProfileEdit({ token = '', student }) {
                     name='X_marksheet'
                     id='X_marksheet'
                     autoComplete='X_marksheet'
-                  placeholder='Drive Link'
+                    placeholder='Drive Link'
                     required
                     className='mt-0 block w-full px-0.5 border-0 border-b-2 text-sm text-gray-600 border-gray-300 focus:ring-0 focus:border-stone-500'
                   />
@@ -1290,8 +1291,8 @@ export default function StudentProfileEdit({ token = '', student }) {
 
 
 
-                
-              <div className='col-span-3 sm:col-span-1'>
+
+                <div className='col-span-3 sm:col-span-1'>
                   <label
                     htmlFor='XII_marksheet'
                     className='block text-sm font-medium text-gray-700'
@@ -1307,7 +1308,7 @@ export default function StudentProfileEdit({ token = '', student }) {
                     name='XII_marksheet'
                     id='XII_marksheet'
                     autoComplete='XII_marksheet'
-                  placeholder='Drive Link'
+                    placeholder='Drive Link'
 
                     required
                     className='mt-0 block w-full px-0.5 border-0 border-b-2 text-sm text-gray-600 border-gray-300 focus:ring-0 focus:border-stone-500'
@@ -1378,13 +1379,13 @@ export default function StudentProfileEdit({ token = '', student }) {
                 </div>
 
 
-   
+
                 <div className='col-span-3 sm:col-span-1'>
                   <label
                     htmlFor='all_sem_marksheet'
                     className='block text-sm font-medium text-gray-700'
                   >
-                  All Sem Marksheets
+                    All Sem Marksheets
                   </label>
                   <input
                     disabled
@@ -1402,7 +1403,7 @@ export default function StudentProfileEdit({ token = '', student }) {
                 </div>
 
 
-              <div className='col-span-3 sm:col-span-1'>
+                <div className='col-span-3 sm:col-span-1'>
                   <label
                     htmlFor='total_backlogs'
                     className='block text-sm font-medium text-gray-700'
@@ -1425,8 +1426,8 @@ export default function StudentProfileEdit({ token = '', student }) {
                 </div>
 
 
-                
-              <div className='col-span-3 sm:col-span-1'>
+
+                <div className='col-span-3 sm:col-span-1'>
                   <label
                     htmlFor='current_backlogs'
                     className='block text-sm font-medium text-gray-700'
