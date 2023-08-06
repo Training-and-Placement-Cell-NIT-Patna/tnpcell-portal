@@ -46,22 +46,22 @@ export default function Eligiblejobs({ jobs = '' }) {
           Eligible Jobs
         </h3>
       </div>
-      <div className='ag-theme-alpine mt-4' style={{ height: 200 }}>
+      <div className='ag-theme-alpine mt-4' style={{ height: 'auto' }}>
         {/* <AgGridReact
           rowData={jobs}
           columnDefs={columnDefs}
           defaultColDef={{ sortable: true }}
         ></AgGridReact> */}
 
-<AgGridReact
-    onCellFocused={(event) => event.api.clearFocusedCell()}
-    rowData={jobs}
-    columnDefs={columnDefs}
-    defaultColDef={{ sortable: true, filter: true }}
-    onRowClicked={onRowClicked}
-    rowStyle={{ cursor: 'pointer' }}
-    // Add the following inline styles
-  ></AgGridReact>
+        <AgGridReact
+          onCellFocused={(event) => event.api.clearFocusedCell()}
+          rowData={jobs}
+          columnDefs={columnDefs}
+          defaultColDef={{ sortable: true, filter: true }}
+          onRowClicked={onRowClicked}
+          rowStyle={{ cursor: 'pointer' }}
+        // Add the following inline styles
+        ></AgGridReact>
 
 
       </div>
