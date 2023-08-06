@@ -94,10 +94,10 @@ function CoverPage() {
                 height={50}
                 alt="NIT Patna"
                 src="/images/logo.png"
-                className="sm:pb-1"
+                className="w-full"
               />
 
-              <div className=" font-serif font-extrabold text-lg sm:text-2xl p-1 sm:p-2 flex items-center min-h-14 text-white ">
+              <div className=" font-serif font-extrabold sm:text-2xl p-1 sm:p-2 flex items-center min-h-14 text-white ">
                 Training and Placement Cell
               </div>
             </div>
@@ -107,11 +107,11 @@ function CoverPage() {
                 {MENU_LIST.map((menu) => {
                   return (
                     <>
-                      <a href={menu.href} key={menu.idx}>
-                        <p className="text-[#858383] hover:bg-[#67101075] self-center p-3 rounded-md text-sm font-medium hover:text-yellow-200">
+                      <Link href={menu.href} key={menu.idx}>
+                        <p className="text-[#858383] hover:bg-[#67101075] cursor-pointer self-center p-3 rounded-md text-sm font-medium hover:text-yellow-200">
                           {menu.text}
                         </p>
-                      </a>
+                      </Link>
                     </>
                   );
                 })}
@@ -164,14 +164,14 @@ function CoverPage() {
           </div>
           {isOpen ? (
             <>
-              <div className="md:hidden relative h-10 z-50 bg-red-950">
+              <div className="lg:hidden relative h-10 z-50 bg-red-950">
                 <div className="">
                   {MENU_LIST.map((menu) => (
-                    <a href={menu.href} key={menu.idx}>
+                    <Link href={menu.href} key={menu.idx}>
                       <p className="text-[#858383] bg-red-950 self-center p-3 text-sm font-medium hover:text-yellow-200">
                         {menu.text}
                       </p>
-                    </a>
+                    </Link>
                   ))}
                 </div>
               </div>
@@ -209,7 +209,7 @@ function CoverPage() {
               <h1 className="text-white font-bold text-md md:text-4xl">
                 <Typewriter
                   words={[
-                    "Welcome to",
+                    "Welcome to the",
                     "Training and Placement Cell",
                     "NIT Patna",
                   ]}
