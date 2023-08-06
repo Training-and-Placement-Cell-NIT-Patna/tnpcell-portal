@@ -209,7 +209,7 @@ export default function EligibleJobs({ token = "" }) {
 
   return (
     <Layout heading="Eligible Jobs">
-      <div className="ag-theme-alpine mt-4" style={{ height: 800 }}>
+      <div className="ag-theme-alpine mt-4" style={{ height: 'auto' }}>
         <AgGridReact
           rowData={jobs}
           columnDefs={columnDefs}

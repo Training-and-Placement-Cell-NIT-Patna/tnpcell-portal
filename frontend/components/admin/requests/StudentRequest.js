@@ -152,19 +152,19 @@ export default function StudentRequest({ token = '' }) {
       <div className='md:flex md:items-center md:justify-between'>
         <div className='flex-1 min-w-0'>
           <h2 className='text-xl font-thin leading-7 text-gray-900 sm:text-2xl sm:truncate'>
-            Student Registration
+            Student Registrations
           </h2>
         </div>
       </div>
-      <div className='ag-theme-alpine mt-4' style={{ height: 300 }}>
+      <div className='ag-theme-alpine mt-4' style={{ height: 'auto', width: '100%' }}>
         <AgGridReact
           rowData={students}
           columnDefs={columnDefs}
           defaultColDef={{ sortable: true }}
-          domLayout= 'autoHeight'
+          domLayout="autoHeight"
           headerClass="my-header-class"
         ></AgGridReact>
       </div>
-    </div>
+    </div >
   )
 }
