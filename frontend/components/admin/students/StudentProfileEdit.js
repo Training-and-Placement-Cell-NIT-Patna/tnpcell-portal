@@ -34,7 +34,7 @@ export default function StudentProfileEdit({ token = "", student }) {
 
     // console.log("ID=>",id ,typeof(id) );
     // console.log(JSON.stringify({ data: values }))
-    id=String(id)
+    id = String(id)
 
     if (confirm("Are you sure you want to edit student profile?")) {
       const res = await fetch(`${API_URL}/api/students/${id}`, {
@@ -154,6 +154,7 @@ export default function StudentProfileEdit({ token = "", student }) {
                 <p className="mt-1 text-sm text-gray-500">
                   Student Personal Information, account will be active after
                   admin approval.
+                  <img src={`${API_URL}${student?.attributes?.profile_pic?.data?.attributes?.url}`} />
                 </p>
               </div>
               <div className="mt-5 md:mt-0 md:col-span-2">
