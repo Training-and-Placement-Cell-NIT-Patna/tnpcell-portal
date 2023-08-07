@@ -10,7 +10,7 @@ export default function StudentRequest({ token = '' }) {
   const [students, setStudents] = useState([])
 
   const handleApprove = async (id) => {
-    console.log('student', students)
+    // console.log('student', students)
     const res = await fetch(`${API_URL}/api/students/${id}`, {
       method: 'PUT',
       headers: {
@@ -102,7 +102,7 @@ export default function StudentRequest({ token = '' }) {
     },
     {
       headerName: 'Program',
-      field: 'attributes.program.data?.attributes?.program_name',
+      field: 'attributes.program.data.attributes.program_name',
     },
     {
       headerName: 'Course',
