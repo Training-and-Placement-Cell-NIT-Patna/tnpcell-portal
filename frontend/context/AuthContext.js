@@ -10,8 +10,8 @@ export const AuthProvider = ({ children }) => {
   const router = useRouter()
   const [user, setUser] = useState(null)
   const [role, setRole] = useState('student')
-  const [error, setError] = useState(null)
-
+  // const [error, setError] = useState(null)
+  const [loading, setLoading] = useState(false);
   useEffect(() => {
     checkUserLoggedIn()
   }, [])
@@ -70,6 +70,7 @@ export const AuthProvider = ({ children }) => {
 
   //login user
   const login = async ({ username: identifier, password }) => {
+    setLoading(true)
     const res = await fetch(`${NEXT_URL}/api/login`, {
       method: 'POST',
       headers: {
@@ -87,18 +88,24 @@ export const AuthProvider = ({ children }) => {
       setRole(data.role)
       if (data.role === 'student') {
         router.push('student/profile')
+        setLoading(false)
       } else if (data.role === 'admin') {
         router.push('admin/home')
+        setLoading(false)
       } else if (data.role === 'coordinator') {
         router.push('coordinator/home')
+        setLoading(false)
       }
-      else if(data.role==='company'){
+      else if (data.role === 'company') {
         // error are there check the componenet or page
         router.push('company/add')
+        setLoading(false)
       } else {
         toast.error(data.error)
+        setLoading(false)
       }
     } else {
+      setLoading(false)
       toast.error(data.error)
     }
   }
@@ -131,7 +138,7 @@ export const AuthProvider = ({ children }) => {
 
   return (
     <AuthContext.Provider
-      value={{ user, error, register, login, logout, checkUserLoggedIn }}
+      value={{ user, register, login, logout, checkUserLoggedIn, loading }}
     >
       {children}
     </AuthContext.Provider>

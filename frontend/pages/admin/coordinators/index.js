@@ -140,7 +140,7 @@ export default function Coordinators({ token }) {
           </div>
         </div>
       </div>
-      <div className='ag-theme-alpine mt-4' style={{ height: 400 }}>
+      <div className='ag-theme-alpine mt-4' style={{ height: 'auto' }}>
         <AgGridReact
           ref={gridRef}
           rowMultiSelectWithClick={true}
