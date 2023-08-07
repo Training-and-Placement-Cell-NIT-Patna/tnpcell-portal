@@ -9,19 +9,9 @@ import axios from 'axios'
 import { API_URL } from '@/config/index'
 import Link from 'next/link'
 
-import { useRouter } from 'next/router';
-
 export default function Students({ token }) {
 
-  const router = useRouter();
-
   const [rowData, setRowData] = useState([])
-
-  function handleApprove(id) {
-        window.location.href = `/admin/students/${id}`;
-      }
-
-
   const [columnDefs] = useState([
     {
       headerName: '',
@@ -30,7 +20,7 @@ export default function Students({ token }) {
       headerCheckboxSelectionFilteredOnly: true,
       checkboxSelection: true,
     },
-    
+
     {
       headerName: 'Roll No.',
       field: 'attributes.roll',
@@ -53,22 +43,19 @@ export default function Students({ token }) {
       cellRenderer: function (params) {
         return (
           <div>
-            <button
-              type='button'
-               onClick={() => handleApprove(params.value)}
-               className='inline-flex items-center px-3 py-1.5 border border-transparent text-xs font-medium rounded-full shadow-sm text-white bg-yellow-500 hover:bg-yellow-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-600'
-            >
-              Details
-            </button>
+            <Link href={`/admin/students/${params.value}`}>
+              <button
+                type='button'
+                className='inline-flex items-center px-3 py-1.5 border border-transparent text-xs font-medium rounded-full shadow-sm text-white bg-yellow-500 hover:bg-yellow-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-600'
+              >
+                Details
+              </button>
+            </Link>
           </div>
         )
       },
-    
-      // function handleApprove(id) {
-      //   window.location.href = `/admin/companies/${id}`;
-      // }
     },
-   
+
     {
       headerName: 'Name',
       field: 'attributes.name',
@@ -193,7 +180,7 @@ export default function Students({ token }) {
         )
       },
     },
-    
+
 
     {
       headerName: 'Blood Group',
@@ -295,7 +282,7 @@ export default function Students({ token }) {
     {
       headerName: 'XII Board',
       field: 'attributes.XII_board',
-      
+
     },
 
     {
@@ -392,9 +379,9 @@ export default function Students({ token }) {
       field: 'attributes.cpi',
       filter: 'agNumberColumnFilter',
     },
-    
-    
-    
+
+
+
     {
       headerName: 'Xth Marks',
       field: 'attributes.X_marks',
@@ -417,13 +404,13 @@ export default function Students({ token }) {
       headerName: 'Type Of Disability',
       field: 'attributes.type_of_disability',
     },
-  
+
     {
       headerName: 'Disability Percentage (If PWD)',
       field: 'attributes.disability_percentage',
     },
 
-    
+
     {
       headerName: 'Disability Certificate (If PWD)',
       field: 'attributes.disabilty_certificate',
@@ -482,7 +469,7 @@ export default function Students({ token }) {
       headers: { Authorization: `Bearer ${token}` },
     }
     const res = await axios.get(`${API_URL}/api/student/intern-status-2`, config)
-    
+
     const internship = res.data.internship
 
     // Update internship status of students
@@ -501,7 +488,7 @@ export default function Students({ token }) {
   }, [])
 
 
-  
+
   const getInternshipStatus_6 = useCallback(async (data) => {
     const config = {
       headers: { Authorization: `Bearer ${token}` },
@@ -522,7 +509,7 @@ export default function Students({ token }) {
     return new_row_data
   }, [])
 
-  
+
   const getfteStatus = useCallback(async (data) => {
     const config = {
       headers: { Authorization: `Bearer ${token}` },
@@ -564,8 +551,7 @@ export default function Students({ token }) {
 
         while (fetched_data.length < total_cnt) {
           const res = await axios.get(
-            `${API_URL}/api/students?pagination[page]=${
-              fetched_data.length / PAGE_SIZE + 1
+            `${API_URL}/api/students?pagination[page]=${fetched_data.length / PAGE_SIZE + 1
             }&pagination[pageSize]=${PAGE_SIZE}&populate=*`,
             config
           )
@@ -583,7 +569,7 @@ export default function Students({ token }) {
 
         fetched_data = fetched_data.filter((student) => {
           return student.attributes.approved === 'approved'
-         })
+        })
 
         setRowData(fetched_data)
       })
@@ -594,7 +580,7 @@ export default function Students({ token }) {
   }, [])
 
   const gridRef = useRef()
-  
+
   const onBtExport = useCallback(() => {
     // See comment in pages/admin/students/index.js for logic behind this
 
@@ -642,7 +628,7 @@ export default function Students({ token }) {
           rowData={rowData}
           columnDefs={columnDefs}
           rowSelection='multiple'
-          domLayout= 'autoHeight'
+          domLayout='autoHeight'
           defaultColDef={{ sortable: true, filter: true }}
           overlayNoRowsTemplate='Please wait while data is being fetched'
         ></AgGridReact>
