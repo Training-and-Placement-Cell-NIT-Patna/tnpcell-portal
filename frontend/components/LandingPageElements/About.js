@@ -28,10 +28,33 @@ function About() {
       </div>
       {/* Corousal ends */}
 
+      <div className=" after:bg-[#510505] relative z-[3] top-16">
+
+        <div className=" m-auto relative bg-[#ffa500] flex justify-center items-center w-4/5 h-[3rem] shadow-custOne after:content-[''] after:border-[1.5rem] after:border-[#ffa500] after:border-solid after:relative after:bottom-[-1.43rem] after:z-[-2] after:pl-[0.6rem] after:right-[-2rem] after:border-r-[1.4rem] after:border-r-transparent after:shadow-custTwo before:content-[''] before:border-[1.5rem] before:border-[#ffa500] before:border-solid before:relative before:bottom-[-1.43rem] before:z-[-2] before:pr-[0.6rem] before:left-[-2rem] before:border-l-[1.4rem] before:border-l-transparent before:shadow-custTwo">
+
+          {/* innerShield */}
+          <div className="relative z-3 w-full h-4/5 flex py-2 justify-center items-center border-y-[0.09rem] border-dashed border-[#df8a34]" >
+
+            {/* content */}
+            <p className=" text-white text-xl font-semibold after:absolute after:content-[''] after:bottom-[-1.8rem] after:z-[-1] after:border-[0.7rem] after:border-solid after:left-[-3.3rem] after:border-t-[#c37322] after:border-r-[#c37322] after:border-b-transparent after:border-l-transparent before:border-t-[#c37322] before:border-r-transparent before:border-b-transparent before:border-l-[#c37322] before:absolute before:right-[-3.3rem] before:z-[-1] before:border-[0.7rem] before:border-solid before:content-[''] before:bottom-[-1.8rem]">
+              Vision
+            </p>
+          </div>
+        </div>
+    </div>
+
       <div className="bg-[#510505] text-white pb-20">
         <div className="text-center py-10">
-          <h3 className=" text-yellow-100 text-xl mb-4"> Our Values</h3>
-          <h1 className="text-4xl  mx-auto leading-normal  font-bold mb-4">
+          
+          {/* here the changes are needed [pending] */}
+          {/* contentBox */}
+          {/* bg-[#f6a655] */}
+          
+
+         
+
+
+          <h1 className="text-4xl  mx-auto leading-normal relative top-[3rem] font-bold mb-9">
             {" "}
             Our Aim, Mission and Vision
           </h1>

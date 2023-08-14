@@ -9,7 +9,7 @@ import axios from 'axios'
 import { API_URL } from '@/config/index'
 import Link from 'next/link'
 
-export default function Students({ token }) {
+export default function Students({ token }) { 
 
   const [rowData, setRowData] = useState([])
   const [columnDefs] = useState([
@@ -132,10 +132,6 @@ export default function Students({ token }) {
       headerName: 'Personal Email',
       field: 'attributes.personal_email_id',
     },
-    // {
-    //   headerName: 'Registered For',
-    //   field: 'attributes.registered_for',
-    // },
     {
       headerName: 'Resume',
       field: 'attributes.resume',
@@ -495,6 +491,10 @@ export default function Students({ token }) {
     }
     const res = await axios.get(`${API_URL}/api/student/intern-status-6`, config)
     const internship = res.data.internship
+
+    //Internship is not fetching itself
+
+    console.log("This is internship ",internship)
 
     // Update internship status of students
     const new_row_data = data.map((student) => {
