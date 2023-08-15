@@ -132,10 +132,10 @@ export default function Students({ token }) {
       headerName: 'Personal Email',
       field: 'attributes.personal_email_id',
     },
-      {
-        headerName: 'Registered For',
-        field: 'attributes.registered_for',
-      },
+      // {
+      //   headerName: 'Registered For',
+      //   field: 'attributes.registered_for',
+      // },
     {
       headerName: 'Resume',
       field: 'attributes.resume',
