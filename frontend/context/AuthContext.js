@@ -4,7 +4,7 @@ import { API_URL, NEXT_URL } from '@/config/index'
 import { toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 
-const AuthContext = createContext()
+const AuthContext = createContext()                              
 
 export const AuthProvider = ({ children }) => {
   const router = useRouter()

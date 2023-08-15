@@ -17,12 +17,12 @@ function CompaniesMarquee() {
                         </section>
                         <section className="third">
                             <img src="https://cdn.worldvectorlogo.com/logos/atlassian-1.svg" alt="first" height="120px" width="120px" />
-                        </section>
-                        <section className="fourth">
+                        </section> 
+                        <section className="fourth ">
                             <img src="https://cdn.worldvectorlogo.com/logos/phonepe-1.svg" alt="first" height="120px" width="120px" />
                         </section>
-                        <section className="fifth">
-                            <img src="https://images.crunchbase.com/image/upload/c_lpad,h_170,w_170,f_auto,b_white,q_auto:eco,dpr_1/v1456398461/tlbgy0u13v8upv9n8mdm.png" alt="first" height="120px" width="120px" />
+                        <section className="fifth relative">
+                            <img src="https://images.crunchbase.com/image/upload/c_lpad,h_170,w_170,f_auto,b_white,q_auto:eco,dpr_1/v1456398461/tlbgy0u13v8upv9n8mdm.png" className="absolute top-[-3.6rem] left-[1.8rem]" alt="first" height="90px" width="90px" />
                         </section>
                         <section className="sixth">
                             <img src="https://upload.wikimedia.org/wikipedia/commons/b/ba/TexasInstruments-Logo.svg" alt="first" height="120px" width="120px" />

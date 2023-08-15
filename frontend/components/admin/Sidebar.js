@@ -153,33 +153,47 @@ export default function Sidebar({ heading = "", children }) {
             }`}
           >
             <a href="#" className="flex-shrink-0 w-full group block">
-              <div className="flex items-center p-2">
-                <div>
-                  <img
-                    className="h-8 w-8 rounded-full m-4"
+
+              {/* //overall div */}
+                
+              <div className="w-full flex">
+                {/* jai mata di */}
+
+                <span className={`${!sidebarOpen ?  "w-full":"w-1/5"
+                  }`}>
+                  <img 
+                    className="h-9 w-9 rounded-full m-4 flex-shrink-1 "
                     src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                    alt=""
                   />
-                </div>
-                <div className="px-4">
-                  <h1
-                    className={`text-base rounded-md text-white font-bold duration-300 ${
-                      !sidebarOpen && "hidden"
-                    }`}
-                  >
-                    {user && user.email}
-                  </h1>
-                  <h1
-                    className={`text-base font-medium rounded-md text-white  duration-300 ${
-                      !sidebarOpen && "hidden"
-                    }`}
-                  >
-                    {user && user.username}
-                  </h1>
-                </div>
+                </span>
+
+                
+                <span className={`px-4 w-4/5 flex flex-col m-0 p-0 overflow-visible ${!sidebarOpen && "hidden"
+                  }`}>
+                    <span
+                      className={`text-sm md:text-sm font-bold rounded-md text-white duration-300 ${!sidebarOpen && "hidden"
+                        }`}
+                    >
+
+                      {user && user.username}
+                    </span>
+                    <span
+                    className={`text-sm h-10 break-words hover:text-clip rounded-md overflow-visible  text-white font-bold duration-300  ${!sidebarOpen && "hidden"
+                        }`}
+                    >
+                      {/* email which I have to correct */}
+                      {user && user.email}
+                    </span>
+                  </span>
+
+
               </div>
+
+
             </a>
           </div>
+
+
         </div>
       </div>
       <div

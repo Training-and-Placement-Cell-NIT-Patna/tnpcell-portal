@@ -100,3 +100,79 @@ html {
     transform: translateX(-100%);
   }
 }
+
+/* css for ribbon banner */
+
+ #contentBox {
+  position: relative;
+   margin: auto;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   width: 90%;
+   height: 5%;
+   background: hsl(30, 90%, 65%);
+   box-shadow: 0.18rem 0.18rem 1rem rgb(95, 94, 94);
+   /* z-index: auto; */
+ }
+
+ #contentBox::after,
+ #contentBox::before {
+   content: '';
+   border: 1.3rem solid hsl(30, 90%, 65%);
+   position: relative;
+   bottom: -1.2rem;
+   z-index: -2;
+ }
+
+ #contentBox::after {
+   padding-left: 0.6rem;
+   right: -2rem;
+   border-right-width: 1.4rem;
+   border-right-color: transparent;
+ }
+
+ #contentBox::before {
+   padding-right: 0.6rem;
+   left: -2rem;
+   border-left-width: 1.4rem;
+   border-left-color: transparent;
+   /* box-shadow: -2px 2px 2px rgba(0, 0, 0, 0.5); */
+ }
+
+
+ #innerShield {
+   position: relative;
+   width: 100%;
+   height: 80%;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   border-bottom: 0.09rem dashed hsl(30, 82%, 62%);
+   border-top: 0.09rem dashed hsl(30, 82%, 62%);
+ }
+
+ #content {
+   color: white;
+ }
+
+ #content::after,
+ #content::before {
+   position: absolute;
+   z-index: -1;
+   bottom: -1.79rem;
+   content: '';
+   border: 0.7rem solid green;
+
+ }
+
+ #content::after {
+   left: -3.33rem;
+   /* trbl */
+   border-color: hsl(30, 70%, 45%) hsl(30, 70%, 45%) transparent transparent;
+ }
+
+ #content::before {
+   right: -3.3rem;
+   border-color: hsl(30, 70%, 45%) transparent transparent hsl(30, 70%, 45%);
+ }
