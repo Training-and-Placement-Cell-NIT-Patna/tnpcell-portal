@@ -162,13 +162,13 @@ export default function Sidebar({ heading = "", children }) {
                 <span className={`${!sidebarOpen ?  "w-full":"w-1/5"
                   }`}>
                   <img 
-                    className="h-9 w-9 rounded-full m-4 flex-shrink-1 "
+                    className="h-8 w-8 rounded-full m-4 "
                     src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
                   />
                 </span>
 
                 
-                <span className={`px-4 w-4/5 flex flex-col m-0 p-0 overflow-visible ${!sidebarOpen && "hidden"
+                <span className={`px-4 w-4/5 flex justify-center flex-col m-0 p-0 overflow-visible ${!sidebarOpen && "hidden"
                   }`}>
                     <span
                       className={`text-sm md:text-sm font-bold rounded-md text-white duration-300 ${!sidebarOpen && "hidden"
@@ -178,7 +178,7 @@ export default function Sidebar({ heading = "", children }) {
                       {user && user.username}
                     </span>
                     <span
-                    className={`text-sm h-10 break-words hover:text-clip rounded-md overflow-visible  text-white font-bold duration-300  ${!sidebarOpen && "hidden"
+                    className={`text-sm break-words hover:text-clip rounded-md overflow-visible text-white font-bold duration-300  ${!sidebarOpen && "hidden"
                         }`}
                     >
                       {/* email which I have to correct */}

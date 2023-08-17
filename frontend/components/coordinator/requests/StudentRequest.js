@@ -162,7 +162,7 @@ export default function StudentRequest({ token = '' }) {
           columnDefs={columnDefs}
           defaultColDef={{ sortable: true }}
           alwaysShowVerticalScroll={true}
-          domLayout="autoHeight"
+          domLayout="normal"
           headerClass="my-header-class"
         />
       </div>

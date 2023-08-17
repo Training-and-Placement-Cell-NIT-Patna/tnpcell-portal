@@ -628,7 +628,7 @@ export default function Students({ token }) {
           rowData={rowData}
           columnDefs={columnDefs}
           rowSelection='multiple'
-          domLayout='autoHeight'
+          domLayout='normal'
           defaultColDef={{ sortable: true, filter: true }}
           overlayNoRowsTemplate='Please wait while data is being fetched'
         ></AgGridReact>

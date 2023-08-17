@@ -91,7 +91,7 @@ export default function JobsInCompany({ id, token = '' }) {
           rowData={jobs}
           columnDefs={columnDefs}
           defaultColDef={{ sortable: true }}
-          domLayout={'autoHeight'}
+          domLayout={'normal'}
         ></AgGridReact>
       </div>
     </div>

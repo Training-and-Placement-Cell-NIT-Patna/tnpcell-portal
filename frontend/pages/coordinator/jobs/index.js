@@ -199,7 +199,7 @@ export default function Jobs({ token }) {
             columnDefs={columnDefs}
             defaultColDef={{ sortable: true, filter: true }}
             rowSelection='multiple'
-            domLayout='autoHeight'
+            domLayout='normal'
           ></AgGridReact>
         </div>
       </div>
