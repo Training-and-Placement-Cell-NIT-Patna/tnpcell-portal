@@ -997,7 +997,7 @@ return (
           rowSelection='multiple'
           rowData={students}
           columnDefs={columnDefs}
-          domLayout= 'autoHeight'
+          domLayout= 'normal'
           headerClass="my-header-class"
           defaultColDef={{ sortable: true, filter: true }}
         ></AgGridReact>

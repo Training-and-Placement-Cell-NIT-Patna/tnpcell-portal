@@ -258,7 +258,7 @@ export default function Jobs({ token }) {
             columnDefs={columnDefs}
             defaultColDef={{ sortable: true, filter: true }}
             onRowClicked={onRowClicked}
-            domLayout= 'autoHeight'
+            domLayout= 'normal'
             headerClass="my-header-class"
             rowStyle={{ cursor: 'pointer' }}
           // Add the following inline styles

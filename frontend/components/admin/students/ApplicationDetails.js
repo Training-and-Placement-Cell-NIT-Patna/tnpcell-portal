@@ -44,8 +44,7 @@ export default function ApplicationDetails({ applications = '' }) {
           rowData={applications}
           columnDefs={columnDefs}
           defaultColDef={{ sortable: true }}
-          
-          domLayout= 'autoHeight'
+          domLayout= 'normal'
           headerClass="my-header-class"
         ></AgGridReact>
       </div>

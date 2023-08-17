@@ -147,7 +147,7 @@ export default function Coordinators({ token }) {
           rowData={rowData}
           columnDefs={columnDefs}
           rowSelection='multiple'
-          domLayout='autoHeight'
+          domLayout='normal'
           headerClass="my-header-class"
           defaultColDef={{ sortable: true, filter: true }}
           overlayNoRowsTemplate='Please wait while data is being fetched'
