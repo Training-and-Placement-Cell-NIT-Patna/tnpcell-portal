@@ -8,6 +8,7 @@ import { parseCookies } from '@/helpers/index'
 import axios from 'axios'
 import { API_URL } from '@/config/index'
 import Link from 'next/link'
+import { toast } from "react-toastify";
 
 export default function Students({ token }) {
   const [rowData, setRowData] = useState([])
