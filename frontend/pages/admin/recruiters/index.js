@@ -77,32 +77,33 @@ export default function Recruiters({ token }) {
     {
       headerName: 'S.No.',
       valueGetter: 'node.rowIndex + 1',
-      cellStyle: (params) => ({ borderRight: '2px solid #ccc',  }),
+      cellStyle: (params) => ({ borderRight: '2px solid #ccc', }),
     },
     {
       headerName: 'Username',
       field: 'username',
-      cellStyle: (params) => ({ borderRight: '2px solid #ccc',  }),
+      cellStyle: (params) => ({ borderRight: '2px solid #ccc', }),
     },
     {
       headerName: 'Email',
       field: 'email',
-      cellStyle: (params) => ({ borderRight: '2px solid #ccc',  }),
+      cellStyle: (params) => ({ borderRight: '2px solid #ccc', }),
     },
     {
       headerName: 'Details',
       field: 'email',
-      cellStyle: (params) => ({ borderRight: '2px solid #ccc',  }),
+      cellStyle: (params) => ({ borderRight: '2px solid #ccc', }),
       cellRenderer: function (params) {
         return (
           <div>
-            <button
-              type='button'
-              onClick={() => handleApprove(params.value)}
-              className='inline-flex items-center px-3 py-1.5 border border-transparent text-xs font-medium rounded-full shadow-sm text-white bg-yellow-500 hover:bg-yellow-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-600'
-            >
-              Details
-            </button>
+            <Link href={`/recruiters?filter[email]=${params.value}`}>
+              <button
+                type='button'
+                className='inline-flex items-center px-3 py-1.5 border border-transparent text-xs font-medium rounded-full shadow-sm text-white bg-yellow-500 hover:bg-yellow-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-600'
+              >
+                Details
+              </button>
+            </Link>
           </div>
         )
       },
@@ -110,17 +111,18 @@ export default function Recruiters({ token }) {
     {
       headerName: 'Edit',
       field: 'id',
-      cellStyle: (params) => ({ borderRight: '2px solid #ccc',  }),
+      cellStyle: (params) => ({ borderRight: '2px solid #ccc', }),
       cellRenderer: function (params) {
         return (
           <div>
-            <button
-              type='button'
-              onClick={() => handleEdit(params.value)}
-              className='inline-flex items-center px-3 py-1.5 border border-transparent text-xs font-medium rounded-full shadow-sm text-white bg-yellow-500 hover:bg-yellow-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-600'
-            >
-              Edit
-            </button>
+            <Link href={`/admin/recruiters/${params.value}`}>
+              <button
+                type='button'
+                className='inline-flex items-center px-3 py-1.5 border border-transparent text-xs font-medium rounded-full shadow-sm text-white bg-yellow-500 hover:bg-yellow-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-600'
+              >
+                Edit
+              </button>
+            </Link>
           </div>
         )
       },
@@ -128,7 +130,7 @@ export default function Recruiters({ token }) {
     {
       headerName: 'Delete',
       field: 'id',
-      cellStyle: (params) => ({ borderRight: '2px solid #ccc',  }),
+      cellStyle: (params) => ({ borderRight: '2px solid #ccc', }),
       cellRenderer: function (params) {
         return (
           <div>
@@ -173,13 +175,13 @@ export default function Recruiters({ token }) {
         console.error(err);
       });
   }, [])
-  function handleApprove(email) {
-    window.location.href = `/recruiters?filter[email]=${email}`;
-  }
+  // function handleApprove(email) {
+  //   window.location.href = `/recruiters?filter[email]=${email}`;
+  // }
 
-  function handleEdit(id) {
-    window.location.href = `/admin/recruiters/${id}`;
-  }
+  // function handleEdit(id) {
+  //   window.location.href = `/admin/recruiters/${id}`;
+  // }
   const handleDelete = async (id) => {
     const config = {
       headers: { Authorization: `Bearer ${token}` },
@@ -207,7 +209,7 @@ export default function Recruiters({ token }) {
           </div>
         </div>
       </div>
-      <div className='ag-theme-alpine mt-4' style={{ margin:"auto" ,height: 400 , width:1100 }}>
+      <div className='ag-theme-alpine mt-4' style={{ margin: "auto", height: 400, width: 1100 }}>
         <AgGridReact
           ref={gridRef}
           rowMultiSelectWithClick={true}
