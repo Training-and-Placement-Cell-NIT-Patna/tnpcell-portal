@@ -636,7 +636,7 @@ export default function Students({ token }) {
           </div>
         </div>
       </div>
-      <div className='ag-theme-alpine mt-4' style={{ height: 'auto' }}>
+      <div className='ag-theme-alpine mt-4' style={{ margin: "auto", width: "1100px", height: "400px"   }}>
         <AgGridReact
           ref={gridRef}
           rowMultiSelectWithClick={true}

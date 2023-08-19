@@ -51,7 +51,7 @@ export default function Eligiblejobs({ jobs = '' }) {
           Eligible Jobs
         </h3>
       </div>
-      <div className='ag-theme-alpine mt-4 ' style={{ height: 'auto' }}>
+      <div className='ag-theme-alpine mt-4 ' style={{ margin: "auto", width: "1100px", height: "600px" }}>
         {/* <AgGridReact
           rowData={jobs}
           columnDefs={columnDefs}
