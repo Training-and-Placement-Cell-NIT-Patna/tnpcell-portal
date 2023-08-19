@@ -126,7 +126,7 @@ export default function Sidebar({ heading = '', children }) {
         </div>
         <div className={`absolute bottom-0 left-0 flex-shrink-0 duration-300 flex bg-[#030000] ${sidebarOpen ? 'sm:w-64 w-52' : 'w-20'}`}>
           <a href='#' className='flex-shrink-0 w-full group block'>
-            <div className='flex items-center p-2'>
+            <div className='flex items-center'>
               <div>
                 <img
                   className='h-8 w-8 rounded-full m-4'
@@ -135,14 +135,22 @@ export default function Sidebar({ heading = '', children }) {
                   alt='student-profile'
                 />
               </div>
-              <div className='px-4'>
-                <h1 className={`text-base rounded-md text-white font-bold duration-300 ${!sidebarOpen && "hidden"}`}>
-                  {user && user.email}
-                </h1>
-                <h1 className={`text-base font-medium rounded-md text-white  duration-300 ${!sidebarOpen && "hidden"}`}>
+
+              
+                <div className={`px-4 w-4/5  flex flex-col m-0 justify-center  overflow-visible ${!sidebarOpen && "hidden"
+                  }`}>
+                  <h1 className={`text-sm md:text-sm font-bold rounded-md text-white  duration-300 ${!sidebarOpen && "hidden"
+                    }`}>
                   {user && user.username}
                 </h1>
+                  <h1 className={`text-sm break-words hover:text-clip rounded-md overflow-visible   text-white font-bold duration-300  ${!sidebarOpen && "hidden"
+                    }`}>
+
+                      {user && user.email}
+                </h1>
               </div>
+
+
             </div>
           </a>
         </div>

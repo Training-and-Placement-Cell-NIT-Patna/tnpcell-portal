@@ -161,7 +161,7 @@ export default function StudentRequest({ token = '' }) {
           rowData={students}
           columnDefs={columnDefs}
           defaultColDef={{ sortable: true }}
-          domLayout="autoHeight"
+          domLayout="normal"
           headerClass="my-header-class"
         ></AgGridReact>
       </div>

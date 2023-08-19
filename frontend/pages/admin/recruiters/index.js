@@ -207,17 +207,21 @@ export default function Recruiters({ token }) {
           </div>
         </div>
       </div>
-      <div className='ag-theme-alpine mt-4' style={{ height: 400 , width:1200, }}>
+      <div className='ag-theme-alpine mt-4' style={{ margin:"auto" ,height: 400 , width:1100 }}>
         <AgGridReact
           ref={gridRef}
           rowMultiSelectWithClick={true}
+          domLayout='normal'
           rowData={rowData}
           columnDefs={columnDefs}
           rowSelection='multiple'
-          domLayout= 'autoHeight'
           headerClass="my-header-class"
           defaultColDef={{ sortable: true, filter: true }}
           overlayNoRowsTemplate='Please wait while data is being fetched'
+          rowDragManaged={true}
+          colDragManaged={true}
+          colResizeDefault='true'
+          animateRows={true}
         ></AgGridReact>
       </div>
     </Layout>
