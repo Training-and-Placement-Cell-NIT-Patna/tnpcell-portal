@@ -81,13 +81,13 @@ export default function StudentRequest({ token = '' }) {
     {
       headerName: 'Student Name',
       field: 'attributes.name',
-      cellRenderer: function (params) {
-        return (
-          <Link href={`/admin/unapproved_students/${params.data.id}`}>
-            <a>{params.value}</a>
-          </Link>
-        )
-      },
+      // cellRenderer: function (params) {
+      //   return (
+      //     <Link href={`/admin/unapproved_students/${params.data.id}`}>
+      //       <a>{params.value}</a>
+      //     </Link>
+      //   )
+      // },
     },
     {
       headerName: 'Roll No.',
@@ -112,6 +112,25 @@ export default function StudentRequest({ token = '' }) {
     //   headerName: 'Registered For',
     //   field: 'attributes.registered_for',
     // },
+    {
+      headerName: 'Details',
+      field: 'id',
+      cellRenderer: function (params) {
+        return (
+          <div>
+            <Link href={`/admin/unapproved_students/${params.data.id}`}>
+            <button
+              type='button'
+              // onClick={() => handleApprove(params.value)}
+              className='inline-flex items-center px-3 py-1.5 border border-transparent text-xs font-medium rounded-full shadow-sm text-white bg-yellow-500 hover:bg-yellow-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-600'
+            >
+              Details
+            </button>
+            </Link>
+          </div>
+        )
+      },
+    },
     {
       headerName: 'Approve',
       field: 'id',
