@@ -147,7 +147,7 @@ export default function Recruiters({ token }) {
           </div>
         </div>
       </div>
-      <div className='ag-theme-alpine mt-4' style={{ height: 400 , width:1200, }}>
+      <div className='ag-theme-alpine mt-4' style={{ margin:"auto",height: "400px" , width:"1100px", }}>
         <AgGridReact
           ref={gridRef}
           rowMultiSelectWithClick={true}
