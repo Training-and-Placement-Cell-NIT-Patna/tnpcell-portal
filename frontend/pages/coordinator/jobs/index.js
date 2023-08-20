@@ -193,7 +193,7 @@ export default function Jobs({ token }) {
             </Link>
           </div>
         </div>
-        <div className='ag-theme-alpine mt-4' style={{ height: 600 }}>
+        <div className='ag-theme-alpine mt-4' style={{ margin: "auto", width: "1100px", height: "500px" }}>
           <AgGridReact
             rowData={rowData}
             columnDefs={columnDefs}

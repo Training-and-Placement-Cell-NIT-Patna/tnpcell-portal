@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { useRouter } from 'next/router'
+// import { useRouter } from 'next/router'
 import { toast } from 'react-toastify'
 import { API_URL } from '@/config/index'
 import { PaperClipIcon } from '@heroicons/react/solid'
@@ -17,7 +17,7 @@ export default function StudentProfileEdit({ token = '', student }) {
   } = student.attributes
   const [values, setValues] = useState(newStudent)
 
-  const router = useRouter()
+  // const router = useRouter()
 
   const handleInputChange = (e) => {
     const { name, value } = e.target
@@ -233,7 +233,7 @@ export default function StudentProfileEdit({ token = '', student }) {
                     htmlFor='mother_name'
                     className='block text-sm font-medium text-gray-700'
                   >
-                    Mother&apos;s Name
+                    Maa&apos;s Name
                   </label>
                   <input
                     disabled
@@ -891,7 +891,7 @@ export default function StudentProfileEdit({ token = '', student }) {
                   </label>
                   <select
                     disabled
-                    value={values.program}
+                    value={values.course?.data?.attributes?.course_name}
                     onChange={handleInputChange}
                     id='program'
                     name='program'
@@ -912,7 +912,7 @@ export default function StudentProfileEdit({ token = '', student }) {
                   </label>
                   <select
                     disabled
-                    value={values.course}
+                    value={values.program?.data?.attributes?.program_name}
                     onChange={handleInputChange}
                     id='course'
                     name='course'
