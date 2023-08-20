@@ -161,7 +161,7 @@ export default function Students({ token }) {
             rowMultiSelectWithClick={true}
             rowData={rowData}
             columnDefs={columnDefs}
-            domLayout= 'autoHeight'
+            domLayout= 'normal'
             rowSelection='multiple'
             defaultColDef={{ sortable: true, filter: true }}
           ></AgGridReact>
