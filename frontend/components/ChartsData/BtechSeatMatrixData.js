@@ -1,39 +1,21 @@
+
+const xLabel = ["B Arch", "Civil Enginn.", "Computer Sci. Engin.", "Electronics & comm. Enginne.", "Electrical Enginne.", "Mechanical Engin.", "Integrated Msc"];
+
+const yDataLabel = [40, 101, 157, 127, 100, 105, 50];
+
 const BtechSeatMatriData = {
 
-    labels: ["B Arch", "Civil Enginn.", "Computer Sci. Engin.", "Electronics & comm. Enginne.", "Electrical Enginne.", "Mechanical Engin.", "Integrated Msc"],
+    labels:xLabel,
 
     datasets: [
-        {
-            labels:"",
-
-            data: [40, 101, 157, 127, 100, 105, 50],
-
-            backgroundColor: [
-                'rgba(3, 38, 224)',
-                'rgba(3, 38, 224)',
-                'rgba(3, 38, 224)',
-                'rgba(3, 38, 224)',
-                'rgba(3, 38, 224)',
-                'rgba(3, 38, 224)',
-                'rgba(3, 38, 224)',
-                'rgba(3, 38, 224)',
-                //    'rgba(3, 38, 224)',
-            ],
-            borderColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(255, 99, 132, 0.2)',
-
-            ],
-
-            borderWidth: 1,
-        }
+      {
+        type:'bar',
+        label:"No. of registered stduents",
+         backgroundColor:"rgba(239,194,130,255)",
+        borderColor:'white',
+        borderWidth:3,
+        data:yDataLabel
+      }
     ]
 
 }
