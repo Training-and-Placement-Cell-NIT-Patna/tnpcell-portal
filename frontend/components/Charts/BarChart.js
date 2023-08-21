@@ -8,7 +8,8 @@ function BarChart(props){
         <>
             <div>
                 <Bar
-                    data={props.chartData}
+                
+                data={props.chartData}
 
                 options = {
                     {
