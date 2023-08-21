@@ -1,5 +1,5 @@
 
-const xLabel = ["Computer Science","Electronics and Communication","Electrical","Mechanical","Civil","Physics","Maths"];
+const xLabel = ["CSE","ECE","EE","ME","CE","Physics","Maths"];
 const yLabelData = [8.93,6.7,5.7,5.2,5.0,4.0,4.0];
 // const yLabelData = [0,2,4,6,8,10];
 const AvgPkg ={
