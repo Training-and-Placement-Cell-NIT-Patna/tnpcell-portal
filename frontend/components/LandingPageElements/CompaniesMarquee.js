@@ -4,7 +4,17 @@ function CompaniesMarquee() {
     return (
         <>
             <div>
-                <h1 className='text-center font-medium text-red-900 text-xl lg:text-4xl'>NIT Patna Student's Gets Placed In</h1>
+                <div className=" m-auto relative bg-[#510505] flex justify-center items-center w-4/5 h-[3rem] shadow-custOne after:content-[''] after:border-[1.5rem] after:border-[#510505] after:border-solid after:relative after:bottom-[-1.43rem] after:z-[-2] after:pl-[0.6rem] after:right-[-2rem] after:border-r-[1.4rem] after:border-r-transparent after:shadow-custTwo before:content-[''] before:border-[1.5rem] before:border-[#510505] before:border-solid before:relative before:bottom-[-1.43rem] before:z-[-2] before:pr-[0.6rem] before:left-[-2rem] before:border-l-[1.4rem] before:border-l-transparent before:shadow-custTwo">
+
+                    {/* innerShield */}
+                    <div className="relative z-3 w-full h-4/5 flex py-2 justify-center items-center border-y-[0.09rem] border-dashed border-[#df8a34]" >
+
+                        {/* content */}
+                        <p className=" text-white text-sm md:text-xl font-semibold after:absolute after:content-[''] after:bottom-[-1.8rem] after:z-[-1] after:border-[0.7rem] after:border-solid after:left-[-3.3rem] after:border-t-[#c37322] after:border-r-[#c37322] after:border-b-transparent after:border-l-transparent before:border-t-[#c37322] before:border-r-transparent before:border-b-transparent before:border-l-[#c37322] before:absolute before:right-[-3.3rem] before:z-[-1] before:border-[0.7rem] before:border-solid before:content-[''] before:bottom-[-1.8rem]">
+                            NIT Patna Student's Gets Placed In
+                        </p>
+                    </div>
+                </div>
             </div>
             <section className="container mb-16">
                 <section className="wrapper">
@@ -17,7 +27,7 @@ function CompaniesMarquee() {
                         </section>
                         <section className="third">
                             <img src="https://cdn.worldvectorlogo.com/logos/atlassian-1.svg" alt="first" height="120px" width="120px" />
-                        </section> 
+                        </section>
                         <section className="fourth ">
                             <img src="https://cdn.worldvectorlogo.com/logos/phonepe-1.svg" alt="first" height="120px" width="120px" />
                         </section>
