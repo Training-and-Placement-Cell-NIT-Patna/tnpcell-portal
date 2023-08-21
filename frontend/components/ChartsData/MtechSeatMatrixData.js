@@ -1,4 +1,4 @@
-const xLabel = ["Civil Enginn.", "Computer Sci. Engin.", "Electrical Enginne.", "Mechanical Engin.", "Electronics & comm. Enginne.", "Architecture"];
+const xLabel = ["CE", "CSE", "EE", "ME", "ECE", "Architecture"];
 const yLabelData = [105, 40, 42, 57, 31, 19];
 const MTechSeatMatrix = {
 

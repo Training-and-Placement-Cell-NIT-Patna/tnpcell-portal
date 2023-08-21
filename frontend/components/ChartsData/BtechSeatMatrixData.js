@@ -1,5 +1,5 @@
 
-const xLabel = ["B Arch", "Civil Enginn.", "Computer Sci. Engin.", "Electronics & comm. Enginne.", "Electrical Enginne.", "Mechanical Engin.", "Integrated Msc"];
+const xLabel = ["B Arch", "CE", "CSE", "ECE", "EE", "ME", "I.Msc"];
 
 const yDataLabel = [40, 101, 157, 127, 100, 105, 50];
 
