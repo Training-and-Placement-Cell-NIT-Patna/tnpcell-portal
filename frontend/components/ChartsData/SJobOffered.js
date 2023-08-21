@@ -21,7 +21,6 @@ const Sdata = {
             type: 'bar',
             label:"Total No. of registered Eligible student",
             backgroundColor: "rgba(113,202,226,255)",
-            // borderColor:"rgba(113,202,226,255)",
             borderWidth:2,
             data:StudentRegisteredData,
         },
