@@ -615,38 +615,40 @@ export default function Students({ token }) {
   }, [])
   return (
     <Layout>
-      <div className='bg-white px-4 py-5 border-b border-gray-200 sm:px-6'>
-        <div className='-ml-4 -mt-2 flex items-center justify-between flex-wrap sm:flex-nowrap'>
-          <div className='ml-4 mt-2'>
-            <h3 className='text-lg leading-6 font-medium text-gray-900'>
-              Students
-            </h3>
-          </div>
-          <div className='ml-4 mt-2 flex-shrink-0'>
-            <button
-              type='button'
-              onClick={onBtExport}
-              className='inline-flex items-center px-4 py-2
+      <div className=' flex flex-col items-center'>
+        <div className='bg-white px-4 py-5 w-[1100px] border-b border-gray-200 sm:px-6'>
+          <div className='-ml-4 -mt-2 flex items-center justify-between flex-wrap sm:flex-nowrap'>
+            <div className='ml-4 mt-2'>
+              <h3 className='text-lg leading-6 font-medium text-gray-900'>
+                Students
+              </h3>
+            </div>
+            <div className='ml-4 mt-2 flex-shrink-0'>
+              <button
+                type='button'
+                onClick={onBtExport}
+                className='inline-flex items-center px-4 py-2
               border border-transparent text-xs font-medium rounded shadow-sm
               text-white bg-yellow-600 hover:bg-yellow-700 focus:outline-none
               focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500'
-            >
-              Export
-            </button>
+              >
+                Export
+              </button>
+            </div>
           </div>
         </div>
-      </div>
-      <div className='ag-theme-alpine mt-4' style={{ margin: "auto", width: "1100px", height: "400px"   }}>
-        <AgGridReact
-          ref={gridRef}
-          rowMultiSelectWithClick={true}
-          rowData={rowData}
-          columnDefs={columnDefs}
-          rowSelection='multiple'
-          domLayout= 'normal'
-          defaultColDef={{ sortable: true, filter: true }}
-          overlayNoRowsTemplate='Please wait while data is being fetched'
-        ></AgGridReact>
+        <div className='ag-theme-alpine mt-4' style={{ margin: "auto", width: 1100, height: 400 }}>
+          <AgGridReact
+            ref={gridRef}
+            rowMultiSelectWithClick={true}
+            rowData={rowData}
+            columnDefs={columnDefs}
+            rowSelection='multiple'
+            domLayout='normal'
+            defaultColDef={{ sortable: true, filter: true }}
+            overlayNoRowsTemplate='Please wait while data is being fetched'
+          ></AgGridReact>
+        </div>
       </div>
     </Layout>
   )
