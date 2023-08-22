@@ -9,7 +9,7 @@ export default function index({ token }) {
   return (
     <Layout heading='Requests'>
       <div className='mt-4'>
-        <div className=''>
+        <div className='flex flex-col items-center'>
           <div className='py-3'>
             <CompaniesRequest token={token} />
           </div>
