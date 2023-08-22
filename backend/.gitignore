@@ -113,3 +113,7 @@ exports
 build
 .strapi-updater.json
 .tmp
+
+
+#config
+/config/server.js
