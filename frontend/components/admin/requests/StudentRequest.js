@@ -175,7 +175,7 @@ export default function StudentRequest({ token = '' }) {
           </h2>
         </div>
       </div>
-      <div className='ag-theme-alpine mt-4' style={{ margin: "auto", width: "1100px", height: '500px' }}>
+      <div className='ag-theme-alpine mt-4' style={{ margin: "auto", height:600 }}>
         <AgGridReact
           rowData={students}
           columnDefs={columnDefs}

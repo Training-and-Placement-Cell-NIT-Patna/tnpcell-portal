@@ -138,27 +138,29 @@ export default function Recruiters({ token }) {
   }
   return (
     <Layout>
-      <div className='px-4 py-5 border-b border-gray-200 sm:px-6'>
-        <div className='-ml-4 -mt-2 flex items-center justify-between flex-wrap sm:flex-nowrap'>
-          <div className='ml-4 mt-2'>
-            <h3 className='text-lg leading-6 font-medium text-gray-900'>
-              Recruiters
-            </h3>
+      <div className='flex flex-col items-center'>
+        <div className='px-4 py-5 border-b w-[1100px] border-gray-200 sm:px-6'>
+          <div className='-ml-7 -mt-2 flex items-center justify-between flex-wrap sm:flex-nowrap'>
+            <div className='ml-4 mt-2'>
+              <h3 className='text-lg leading-6 font-medium text-gray-900'>
+                Recruiters
+              </h3>
+            </div>
           </div>
         </div>
-      </div>
-      <div className='ag-theme-alpine mt-4' style={{ margin:"auto",height: "400px" , width:"1100px", }}>
-        <AgGridReact
-          ref={gridRef}
-          rowMultiSelectWithClick={true}
-          rowData={rowData}
-          columnDefs={columnDefs}
-          rowSelection='multiple'
-          domLayout= 'normal'
-          headerClass="my-header-class"
-          defaultColDef={{ sortable: true, filter: true }}
-          overlayNoRowsTemplate='Please wait while data is being fetched'
-        ></AgGridReact>
+        <div className='ag-theme-alpine mt-4' style={{ margin: "auto", height: "400px", width: "1100px", }}>
+          <AgGridReact
+            ref={gridRef}
+            rowMultiSelectWithClick={true}
+            rowData={rowData}
+            columnDefs={columnDefs}
+            rowSelection='multiple'
+            domLayout='normal'
+            headerClass="my-header-class"
+            defaultColDef={{ sortable: true, filter: true }}
+            overlayNoRowsTemplate='Please wait while data is being fetched'
+          ></AgGridReact>
+        </div>
       </div>
     </Layout>
   )
