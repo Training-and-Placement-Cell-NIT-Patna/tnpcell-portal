@@ -39,7 +39,7 @@ export default function ApplicationDetails({ applications = '' }) {
           Applied Jobs
         </h3>
       </div>
-      <div className='ag-theme-alpine mt-4' style={{ margin: "auto", width: "1100px", height: 600 }}>
+      <div className='ag-theme-alpine mt-4' style={{ margin: "auto", width: 1100, height: 600 }}>
         <AgGridReact
           rowData={applications}
           columnDefs={columnDefs}

@@ -121,8 +121,8 @@ export default function Students({ token }) {
 
   return (
     <Layout>
-      <div className='flex-1'>
-        <div className='border-b border-gray-200 px-4 py-4 sm:flex sm:items-center sm:justify-between sm:px-6 lg:px-8'>
+      <div className='flex flex-col items-center'>
+        <div className='border-b border-gray-200 w-[1100px] px-4 py-4 sm:flex sm:items-center sm:justify-between sm:px-6 lg:px-8'>
           <div className='flex-1 min-w-0'>
             <h1 className='text-lg font-medium leading-6 text-gray-900 sm:truncate'>
               Companies
@@ -155,7 +155,7 @@ export default function Students({ token }) {
             </Link>
           </div>
         </div>
-        <div className='ag-theme-alpine mt-4' style={{ margin: "auto", height: "500px", width: "1100px" }}>
+        <div className='ag-theme-alpine mt-4' style={{ margin: "auto", height: 500, width: 1100 }}>
           <AgGridReact
             ref={gridRef}
             rowMultiSelectWithClick={true}
