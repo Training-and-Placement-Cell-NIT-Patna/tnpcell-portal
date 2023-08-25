@@ -7,7 +7,7 @@ import { API_URL } from '@/config/index'
 import qs from 'qs'
 import Link from 'next/link'
 
-export default function StudentApplied({ token = '', id = ''}) {
+export default function StudentApplied({ token = '', id = '' }) {
 
 
 
@@ -79,7 +79,7 @@ export default function StudentApplied({ token = '', id = ''}) {
   // }
 
 
-  
+
   // const handlePlacedIntern_6m = async () => {
   //   // Only use visible/filtered + selected rows
   //   const selectedRows = gridRef.current.api
@@ -354,564 +354,566 @@ export default function StudentApplied({ token = '', id = ''}) {
     fetchData()
   }, [])
 
-//  console.log(data);
+  //  console.log(data);
 
 
-  function handleApprove(id) {
-        window.location.href = `/admin/students/${id}`;
-      }
+  // function handleApprove(id) {
+  //   window.location.href = `/admin/students/${id}`;
+  // }
 
-const [columnDefs] = useState([
-  {
-    headerName: '',
-    field: 'checkbox',
-    headerCheckboxSelection: true,
-    headerCheckboxSelectionFilteredOnly: true,
-    checkboxSelection: true,
-  },
-  
-  {
-    headerName: 'Roll No.',
-    field: 'attributes.roll',
-    cellStyle: (params) => ({ borderRight: '2px solid #ccc',  }),
+  const [columnDefs] = useState([
+    {
+      headerName: '',
+      field: 'checkbox',
+      headerCheckboxSelection: true,
+      headerCheckboxSelectionFilteredOnly: true,
+      checkboxSelection: true,
+    },
 
-    // cellRenderer: function (params) {
-    //   return (
-    //     <div>
-    //       <Link href={`/admin/students/${params.data.id}`}>
-    //         {params.value}
-    //       </Link>
-    //     </div>
-    //   )
+    {
+      headerName: 'Roll No.',
+      field: 'attributes.roll',
+      cellStyle: (params) => ({ borderRight: '2px solid #ccc', }),
+
+      // cellRenderer: function (params) {
+      //   return (
+      //     <div>
+      //       <Link href={`/admin/students/${params.data.id}`}>
+      //         {params.value}
+      //       </Link>
+      //     </div>
+      //   )
+      // },
+      // headerCheckboxSelection: true,
+      // headerCheckboxSelectionFilteredOnly: true,
+      // checkboxSelection: true,
+    },
+    {
+      headerName: 'Details',
+      field: 'id',
+      cellStyle: (params) => ({ borderRight: '2px solid #ccc', }),
+
+      cellRenderer: function (params) {
+        return (
+          <div>
+            <Link href={`/admin/students/${params.value}`}>
+              <button
+                type='button'
+                // onClick={() => handleApprove(params.value)}
+                className='inline-flex items-center px-3 py-1.5 border border-transparent text-xs font-medium rounded-full shadow-sm text-white bg-yellow-500 hover:bg-yellow-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-600'
+              >
+                Details
+              </button>
+            </Link>
+          </div>
+        )
+      },
+
+      // function handleApprove(id) {
+      //   window.location.href = `/admin/companies/${id}`;
+      // }
+    },
+
+    {
+      headerName: 'Name',
+      field: 'attributes.name',
+      cellStyle: (params) => ({ borderRight: '2px solid #ccc', }),
+
+    },
+
+    {
+      headerName: 'Admission Year',
+      field: 'attributes.admission_year',
+      cellStyle: (params) => ({ borderRight: '2px solid #ccc', }),
+
+    },
+
+    // {
+    //   headerName: 'Approved',
+    //   field: 'attributes.approved'
     // },
-    // headerCheckboxSelection: true,
-    // headerCheckboxSelectionFilteredOnly: true,
-    // checkboxSelection: true,
-  },
-  {
-    headerName: 'Details',
-    field: 'id',
-    cellStyle: (params) => ({ borderRight: '2px solid #ccc',  }),
 
-    cellRenderer: function (params) {
-      return (
-        <div>
-          <button
-            type='button'
-             onClick={() => handleApprove(params.value)}
-             className='inline-flex items-center px-3 py-1.5 border border-transparent text-xs font-medium rounded-full shadow-sm text-white bg-yellow-500 hover:bg-yellow-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-600'
-          >
-            Details
-          </button>
-        </div>
-      )
+    {
+      headerName: 'Placed Status',
+      field: 'attributes.placed_status',
+      cellStyle: (params) => ({ borderRight: '2px solid #ccc', }),
+
     },
-  
-    // function handleApprove(id) {
-    //   window.location.href = `/admin/companies/${id}`;
-    // }
-  },
- 
-  {
-    headerName: 'Name',
-    field: 'attributes.name',
-    cellStyle: (params) => ({ borderRight: '2px solid #ccc',  }),
+    {
+      headerName: 'Internship Status (2 Month)',
+      field: 'attributes.internship_status_2',
+      cellStyle: (params) => ({ borderRight: '2px solid #ccc', }),
 
-  },
-
-  {
-    headerName: 'Admission Year',
-    field: 'attributes.admission_year',
-    cellStyle: (params) => ({ borderRight: '2px solid #ccc',  }),
-
-  },
-
-  // {
-  //   headerName: 'Approved',
-  //   field: 'attributes.approved'
-  // },
-
-  {
-    headerName: 'Placed Status',
-    field: 'attributes.placed_status',
-    cellStyle: (params) => ({ borderRight: '2px solid #ccc',  }),
-
-  },
-  {
-    headerName: 'Internship Status (2 Month)',
-    field: 'attributes.internship_status_2',
-    cellStyle: (params) => ({ borderRight: '2px solid #ccc',  }),
-
-  },
-  {
-    headerName: 'Internship Status (6 Month)',
-    field: 'attributes.internship_status_6',
-    cellStyle: (params) => ({ borderRight: '2px solid #ccc',  }),
-
-  },
-  {
-    headerName: 'FTE Status',
-    field: 'attributes.fte_status',
-    cellStyle: (params) => ({ borderRight: '2px solid #ccc',  }),
-
-  },
-  {
-    headerName: 'Course',
-    field: 'attributes.course.data.attributes.course_name',
-    cellStyle: (params) => ({ borderRight: '2px solid #ccc',  }),
- 
-  },
-  {
-    headerName: 'Program',
-    field: 'attributes.program.data?.attributes?.program_name',
-    cellStyle: (params) => ({ borderRight: '2px solid #ccc',  }),
-  
-  },
-
-  {
-    headerName: 'Father Name',
-    field: 'attributes.father_name',
-    cellStyle: (params) => ({ borderRight: '2px solid #ccc',  }),
-
-  },
-
-  {
-    headerName: 'Father Occupation',
-    field: 'attributes.father_occupation',
-    cellStyle: (params) => ({ borderRight: '2px solid #ccc',  }),
-
-
-  },
-
-  {
-    headerName: 'Mother Name',
-    field: 'attributes.mother_name',
-    cellStyle: (params) => ({ borderRight: '2px solid #ccc',  }),
-
-
-  },
-
-  {
-    headerName: 'Mother Occupation',
-    field: 'attributes.mother_occupation',
-    cellStyle: (params) => ({ borderRight: '2px solid #ccc',  }),
-
-  },
-
-  {
-    headerName: 'Mobile',
-    field: 'attributes.mobile_number_1',
-    cellStyle: (params) => ({ borderRight: '2px solid #ccc',  }),
-
-  },
-  {
-    headerName: 'Alternate Mobile',
-    field: 'attributes.mobile_number_2',
-    cellStyle: (params) => ({ borderRight: '2px solid #ccc',  }),
-
-  },
-  {
-    headerName: 'Institute Email',
-    field: 'attributes.institute_email_id',
-    cellStyle: (params) => ({ borderRight: '2px solid #ccc',  }),
-
-  },
-  {
-    headerName: 'Personal Email',
-    field: 'attributes.personal_email_id',
-    cellStyle: (params) => ({ borderRight: '2px solid #ccc',  }),
-
-  },
-  // {
-  //   headerName: 'Registered For',
-  //   field: 'attributes.registered_for',
-  // },
-  // {
-  //   headerName: 'Resume',
-  //   field: 'attributes.resume',
-  //   cellStyle: (params) => ({ borderRight: '2px solid #ccc',  }),
-
-  //   cellRenderer: function (params) {
-  //     return (
-  //       <div>
-  //         {params.value.data ? (
-  //           <a
-  //             href={API_URL + params.value.data.attributes.url}
-  //             target='_blank'
-  //             rel='noreferrer'
-  //             className='inline-flex items-center py-1.5 border border-transparent text-xs font-medium rounded-full shadow-sm text-yellow-600 hover:text-yellow-700 focus:text-yellow-800'
-  //           >
-  //             Resume
-  //           </a>
-  //         ) : (
-  //           <span>NA</span>
-  //         )}
-  //       </div>
-  //     )
-  //   },
-  // },
-  {
-    headerName: 'Resume',
-    field: 'attributes.resume_link',
-    cellStyle: (params) => ({ borderRight: '2px solid #ccc',  }),
-
-    cellRenderer: function (params) {
-      return (
-        <div>
-          {params.value ? (
-            <a
-              href={params.value}
-              target='_blank'
-              rel='noreferrer'
-              className='inline-flex items-center py-1.5 border border-transparent text-xs font-medium rounded-full shadow-sm text-yellow-600 hover:text-yellow-700 focus:text-yellow-800'
-            >
-              Resume Link
-            </a>
-          ) : (
-            <span>NA</span>
-          )}
-        </div>
-      )
     },
-  },
-  
+    {
+      headerName: 'Internship Status (6 Month)',
+      field: 'attributes.internship_status_6',
+      cellStyle: (params) => ({ borderRight: '2px solid #ccc', }),
+
+    },
+    {
+      headerName: 'FTE Status',
+      field: 'attributes.fte_status',
+      cellStyle: (params) => ({ borderRight: '2px solid #ccc', }),
+
+    },
+    {
+      headerName: 'Course',
+      field: 'attributes.course.data.attributes.course_name',
+      cellStyle: (params) => ({ borderRight: '2px solid #ccc', }),
+
+    },
+    {
+      headerName: 'Program',
+      field: 'attributes.program.data?.attributes?.program_name',
+      cellStyle: (params) => ({ borderRight: '2px solid #ccc', }),
+
+    },
+
+    {
+      headerName: 'Father Name',
+      field: 'attributes.father_name',
+      cellStyle: (params) => ({ borderRight: '2px solid #ccc', }),
+
+    },
+
+    {
+      headerName: 'Father Occupation',
+      field: 'attributes.father_occupation',
+      cellStyle: (params) => ({ borderRight: '2px solid #ccc', }),
+
+
+    },
+
+    {
+      headerName: 'Mother Name',
+      field: 'attributes.mother_name',
+      cellStyle: (params) => ({ borderRight: '2px solid #ccc', }),
+
+
+    },
+
+    {
+      headerName: 'Mother Occupation',
+      field: 'attributes.mother_occupation',
+      cellStyle: (params) => ({ borderRight: '2px solid #ccc', }),
+
+    },
+
+    {
+      headerName: 'Mobile',
+      field: 'attributes.mobile_number_1',
+      cellStyle: (params) => ({ borderRight: '2px solid #ccc', }),
+
+    },
+    {
+      headerName: 'Alternate Mobile',
+      field: 'attributes.mobile_number_2',
+      cellStyle: (params) => ({ borderRight: '2px solid #ccc', }),
+
+    },
+    {
+      headerName: 'Institute Email',
+      field: 'attributes.institute_email_id',
+      cellStyle: (params) => ({ borderRight: '2px solid #ccc', }),
+
+    },
+    {
+      headerName: 'Personal Email',
+      field: 'attributes.personal_email_id',
+      cellStyle: (params) => ({ borderRight: '2px solid #ccc', }),
+
+    },
+    // {
+    //   headerName: 'Registered For',
+    //   field: 'attributes.registered_for',
+    // },
+    // {
+    //   headerName: 'Resume',
+    //   field: 'attributes.resume',
+    //   cellStyle: (params) => ({ borderRight: '2px solid #ccc',  }),
+
+    //   cellRenderer: function (params) {
+    //     return (
+    //       <div>
+    //         {params.value.data ? (
+    //           <a
+    //             href={API_URL + params.value.data.attributes.url}
+    //             target='_blank'
+    //             rel='noreferrer'
+    //             className='inline-flex items-center py-1.5 border border-transparent text-xs font-medium rounded-full shadow-sm text-yellow-600 hover:text-yellow-700 focus:text-yellow-800'
+    //           >
+    //             Resume
+    //           </a>
+    //         ) : (
+    //           <span>NA</span>
+    //         )}
+    //       </div>
+    //     )
+    //   },
+    // },
+    {
+      headerName: 'Resume',
+      field: 'attributes.resume_link',
+      cellStyle: (params) => ({ borderRight: '2px solid #ccc', }),
+
+      cellRenderer: function (params) {
+        return (
+          <div>
+            {params.value ? (
+              <a
+                href={params.value}
+                target='_blank'
+                rel='noreferrer'
+                className='inline-flex items-center py-1.5 border border-transparent text-xs font-medium rounded-full shadow-sm text-yellow-600 hover:text-yellow-700 focus:text-yellow-800'
+              >
+                Resume Link
+              </a>
+            ) : (
+              <span>NA</span>
+            )}
+          </div>
+        )
+      },
+    },
+
+
+    {
+      headerName: 'Blood Group',
+      field: 'attributes.blood_group',
+      cellStyle: (params) => ({ borderRight: '2px solid #ccc', }),
+
+
+    },
+
+    {
+      headerName: 'Height',
+      field: 'attributes.height',
+      filter: 'agNumberColumnFilter',
+      cellStyle: (params) => ({ borderRight: '2px solid #ccc', }),
+
+
+    },
+
+    {
+      headerName: 'Weight',
+      field: 'attributes.weight',
+      filter: 'agNumberColumnFilter',
+      cellStyle: (params) => ({ borderRight: '2px solid #ccc', }),
 
-  {
-    headerName: 'Blood Group',
-    field: 'attributes.blood_group',
-    cellStyle: (params) => ({ borderRight: '2px solid #ccc',  }),
 
+    },
 
-  },
+    {
+      headerName: 'Domicile',
+      field: 'attributes.domicile',
+      cellStyle: (params) => ({ borderRight: '2px solid #ccc', }),
 
-  {
-    headerName: 'Height',
-    field: 'attributes.height',
-    filter: 'agNumberColumnFilter',
-    cellStyle: (params) => ({ borderRight: '2px solid #ccc',  }),
+    },
 
+    {
+      headerName: 'Address',
+      field: 'attributes.address',
+      cellStyle: (params) => ({ borderRight: '2px solid #ccc', }),
 
-  },
+    },
 
-  {
-    headerName: 'Weight',
-    field: 'attributes.weight',
-    filter: 'agNumberColumnFilter',
-    cellStyle: (params) => ({ borderRight: '2px solid #ccc',  }),
+    {
+      headerName: 'City',
+      field: 'attributes.city',
+      cellStyle: (params) => ({ borderRight: '2px solid #ccc', }),
 
+    },
 
-  },
+    {
+      headerName: 'State',
+      field: 'attributes.state',
+      cellStyle: (params) => ({ borderRight: '2px solid #ccc', }),
 
-  {
-    headerName: 'Domicile',
-    field: 'attributes.domicile',
-    cellStyle: (params) => ({ borderRight: '2px solid #ccc',  }),
+    },
 
-  },
+    {
+      headerName: 'Pin Code',
+      field: 'attributes.pin_code',
+      cellStyle: (params) => ({ borderRight: '2px solid #ccc', }),
 
-  {
-    headerName: 'Address',
-    field: 'attributes.address',
-    cellStyle: (params) => ({ borderRight: '2px solid #ccc',  }),
+    },
 
-  },
+    {
+      headerName: 'Correspondence Address',
+      field: 'attributes.correspondance_address',
+      cellStyle: (params) => ({ borderRight: '2px solid #ccc', }),
 
-  {
-    headerName: 'City',
-    field: 'attributes.city',
-    cellStyle: (params) => ({ borderRight: '2px solid #ccc',  }),
+    },
 
-  },
+    {
+      headerName: 'Aadhar No',
+      field: 'attributes.aadhar_no',
+      cellStyle: (params) => ({ borderRight: '2px solid #ccc', }),
 
-  {
-    headerName: 'State',
-    field: 'attributes.state',
-    cellStyle: (params) => ({ borderRight: '2px solid #ccc',  }),
+    },
 
-  },
+    {
+      headerName: 'Driving License No',
+      field: 'attributes.driving_licience_no',
+      cellStyle: (params) => ({ borderRight: '2px solid #ccc', }),
 
-  {
-    headerName: 'Pin Code',
-    field: 'attributes.pin_code',
-    cellStyle: (params) => ({ borderRight: '2px solid #ccc',  }),
+    },
 
-  },
+    {
+      headerName: 'Driving License',
+      field: 'attributes.driving_licience_link',
+      cellStyle: (params) => ({ borderRight: '2px solid #ccc', }),
 
-  {
-    headerName: 'Correspondance Address',
-    field: 'attributes.correspondance_address',
-    cellStyle: (params) => ({ borderRight: '2px solid #ccc',  }),
+    },
 
-  },
+    {
+      headerName: 'Pancard No',
+      field: 'attributes.pancard_no',
+      cellStyle: (params) => ({ borderRight: '2px solid #ccc', }),
 
-  {
-    headerName: 'Aadhar No',
-    field: 'attributes.aadhar_no',
-    cellStyle: (params) => ({ borderRight: '2px solid #ccc',  }),
+    },
 
-  },
+    {
+      headerName: 'All Semester Marksheets',
+      field: 'attributes.all_sem_marksheet',
+      cellStyle: (params) => ({ borderRight: '2px solid #ccc', }),
 
-  {
-    headerName: 'Driving Licience No',
-    field: 'attributes.driving_licience_no',
-    cellStyle: (params) => ({ borderRight: '2px solid #ccc',  }),
+    },
 
-  },
+    {
+      headerName: 'X Marksheet',
+      field: 'attributes.X_marksheet',
+      cellStyle: (params) => ({ borderRight: '2px solid #ccc', }),
 
-  {
-    headerName: 'Driving Licience',
-    field: 'attributes.driving_licience_link',
-    cellStyle: (params) => ({ borderRight: '2px solid #ccc',  }),
+    },
 
-  },
+    {
+      headerName: 'XII Marksheet',
+      field: 'attributes.XII_marksheet',
+      cellStyle: (params) => ({ borderRight: '2px solid #ccc', }),
 
-  {
-    headerName: 'Pancard No',
-    field: 'attributes.pancard_no',
-    cellStyle: (params) => ({ borderRight: '2px solid #ccc',  }),
+    },
 
-  },
+    {
+      headerName: 'X Board',
+      field: 'attributes.X_board',
+      cellStyle: (params) => ({ borderRight: '2px solid #ccc', }),
 
-  {
-    headerName: 'All Semester Marksheets',
-    field: 'attributes.all_sem_marksheet',
-    cellStyle: (params) => ({ borderRight: '2px solid #ccc',  }),
+    },
 
-  },
+    {
+      headerName: 'X YOP',
+      field: 'attributes.X_YOP',
+      filter: 'agNumberColumnFilter',
+      cellStyle: (params) => ({ borderRight: '2px solid #ccc', }),
 
-  {
-    headerName: 'X Marksheet',
-    field: 'attributes.X_marksheet',
-    cellStyle: (params) => ({ borderRight: '2px solid #ccc',  }),
 
-  },
+    },
 
-  {
-    headerName: 'XII Marksheet',
-    field: 'attributes.XII_marksheet',
-    cellStyle: (params) => ({ borderRight: '2px solid #ccc',  }),
+    {
+      headerName: 'XII Board',
+      field: 'attributes.XII_board',
+      cellStyle: (params) => ({ borderRight: '2px solid #ccc', }),
 
-  },
 
-  {
-    headerName: 'X Board',
-    field: 'attributes.X_board',
-    cellStyle: (params) => ({ borderRight: '2px solid #ccc',  }),
+    },
 
-  },
+    {
+      headerName: 'XII YOP',
+      field: 'attributes.XII_YOP',
+      cellStyle: (params) => ({ borderRight: '2px solid #ccc', }),
 
-  {
-    headerName: 'X YOP',
-    field: 'attributes.X_YOP',
-    filter: 'agNumberColumnFilter',
-    cellStyle: (params) => ({ borderRight: '2px solid #ccc',  }),
+      filter: 'agNumberColumnFilter',
 
+    },
 
-  },
+    {
+      headerName: 'SPI 1',
+      field: 'attributes.spi_1',
+      filter: 'agNumberColumnFilter',
+      cellStyle: (params) => ({ borderRight: '2px solid #ccc', }),
 
-  {
-    headerName: 'XII Board',
-    field: 'attributes.XII_board',
-    cellStyle: (params) => ({ borderRight: '2px solid #ccc',  }),
 
-    
-  },
+    },
 
-  {
-    headerName: 'XII YOP',
-    field: 'attributes.XII_YOP',
-    cellStyle: (params) => ({ borderRight: '2px solid #ccc',  }),
+    {
+      headerName: 'SPI 2',
+      field: 'attributes.spi_2',
+      filter: 'agNumberColumnFilter',
+      cellStyle: (params) => ({ borderRight: '2px solid #ccc', }),
 
-    filter: 'agNumberColumnFilter',
 
-  },
+    },
 
-  {
-    headerName: 'SPI 1',
-    field: 'attributes.spi_1',
-    filter: 'agNumberColumnFilter',
-    cellStyle: (params) => ({ borderRight: '2px solid #ccc',  }),
+    {
+      headerName: 'SPI 3',
+      field: 'attributes.spi_3',
+      filter: 'agNumberColumnFilter',
+      cellStyle: (params) => ({ borderRight: '2px solid #ccc', }),
 
 
-  },
+    },
 
-  {
-    headerName: 'SPI 2',
-    field: 'attributes.spi_2',
-    filter: 'agNumberColumnFilter',
-    cellStyle: (params) => ({ borderRight: '2px solid #ccc',  }),
+    {
+      headerName: 'SPI 4',
+      field: 'attributes.spi_4',
+      filter: 'agNumberColumnFilter',
+      cellStyle: (params) => ({ borderRight: '2px solid #ccc', }),
 
 
-  },
+    },
 
-  {
-    headerName: 'SPI 3',
-    field: 'attributes.spi_3',
-    filter: 'agNumberColumnFilter',
-    cellStyle: (params) => ({ borderRight: '2px solid #ccc',  }),
+    {
+      headerName: 'SPI 5',
+      field: 'attributes.spi_5',
+      filter: 'agNumberColumnFilter',
+      cellStyle: (params) => ({ borderRight: '2px solid #ccc', }),
 
 
-  },
+    },
 
-  {
-    headerName: 'SPI 4',
-    field: 'attributes.spi_4',
-    filter: 'agNumberColumnFilter',
-    cellStyle: (params) => ({ borderRight: '2px solid #ccc',  }),
+    {
+      headerName: 'SPI 6',
+      field: 'attributes.spi_6',
+      filter: 'agNumberColumnFilter',
+      cellStyle: (params) => ({ borderRight: '2px solid #ccc', }),
 
 
-  },
+    },
 
-  {
-    headerName: 'SPI 5',
-    field: 'attributes.spi_5',
-    filter: 'agNumberColumnFilter',
-    cellStyle: (params) => ({ borderRight: '2px solid #ccc',  }),
+    {
+      headerName: 'SPI 7',
+      field: 'attributes.spi_7',
+      filter: 'agNumberColumnFilter',
+      cellStyle: (params) => ({ borderRight: '2px solid #ccc', }),
 
 
-  },
+    },
 
-  {
-    headerName: 'SPI 6',
-    field: 'attributes.spi_6',
-    filter: 'agNumberColumnFilter',
-    cellStyle: (params) => ({ borderRight: '2px solid #ccc',  }),
+    {
+      headerName: 'SPI 8',
+      field: 'attributes.spi_8',
+      filter: 'agNumberColumnFilter',
+      cellStyle: (params) => ({ borderRight: '2px solid #ccc', }),
 
 
-  },
+    },
 
-  {
-    headerName: 'SPI 7',
-    field: 'attributes.spi_7',
-    filter: 'agNumberColumnFilter',
-    cellStyle: (params) => ({ borderRight: '2px solid #ccc',  }),
+    {
+      headerName: 'SPI 9',
+      field: 'attributes.spi_9',
+      filter: 'agNumberColumnFilter',
+      cellStyle: (params) => ({ borderRight: '2px solid #ccc', }),
 
 
-  },
+    },
 
-  {
-    headerName: 'SPI 8',
-    field: 'attributes.spi_8',
-    filter: 'agNumberColumnFilter',
-    cellStyle: (params) => ({ borderRight: '2px solid #ccc',  }),
+    {
+      headerName: 'Total Backlogs',
+      field: 'attributes.total_backlogs',
+      filter: 'agNumberColumnFilter',
+      cellStyle: (params) => ({ borderRight: '2px solid #ccc', }),
 
 
-  },
+    },
 
-  {
-    headerName: 'SPI 9',
-    field: 'attributes.spi_9',
-    filter: 'agNumberColumnFilter',
-    cellStyle: (params) => ({ borderRight: '2px solid #ccc',  }),
+    {
+      headerName: 'Current Backlogs',
+      field: 'attributes.current_backlogs',
+      filter: 'agNumberColumnFilter',
+      cellStyle: (params) => ({ borderRight: '2px solid #ccc', }),
 
 
-  },
+    },
 
-  {
-    headerName: 'Total Backlogs',
-    field: 'attributes.total_backlogs',
-    filter: 'agNumberColumnFilter',
-    cellStyle: (params) => ({ borderRight: '2px solid #ccc',  }),
+    {
+      headerName: 'Current Status',
+      field: 'attributes.current_status',
+      cellStyle: (params) => ({ borderRight: '2px solid #ccc', }),
 
+    },
 
-  },
+    {
+      headerName: 'CPI',
+      field: 'attributes.cpi',
+      filter: 'agNumberColumnFilter',
+      cellStyle: (params) => ({ borderRight: '2px solid #ccc', }),
 
-  {
-    headerName: 'Current Backlogs',
-    field: 'attributes.current_backlogs',
-    filter: 'agNumberColumnFilter',
-    cellStyle: (params) => ({ borderRight: '2px solid #ccc',  }),
+    },
 
 
-  },
 
-  {
-    headerName: 'Current Status',
-    field: 'attributes.current_status',
-    cellStyle: (params) => ({ borderRight: '2px solid #ccc',  }),
+    {
+      headerName: 'Xth Marks',
+      field: 'attributes.X_marks',
+      cellStyle: (params) => ({ borderRight: '2px solid #ccc', }),
 
-  },
+    },
+    {
+      headerName: 'XIIth Marks',
+      field: 'attributes.XII_marks',
+      cellStyle: (params) => ({ borderRight: '2px solid #ccc', }),
 
-  {
-    headerName: 'CPI',
-    field: 'attributes.cpi',
-    filter: 'agNumberColumnFilter',
-    cellStyle: (params) => ({ borderRight: '2px solid #ccc',  }),
+    },
+    {
+      headerName: 'Category',
+      field: 'attributes.category',
+      cellStyle: (params) => ({ borderRight: '2px solid #ccc', }),
 
-  },
-  
-  
-  
-  {
-    headerName: 'Xth Marks',
-    field: 'attributes.X_marks',
-    cellStyle: (params) => ({ borderRight: '2px solid #ccc',  }),
+    },
 
-  },
-  {
-    headerName: 'XIIth Marks',
-    field: 'attributes.XII_marks',
-    cellStyle: (params) => ({ borderRight: '2px solid #ccc',  }),
+    {
+      headerName: 'PWD',
+      field: 'attributes.pwd',
+      cellStyle: (params) => ({ borderRight: '2px solid #ccc', }),
 
-  },
-  {
-    headerName: 'Category',
-    field: 'attributes.category',
-    cellStyle: (params) => ({ borderRight: '2px solid #ccc',  }),
+    },
 
-  },
+    {
+      headerName: 'Type Of Disability',
+      field: 'attributes.type_of_disability',
+      cellStyle: (params) => ({ borderRight: '2px solid #ccc', }),
 
-  {
-    headerName: 'PWD',
-    field: 'attributes.pwd',
-    cellStyle: (params) => ({ borderRight: '2px solid #ccc',  }),
+    },
 
-  },
+    {
+      headerName: 'Disability Percentage (If PWD)',
+      field: 'attributes.disability_percentage',
+      cellStyle: (params) => ({ borderRight: '2px solid #ccc', }),
 
-  {
-    headerName: 'Type Of Disability',
-    field: 'attributes.type_of_disability',
-    cellStyle: (params) => ({ borderRight: '2px solid #ccc',  }),
+    },
 
-  },
 
-  {
-    headerName: 'Disability Percentage (If PWD)',
-    field: 'attributes.disability_percentage',
-    cellStyle: (params) => ({ borderRight: '2px solid #ccc',  }),
+    {
+      headerName: 'Disability Certificate (If PWD)',
+      field: 'attributes.disability_certificate',
+      cellStyle: (params) => ({ borderRight: '2px solid #ccc', }),
 
-  },
+    },
 
-  
-  {
-    headerName: 'Disability Certificate (If PWD)',
-    field: 'attributes.disabilty_certificate',
-    cellStyle: (params) => ({ borderRight: '2px solid #ccc',  }),
+    {
+      headerName: 'Gender',
+      field: 'attributes.gender',
+      cellStyle: (params) => ({ borderRight: '2px solid #ccc', }),
 
-  },
 
-  {
-    headerName: 'Gender',
-    field: 'attributes.gender',
-    cellStyle: (params) => ({ borderRight: '2px solid #ccc',  }),
+    },
+    {
+      headerName: 'Date of Birth',
+      field: 'attributes.date_of_birth',
+      cellStyle: (params) => ({ borderRight: '2px solid #ccc', }),
 
+    },
+    {
+      headerName: 'Bachelor Marks',
+      field: 'attributes.bachelor_marks',
+      cellStyle: (params) => ({ borderRight: '2px solid #ccc', }),
 
-  },
-  {
-    headerName: 'Date of Birth',
-    field: 'attributes.date_of_birth',
-    cellStyle: (params) => ({ borderRight: '2px solid #ccc',  }),
+    },
+  ])
 
-  },
-  {
-    headerName: 'Bachelor Marks',
-    field: 'attributes.bachelor_marks',
-    cellStyle: (params) => ({ borderRight: '2px solid #ccc',  }),
-
-  },
-])
-
-return (
+  return (
     <div className='my-4'>
       <div className='border-b border-gray-200 px-4 py-4 sm:flex sm:items-center sm:justify-between sm:px-6 lg:px-8'>
         <div className='flex-1 min-w-0'>
@@ -921,7 +923,7 @@ return (
         </div>
 
         <div className='mt-4 sm:mt-0 sm:ml-4'>
-          
+
           {/* <button
             type='button'
             className='order-1 ml-3 inline-flex items-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500 sm:order-0 sm:ml-0'
@@ -937,7 +939,7 @@ return (
             Mark as Rejected
           </button>
 
-{/* 
+          {/* 
           <button
             type='button'
             onClick={handleUnplaced}
@@ -997,7 +999,7 @@ return (
           rowSelection='multiple'
           rowData={students}
           columnDefs={columnDefs}
-          domLayout= 'normal'
+          domLayout='normal'
           headerClass="my-header-class"
           defaultColDef={{ sortable: true, filter: true }}
         ></AgGridReact>
