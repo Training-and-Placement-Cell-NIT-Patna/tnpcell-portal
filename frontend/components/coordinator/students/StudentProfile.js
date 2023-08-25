@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react'
 // import { useRouter } from 'next/router'
-import { toast } from 'react-toastify'
+// import { toast } from 'react-toastify'
 import { API_URL } from '@/config/index'
 import { PaperClipIcon } from '@heroicons/react/solid'
-
+// import Image from 'next/image'
 export default function StudentProfileEdit({ token = '', student }) {
   const id = student.id
   const {
@@ -30,19 +30,14 @@ export default function StudentProfileEdit({ token = '', student }) {
 
   //get courses of selected program
 
-  const [courses , setCourses] = useState([]);
-  const [programs , setPrograms] = useState([]);
+  const [courses, setCourses] = useState([]);
+  const [programs, setPrograms] = useState([]);
 
-useEffect(()=>{
-  setCourses([course?.data?.attributes?.course_name]);
-  setPrograms([program?.data?.attributes?.program_name]);
-},[])
+  useEffect(() => {
+    setCourses([course?.data?.attributes?.course_name]);
+    setPrograms([program?.data?.attributes?.program_name]);
+  }, [])
 
-console.log("jai mata di")
-  //checking the values inside the courses
-
-
- console.log("Misc=> ",values.program);
 
 
   return (
@@ -57,7 +52,7 @@ console.log("jai mata di")
               <p className='mt-1 text-sm text-gray-500'>
                 Student Personal Information, account will be active after your
                 approval.
-                <img src={`${API_URL}${student?.attributes?.profile_pic?.data?.attributes?.url}`} />
+                <img  alt='Profile Picture' src={`${API_URL}${student?.attributes?.profile_pic?.data?.attributes?.url}`} />
               </p>
             </div>
             <div className='mt-5 md:mt-0 md:col-span-2'>
@@ -910,6 +905,7 @@ console.log("jai mata di")
                   </label>
                   <select
                     // onClick={setCourseAndP/rogram}
+                    disabled
                     value={values.program}
                     onChange={handleInputChange}
                     id='program'
@@ -918,15 +914,15 @@ console.log("jai mata di")
                     required
                     className='mt-1 block w-full py-2 px-3 border border-red-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm'
                   >
-                    
+
                     {/* <option>Select</option> */}
-                    {programs.map((program)=>{
-                          return (
-                            <option key={program.id} value={program.id}>
-                              {program}
-                            </option>
-                          )
-                      })}
+                    {programs.map((program) => {
+                      return (
+                        <option key={program.id} value={program.id}>
+                          {program}
+                        </option>
+                      )
+                    })}
                   </select>
                 </div>
 
@@ -938,6 +934,7 @@ console.log("jai mata di")
                     Course
                   </label>
                   <select
+                    disabled
                     value={values.course}
                     onChange={handleInputChange}
                     id="course"
