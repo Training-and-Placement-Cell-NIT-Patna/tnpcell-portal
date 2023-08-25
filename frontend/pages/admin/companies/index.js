@@ -18,7 +18,7 @@ export default function Students({ token }) {
     // See comment in pages/admin/students/index.js for logic behind this
 
     const selected_and_visible_node = gridRef.current.api.getSelectedNodes().findIndex(node => node.displayed);
-  
+
     if (selected_and_visible_node == -1) {
       // If nothing is selected, export ALL
       gridRef.current.api.exportDataAsCsv()
@@ -30,9 +30,9 @@ export default function Students({ token }) {
     }
   }, [])
 
-  function handleApprove(id) {
-    window.location.href = `/admin/companies/${id}`;
-  }
+  // function handleApprove(id) {
+  //   window.location.href = `/admin/companies/${id}`;
+  // }
 
 
 
@@ -61,31 +61,33 @@ export default function Students({ token }) {
     //   headerName: 'Approval Status',
     //   field: 'attributes.status',
     // },
-  
+
     {
       headerName: 'Details',
       field: 'id',
       cellRenderer: function (params) {
         return (
           <div>
-            <button
-              type='button'
-               onClick={() => handleApprove(params.value)}
-              className='inline-flex items-center px-3 py-1.5 border border-transparent text-xs font-medium rounded-full shadow-sm text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500'
-            >
-              Details
-            </button>
+            <Link href={`/admin/companies/${params.value}`}>
+              <button
+                type='button'
+                // onClick={() => handleApprove(params.value)}
+                className='inline-flex items-center px-3 py-1.5 border border-transparent text-xs font-medium rounded-full shadow-sm text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500'
+              >
+                Details
+              </button>
+            </Link>
           </div>
         )
       },
-    
+
       // function handleApprove(id) {
       //   window.location.href = `/admin/companies/${id}`;
       // }
     },
 
     {
-      headerName: 'Company Addrees',
+      headerName: 'Company Address',
       field: 'attributes.company_address',
     },
     {
@@ -129,7 +131,7 @@ export default function Students({ token }) {
             </h1>
           </div>
           <div className='mt-4 flex sm:mt-0 sm:ml-4'>
-            
+
             {/* <button
               type='button'
               className='order-1 ml-3 inline-flex items-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500 sm:order-0 sm:ml-0'
@@ -161,7 +163,7 @@ export default function Students({ token }) {
             rowMultiSelectWithClick={true}
             rowData={rowData}
             columnDefs={columnDefs}
-            domLayout= 'normal'
+            domLayout='normal'
             rowSelection='multiple'
             defaultColDef={{ sortable: true, filter: true }}
           ></AgGridReact>
