@@ -133,7 +133,7 @@ export default function StudentProfileEdit({ token = "", student }) {
   console.log("this is course=> ",course);
 
   useEffect(() => {
-        setCourses([course?.data?.attributes?.course_name,...courses]);//courses are not setted up here becaus4e there are no
+        setCourses([course?.data?.attributes?.course_name]);//courses are not setted up here becaus4e there are no
         //courses exits here at all
   }, []);
 
