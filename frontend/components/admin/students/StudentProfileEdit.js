@@ -130,13 +130,12 @@ export default function StudentProfileEdit({ token = "", student }) {
   //   })
   // },[])
 
+  console.log("this is course=> ",course);
+
   useEffect(() => {
-    programs.map((program) => {
-      if (program.id === parseFloat(values.program)) {
-        setCourses(program?.attributes?.courses?.data);
-      }
-    });
-  }, [values.program]);
+        setCourses([course?.data?.attributes?.course_name,...courses]);//courses are not setted up here becaus4e there are no
+        //courses exits here at all
+  }, []);
 
   return (
     <>
@@ -930,9 +929,9 @@ export default function StudentProfileEdit({ token = "", student }) {
                       required
                       className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-yellow-500 focus:border-yellow-500 sm:text-sm"
                     >
-                      <option>Select</option>
+                      {/* <option>Select</option> */}
                       {programs.map((program) => (
-                        <option key={program.id} value={program.id}>
+                        <option >
                           {program.attributes.program_name}
                         </option>
                       ))}
@@ -955,10 +954,10 @@ export default function StudentProfileEdit({ token = "", student }) {
                       required
                       className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-yellow-500 focus:border-yellow-500 sm:text-sm"
                     >
-                      <option>Select</option>
+                      {/* <option>Select</option> */}
                       {courses.map((course) => (
-                        <option key={course.id} value={course.id}>
-                          {course.attributes.course_name}
+                        <option >
+                          {course}
                         </option>
                       ))}
                     </select>
