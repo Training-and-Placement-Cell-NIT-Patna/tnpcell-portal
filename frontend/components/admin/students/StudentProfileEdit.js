@@ -20,6 +20,7 @@ export default function StudentProfileEdit({ token = "", student }) {
   } = student.attributes;
 
   const [values, setValues] = useState(newStudent);
+  const [chosenCourse , setChosenCourse] = useState("");
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -93,9 +94,11 @@ export default function StudentProfileEdit({ token = "", student }) {
     }
   };
 
-  const [programs, setPrograms] = useState([]);
+  const [programs, setPrograms] = useState([program.data]);//this contains an object consists of two properties {id: , attributes: } and the attributes further contain the program_name
 
-  const [courses, setCourses] = useState([]);
+  const [courses, setCourses] = useState([course?.data]); //this conatin an object consists of two properties {id:  , attributes: } and the attributes has the course_name
+
+  const [mainData , setMainData] = useState([]); // data which is filled by student 
 
   const [placedStatus, setPlacedStatus] = useState(placed_status);
 
@@ -110,7 +113,9 @@ export default function StudentProfileEdit({ token = "", student }) {
     })
       .then((res) => res.json())
       .then((data) => {
-        setPrograms(data.data);
+        setMainData(data.data);
+        setPrograms(data.data)
+
       });
   }, []);
 
@@ -127,16 +132,27 @@ export default function StudentProfileEdit({ token = "", student }) {
   //   })
   // },[])
 
-  // console.log("this is course=> ", course.data);
-
   useEffect(() => {
-    programs.map((program) => {
-      if (program.id === parseFloat(values.program)) {
-        setCourses(program?.attributes?.courses?.data)
+    mainData.map((program) => {
+
+      // if (program.id === parseInt(values.program)) {
+      //   setCourses(program?.attributes?.courses?.data);
+      // }
+
+      if (program.id === parseInt(values.program)) {
+       if (program?.attributes?.courses?.data?.attributes?.course_name != course.data.attributes.course_name) {
+
+         setCourses([course?.data]);
+          setCourses((pre) => {
+            
+            // if(program.attributes.courses.data.attributes.course_name != )
+            return (
+              [...pre, ...program?.attributes?.courses?.data]
+            )
+          });
+        }
       }
     })
-    //setCourses([course?.data?.attributes?.course_name]);//courses are not setted up here becaus4e there are no
-    //courses exits here at all
   }, [values.program]);
 
   return (
@@ -923,7 +939,8 @@ export default function StudentProfileEdit({ token = "", student }) {
                       Program
                     </label>
                     <select
-                      value={program.value}
+                     
+                      // value={program.value}
                       onChange={handleInputChange}
                       id="program"
                       name="program"
@@ -939,8 +956,8 @@ export default function StudentProfileEdit({ token = "", student }) {
                       ))}
                     </select>
                   </div>
-                  <p>{course.data.attributes.course_name}</p>
-                  <p>{program.data.attributes.program_name}</p>
+                  {/* <p>{course.data.attributes.course_name}</p>
+                  <p>{program.data.attributes.program_name}</p> */}
                   <div className="col-span-6 sm:col-span-3">
                     <label
                       htmlFor="course"
@@ -958,10 +975,10 @@ export default function StudentProfileEdit({ token = "", student }) {
                       className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-yellow-500 focus:border-yellow-500 sm:text-sm"
                     >
                       {/* <option>Select</option> */}
-                      <option value=''>Select Course</option>
-                      {courses?.map((course) => (
+                      {/* <option value=''>{course.data.attributes.course_name}</option> */}
+                      {courses.map((course) => (
                         <option key={course.id} value={course.id}>
-                          {course.attributes.course_name}
+                          {course?.attributes?.course_name}
                         </option>
                       ))}
                     </select>
