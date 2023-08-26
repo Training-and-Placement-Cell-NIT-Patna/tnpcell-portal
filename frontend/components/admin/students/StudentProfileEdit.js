@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useRouter } from "next/router";
+// import { useRouter } from "next/router";
 import { toast } from "react-toastify";
 import { API_URL } from "@/config/index";
 import { PaperClipIcon } from "@heroicons/react/solid";
@@ -20,9 +20,6 @@ export default function StudentProfileEdit({ token = "", student }) {
   } = student.attributes;
 
   const [values, setValues] = useState(newStudent);
-
-  const router = useRouter();
-
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -130,12 +127,17 @@ export default function StudentProfileEdit({ token = "", student }) {
   //   })
   // },[])
 
-  console.log("this is course=> ",course);
+  // console.log("this is course=> ", course.data);
 
   useEffect(() => {
-        setCourses([course?.data?.attributes?.course_name]);//courses are not setted up here becaus4e there are no
-        //courses exits here at all
-  }, []);
+    programs.map((program) => {
+      if (program.id === parseFloat(values.program)) {
+        setCourses(program?.attributes?.courses?.data)
+      }
+    })
+    //setCourses([course?.data?.attributes?.course_name]);//courses are not setted up here becaus4e there are no
+    //courses exits here at all
+  }, [values.program]);
 
   return (
     <>
@@ -921,7 +923,7 @@ export default function StudentProfileEdit({ token = "", student }) {
                       Program
                     </label>
                     <select
-                      value={values.program}
+                      value={program.value}
                       onChange={handleInputChange}
                       id="program"
                       name="program"
@@ -931,13 +933,14 @@ export default function StudentProfileEdit({ token = "", student }) {
                     >
                       {/* <option>Select</option> */}
                       {programs.map((program) => (
-                        <option >
+                        <option key={program.id} value={program.id}>
                           {program.attributes.program_name}
                         </option>
                       ))}
                     </select>
                   </div>
-
+                  <p>{course.data.attributes.course_name}</p>
+                  <p>{program.data.attributes.program_name}</p>
                   <div className="col-span-6 sm:col-span-3">
                     <label
                       htmlFor="course"
@@ -955,9 +958,10 @@ export default function StudentProfileEdit({ token = "", student }) {
                       className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-yellow-500 focus:border-yellow-500 sm:text-sm"
                     >
                       {/* <option>Select</option> */}
-                      {courses.map((course) => (
-                        <option >
-                          {course}
+                      <option value=''>Select Course</option>
+                      {courses?.map((course) => (
+                        <option key={course.id} value={course.id}>
+                          {course.attributes.course_name}
                         </option>
                       ))}
                     </select>
