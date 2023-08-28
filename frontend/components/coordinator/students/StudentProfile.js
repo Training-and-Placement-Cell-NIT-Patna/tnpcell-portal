@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react'
 // import { useRouter } from 'next/router'
-import { toast } from 'react-toastify'
+// import { toast } from 'react-toastify'
 import { API_URL } from '@/config/index'
 import { PaperClipIcon } from '@heroicons/react/solid'
-
+// import Image from 'next/image'
 export default function StudentProfileEdit({ token = '', student }) {
   const id = student.id
   const {
@@ -11,10 +11,14 @@ export default function StudentProfileEdit({ token = '', student }) {
     resume_link,
     updatedAt,
     user_relation,
+    program,
+    course,
     resume,
     profile_pic,
+    placed_status,
     ...newStudent
-  } = student.attributes
+  } = student.attributes;
+
   const [values, setValues] = useState(newStudent)
 
   // const router = useRouter()
@@ -25,6 +29,16 @@ export default function StudentProfileEdit({ token = '', student }) {
   }
 
   //get courses of selected program
+
+  const [courses, setCourses] = useState([]);
+  const [programs, setPrograms] = useState([]);
+
+  useEffect(() => {
+    setCourses([course?.data?.attributes?.course_name]);
+    setPrograms([program?.data?.attributes?.program_name]);
+  }, [])
+
+
 
   return (
     <form>
@@ -38,7 +52,7 @@ export default function StudentProfileEdit({ token = '', student }) {
               <p className='mt-1 text-sm text-gray-500'>
                 Student Personal Information, account will be active after your
                 approval.
-                <img src={`${API_URL}${student?.attributes?.profile_pic?.data?.attributes?.url}`} />
+                <img  alt='Profile Picture' src={`${API_URL}${student?.attributes?.profile_pic?.data?.attributes?.url}`} />
               </p>
             </div>
             <div className='mt-5 md:mt-0 md:col-span-2'>
@@ -890,8 +904,9 @@ export default function StudentProfileEdit({ token = '', student }) {
                     Program
                   </label>
                   <select
+                    // onClick={setCourseAndP/rogram}
                     disabled
-                    value={values.course?.data?.attributes?.course_name}
+                    value={values.program}
                     onChange={handleInputChange}
                     id='program'
                     name='program'
@@ -899,28 +914,41 @@ export default function StudentProfileEdit({ token = '', student }) {
                     required
                     className='mt-1 block w-full py-2 px-3 border border-red-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm'
                   >
-                    <option>Select</option>
+
+                    {/* <option>Select</option> */}
+                    {programs.map((program) => {
+                      return (
+                        <option key={program.id} value={program.id}>
+                          {program}
+                        </option>
+                      )
+                    })}
                   </select>
                 </div>
 
-                <div className='col-span-6 sm:col-span-3'>
+                <div className="col-span-6 sm:col-span-3">
                   <label
-                    htmlFor='course'
-                    className='block text-sm font-medium text-gray-700'
+                    htmlFor="course"
+                    className="block text-sm font-medium text-gray-700"
                   >
                     Course
                   </label>
                   <select
                     disabled
-                    value={values.program?.data?.attributes?.program_name}
+                    value={values.course}
                     onChange={handleInputChange}
-                    id='course'
-                    name='course'
-                    autoComplete='course'
+                    id="course"
+                    name="course"
+                    autoComplete="course"
                     required
-                    className='mt-1 block w-full py-2 px-3 border border-red-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm'
+                    className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-yellow-500 focus:border-yellow-500 sm:text-sm"
                   >
-                    <option>Select</option>
+                    {/* <option>Select</option> */}
+                    {courses.map((course) => (
+                      <option key={course.id} value={course.id}>
+                        {course}
+                      </option>
+                    ))}
                   </select>
                 </div>
 
