@@ -84,9 +84,9 @@ export default function Coordinators({ token }) {
       },
       populate: ['role'],
     },
-    {
-      encodeValuesOnly: true, // prettify url
-    })
+      {
+        encodeValuesOnly: true, // prettify url
+      })
 
     axios.get(`${API_URL}/api/users?${query}`, config)
       .then(async res => {
@@ -102,7 +102,7 @@ export default function Coordinators({ token }) {
     getAllCoordinators()
   }, [])
 
-  
+
   const handleDelete = async (id) => {
     const config = {
       headers: { Authorization: `Bearer ${token}` },
@@ -128,15 +128,27 @@ export default function Coordinators({ token }) {
               Coordinator
             </h3>
           </div>
-          <div className='ml-4 mt-2 flex-shrink-0'>
-            <Link href={`/admin/coordinators/add`}>
-              <a
-                type='button'
-                className='relative inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-yellow-600 hover:bg-yellow-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500'
-              >
-                Create new
-              </a>
-            </Link>
+          <div className='flex'>
+            <div className='ml-4 mt-2 flex-shrink-0'>
+              <Link href={`/admin/coordinators/AddCoordinatorDetails`}>
+                <a
+                  type='button'
+                  className='relative inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-yellow-600 hover:bg-yellow-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500'
+                >
+                  Add Coordinator Profile
+                </a>
+              </Link>
+            </div>
+            <div className='ml-4 mt-2 flex-shrink-0'>
+              <Link href={`/admin/coordinators/add`}>
+                <a
+                  type='button'
+                  className='relative inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-yellow-600 hover:bg-yellow-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500'
+                >
+                  Create new
+                </a>
+              </Link>
+            </div>
           </div>
         </div>
       </div>
