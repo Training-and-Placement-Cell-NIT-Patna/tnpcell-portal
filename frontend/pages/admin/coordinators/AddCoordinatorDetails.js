@@ -2,8 +2,15 @@ import React, { useState } from 'react'
 import { API_URL } from '@/config/index'
 import Layout from '@/components/admin/Layout'
 import { toast } from 'react-toastify'
+import Breadcrumbs from '@/components/admin/Breadcrumbs'
 import { parseCookies } from '@/helpers/index'
 export default function AddCoordinatorDetails({ token }) {
+
+  const pages = [
+    { name: 'Coordinators', href: '/admin/coordinators', current: false },
+    { name: `Add Coordinator Details`, href: '#', current: true },
+  ]
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -75,43 +82,53 @@ export default function AddCoordinatorDetails({ token }) {
     }
   }
 
+
+
   return (
     <>
       <Layout>
-        <div>
-          <form>
-            <div>
-              <label htmlFor="">Name</label>
-              <input type="text" name='name' value={formData.name} onChange={handleOnChange} />
+
+        <Breadcrumbs pages={pages}/>
+
+        <div className='bg-white w-full mt-4 rounded-md flex justify-between p-3'>
+
+          <h1 className='m-7 text-xl font-semibold '>Coordinator Deatils</h1>
+          <form className='flex flex-wrap justify-between w-[67%]'>
+            <div className='m-1 flex flex-col'>
+              <label htmlFor="name" className="my-1">Name</label>
+              <input type="text" name='name' value={formData.name} onChange={handleOnChange} placeholder={"Coordinator's Name"} className="bg-white border-1 rounded-md" />
             </div>
-            <div>
-              <label htmlFor="">Email</label>
-              <input type="text" name='email' value={formData.email} onChange={handleOnChange} />
+            <div className='m-1 flex flex-col'>
+              <label htmlFor="email"  className="mx-1">Email</label>
+              <input type="text" name='email' value={formData.email} onChange={handleOnChange} placeholder={"Coordinator's Email"} className="bg-white border-1 rounded-md" />
             </div>
-            <div>
-              <label htmlFor="">Mobile</label>
-              <input type="text" name='mobile' value={formData.mobile} onChange={handleOnChange} />
+            <div className='m-1 flex flex-col'>
+              <label htmlFor="mobile" className="mx-1" >Mobile</label>
+              <input type="text" name='mobile' value={formData.mobile} onChange={handleOnChange} placeholder={"Mobile No."} className="bg-white border-1 rounded-md" />
             </div>
-            <div>
-              <label htmlFor="">Year</label>
-              <input type="text" name='year' value={formData.year} onChange={handleOnChange} />
+            <div className='m-1 flex flex-col'>
+              <label htmlFor="year" className="mx-1" >Year</label>
+              <input type="text" name='year' value={formData.year} onChange={handleOnChange} placeholder={"Year"} className="bg-white border-1 rounded-md" />
             </div>
-            <div>
-              <label htmlFor="">image</label>
-              <input type="file" name='image' onChange={e => setImage(e.target.files[0])} />
+
+            <div className='m-1 flex flex-col'>
+              <label htmlFor="linkedin" className="mx-1">Linkedin</label>
+              <input type="text" name='linkedin' value={formData.linkedin} onChange={handleOnChange} placeholder={"Coordinator's LinkedIn"} className="bg-white border-1 rounded-md" />
             </div>
-            <div>
-              <label htmlFor="">Linkedin</label>
-              <input type="text" name='linkedin' value={formData.linkedin} onChange={handleOnChange} />
+            <div className='m-1 flex flex-col'>
+              <label htmlFor="twitter" className="mx-1">Twitter</label>
+              <input type="text" name='twitter' value={formData.twitter} onChange={handleOnChange} placeholder={"Coordinator's Twitter"} className="bg-white border-1 rounded-md" />
             </div>
-            <div>
-              <label htmlFor="">Twitter</label>
-              <input type="text" name='twitter' value={formData.twitter} onChange={handleOnChange} />
+            <div className='m-1 ml-2 flex flex-col  '>
+              <label htmlFor="image"  >Image</label>
+              <input type="file" name='image' onChange={e => setImage(e.target.files[0])}  />
             </div>
-            <div>
-              <button type='submit' onClick={handleSubmit} className='bg-yellow-400 p-2 rounded-sm'>{loading ? 'Submitting...' : 'Submit'}</button>
-            </div>
+
           </form>
+        </div>
+
+        <div className="relative left-[90%] m-5" >
+          <button type='submit' onClick={handleSubmit} className='bg-yellow-400 p-2 rounded-sm'>{loading ? 'Submitting...' : 'Submit'}</button>
         </div>
       </Layout>
     </>
