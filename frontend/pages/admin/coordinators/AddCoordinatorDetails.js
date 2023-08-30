@@ -57,6 +57,24 @@ export default function AddCoordinatorDetails({ token }) {
   const handleOnChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value })
   }
+  const deleteCoordinator = async (id) => {
+    const yes = window.confirm('Are you sure you want to delete this coordinator?')
+    if (!yes) {
+      return
+    }
+    const resp = await fetch(`${API_URL}/api/coordinators/${id}`, {
+      method: 'DELETE',
+      headers: {
+        'Authorization': `Bearer ${token}`
+      }
+    })
+    if (resp.ok) {
+      console.log("Coordinator Deleted Successfully")
+    } else {
+      console.log("Something Went Wrong")
+    }
+  }
+
   return (
     <>
       <Layout>
