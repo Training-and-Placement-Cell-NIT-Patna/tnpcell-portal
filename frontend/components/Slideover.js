@@ -1,21 +1,10 @@
-/* This example requires Tailwind CSS v2.0+ */
 import { Fragment, useState, useEffect } from 'react'
-import { Dialog, Menu, Transition } from '@headlessui/react'
+import { Dialog, Transition } from '@headlessui/react'
 import { BellIcon, XIcon } from '@heroicons/react/outline'
 import axios from 'axios'
 import { API_URL } from '@/config/index'
+import { GrAttachment } from 'react-icons/gr'
 
-// const team = [
-//   {
-//     name: 'Leslie Alexander',
-//     handle: 'lesliealexander',
-//     href: '#',
-//     imageUrl:
-//       'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
-//     status: 'online',
-//   },
-//   // More people...
-// ]
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
@@ -26,10 +15,7 @@ export default function SlideOver({ open = false, setOpen }) {
   const [notifications, setNotifications] = useState([])
   // function to fetch the notification 
   const fetchNotifications = async () => {
-    const res = await axios.get(
-      `${API_URL}/api/notifications?populate=*&sort=createdAt:desc`
-    )
-    // return res.data.data
+    const res = await axios.get(`${API_URL}/api/notifications?populate=*&sort=createdAt:desc`)
     setNotifications(res.data.data)
   }
   useEffect(() => {
@@ -97,8 +83,7 @@ export default function SlideOver({ open = false, setOpen }) {
                     {notifications.map((notification) => (
                       <li key={notification.id}>
                         <div className='group relative flex items-center py-6 px-5'>
-                          <a
-                            href={notification.href}
+                          <div
                             className='-m-1 block flex-1 p-1'
                           >
                             <div
@@ -108,7 +93,7 @@ export default function SlideOver({ open = false, setOpen }) {
                             <div className='relative flex min-w-0 flex-1 items-center'>
                               <span className='relative inline-block flex-shrink-0'>
                                 {/* Bell icon */}
-                                <BellIcon className='h-6 w-6 text-gray-400' />
+                                <BellIcon className={`h-6 w-6 text-gray-400`} />
                                 <span
                                   className={classNames(
                                     notification.attributes.user === 'admin'
@@ -127,11 +112,7 @@ export default function SlideOver({ open = false, setOpen }) {
                                 <p className='text-sm text-gray-500'>
                                   {notification.attributes.description}
                                 </p>
-{/* 
-                                <p className='truncate text-sm text-gray-500 capitalize'>
-                                  {'@' + notification.attributes.user}
-                                </p> */}
-                                {/* Add Date notification was added */}
+                                {notification.attributes?.file?.data && (<a className='text-yellow-600' href={`${API_URL}${notification?.attributes?.file?.data?.attributes?.url}`} target='_blank'><GrAttachment className='text-lg inline' fill='blue' />Attachment</a>)}
                                 <p className='truncate text-sm text-gray-500 capitalize'>
                                   {new Date(
                                     notification.attributes.createdAt
@@ -143,7 +124,7 @@ export default function SlideOver({ open = false, setOpen }) {
                                 </p>
                               </div>
                             </div>
-                          </a>
+                          </div>
                         </div>
                       </li>
                     ))}
