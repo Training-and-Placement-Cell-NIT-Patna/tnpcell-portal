@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect,useRef } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 
@@ -45,6 +45,10 @@ const steps = [
   },
 ];
 function Process() {
+
+
+
+
   useEffect(() => {
     AOS.init({ duration: 1000 });
   }, []);
@@ -58,37 +62,41 @@ function Process() {
         Recruiter should follow following steps to register on{" "}
         <span className="font-bold">Training and placement cell, NIT Patna</span>
       </div>
-      <div className="grid justify-items-center">
-        <div className="p-5 grid justify-items-center">
+      <div className="flex flex-col items-center">
+        <div className="p-5  flex flex-col items-center ">
           {steps.map((item) => (
             <div
-              className=" mockup-browser no-scrollbar justify-items-center md:w-1/2"
+              className=" mockup-browser no-scrollbar flex flex-col items-center sm:w-[78%] w-[58%] md:w-[70%] lg:w-[50%]"
               key={item.index}
             >
               <div
-                className="p-5 grid justify-items-center"
+                className="p-5 flex  border-1 font-semibold rounded-xl justify-items-center flex-col w-full"
                 data-aos={`${item.index % 2 ? "slide-left" : "slide-right"}`}
               >
-                <div className="">
+                <div>
                   <div className="mockup-browser-toolbar">
                   <div className="input">{item.title}</div>
                   </div>
                   <div className=" justify-center px-4 py-16 bg-base-200">
                     {item.description}
                     {item.links && (
-                      <a
-                        href={item.links}
-                        className="hover:underline text-blue-500 after:content-['_↗']"
-                      >
-                        {item.links}
-                      </a>
+
+                       <>
+                        <a
+                          href={item.links}
+                          className=" text-yellow-800 link-underline"
+                        >
+                          <span>{item.links}</span> 
+                        </a>
+                        <div id="ProcessAnchorTagAnm" className=""></div>
+                       </>
                     )}
                     {item.index === 1 && (
                       <ol className="pl-3">
-                        <li>1.{item.st1}</li>
-                        <li>2.{item.st2}</li>
-                        <li>3.{item.st3}</li>
-                        <li>4.{item.st4}</li>
+                        <li><span className="text-yellow-800 w-[2rem] px-[0.34rem] m-3 ">1.</span>{item.st1}</li>
+                        <li><span className="text-yellow-800 px-1 m-3 " >2.</span>{item.st2}</li>
+                        <li><span className="text-yellow-800 px-1 m-3 " >3.</span>{item.st3}</li>
+                        <li><span className="text-yellow-800 px-1 m-3 " >4.</span>{item.st4}</li>
                       </ol>
                     )}
                   </div>
