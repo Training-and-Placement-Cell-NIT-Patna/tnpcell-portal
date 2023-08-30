@@ -1,5 +1,6 @@
 import React, { useEffect,useRef } from "react";
 import AOS from "aos";
+import Link from "next/link";
 import "aos/dist/aos.css";
 
 import { ArrowDownIcon } from "@heroicons/react/outline";
@@ -82,12 +83,12 @@ function Process() {
                     {item.links && (
 
                        <>
-                        <a
+                        <Link
                           href={item.links}
                           className=" text-yellow-800 link-underline"
                         >
-                          <span>{item.links}</span> 
-                        </a>
+                          <span className=" text-yellow-800 link-underline" >{item.links}</span> 
+                        </Link>
                         <div id="ProcessAnchorTagAnm" className=""></div>
                        </>
                     )}
