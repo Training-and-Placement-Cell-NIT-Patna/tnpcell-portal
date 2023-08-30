@@ -1,9 +1,5 @@
 import { Bar } from "react-chartjs-2";
-
 function BarChart(props){
-
-    console.log("this is props=> ",props);
-
     return(
         <>
             <div>
