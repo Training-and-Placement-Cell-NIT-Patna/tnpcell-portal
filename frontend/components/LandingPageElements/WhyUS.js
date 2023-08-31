@@ -69,7 +69,7 @@ function WhyUS() {
     <>
       <div className='text-center py-10 '>
         <h5 className=' text-yellow-600 m-6 text-sm' data-aos='fade-in'> Why Recruit at NIT Patna?</h5>
-        <h1 className='text-4xl w-96 mx-auto leading-normal  font-bold mb-12 text-red-900' data-aos='zoom-in-up'> Benefit and Culture of our Institute</h1>
+        <h1 className='text-4xl w-[60%] mx-auto leading-normal  font-bold mb-12 text-red-900' data-aos='zoom-in-up'> Benefit and Culture of our Institute</h1>
       </div>
       <div className='flex items-center py-10 '>
         <ChevronLeftIcon className='w-10 opacity-50 hover:opacity-100 cursor-pointer' onClick={sliderLeft} />
