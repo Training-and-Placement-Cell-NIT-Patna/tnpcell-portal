@@ -10,7 +10,7 @@ function CompaniesMarquee() {
                     <div className="relative z-3 w-full h-4/5 flex py-2 justify-center items-center border-y-[0.09rem] border-dashed border-[#df8a34]" >
 
                         {/* content */}
-                        <p className=" text-white text-sm md:text-xl font-semibold after:absolute after:content-[''] after:bottom-[-1.8rem] after:z-[-1] after:border-[0.7rem] after:border-solid after:left-[-3.3rem] after:border-t-[#c37322] after:border-r-[#c37322] after:border-b-transparent after:border-l-transparent before:border-t-[#c37322] before:border-r-transparent before:border-b-transparent before:border-l-[#c37322] before:absolute before:right-[-3.3rem] before:z-[-1] before:border-[0.7rem] before:border-solid before:content-[''] before:bottom-[-1.8rem]">
+                        <p className=" text-white text-xs md:text-xl font-semibold after:absolute after:content-[''] after:bottom-[-1.8rem] after:z-[-1] after:border-[0.7rem] after:border-solid after:left-[-3.3rem] after:border-t-[#c37322] after:border-r-[#c37322] after:border-b-transparent after:border-l-transparent before:border-t-[#c37322] before:border-r-transparent before:border-b-transparent before:border-l-[#c37322] before:absolute before:right-[-3.3rem] before:z-[-1] before:border-[0.7rem] before:border-solid before:content-[''] before:bottom-[-1.8rem]">
                             NIT Patna Student's Gets Placed In
                         </p>
                     </div>
