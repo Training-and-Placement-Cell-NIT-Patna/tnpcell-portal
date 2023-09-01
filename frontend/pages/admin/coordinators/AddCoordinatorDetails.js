@@ -90,44 +90,44 @@ export default function AddCoordinatorDetails({ token }) {
 
         <Breadcrumbs pages={pages}/>
 
-        <div className='bg-white w-full mt-4 rounded-md flex justify-between p-3'>
+        <div className='bg-white mx-auto sm:static  w-[70%] sm:w-full my-4 rounded-md flex flex-col justify-center sm:flex-row sm:justify-between p-3'>
 
           <h1 className='m-7 text-xl font-semibold '>Coordinator Deatils</h1>
-          <form className='flex flex-wrap justify-between w-[67%]'>
-            <div className='m-1 flex flex-col'>
+          <form className='flex flex-wrap items-center sm:justify-around w-[85%]'>
+            <div className='m-2 mx-3  flex w-[100%] flex-col sm:w-auto '>
               <label htmlFor="name" className="my-1">Name</label>
               <input type="text" name='name' value={formData.name} onChange={handleOnChange} placeholder={"Coordinator's Name"} className="bg-white border-1 rounded-md" />
             </div>
-            <div className='m-1 flex flex-col'>
+            <div className='m-2 mx-3   flex w-[100%] flex-col sm:w-auto '>
               <label htmlFor="email"  className="mx-1">Email</label>
               <input type="text" name='email' value={formData.email} onChange={handleOnChange} placeholder={"Coordinator's Email"} className="bg-white border-1 rounded-md" />
             </div>
-            <div className='m-1 flex flex-col'>
+            <div className='m-2 mx-3   flex w-[100%] flex-col sm:w-auto '>
               <label htmlFor="mobile" className="mx-1" >Mobile</label>
               <input type="text" name='mobile' value={formData.mobile} onChange={handleOnChange} placeholder={"Mobile No."} className="bg-white border-1 rounded-md" />
             </div>
-            <div className='m-1 flex flex-col'>
+            <div className='m-2 mx-3   flex w-[100%] flex-col sm:w-auto '>
               <label htmlFor="year" className="mx-1" >Year</label>
               <input type="text" name='year' value={formData.year} onChange={handleOnChange} placeholder={"Year"} className="bg-white border-1 rounded-md" />
             </div>
 
-            <div className='m-1 flex flex-col'>
+            <div className='m-2 mx-3   flex w-[100%] flex-col sm:w-auto '>
               <label htmlFor="linkedin" className="mx-1">Linkedin</label>
               <input type="text" name='linkedin' value={formData.linkedin} onChange={handleOnChange} placeholder={"Coordinator's LinkedIn"} className="bg-white border-1 rounded-md" />
             </div>
-            <div className='m-1 flex flex-col'>
+            <div className='m-2 mx-3 flex w-[100%] flex-col sm:w-auto '>
               <label htmlFor="twitter" className="mx-1">Twitter</label>
               <input type="text" name='twitter' value={formData.twitter} onChange={handleOnChange} placeholder={"Coordinator's Twitter"} className="bg-white border-1 rounded-md" />
             </div>
-            <div className='m-1 ml-2 flex flex-col  '>
-              <label htmlFor="image"  >Image</label>
-              <input type="file" name='image' onChange={e => setImage(e.target.files[0])}  />
+            <div className='m-2 mx-3 flex w-[100%] sm:w-[50%] flex-col '>
+              <label htmlFor="image"  className=" ">Image</label>
+              <input className=" w-full  self-center" type="file" name='image' onChange={e => setImage(e.target.files[0])}  />
             </div>
 
           </form>
         </div>
 
-        <div className="relative left-[90%] m-5" >
+        <div className="relative left-[50%] sm:left-[85%] md:left-[90%] md:mx-auto lg:m-5" >
           <button type='submit' onClick={handleSubmit} className='bg-yellow-400 p-2 rounded-sm'>{loading ? 'Submitting...' : 'Submit'}</button>
         </div>
       </Layout>
