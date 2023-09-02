@@ -152,9 +152,9 @@ export default function Coordinators({ token }) {
           </div>
         </div>
       </div>
-      <div className='ag-theme-alpine mt-4' style={{ margin: "auto", height: 400, width: 1100 }}>
+      <div className='ag-theme-alpine mt-4' style={{ margin: "auto", height: 400, width: 1000 }}>
         <AgGridReact
-          ref={gridRef}
+          ref={gridRef} 
           rowMultiSelectWithClick={true}
           rowData={rowData}
           columnDefs={columnDefs}
