@@ -93,10 +93,10 @@ export default function AddCoordinatorDetails({ token }) {
         <div className='bg-white mx-auto sm:static  w-[70%] sm:w-full my-4 rounded-md flex flex-col justify-center sm:flex-row sm:justify-between p-3'>
 
           <h1 className='m-7 text-xl font-semibold '>Coordinator Deatils</h1>
-          <form className='flex flex-wrap items-center sm:justify-around w-[85%]'>
+          <form id="addCoordinatorDetailsForm" className='flex flex-wrap items-center sm:justify-around w-[85%]'>
             <div className='m-2 mx-3  flex w-[100%] flex-col sm:w-auto '>
               <label htmlFor="name" className="my-1">Name</label>
-              <input type="text" name='name' value={formData.name} onChange={handleOnChange} placeholder={"Coordinator's Name"} className="bg-white border-1 rounded-md" />
+              <input type="text" name='name' value={formData.name} onChange={handleOnChange} placeholder={"Coordinator's Name"} className="bg-white border-1  rounded-md" />
             </div>
             <div className='m-2 mx-3   flex w-[100%] flex-col sm:w-auto '>
               <label htmlFor="email"  className="mx-1">Email</label>
@@ -120,8 +120,8 @@ export default function AddCoordinatorDetails({ token }) {
               <input type="text" name='twitter' value={formData.twitter} onChange={handleOnChange} placeholder={"Coordinator's Twitter"} className="bg-white border-1 rounded-md" />
             </div>
             <div className='m-2 mx-3 flex w-[100%] sm:w-[50%] flex-col '>
-              <label htmlFor="image"  className=" ">Image</label>
-              <input className=" w-full  self-center" type="file" name='image' onChange={e => setImage(e.target.files[0])}  />
+              <label for = "addCoordiantorDetailsImage"  className="  rounded-md px-2 ">Image</label>
+              <input id={"addCoordiantorDetailsImage"} className=" w-full self-center" type="file" placeholder={"choose some file"} name='image' onChange={e => setImage(e.target.files[0])}  />
             </div>
 
           </form>
