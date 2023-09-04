@@ -60,10 +60,10 @@ function ContactUS() {
                               <div className={"bg-black transition ease-in-out duration-500 font-sans opacity-0 hover:opacity-100 hover:bg-opacity-75 w-full h-full text-white flex flex-col items-center justify-center border-[1px] border-black border-solid rounded-lg profileDetails"}>
 
                                   <div className={"flex flex-wrap animate-appear"}>
-                                      <a href={"tel:+91 7070701742"} className={" border-[0.2rem] border-solid rounded-[50%] mx-2 w-9 h-9 border-white hover:text-[#ffa500] hover:bg-white hover:border-[#ffa500] hover:rotate-[360deg] transition duration-500 ease-in-out flex items-center justify-center"}><MdCall className={"w-[80%] h-[80%]"} />
+                                      <a href={"tel:+91 9771005232"} className={" border-[0.2rem] border-solid rounded-[50%] mx-2 w-9 h-9 border-white hover:text-[#ffa500] hover:bg-white hover:border-[#ffa500] hover:rotate-[360deg] transition duration-500 ease-in-out flex items-center justify-center"}><MdCall className={"w-[80%] h-[80%]"} />
                                       </a>
 
-                                      <a href={"mailto:office.tnp@nitp.ac.in"} className={"border-[0.2rem] border-solid rounded-[50%] mx-2 w-9 h-9 border-white hover:text-[#ffa500] hover:bg-white hover:border-[#ffa500] hover:rotate-[360deg] transition duration-500 ease-in-out flex items-center justify-center"}><HiMail className={"w-[80%] h-[80%]"} /></a>
+                                      <a href={"mailto:samrat@nitp.ac.in"} className={"border-[0.2rem] border-solid rounded-[50%] mx-2 w-9 h-9 border-white hover:text-[#ffa500] hover:bg-white hover:border-[#ffa500] hover:rotate-[360deg] transition duration-500 ease-in-out flex items-center justify-center"}><HiMail className={"w-[80%] h-[80%]"} /></a>
                                   </div>
                                   <p className=" text-[0.8rem] md:text-sm py-2 sm:py-0 sm:p-1 text-white font-bold animate-appear ">Dr. Samart Mukherjee</p>
                                   <p className={" text-[0.8rem] md:text-sm  md:p-1 animate-appear"}>Prof. Incharge, T&P Cell NIT Patna</p>
@@ -79,10 +79,10 @@ function ContactUS() {
                               <div className={"bg-black transition ease-in-out duration-500 font-sans  opacity-0 hover:opacity-100 hover:bg-opacity-75 w-full h-full text-white flex flex-col items-center justify-center border-[1px] border-black border-solid rounded-lg profileDetails"}>
 
                                   <div className={"flex flex-wrap animate-appear"}>
-                                      <a href={"tel:+91 7070701742"} className={" border-[0.2rem] border-solid rounded-[50%] mx-2 w-9 h-9 border-white hover:text-[#ffa500] hover:bg-white hover:border-[#ffa500] hover:rotate-[360deg] transition duration-500 ease-in-out flex items-center justify-center"}><MdCall className={"w-[80%] h-[80%]"} />
+                                      <a href={"tel:+91 8750111166"} className={" border-[0.2rem] border-solid rounded-[50%] mx-2 w-9 h-9 border-white hover:text-[#ffa500] hover:bg-white hover:border-[#ffa500] hover:rotate-[360deg] transition duration-500 ease-in-out flex items-center justify-center"}><MdCall className={"w-[80%] h-[80%]"} />
                                       </a>
 
-                                      <a href={"mailto:office.tnp@nitp.ac.in"} className={"border-[0.2rem] border-solid rounded-[50%] mx-2 w-9 h-9 border-white hover:text-[#ffa500] hover:bg-white hover:border-[#ffa500] hover:rotate-[360deg] transition duration-500 ease-in-out flex items-center justify-center"}><HiMail className={"w-[80%] h-[80%]"} /></a>
+                                      <a href={"mailto:smp.me@nitp.ac.in"} className={"border-[0.2rem] border-solid rounded-[50%] mx-2 w-9 h-9 border-white hover:text-[#ffa500] hover:bg-white hover:border-[#ffa500] hover:rotate-[360deg] transition duration-500 ease-in-out flex items-center justify-center"}><HiMail className={"w-[80%] h-[80%]"} /></a>
                                   </div>
                                   <p className="text-sm p-1 text-white font-bold animate-appear ">Dr. Shailesh M Pandey</p>
                                   <p className={"text-sm p-1 animate-appear"}>T&P Officer NIT Patna</p>
@@ -134,7 +134,7 @@ function ContactUS() {
                               <div className={"bg-black transition ease-in-out duration-500 font-sans  opacity-0 hover:opacity-100 hover:bg-opacity-75 w-full h-full text-white flex flex-col items-center justify-center border-[1px] border-black border-solid rounded-lg profileDetails"}>
 
                                   <div className={"flex flex-wrap animate-appear"}>
-                                      <a href={"tel:+91 7070701742"} className={" border-[0.2rem] border-solid rounded-[50%] mx-2 w-9 h-9 border-white hover:text-[#ffa500] hover:bg-white hover:border-[#ffa500] hover:rotate-[360deg] transition duration-500 ease-in-out flex items-center justify-center"}><MdCall className={"w-[80%] h-[80%]"} />
+                                      <a href={"tel:+91 9155494408"} className={" border-[0.2rem] border-solid rounded-[50%] mx-2 w-9 h-9 border-white hover:text-[#ffa500] hover:bg-white hover:border-[#ffa500] hover:rotate-[360deg] transition duration-500 ease-in-out flex items-center justify-center"}><MdCall className={"w-[80%] h-[80%]"} />
                                       </a>
 
                                       <a href={"mailto:office.tnp@nitp.ac.in"} className={"border-[0.2rem] border-solid rounded-[50%] mx-2 w-9 h-9 border-white hover:text-[#ffa500] hover:bg-white hover:border-[#ffa500] hover:rotate-[360deg] transition duration-500 ease-in-out flex items-center justify-center"}><HiMail className={"w-[80%] h-[80%]"} /></a>
