@@ -1,4 +1,6 @@
 import React from "react";
+import { MdCall } from "react-icons/md";
+import { HiMail } from "react-icons/hi";
 
 function ProfessorIncharge() {
   return (
@@ -16,8 +18,14 @@ function ProfessorIncharge() {
             </div>
             <h1 className="text-2xl">Dr. Samart Mukherjee</h1>
             <h2>Prof. Incharge, T&P Cell NIT Patna</h2>
-            <p className="text-gray-500">+919334314098</p>
-            <p className="text-gray-500">samart@nitp.ac.in</p>
+            {/*<p className="text-gray-500">+919334314098</p>*/}
+            {/*<p className="text-gray-500">samart@nitp.ac.in</p>*/}
+            <div className={" flex mx-auto w-1/2 py-2 justify-evenly animate-appear"}>
+              <a href={"tel:+91 9771005232"} className={" border-[0.2rem] border-solid rounded-[50%] mx-2 w-9 h-9 border-white hover:text-[#ffa500] hover:bg-white hover:border-[#ffa500] hover:rotate-[360deg] transition duration-500 ease-in-out flex items-center justify-center"}><MdCall className={"w-[80%] h-[80%]"} />
+              </a>
+
+              <a href={"mailto:samrat@nitp.ac.in"} className={"border-[0.2rem] border-solid rounded-[50%] mx-2 w-9 h-9 border-white hover:text-[#ffa500] hover:bg-white hover:border-[#ffa500] hover:rotate-[360deg] transition duration-500 ease-in-out flex items-center justify-center"}><HiMail className={"w-[80%] h-[80%]"} /></a>
+            </div>
           </div>
         </div>
         <div className="p-5">
@@ -27,8 +35,12 @@ function ProfessorIncharge() {
             </div>
             <h1 className="text-2xl">Dr. Shailesh M Pandey</h1>
             <h2>T&P officer NIT Patna</h2>
-            <p className="text-gray-500">+918750111166</p>
-            <p className="text-gray-500">smp.me@nitp.ac.in</p>
+            <div className={" flex mx-auto w-1/2 py-2 justify-evenly animate-appear"}>
+              <a href={"tel:+91 8750111166"} className={" border-[0.2rem] border-solid rounded-[50%] mx-2 w-9 h-9 border-white hover:text-[#ffa500] hover:bg-white hover:border-[#ffa500] hover:rotate-[360deg] transition duration-500 ease-in-out flex items-center justify-center"}><MdCall className={"w-[80%] h-[80%]"} />
+              </a>
+
+              <a href={"mailto:smp.me@nitp.ac.in"} className={"border-[0.2rem] border-solid rounded-[50%] mx-2 w-9 h-9 border-white hover:text-[#ffa500] hover:bg-white hover:border-[#ffa500] hover:rotate-[360deg] transition duration-500 ease-in-out flex items-center justify-center"}><HiMail className={"w-[80%] h-[80%]"} /></a>
+            </div>
           </div>
         </div>
       </div>
