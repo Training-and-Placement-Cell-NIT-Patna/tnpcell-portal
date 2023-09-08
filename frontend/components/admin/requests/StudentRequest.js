@@ -81,13 +81,13 @@ export default function StudentRequest({ token = '' }) {
     {
       headerName: 'Student Name',
       field: 'attributes.name',
-      // cellRenderer: function (params) {
-      //   return (
-      //     <Link href={`/admin/unapproved_students/${params.data.id}`}>
-      //       <a>{params.value}</a>
-      //     </Link>
-      //   )
-      // },
+      cellRenderer: function (params) {
+        return (
+          <Link href={`/admin/unapproved_students/${params.data.id}`}>
+            <a>{params.value}</a>
+          </Link>
+        )
+      },
     },
     {
       headerName: 'Roll No.',
@@ -175,7 +175,7 @@ export default function StudentRequest({ token = '' }) {
           </h2>
         </div>
       </div>
-      <div className='ag-theme-alpine mt-4' style={{ margin: "auto", width: 1200, height:600 }}>
+      <div className='ag-theme-alpine mt-4' style={{height:'400px'}}>
         <AgGridReact
           rowData={students}
           columnDefs={columnDefs}
