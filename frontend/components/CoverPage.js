@@ -14,7 +14,8 @@ import Link from "next/link";
 import ProfessorIncharge from "./LandingPageElements/ProfessorIncharge";
 import Statics from "./LandingPageElements/Statics";
 import CompaniesMarquee from "./LandingPageElements/CompaniesMarquee";
-import CoverPageNavBar from "./CoverPageNavBar";
+// import CoverPageNavBar from "./CoverPageNavBar";
+import Nav2 from "@/components/Nav2";
 
 const MENU_LIST = [
   {
@@ -86,7 +87,8 @@ function CoverPage() {
   };
   return (
     <>
-      <CoverPageNavBar />
+      {/*<CoverPageNavBar />*/}
+      <Nav2/>
       <main>
         {/* carousel  start */}
         <div ref={slideRef} className="w-full select-none">
@@ -130,9 +132,9 @@ function CoverPage() {
               </h1>
             </div>
             <div className="hidden lg:block md:mr-10 w-1/3 md:w-1/6">
-              <div className="rounded-lg bg-amber-400 m-2 p-3 border-2 border-white font-semibold text-sm">
-                <Link href="/loginPage">Login</Link>
-              </div>
+              {/*<div className="rounded-lg bg-amber-400 m-2 p-3 border-2 border-white font-semibold text-sm">*/}
+              {/*  <Link href="/loginPage">Login</Link>*/}
+              {/*</div>*/}
               <div className="rounded-lg bg-amber-400 m-2 p-3 border-2 border-white font-semibold text-sm">
                 <Link href="/account/studentRegistration">Student Registration</Link>
               </div>
