@@ -115,7 +115,7 @@ function CoverPage() {
             {/* <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#2c0707" fill-opacity="1" d="M0,96L1440,0L1440,0L0,0Z"></path></svg> */}
           </div>
           <div className="absolute top-1/4 flex w-full justify-between items-center">
-            <div className=" bg-black/50 md:p-10 w-1/3 h-1/2 md:h-1/4">
+            <div className="bg-transparent backdrop-blur-sm md:p-10 w-1/3 h-1/2 md:h-1/4">
               <h1 className="text-white font-bold text-md md:text-4xl">
                 <Typewriter
                   words={[
