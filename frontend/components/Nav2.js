@@ -34,7 +34,7 @@ function Nav2()
         },
     ];
 
-    let Login = MENU_LIST[1];
+    // let Login = MENU_LIST[1];
 
     const [isOpen, setIsOpen] = useState(false);
 
@@ -124,8 +124,8 @@ function Nav2()
                     <div className=" hidden sm:flex rounded-3xl hover:bg-amber-300 bg-amber-500 w-[12%] sm:w-[12%] justify-center items-center h-[100%]  p-3 border-2 border-white font-semibold text-sm">
                         <div className={" h-[1.3rem] overflow-y-hidden"}>
                             <div className={" h-[2.4rem] transition duration-[450ms] ease-in-out flex flex-col hover:translate-y-[-1.4rem] "}>
-                                <span className={" text-[rgba(0,0,0,.6)]"}><Link href="/loginPage" >Login</Link></span>
-                                <span className={"text-black"}><Link href="/loginPage" >Login</Link></span>
+                            <Link href="/loginPage" ><span className={" text-[rgba(0,0,0,.6)]"}>Login</span></Link>
+                            <Link href="/loginPage" ><span className={"text-black"}>Login</span></Link>
                                 {/*<Link href="/loginPage">Login</Link>*/}
                             </div>
                         </div>
