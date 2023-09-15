@@ -111,7 +111,11 @@ module.exports = {
       handler: "student.set_placed_status",
       policies: []
     },
- 
+    {
+      method: "POST",
+      path: "/students/profile-pic-url",
+      handler: "student.getProfilePicUrl"
+    }
   ],
 };
 
