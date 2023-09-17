@@ -22,7 +22,11 @@ const navigation = [
     href: '/student/profile',
     icon: UserIcon,
   },
-
+ {
+    name: 'Upload Documents',
+    href: '/student/upload-docs',
+    icon: DocumentTextIcon,
+ },
   // {
   //   name: 'All Jobs',
   //   href: '/student/all-jobs',
