@@ -146,7 +146,7 @@ module.exports = createCoreController("api::student.student", ({ strapi }) => ({
     const body = ctx.request.body;
     if (!body || typeof body !== "object") {
       return ctx.badRequest(null, [
-        { messages: [{ id: "Invalid parameteres" }] },
+        { messages: [{ id: "Invalid parameters" }] },
       ]);
     }
 
@@ -271,7 +271,7 @@ module.exports = createCoreController("api::student.student", ({ strapi }) => ({
      *
      * NOTE: This needs to be updated with every media field added to student schema
      */
-    const media_fields = ["resume", "profile_pic"];
+    const media_fields = ["resume", "profile_pic","casteCertificate", "tenthCertificate", "twelthCertificate", "aadharCard", "panCard", "drivingLicence", "disabilityCertificate", "allSemMarksheet"];
     const files_to_upload = {};
     for (const field in ctx.request.files || {}) {
       if (media_fields.includes(field)) {
@@ -318,7 +318,7 @@ module.exports = createCoreController("api::student.student", ({ strapi }) => ({
 
     // console.log("Just before update: ", { body: ctx.request.body, files: ctx.request.files });
 
-    if (fields_to_modify === {}) {
+    if (fields_to_modify === {}) { // No fields to modify, ill resolve later
       ctx.response.status = 204;
       return (ctx.body = "No field modified");
     } else {
@@ -416,7 +416,7 @@ module.exports = createCoreController("api::student.student", ({ strapi }) => ({
 
       // console.log("H3")
 
-            // merge unique rolls from oncampus_placed and offcampus_placed
+      // merge unique rolls from oncampus_placed and offcampus_placed
       const placed_rolls = {
         placed_tier1: [
           ...new Set([
@@ -597,7 +597,7 @@ module.exports = createCoreController("api::student.student", ({ strapi }) => ({
   },
 
 
-  
+
   async get_intern_status_6(ctx) {
 
     const query = ctx.request.query || {};
@@ -836,6 +836,26 @@ module.exports = createCoreController("api::student.student", ({ strapi }) => ({
     });
 
     ctx.body = { placed_status: placed_status };
+  },
+
+  async getProfilePicUrl(ctx) {
+    const { email } = ctx.request.body;
+    if(!email){
+      return ctx.badRequest(null, [
+        { messages: [{ id: "Email not passed" }] },
+      ]);
+    }
+    const student = await strapi.db.query("api::student.student").findOne({
+      where: {
+        institute_email_id: email,
+      },
+      populate: true
+    });
+    if (!student) {
+      return ctx.notFound('Student not found');
+    }
+    const profilePicUrl = student.profile_pic
+    return { profilePicUrl };
   },
 }));
 

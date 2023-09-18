@@ -1,5 +1,5 @@
 import Layout from '@/components/student/Layout'
-import { useContext } from 'react'
+// import { useContext } from 'react'
 import axios from 'axios'
 import { API_URL } from '@/config/index'
 import StudentRegistration from '@/components/student/profile/StudentRegistration'

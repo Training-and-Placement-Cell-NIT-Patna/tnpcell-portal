@@ -352,7 +352,7 @@ export default function EditJob({ token = '', job = '' }) {
                       Company
                     </label>
                     <p className='mt-1 block w-full py-2 px-3 border border-green-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-yellow-500 focus:border-yellow-500 sm:text-sm'>
-                      {company.data.attributes.company_name}
+                      {company.data?.attributes.company_name}
                     </p>
                   </div>
 
@@ -365,7 +365,7 @@ export default function EditJob({ token = '', job = '' }) {
                       Company Category
                     </label>
                     <p className='mt-1 block w-full py-2 px-3 border border-green-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-yellow-500 focus:border-yellow-500 sm:text-sm'>
-                      {company.data.attributes.company_category}
+                      {company.data?.attributes.company_category}
                     </p>
                   </div>
 
@@ -379,7 +379,7 @@ export default function EditJob({ token = '', job = '' }) {
                       Industry Sector
                     </label>
                     <p className='mt-1 block w-full py-2 px-3 border border-green-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-yellow-500 focus:border-yellow-500 sm:text-sm'>
-                      {company.data.attributes.industry_sector}
+                      {company.data?.attributes.industry_sector}
                     </p>
                   </div>
 
@@ -863,7 +863,7 @@ export default function EditJob({ token = '', job = '' }) {
                     Full Name
                   </label>
                   <input
-                    value={values.POC1.name}
+                    value={values.POC1?.name}
                     onChange={handleContactOneInputChange}
                     type='text'
                     name='name'
@@ -881,7 +881,7 @@ export default function EditJob({ token = '', job = '' }) {
                     Email
                   </label>
                   <input
-                    value={values.POC1.mail_id}
+                    value={values.POC1?.mail_id}
                     onChange={handleContactOneInputChange}
                     type='email'
                     name='mail_id'
@@ -899,7 +899,7 @@ export default function EditJob({ token = '', job = '' }) {
                     Mobile Number
                   </label>
                   <input
-                    value={values.POC1.mobile_no}
+                    value={values.POC1?.mobile_no}
                     onChange={handleContactOneInputChange}
                     type='text'
                     name='mobile_no'
@@ -952,7 +952,7 @@ export default function EditJob({ token = '', job = '' }) {
                     Full Name
                   </label>
                   <input
-                    value={values.POC2.name}
+                    value={values.POC2?.name}
                     onChange={handleContactTwoInputChange}
                     type='text'
                     name='name'
@@ -970,7 +970,7 @@ export default function EditJob({ token = '', job = '' }) {
                     Email
                   </label>
                   <input
-                    value={values.POC2.mail_id}
+                    value={values.POC2?.mail_id}
                     onChange={handleContactTwoInputChange}
                     type='email'
                     name='mail_id'
@@ -988,7 +988,7 @@ export default function EditJob({ token = '', job = '' }) {
                     Mobile Number
                   </label>
                   <input
-                    value={values.POC2.mobile_no}
+                    value={values.POC2?.mobile_no}
                     onChange={handleContactTwoInputChange}
                     type='text'
                     name='mobile_no'

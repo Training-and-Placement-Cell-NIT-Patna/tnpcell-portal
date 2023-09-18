@@ -3,20 +3,11 @@ import AuthContext from "@/context/AuthContext";
 import { useContext, useState, useEffect } from "react";
 import Link from "next/link";
 import Nav from "@/components/Nav";
-// import { BaseGridSerializingSession } from "ag-grid-community";
-// import axios from "axios";
 import { API_URL } from "../config";
 import { toast } from "react-toastify";
 import { AiFillEye } from 'react-icons/ai'
 import { AiFillEyeInvisible } from 'react-icons/ai'
 export default function SignIn() {
-  // const notificationMethods = [
-  //   { id: "company", title: "Company" },
-  //   { id: "student", title: "Student" },
-  //   { id: "coordinator", title: "Coordinator" },
-  //   { id: "admin", title: "Admin" },
-  //   { id: "alumn", title: "Alumn"}
-  // ];
 
   const { login, loading } = useContext(AuthContext);
   const [username, setUsername] = useState("");
@@ -35,17 +26,11 @@ export default function SignIn() {
   };
 
   useEffect(() => {
-    fetch(`${API_URL}/api/setting`, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
+    fetch(`${API_URL}/api/setting`)
       .then((res) => res.json())
       .then((data) => {
         allowNewReg(data.data?.attributes?.registrations_allowed);
       })
-
       .catch((err) => {
         console.log(err);
         toast.error("Unable to fetch tpc_guidelines");
@@ -54,7 +39,7 @@ export default function SignIn() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    login({ username, password }); //role bhejne ki need nhi i'll correct it later
+    login({ username, password }); 
   };
 
   return (

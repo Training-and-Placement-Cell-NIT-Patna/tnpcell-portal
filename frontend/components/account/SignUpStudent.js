@@ -3,7 +3,7 @@ import AuthContext from "@/context/AuthContext";
 import { useContext, useState, useEffect } from "react";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
+import { API_URL } from "@/config/index";
 import Link from "next/link";
 
 export default function SignUpStudent() {
@@ -11,17 +11,30 @@ export default function SignUpStudent() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-
+  const [allowNewReg, setAllowNewReg] = useState(false);
   const { register } = useContext(AuthContext);
-
+  useEffect(() => {
+    fetch(`${API_URL}/api/setting`)
+      .then((res) => res.json())
+      .then((data) => {
+        setAllowNewReg(data.data?.attributes?.registrations_allowed);
+      })
+      .catch((err) => {
+        console.log(err);
+        toast.error("Something went wrong!");
+      });
+  }, []);
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (password !== confirmPassword) {
+    if (password !== confirmPassword && email !== "" && username !== "") {
       toast.error("Passwords do not match!");
       return;
     }
-
+    if (!allowNewReg) {
+      toast.info("Registrations are closed Right Now!");
+      return;
+    }
     register({ username, email, password });
   };
 

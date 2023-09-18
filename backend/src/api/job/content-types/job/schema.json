@@ -81,6 +81,7 @@
       "enum": [
         "Internship (2 Month)",
         "Internship (6 Month)",
+        "Internship (6 Month)+FTE",
         "FTE"
       ],
       "required": true

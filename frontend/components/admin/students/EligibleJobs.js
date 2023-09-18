@@ -2,12 +2,12 @@ import { useCallback, useRef, useState, useEffect } from 'react'
 import { AgGridReact } from 'ag-grid-react'
 import 'ag-grid-community/dist/styles/ag-grid.css'
 import 'ag-grid-community/dist/styles/ag-theme-alpine.css'
-
+import { useRouter } from 'next/router'
 export default function Eligiblejobs({ jobs = '' }) {
-
+  const router = useRouter()
   const onRowClicked = useCallback((event) => {
     // event.data contains the row data
-    window.location.href = `/admin/jobs/${event.data.id}`
+    router.push(`/admin/jobs/${event.data.id}`)
   }, [])
 
 
@@ -51,7 +51,7 @@ export default function Eligiblejobs({ jobs = '' }) {
           Eligible Jobs
         </h3>
       </div>
-      <div className='ag-theme-alpine mt-4 ' style={{ margin: "auto", width: 1100, height: 600 }}>
+      <div className='ag-theme-alpine mt-4 ' style={{ margin: "auto", height: '400px' }}>
         {/* <AgGridReact
           rowData={jobs}
           columnDefs={columnDefs}
