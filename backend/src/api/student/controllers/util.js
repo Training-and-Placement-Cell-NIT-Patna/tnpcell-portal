@@ -111,10 +111,10 @@ module.exports = {
                 return false /* CPI less than minimum required */;
             }
 
-            if (job.category != registered_for) {
-                debug_reason("Job category does not match student's registered_for");
-                return false /* Job's category is not the one student registered for */;
-            }
+            // if (job.category != registered_for) {
+            //     debug_reason("Job category does not match student's registered_for");
+            //     return false /* Job's category is not the one student registered for */;
+            // }
 
             if(job.only_for_ews) {
                 if(student.category != "ews") {
