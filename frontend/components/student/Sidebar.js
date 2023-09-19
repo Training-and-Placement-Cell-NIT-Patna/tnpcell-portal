@@ -82,19 +82,19 @@ export default function Sidebar({ heading = '', children }) {
   return (
     <div className='flex '>
       <div className='fixed z-50'>
-        <div className={`bg-gray-900 h-screen duration-300 ${sidebarOpen ? 'sm:w-64 w-52' : 'w-20'} duration-300 relative`}>
-          <ArrowLeftIcon className={`text-[#2f0707] bg-white rounded-full h-5 w-5 absolute -right-3 top-9 border border-[#2f0707] cursor-pointer ${!sidebarOpen && "rotate-180"}`}
-            onClick={() => setSidebarOpen(!sidebarOpen)} />
-          <div className='inline-flex p-4'>
-            <Image
-              width={50}
-              height={50}
-              alt='logo'
-              src='/images/logo.png'
-              className='float-left block'
-            />
-            <h1 className={`text-white origin-left p-2 pl-2 font-serif font-semibold text-xl duration-300 ${!sidebarOpen && "hidden"}`}>Student Portal</h1>
-          </div>
+      <div className={`bg-gray-900 h-screen duration-300 ${sidebarOpen ? 'sm:w-64 w-52' : 'w-20'} duration-300 relative`}>
+        <ArrowLeftIcon className={`text-[#2f0707] bg-white rounded-full h-5 w-5 absolute -right-3 top-9 border border-[#2f0707] cursor-pointer ${!sidebarOpen && "rotate-180"}`}
+          onClick={() => setSidebarOpen(!sidebarOpen)} />
+        <div className='inline-flex p-4 w-[100%]'>
+          <Image
+            width={50}
+            height={50}
+            alt='logo'
+            src='/images/logo.png'
+            className='float-left block'
+          />
+          <h1 className={`text-white flex flex-wrap justify-center items-center w-40% origin-left pl-2 font-serif font-semibold text-md sm:text-xl duration-300 ${!sidebarOpen && "hidden"}`}>Student Portal</h1>
+        </div>
 
           <ul className='pt-4 p-5'>
             {navigation.map((item) => (
