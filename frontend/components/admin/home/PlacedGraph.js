@@ -88,9 +88,9 @@ export default function PlacedGraph({ student = [] }) {
     })
 
     unplaced.forEach((item) => {
-      unplacedoccurences[item.attributes?.program.data?.attributes?.program_name] =
+      unplacedoccurences[item.attributes?.program?.data?.attributes?.program_name] =
         (unplacedoccurences[
-          item.attributes?.program.data?.attributes?.program_name
+          item.attributes?.program?.data?.attributes?.program_name
         ] || 0) + 1
     })
 

@@ -32,21 +32,24 @@ function CoverPageNavBar() {
     const [isOpen, setIsOpen] = useState(false);
     return (
         <>
-            <div className=" top-0 z-50">
+            <div className=" top-0 z-50 ">
                 <div className="">
-                    <div className=" mx-auto z-50 bg-[#2c0707]  p-1 flex justify-between w-screen">
-                        <div className="flex">
-                            <Image
-                                width={50}
-                                height={50}
-                                alt="NIT Patna"
-                                src="/images/logo.png"
-                                className="w-full"
-                            />
-
-                            <div className=" font-serif font-extrabold sm:text-2xl p-1 sm:p-2 flex items-center min-h-14 text-white ">
-                                Training and Placement Cell
-                            </div>
+                    <div className=" mx-auto z-50 bg-[#2c0707] backdrop-blur bg-opacity-30 p-1 flex justify-between w-screen">
+                        <div className="flex cursor-pointer">
+                            <Link href="">
+                                <Image
+                                    width={50}
+                                    height={50}
+                                    alt="NIT Patna"
+                                    src="/images/logo.png"
+                                    className="w-full"
+                                />
+                            </Link>
+                            <Link href="/">
+                                <h1 className=" font-serif font-extrabold sm:text-2xl p-1 sm:p-2 flex items-center min-h-14 text-white ">
+                                    Training and Placement Cell
+                                </h1>
+                            </Link>
                         </div>
 
                         <div className="hidden lg:block h-10">

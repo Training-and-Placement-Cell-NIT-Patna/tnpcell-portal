@@ -8,7 +8,6 @@ export default function StudentRegistration({ token = '' }) {
   const [values, setValues] = useState({
     name: '',
     roll: '',
-    user_relation:'',
     personal_email_id: '',
     institute_email_id: '',
     mobile_number_1: '',
@@ -76,7 +75,6 @@ export default function StudentRegistration({ token = '' }) {
   if (user && user.username) {
     values.roll = user.username
     values.institute_email_id = user.email
-    values.user_relation = user.username
   }
 
   // const [flag,setFlag] = useState(true);
@@ -102,7 +100,7 @@ export default function StudentRegistration({ token = '' }) {
         },
         body: JSON.stringify({ data: values }),
       })
-      //console.log(JSON.stringify({ data: values }))
+
 
 
       if (!res.ok) {

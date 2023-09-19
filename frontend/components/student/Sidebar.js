@@ -1,5 +1,5 @@
 /* This example requires Tailwind CSS v2.0+ */
-import { Fragment, useState, useContext } from 'react'
+import { useState, useContext, useEffect } from 'react'
 import { API_URL } from "@/config/index";
 import {
   BriefcaseIcon,
@@ -14,6 +14,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import AuthContext from '@/context/AuthContext'
+import axios from 'axios';
 
 const navigation = [
   {
@@ -21,7 +22,11 @@ const navigation = [
     href: '/student/profile',
     icon: UserIcon,
   },
-
+ {
+    name: 'Upload Documents',
+    href: '/student/upload-docs',
+    icon: DocumentTextIcon,
+ },
   // {
   //   name: 'All Jobs',
   //   href: '/student/all-jobs',
@@ -60,6 +65,20 @@ export default function Sidebar({ heading = '', children }) {
   const [sidebarOpen, setSidebarOpen] = useState(false)
   const router = useRouter()
   const { user, logout } = useContext(AuthContext)
+  const [profilePicUrl, setProfilePicUrl] = useState('')
+  const getProfilePicUrl = async () => {
+    const resp = await axios.post(`${API_URL}/api/students/profile-pic-url`, {
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjkxNTAxMzg0LCJleHAiOjE2OTQwOTMzODR9.Fb1m4gj2FJimvlyTwkMwQJjNCYcboV4VW8Lw6Jrnl_g'}`,
+      },
+      email: user?.email
+    })
+    setProfilePicUrl(resp.data?.profilePicUrl?.url)
+  }
+  useEffect(() => {
+    getProfilePicUrl()
+  }, [user?.email])
   return (
     <div className='flex '>
       <div className='fixed z-50'>
@@ -77,86 +96,85 @@ export default function Sidebar({ heading = '', children }) {
           <h1 className={`text-white flex flex-wrap justify-center items-center w-40% origin-left pl-2 font-serif font-semibold text-md sm:text-xl duration-300 ${!sidebarOpen && "hidden"}`}>Student Portal</h1>
         </div>
 
-        <ul className='pt-4 p-5'>
-          {navigation.map((item) => (
-            <Link href={item.href} key={item.name}>
-              <a
-                className={classNames(
-                  item.href === router.pathname
-                    ? 'bg-gray-800 text-yellow-200'
-                    : 'text-gray-100 hover:bg-slate-800 hover:text-white',
-                  `flex items-center font-bold rounded-full py-2 pl-2 ${item.spacing ? 'mt-6' : 'mt-4'}`
-                )}
-              >
-                <item.icon
+          <ul className='pt-4 p-5'>
+            {navigation.map((item) => (
+              <Link href={item.href} key={item.name}>
+                <a
                   className={classNames(
                     item.href === router.pathname
-                      ? 'text-yellow-20'
-                      : 'text-gray-400 group-hover:text-gray-300',
-                    'mr-2 text-2xl rounded-full h-6 w-6'
+                      ? 'bg-gray-800 text-yellow-200'
+                      : 'text-gray-100 hover:bg-slate-800 hover:text-white',
+                    `flex items-center font-bold rounded-full py-2 pl-2 ${item.spacing ? 'mt-6' : 'mt-4'}`
                   )}
+                >
+                  <item.icon
+                    className={classNames(
+                      item.href === router.pathname
+                        ? 'text-yellow-20'
+                        : 'text-gray-400 group-hover:text-gray-300',
+                      'mr-2 text-2xl rounded-full h-6 w-6'
+                    )}
 
-                />
-                <h1 className={`text-base font-medium rounded-md  duration-300 ${!sidebarOpen && "hidden"}`}>{item.name}</h1>
-              </a>
-            </Link>
-          ))}
-        </ul>
-        <div className='p-5 cursor-pointer'>
-          <a
-            onClick={() => logout()}
-            className={classNames(
-              false
-                ? 'bg-gray-800 text-yellow-200'
-                : 'text-gray-300 hover:bg-slate-800 hover:text-white',
-              'flex items-center px-1 my-2 font-bold rounded-full py-2 pl-2 mt-7 '
-            )}
-          >
-            <LogoutIcon
+                  />
+                  <h1 className={`text-base font-medium rounded-md  duration-300 ${!sidebarOpen && "hidden"}`}>{item.name}</h1>
+                </a>
+              </Link>
+            ))}
+          </ul>
+          <div className='p-5 cursor-pointer'>
+            <a
+              onClick={() => logout()}
               className={classNames(
                 false
-                  ? 'text-yellow-20'
-                  : 'text-gray-400 group-hover:text-gray-300',
-                'md:mr-4 flex-shrink-0 h-6 w-6'
+                  ? 'bg-gray-800 text-yellow-200'
+                  : 'text-gray-300 hover:bg-slate-800 hover:text-white',
+                'flex items-center px-1 my-2 font-bold rounded-full py-2 pl-2 mt-7 '
               )}
-              aria-hidden='true'
-            />
-            <h1 className={`text-base font-medium rounded-md  duration-300 ${!sidebarOpen && "hidden"}`}>Logout</h1>
-          </a>
-        </div>
-        <div className={`absolute bottom-0 left-0 flex-shrink-0 duration-300 flex bg-[#030000] ${sidebarOpen ? 'sm:w-64 w-52' : 'w-20'}`}>
-          <a href='#' className='flex-shrink-0 w-full group block'>
-            <div className='flex items-center'>
-              <div>
-                <img
-                  className='h-8 w-8 rounded-full m-4'
-                  src='https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80'
-                  // src={API_URL + user.profile_pic.url}
-                  alt='student-profile'
-                />
-              </div>
+            >
+              <LogoutIcon
+                className={classNames(
+                  false
+                    ? 'text-yellow-20'
+                    : 'text-gray-400 group-hover:text-gray-300',
+                  'md:mr-4 flex-shrink-0 h-6 w-6'
+                )}
+                aria-hidden='true'
+              />
+              <h1 className={`text-base font-medium rounded-md  duration-300 ${!sidebarOpen && "hidden"}`}>Logout</h1>
+            </a>
+          </div>
+          <div className={`absolute bottom-0 left-0 flex-shrink-0 duration-300 flex bg-[#030000] ${sidebarOpen ? 'sm:w-64 w-52' : 'w-20'}`}>
+            <a href='#' className='flex-shrink-0 w-full group block'>
+              <div className='flex items-center'>
+                <div>
+                  <img
+                    className='h-8 w-8 rounded-full m-4'
+                    src={profilePicUrl?API_URL + profilePicUrl: 'https://www.w3schools.com/howto/img_avatar.png'}
+                    alt='student-profile'
+                  />
+                </div>
 
-              
+
                 <div className={`px-4 w-4/5  flex flex-col m-0 justify-center  overflow-visible ${!sidebarOpen && "hidden"
                   }`}>
                   <h1 className={`text-sm md:text-sm font-bold rounded-md text-white  duration-300 ${!sidebarOpen && "hidden"
                     }`}>
-                  {user && user.username}
-                </h1>
+                    {user && user.username}
+                  </h1>
                   <h1 className={`text-sm break-words hover:text-clip rounded-md overflow-visible   text-white font-bold duration-300  ${!sidebarOpen && "hidden"
                     }`}>
 
-                      {user && user.email}
-                </h1>
+                    {user && user.email}
+                  </h1>
+                </div>
+
+
               </div>
-
-
-            </div>
-          </a>
+            </a>
+          </div>
         </div>
       </div>
-      </div>
-      <div className={`${sidebarOpen ? 'pl-64' : 'pl-16' } flex bg-[#dfdeec78] min-h-screen flex-col flex-1 `} onClick={() => setSidebarOpen(false)}>
+      <div className={`${sidebarOpen ? 'pl-64' : 'pl-16'} flex bg-[#dfdeec78] min-h-screen flex-col flex-1 `} onClick={() => setSidebarOpen(false)}>
         <main className='flex-1'>
           <div className='py-6'>
             <div className=' max-w-6xl mx-auto px-1 pl-8 sm:px-6 lg:px-2'>
@@ -172,5 +190,5 @@ export default function Sidebar({ heading = '', children }) {
       </div>
     </div>
   )
-    
+
 }
