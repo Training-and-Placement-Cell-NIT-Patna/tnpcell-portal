@@ -15,7 +15,9 @@ module.exports = {
       animation:{
         'appear':'appearDet 0.5s linear 1',
       },
-
+      fontFamily:{
+        poppins:['Poppins', 'sans-serif']
+      },
 
       keyframes:{
 
