@@ -6,9 +6,9 @@ import 'ag-grid-community/dist/styles/ag-theme-alpine.css'
 import { API_URL } from '@/config/index'
 import qs from 'qs'
 import Link from 'next/link'
-
+import { useRouter } from 'next/router'
 export default function EligibleStudents({ token = '', id = '',job = {}}) {
-
+  const router = useRouter()
 
   const [students, setStudents] = useState([])
 
@@ -139,7 +139,8 @@ useEffect(() => {
 
 const onRowClicked = useCallback((event) => {
   // event.data contains the row data
-  window.location.href = `/admin/students/${event.data.id}`
+  // window.location.href = `/admin/students/${event.data.id}` // it reload the page
+  router.push(`/admin/students/${event.data.id}`)
 }, [])
 
 
