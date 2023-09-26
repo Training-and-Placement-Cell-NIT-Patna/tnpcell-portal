@@ -69,7 +69,7 @@ export default function AddJob({ token = '' }) {
     let { name, value } = e.target
     // value = moment(value).local().format('yyyy-MM-DDThh:mm:ss.SSS')
     value = moment(value).utcOffset('+0530', true)
-    console.log(value)
+    // console.log(value)
     setValues({ ...values, [name]: value === '' ? undefined : value })
   }
 
@@ -103,12 +103,12 @@ export default function AddJob({ token = '' }) {
       return
     }
 
-    if (values.POC1.name=="") {
+    if (values.POC1.name == "") {
       toast.error('Please add details of 1st POC')
       return
     }
 
-    if (values.POC2.name=="") {
+    if (values.POC2.name == "") {
       toast.error('Please add details of 2nd POC')
       return
     }
@@ -123,7 +123,7 @@ export default function AddJob({ token = '' }) {
         body: formData,
       })
 
-      console.log(JSON.stringify({ data: values }))
+      // console.log(JSON.stringify({ data: values }))
       if (!res.ok) {
         if (res.status === 403 || res.status === 401) {
           toast.error('No token included')
@@ -133,7 +133,50 @@ export default function AddJob({ token = '' }) {
         console.log(err)
         toast.error('Error: ' + err.error.details.errors[0].message)
       } else {
-        toast.success('Job Added Successfully')
+        toast.success('Job Added Successfully');
+        setValues({
+          ...values,
+          job_title: '',
+          job_status: '',
+          classification: '',
+          category: '',
+          min_X_marks: 0,
+          min_XII_marks: 0,
+          min_cpi: 0,
+          start_date: undefined,
+          last_date: undefined,
+          only_for_pwd: false,
+          only_for_ews: false,
+          only_for_female: false,
+          company: '',
+          approval_status: 'approved',
+          ///
+          POC1: {
+            name: '',
+            mail_id: '',
+            mobile_no: '',
+          },
+          POC2: {
+            name: '',
+            mail_id: '',
+            mobile_no: '',
+          },
+
+          company_category: '',
+          industry_sector: '',
+          details_of_pay_package: {
+            basic_salary: '',
+            allowance: '',
+            perks: '',
+            ctc: '',
+          },
+          hr: {
+            name: '',
+            contact_number: '',
+            email: '',
+
+          }
+        })
       }
     }
   }
@@ -590,7 +633,7 @@ export default function AddJob({ token = '' }) {
                 Pay Package
               </h3>
               <p className='mt-1 text-sm text-gray-500'>
-              Details of Pay Package
+                Details of Pay Package
               </p>
             </div>
             <div className='mt-5 md:mt-0 md:col-span-2'>
@@ -673,7 +716,7 @@ export default function AddJob({ token = '' }) {
 
 
 
-         
+
         <div className='bg-white shadow px-4 py-5 sm:rounded-lg sm:p-6'>
           <div className='md:grid md:grid-cols-3 md:gap-6'>
             <div className='md:col-span-1'>
@@ -706,17 +749,17 @@ export default function AddJob({ token = '' }) {
 
                 <div className='col-span-6 sm:col-span-3'>
                   <label
-                    htmlFor='mail_id'
+                    htmlFor='email'
                     className='block text-sm font-medium text-gray-700'
                   >
                     Email
                   </label>
                   <input
-                    value={values?.hr?.mail_id}
+                    value={values?.hr?.email}
                     onChange={handleContactFourInputChange}
                     type='email'
-                    name='mail_id'
-                    id='mail_id'
+                    name='email'
+                    id='email'
                     autoComplete='email'
                     className='mt-1 focus:ring-yellow-500 focus:border-yellow-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md'
                   />
@@ -724,17 +767,17 @@ export default function AddJob({ token = '' }) {
 
                 <div className='col-span-6 sm:col-span-3'>
                   <label
-                    htmlFor='mobile_no'
+                    htmlFor='contact_number'
                     className='block text-sm font-medium text-gray-700'
                   >
-                    	Telephone/ Mobile
+                    Telephone/ Mobile
                   </label>
                   <input
-                    value={values?.hr?.mobile_no}
+                    value={values?.hr?.contact_number}
                     onChange={handleContactFourInputChange}
                     type='text'
-                    name='mobile_no'
-                    id='mobile_no'
+                    name='contact_number'
+                    id='contact_number'
                     autoComplete='tel-national'
                     className='mt-1 focus:ring-yellow-500 focus:border-yellow-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md'
                   />
@@ -813,7 +856,7 @@ export default function AddJob({ token = '' }) {
                     className='mt-1 focus:ring-yellow-500 focus:border-yellow-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md'
                   />
                 </div>
-              
+
                 {/* <div className='col-span-6 sm:col-span-3'>
                   <label
                     htmlFor='designation'

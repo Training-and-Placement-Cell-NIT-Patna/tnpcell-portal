@@ -68,3 +68,6 @@
 * Ek baar student me fields ke naam check kr le saare
 * Backend me permissions check krle
 * Code review ?
+
+* [Done] Coordinator profiles added it can be fetch by year
+* [Done] Student profile picture implemented on sidebar
