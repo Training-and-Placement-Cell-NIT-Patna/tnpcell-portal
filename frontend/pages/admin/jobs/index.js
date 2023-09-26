@@ -8,10 +8,11 @@ import { parseCookies } from '@/helpers/index'
 import axios from 'axios'
 import { API_URL } from '@/config/index'
 import Link from 'next/link'
-
+import { useRouter } from 'next/router'
 
 
 export default function Jobs({ token }) {
+  const router = useRouter();
   const [rowData, setRowData] = useState([])
 
 
@@ -41,7 +42,8 @@ export default function Jobs({ token }) {
   /////////////////////
   const onRowClicked = useCallback((event) => {
     // event.data contains the row data
-    window.location.href = `/admin/jobs/${event.data.id}`
+    // window.location.href = `/admin/jobs/${event.data.id}` it will reload the page
+    router.push(`/admin/jobs/${event.data.id}`)
   }, [])
 
 
