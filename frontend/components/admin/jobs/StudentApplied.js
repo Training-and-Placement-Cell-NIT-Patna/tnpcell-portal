@@ -372,7 +372,7 @@ export default function StudentApplied({ token = '', id = '' }) {
 
     {
       headerName: 'Roll No.',
-      field: 'attributes.roll',
+      field: 'attributes.student.data.attributes.roll',
       cellStyle: (params) => ({ borderRight: '2px solid #ccc', }),
 
       // cellRenderer: function (params) {
@@ -394,36 +394,31 @@ export default function StudentApplied({ token = '', id = '' }) {
       cellStyle: (params) => ({ borderRight: '2px solid #ccc', }),
 
       cellRenderer: function (params) {
+        // console.log(params.data.attributes.student.data.id)
         return (
-          <div>
-            <Link href={`/admin/students/${params.value}`}>
-              <button
-                type='button'
-                // onClick={() => handleApprove(params.value)}
-                className='inline-flex items-center px-3 py-1.5 border border-transparent text-xs font-medium rounded-full shadow-sm text-white bg-yellow-500 hover:bg-yellow-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-600'
-              >
-                Details
-              </button>
-            </Link>
-          </div>
+          <Link href={`/admin/students/${params.data.attributes.student.data.id}`}>
+            <button
+              type='button'
+              // onClick={() => handleApprove(params.value)}
+              className='inline-flex items-center px-3 py-1.5 border border-transparent text-xs font-medium rounded-full shadow-sm text-white bg-yellow-500 hover:bg-yellow-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-600'
+            >
+              Details
+            </button>
+          </Link>
         )
       },
-
-      // function handleApprove(id) {
-      //   window.location.href = `/admin/companies/${id}`;
-      // }
     },
 
     {
       headerName: 'Name',
-      field: 'attributes.name',
+      field: 'attributes.student.data.attributes.name',
       cellStyle: (params) => ({ borderRight: '2px solid #ccc', }),
 
     },
 
     {
       headerName: 'Admission Year',
-      field: 'attributes.admission_year',
+      field: 'attributes.student.data.attributes.admission_year',
       cellStyle: (params) => ({ borderRight: '2px solid #ccc', }),
 
     },
@@ -435,51 +430,51 @@ export default function StudentApplied({ token = '', id = '' }) {
 
     {
       headerName: 'Placed Status',
-      field: 'attributes.placed_status',
+      field: 'attributes.student.data.attributes.placed_status',
       cellStyle: (params) => ({ borderRight: '2px solid #ccc', }),
 
     },
     {
       headerName: 'Internship Status (2 Month)',
-      field: 'attributes.internship_status_2',
+      field: 'attributes.student.data.attributes.internship_status_2',
       cellStyle: (params) => ({ borderRight: '2px solid #ccc', }),
 
     },
     {
       headerName: 'Internship Status (6 Month)',
-      field: 'attributes.internship_status_6',
+      field: 'attributes.student.data.attributes.internship_status_6',
       cellStyle: (params) => ({ borderRight: '2px solid #ccc', }),
 
     },
     {
       headerName: 'FTE Status',
-      field: 'attributes.fte_status',
+      field: 'attributes.student.data.attributes.fte_status',
       cellStyle: (params) => ({ borderRight: '2px solid #ccc', }),
 
     },
     {
       headerName: 'Course',
-      field: 'attributes.course.data.attributes.course_name',
+      field: 'attributes.student.data.attributes.course.data.attributes.course_name',
       cellStyle: (params) => ({ borderRight: '2px solid #ccc', }),
 
     },
     {
       headerName: 'Program',
-      field: 'attributes.program.data?.attributes?.program_name',
+      field: 'attributes.student.data.attributes.program.data.attributes.program_name',
       cellStyle: (params) => ({ borderRight: '2px solid #ccc', }),
 
     },
 
     {
       headerName: 'Father Name',
-      field: 'attributes.father_name',
+      field: 'attributes.student.data.attributes.father_name',
       cellStyle: (params) => ({ borderRight: '2px solid #ccc', }),
 
     },
 
     {
       headerName: 'Father Occupation',
-      field: 'attributes.father_occupation',
+      field: 'attributes.student.data.attributes.father_occupation',
       cellStyle: (params) => ({ borderRight: '2px solid #ccc', }),
 
 
@@ -487,7 +482,7 @@ export default function StudentApplied({ token = '', id = '' }) {
 
     {
       headerName: 'Mother Name',
-      field: 'attributes.mother_name',
+      field: 'attributes.student.data.attributes.mother_name',
       cellStyle: (params) => ({ borderRight: '2px solid #ccc', }),
 
 
@@ -495,32 +490,32 @@ export default function StudentApplied({ token = '', id = '' }) {
 
     {
       headerName: 'Mother Occupation',
-      field: 'attributes.mother_occupation',
+      field: 'attributes.student.data.attributes.mother_occupation',
       cellStyle: (params) => ({ borderRight: '2px solid #ccc', }),
 
     },
 
     {
       headerName: 'Mobile',
-      field: 'attributes.mobile_number_1',
+      field: 'attributes.student.data.attributes.mobile_number_1',
       cellStyle: (params) => ({ borderRight: '2px solid #ccc', }),
 
     },
     {
       headerName: 'Alternate Mobile',
-      field: 'attributes.mobile_number_2',
+      field: 'attributes.student.data.attributes.mobile_number_2',
       cellStyle: (params) => ({ borderRight: '2px solid #ccc', }),
 
     },
     {
       headerName: 'Institute Email',
-      field: 'attributes.institute_email_id',
+      field: 'attributes.student.data.attributes.institute_email_id',
       cellStyle: (params) => ({ borderRight: '2px solid #ccc', }),
 
     },
     {
       headerName: 'Personal Email',
-      field: 'attributes.personal_email_id',
+      field: 'attributes.student.data.attributes.personal_email_id',
       cellStyle: (params) => ({ borderRight: '2px solid #ccc', }),
 
     },
@@ -554,7 +549,7 @@ export default function StudentApplied({ token = '', id = '' }) {
     // },
     {
       headerName: 'Resume',
-      field: 'attributes.resume_link',
+      field: 'attributes.student.data.attributes.resume_link',
       cellStyle: (params) => ({ borderRight: '2px solid #ccc', }),
 
       cellRenderer: function (params) {
@@ -580,7 +575,7 @@ export default function StudentApplied({ token = '', id = '' }) {
 
     {
       headerName: 'Blood Group',
-      field: 'attributes.blood_group',
+      field: 'attributes.student.data.attributes.blood_group',
       cellStyle: (params) => ({ borderRight: '2px solid #ccc', }),
 
 
@@ -588,7 +583,7 @@ export default function StudentApplied({ token = '', id = '' }) {
 
     {
       headerName: 'Height',
-      field: 'attributes.height',
+      field: 'attributes.student.data.attributes.height',
       filter: 'agNumberColumnFilter',
       cellStyle: (params) => ({ borderRight: '2px solid #ccc', }),
 
@@ -597,7 +592,7 @@ export default function StudentApplied({ token = '', id = '' }) {
 
     {
       headerName: 'Weight',
-      field: 'attributes.weight',
+      field: 'attributes.student.data.attributes.weight',
       filter: 'agNumberColumnFilter',
       cellStyle: (params) => ({ borderRight: '2px solid #ccc', }),
 
@@ -606,105 +601,105 @@ export default function StudentApplied({ token = '', id = '' }) {
 
     {
       headerName: 'Domicile',
-      field: 'attributes.domicile',
+      field: 'attributes.student.data.attributes.domicile',
       cellStyle: (params) => ({ borderRight: '2px solid #ccc', }),
 
     },
 
     {
       headerName: 'Address',
-      field: 'attributes.address',
+      field: 'attributes.student.data.attributes.address',
       cellStyle: (params) => ({ borderRight: '2px solid #ccc', }),
 
     },
 
     {
       headerName: 'City',
-      field: 'attributes.city',
+      field: 'attributes.student.data.attributes.city',
       cellStyle: (params) => ({ borderRight: '2px solid #ccc', }),
 
     },
 
     {
       headerName: 'State',
-      field: 'attributes.state',
+      field: 'attributes.student.data.attributes.state',
       cellStyle: (params) => ({ borderRight: '2px solid #ccc', }),
 
     },
 
     {
       headerName: 'Pin Code',
-      field: 'attributes.pin_code',
+      field: 'attributes.student.data.attributes.pin_code',
       cellStyle: (params) => ({ borderRight: '2px solid #ccc', }),
 
     },
 
     {
       headerName: 'Correspondence Address',
-      field: 'attributes.correspondance_address',
+      field: 'attributes.student.data.attributes.correspondance_address',
       cellStyle: (params) => ({ borderRight: '2px solid #ccc', }),
 
     },
 
     {
       headerName: 'Aadhar No',
-      field: 'attributes.aadhar_no',
+      field: 'attributes.student.data.attributes.aadhar_no',
       cellStyle: (params) => ({ borderRight: '2px solid #ccc', }),
 
     },
 
     {
       headerName: 'Driving License No',
-      field: 'attributes.driving_licience_no',
+      field: 'attributes.student.data.attributes.driving_licience_no',
       cellStyle: (params) => ({ borderRight: '2px solid #ccc', }),
 
     },
 
     {
       headerName: 'Driving License',
-      field: 'attributes.driving_licience_link',
+      field: 'attributes.student.data.attributes.driving_licience_link',
       cellStyle: (params) => ({ borderRight: '2px solid #ccc', }),
 
     },
 
     {
       headerName: 'Pancard No',
-      field: 'attributes.pancard_no',
+      field: 'attributes.student.data.attributes.pancard_no',
       cellStyle: (params) => ({ borderRight: '2px solid #ccc', }),
 
     },
 
     {
       headerName: 'All Semester Marksheets',
-      field: 'attributes.all_sem_marksheet',
+      field: 'attributes.student.data.attributes.all_sem_marksheet',
       cellStyle: (params) => ({ borderRight: '2px solid #ccc', }),
 
     },
 
     {
       headerName: 'X Marksheet',
-      field: 'attributes.X_marksheet',
+      field: 'attributes.student.data.attributes.X_marksheet',
       cellStyle: (params) => ({ borderRight: '2px solid #ccc', }),
 
     },
 
     {
       headerName: 'XII Marksheet',
-      field: 'attributes.XII_marksheet',
+      field: 'attributes.student.data.attributes.XII_marksheet',
       cellStyle: (params) => ({ borderRight: '2px solid #ccc', }),
 
     },
 
     {
       headerName: 'X Board',
-      field: 'attributes.X_board',
+      field: 'attributes.student.data.attributes.X_board',
       cellStyle: (params) => ({ borderRight: '2px solid #ccc', }),
 
     },
 
     {
       headerName: 'X YOP',
-      field: 'attributes.X_YOP',
+      field: 'attributes.student.data.attributes.X_YOP',
       filter: 'agNumberColumnFilter',
       cellStyle: (params) => ({ borderRight: '2px solid #ccc', }),
 
@@ -713,7 +708,7 @@ export default function StudentApplied({ token = '', id = '' }) {
 
     {
       headerName: 'XII Board',
-      field: 'attributes.XII_board',
+      field: 'attributes.student.data.attributes.XII_board',
       cellStyle: (params) => ({ borderRight: '2px solid #ccc', }),
 
 
@@ -721,7 +716,7 @@ export default function StudentApplied({ token = '', id = '' }) {
 
     {
       headerName: 'XII YOP',
-      field: 'attributes.XII_YOP',
+      field: 'attributes.student.data.attributes.XII_YOP',
       cellStyle: (params) => ({ borderRight: '2px solid #ccc', }),
 
       filter: 'agNumberColumnFilter',
@@ -730,7 +725,7 @@ export default function StudentApplied({ token = '', id = '' }) {
 
     {
       headerName: 'SPI 1',
-      field: 'attributes.spi_1',
+      field: 'attributes.student.data.attributes.spi_1',
       filter: 'agNumberColumnFilter',
       cellStyle: (params) => ({ borderRight: '2px solid #ccc', }),
 
@@ -739,7 +734,7 @@ export default function StudentApplied({ token = '', id = '' }) {
 
     {
       headerName: 'SPI 2',
-      field: 'attributes.spi_2',
+      field: 'attributes.student.data.attributes.spi_2',
       filter: 'agNumberColumnFilter',
       cellStyle: (params) => ({ borderRight: '2px solid #ccc', }),
 
@@ -748,7 +743,7 @@ export default function StudentApplied({ token = '', id = '' }) {
 
     {
       headerName: 'SPI 3',
-      field: 'attributes.spi_3',
+      field: 'attributes.student.data.attributes.spi_3',
       filter: 'agNumberColumnFilter',
       cellStyle: (params) => ({ borderRight: '2px solid #ccc', }),
 
@@ -757,7 +752,7 @@ export default function StudentApplied({ token = '', id = '' }) {
 
     {
       headerName: 'SPI 4',
-      field: 'attributes.spi_4',
+      field: 'attributes.student.data.attributes.spi_4',
       filter: 'agNumberColumnFilter',
       cellStyle: (params) => ({ borderRight: '2px solid #ccc', }),
 
@@ -766,7 +761,7 @@ export default function StudentApplied({ token = '', id = '' }) {
 
     {
       headerName: 'SPI 5',
-      field: 'attributes.spi_5',
+      field: 'attributes.student.data.attributes.spi_5',
       filter: 'agNumberColumnFilter',
       cellStyle: (params) => ({ borderRight: '2px solid #ccc', }),
 
@@ -775,7 +770,7 @@ export default function StudentApplied({ token = '', id = '' }) {
 
     {
       headerName: 'SPI 6',
-      field: 'attributes.spi_6',
+      field: 'attributes.student.data.attributes.spi_6',
       filter: 'agNumberColumnFilter',
       cellStyle: (params) => ({ borderRight: '2px solid #ccc', }),
 
@@ -784,7 +779,7 @@ export default function StudentApplied({ token = '', id = '' }) {
 
     {
       headerName: 'SPI 7',
-      field: 'attributes.spi_7',
+      field: 'attributes.student.data.attributes.spi_7',
       filter: 'agNumberColumnFilter',
       cellStyle: (params) => ({ borderRight: '2px solid #ccc', }),
 
@@ -793,7 +788,7 @@ export default function StudentApplied({ token = '', id = '' }) {
 
     {
       headerName: 'SPI 8',
-      field: 'attributes.spi_8',
+      field: 'attributes.student.data.attributes.spi_8',
       filter: 'agNumberColumnFilter',
       cellStyle: (params) => ({ borderRight: '2px solid #ccc', }),
 
@@ -802,7 +797,7 @@ export default function StudentApplied({ token = '', id = '' }) {
 
     {
       headerName: 'SPI 9',
-      field: 'attributes.spi_9',
+      field: 'attributes.student.data.attributes.spi_9',
       filter: 'agNumberColumnFilter',
       cellStyle: (params) => ({ borderRight: '2px solid #ccc', }),
 
@@ -811,7 +806,7 @@ export default function StudentApplied({ token = '', id = '' }) {
 
     {
       headerName: 'Total Backlogs',
-      field: 'attributes.total_backlogs',
+      field: 'attributes.student.data.attributes.total_backlogs',
       filter: 'agNumberColumnFilter',
       cellStyle: (params) => ({ borderRight: '2px solid #ccc', }),
 
@@ -820,7 +815,7 @@ export default function StudentApplied({ token = '', id = '' }) {
 
     {
       headerName: 'Current Backlogs',
-      field: 'attributes.current_backlogs',
+      field: 'attributes.student.data.attributes.current_backlogs',
       filter: 'agNumberColumnFilter',
       cellStyle: (params) => ({ borderRight: '2px solid #ccc', }),
 
@@ -829,14 +824,14 @@ export default function StudentApplied({ token = '', id = '' }) {
 
     {
       headerName: 'Current Status',
-      field: 'attributes.current_status',
+      field: 'attributes.student.data.attributes.current_status',
       cellStyle: (params) => ({ borderRight: '2px solid #ccc', }),
 
     },
 
     {
       headerName: 'CPI',
-      field: 'attributes.cpi',
+      field: 'attributes.student.data.attributes.cpi',
       filter: 'agNumberColumnFilter',
       cellStyle: (params) => ({ borderRight: '2px solid #ccc', }),
 
@@ -846,40 +841,40 @@ export default function StudentApplied({ token = '', id = '' }) {
 
     {
       headerName: 'Xth Marks',
-      field: 'attributes.X_marks',
+      field: 'attributes.student.data.attributes.X_marks',
       cellStyle: (params) => ({ borderRight: '2px solid #ccc', }),
 
     },
     {
       headerName: 'XIIth Marks',
-      field: 'attributes.XII_marks',
+      field: 'attributes.student.data.attributes.XII_marks',
       cellStyle: (params) => ({ borderRight: '2px solid #ccc', }),
 
     },
     {
       headerName: 'Category',
-      field: 'attributes.category',
+      field: 'attributes.student.data.attributes.category',
       cellStyle: (params) => ({ borderRight: '2px solid #ccc', }),
 
     },
 
     {
       headerName: 'PWD',
-      field: 'attributes.pwd',
+      field: 'attributes.student.data.attributes.pwd',
       cellStyle: (params) => ({ borderRight: '2px solid #ccc', }),
 
     },
 
     {
       headerName: 'Type Of Disability',
-      field: 'attributes.type_of_disability',
+      field: 'attributes.student.data.attributes.type_of_disability',
       cellStyle: (params) => ({ borderRight: '2px solid #ccc', }),
 
     },
 
     {
       headerName: 'Disability Percentage (If PWD)',
-      field: 'attributes.disability_percentage',
+      field: 'attributes.student.data.attributes.disability_percentage',
       cellStyle: (params) => ({ borderRight: '2px solid #ccc', }),
 
     },
@@ -887,27 +882,27 @@ export default function StudentApplied({ token = '', id = '' }) {
 
     {
       headerName: 'Disability Certificate (If PWD)',
-      field: 'attributes.disability_certificate',
+      field: 'attributes.student.data.attributes.disability_certificate',
       cellStyle: (params) => ({ borderRight: '2px solid #ccc', }),
 
     },
 
     {
       headerName: 'Gender',
-      field: 'attributes.gender',
+      field: 'attributes.student.data.attributes.gender',
       cellStyle: (params) => ({ borderRight: '2px solid #ccc', }),
 
 
     },
     {
       headerName: 'Date of Birth',
-      field: 'attributes.date_of_birth',
+      field: 'attributes.student.data.attributes.date_of_birth',
       cellStyle: (params) => ({ borderRight: '2px solid #ccc', }),
 
     },
     {
       headerName: 'Bachelor Marks',
-      field: 'attributes.bachelor_marks',
+      field: 'attributes.student.data.attributes.bachelor_marks',
       cellStyle: (params) => ({ borderRight: '2px solid #ccc', }),
 
     },

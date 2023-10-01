@@ -5,7 +5,7 @@ const Developers = () => {
     {
       name: "Rajan Kumar",
       aboutL: "lorem ipsum",
-      role: "Full-stack Developer || DevOps Engineer",
+      role: "Full-Stack Developer || DevOps Engineer",
       twitter: "https://twitter.com/Cr7_rajan",
       linkedin: "",
       image: "/developers/rajan.jpg",
@@ -22,26 +22,26 @@ const Developers = () => {
     {
       name: "Ayushi Gupta",
       aboutL: "lorem ipsum",
-      role: "Frontend Engineer",
-      twitter: "",
-      linkedin: "",
-      image: "",
-    },
-    {
-      name: "Sahitya",
-      aboutL: "lorem ipsum",
       role: "Frontend Developer",
       twitter: "",
       linkedin: "",
-      image: "",
+      image: "/developers/ayushi.jpeg",
     },
     {
-      name: "Ashutosh",
+      name: "Ashutosh Singh",
       aboutL: "lorem ipsum",
-      role: "Frontend-Developer",
+      role: "Jr. Frontend-Developer",
       twitter: "",
       linkedin: "",
-      image: "",
+      image: "/developers/ashutosh.jpeg",
+    },
+    {
+      name: "Sahitya Aryan",
+      aboutL: "lorem ipsum",
+      role: "Jr. Frontend Developer",
+      twitter: "",
+      linkedin: "",
+      image: "/developers/sahitya.jpeg",
     },
   ];
   return (
@@ -90,7 +90,7 @@ const Developers = () => {
         </div>
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
           {developersData.map((item) => {
-            return <CardComp data={item} />;
+            return <CardComp data={item} key={item.image} />;
           })}
         </div>
       </div>
