@@ -6,7 +6,7 @@ function CoverPageNavBar() {
         {
             idx: 1,
             text: "About",
-            href: "#about",
+            href: "/#about",
         },
         {
             idx: 2,
@@ -16,12 +16,12 @@ function CoverPageNavBar() {
         {
             idx: 3,
             text: "Why Recruit us?",
-            href: "#WhyUS",
+            href: "/#WhyUS",
         },
         {
             idx: 4,
             text: "Process",
-            href: "#process",
+            href: "/#process",
         },
         {
             idx: 5,
