@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { API_URL } from '@/config/index'
 import { toast } from 'react-toastify'
-import axios from 'axios';
+import {BsFillEyeFill} from 'react-icons/bs'
 function UploadDocuments({ token, studentsData }) {
     const [casteCertificate, setCasteCertificate] = useState();
     const [tenthCertificate, setTenthCertificate] = useState();
@@ -11,8 +11,14 @@ function UploadDocuments({ token, studentsData }) {
     const [panCard, setPanCard] = useState();
     const [disabilityCertificate, setDisabilityCertificate] = useState();
     const [allSemMarksheet, setAllSemMarksheet] = useState();
+    const [loading, setLoading] = useState(false);
     const handleSubmit = async (e) => {
         e.preventDefault()
+        if(!casteCertificate || !tenthCertificate || !twelthCertificate || !drivingLicence || !aadharCard || !panCard || !disabilityCertificate || !allSemMarksheet){
+            toast.error('Please Upload All Documents')
+            return;
+        }
+        setLoading(true)
         const form = new FormData();
         form.append('casteCertificate', casteCertificate);
         form.append('tenthCertificate', tenthCertificate);
@@ -32,7 +38,7 @@ function UploadDocuments({ token, studentsData }) {
 
         if (res.ok) {
             toast.success('Successfully Updated')
-            setAadharCard('')   
+            setAadharCard('')
             setAllSemMarksheet('')
             setCasteCertificate('')
             setDisabilityCertificate('')
@@ -40,8 +46,10 @@ function UploadDocuments({ token, studentsData }) {
             setPanCard('')
             setTenthCertificate('')
             setTwelthCertificate('')
+            setLoading(false)
         } else {
             toast.error('Something Went Wrong')
+            setLoading(false);
         }
     }
     // useEffect(() => {
@@ -53,43 +61,46 @@ function UploadDocuments({ token, studentsData }) {
                 <form>
                     <div className='col-span-3 sm:col-span-1'>
                         {studentsData.category !== 'general' ? <>
-                            <div className=''>
-                                <label htmlFor="">casteCertificate</label>
-                                <input type="file" name="casteCertificate" id="casteCertificate" onChange={(e) => setCasteCertificate(e.target.files[0])} />
+                            <div>
+                                <label htmlFor="casteCertificate" className='mb-1 block text-sm font-medium text-gray-700'>Caste Certificate</label>
+                                <input type="file" className='file-input file-input-bordered file-input-warning file-input-sm w-full max-w-xs' name="casteCertificate" id="casteCertificate" onChange={(e) => setCasteCertificate(e.target.files[0])} /> <a href={`${API_URL}`+studentsData.casteCertificate?.url} target='_blank' ><BsFillEyeFill className='inline text-2xl' /></a>
                             </div>
                         </> : null}
                         <div>
-                            <label htmlFor="">tenthCertificate</label>
-                            <input type="file" name="tenthCertificate" id="tenthCertificate" onChange={(e) => setTenthCertificate(e.target.files[0])} />
+                            <label htmlFor="tenthCertificate" className='mb-1 block text-sm font-medium text-gray-700'>Tenth Certificate</label>
+                            <input type="file" className='file-input file-input-bordered file-input-warning file-input-sm w-full max-w-xs' disabled={studentsData.tenthCertificate?.url} name="tenthCertificate" id="tenthCertificate" onChange={(e) => setTenthCertificate(e.target.files[0])} /> <a href={`${API_URL}`+studentsData.tenthCertificate?.url} target='_blank' ><BsFillEyeFill className='inline text-2xl' /></a>
                         </div>
                         <div>
-                            <label htmlFor="">twelthCertificate</label>
-                            <input type="file" name="twelthCertificate" id="twelthCertificate" onChange={(e) => setTwelthCertificate(e.target.files[0])} />
+                            <label htmlFor="twelthCertificate" className='mb-1 block text-sm font-medium text-gray-700'>Twelth Certificate</label>
+                            <input type="file" className='file-input file-input-bordered file-input-warning file-input-sm w-full max-w-xs' disabled={studentsData.twelthCertificate?.url} name="twelthCertificate" id="twelthCertificate" onChange={(e) => setTwelthCertificate(e.target.files[0])} /> <a href={`${API_URL}`+studentsData.twelthCertificate?.url} target='_blank' ><BsFillEyeFill className='inline text-2xl' /></a>
                         </div>
                         <div>
-                            <label htmlFor="">aadharCard</label>
-                            <input type="file" name="aadharCard" id="aadharCard" onChange={(e) => setAadharCard(e.target.files[0])} />
+                            <label htmlFor="aadharCard" className='mb-1 block text-sm font-medium text-gray-700'>Aadhar Card</label>
+                            <input type="file" className='file-input file-input-bordered file-input-warning file-input-sm w-full max-w-xs' disabled={studentsData.aadharCard?.url} name="aadharCard" id="aadharCard" onChange={(e) => setAadharCard(e.target.files[0])} /> <a href={`${API_URL}`+studentsData.aadharCard?.url} target='_blank' ><BsFillEyeFill className='inline text-2xl' /></a>
                         </div>
                         <div>
-                            <label htmlFor="">panCard</label>
-                            <input type="file" name="panCard" id="panCard" onChange={(e) => setPanCard(e.target.files[0])} />
+                            <label htmlFor="panCard" className='mb-1 block text-sm font-medium text-gray-700'>Pan Card</label>
+                            <input type="file" className='file-input file-input-bordered file-input-warning file-input-sm w-full max-w-xs' disabled={studentsData.panCard?.url} name="panCard" id="panCard" onChange={(e) => setPanCard(e.target.files[0])} /> <a href={`${API_URL}`+studentsData.panCard?.url} target='_blank' ><BsFillEyeFill className='inline text-2xl' /></a>
                         </div>
                         <div>
-                            <label htmlFor="">drivingLicence</label>
-                            <input type="file" name="drivingLicence" id="drivingLicence" onChange={(e) => setDrivingLicence(e.target.files[0])} />
+                            <label htmlFor="drivingLicence" className='mb-1 block text-sm font-medium text-gray-700'>Driving Licence</label>
+                            <input type="file" className=' file-input file-input-bordered file-input-warning file-input-sm w-full max-w-xs' disabled={studentsData.drivingLicence?.url} name="drivingLicence" id="drivingLicence" onChange={(e) => setDrivingLicence(e.target.files[0])} /> <a href={`${API_URL}`+studentsData.drivingLicence?.url} target='_blank' ><BsFillEyeFill className='inline text-2xl' /></a>
                         </div>
                         {studentsData.pwd ? <>
                             <div>
-                                <label htmlFor="">disabilityCertificate</label>
-                                <input type="file" name="disabilityCertificate" id="disabilityCertificate" onChange={(e) => setDisabilityCertificate(e.target.files[0])} />
+                                <label htmlFor="disabilityCertificate" className='mb-1 block text-sm font-medium text-gray-700'>Disability Certificate</label>
+                                <input type="file" className=' file-input file-input-bordered file-input-warning file-input-sm w-full max-w-xs' name="disabilityCertificate" id="disabilityCertificate" onChange={(e) => setDisabilityCertificate(e.target.files[0])} /> <a href={`${API_URL}`+studentsData.disabilityCertificate?.url} target='_blank' ><BsFillEyeFill className='inline text-2xl' /></a>
                             </div>
                         </> : null}
                         <div>
-                            <label htmlFor="">allSemMarksheet</label>
-                            <input type="file" name="allSemMarksheet" id="allSemMarksheet" onChange={(e) => setAllSemMarksheet(e.target.files[0])} />
+                            <label htmlFor="allSemMarksheet" className='mb-1 block text-sm font-medium text-gray-700'>All Sem Marksheet</label>
+                            <input type="file" className='file-input file-input-bordered file-input-warning file-input-sm w-full max-w-xs' name="allSemMarksheet" id="allSemMarksheet" onChange={(e) => setAllSemMarksheet(e.target.files[0])} /> 
+                            <a href={`${API_URL}`+studentsData.allSemMarksheet?.url} target='_blank' ><BsFillEyeFill className='inline text-2xl' /></a>
                         </div>
                     </div>
-                    <button type='submit' onClick={handleSubmit} className='bg-yellow-500'>submit</button>
+                    <div className='flex justify-start py-2'>
+                        <button type='submit' onClick={handleSubmit} className='bg-yellow-500 px-2 py-2 rounded shadow'>{loading?'Wait...':'Submit'}</button>
+                    </div>
                 </form>
             </div>
         </>
