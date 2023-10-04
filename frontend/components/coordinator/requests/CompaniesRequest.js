@@ -142,11 +142,13 @@ export default function CompaniesRequest({ token = '' }) {
           </h2>
         </div>
       </div>
-      <div className='ag-theme-alpine mt-4' style={{ width:1100 ,height: 'auto' }}>
+      <div className='ag-theme-alpine mt-4' style={{ width:1100 ,height: '400px' }}>
         <AgGridReact
           rowData={companies}
           columnDefs={columnDefs}
           defaultColDef={{ sortable: true }}
+          alwaysShowVerticalScroll={true}
+          domLayout="normal"
         ></AgGridReact>
       </div>
     </div>
