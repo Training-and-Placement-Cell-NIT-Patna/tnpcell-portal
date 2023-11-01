@@ -27,7 +27,7 @@ const data = [
   {
     icon: coding,
     title: 'Coding Culture',
-    desc: 'Students from NIT Patna dominate the leader boards of Codechef, Codeforces, Hackerrank, Leetcode etc. Our Coding clubs regularly organize coding competitions on various platforms to help the students strengthen their coding skills. The Google Developer Student Clubs (DSC) of NIT Patna and the Hackslash Club powered by Mozilla frequently organize workshops on trending technologies in Machine learning and Web/Android Development.',
+    desc: 'Students from NIT Patna dominate the leader boards of Codechef, Codeforces, Hackerrank, Leetcode etc. Our Coding clubs regularly organize coding competitions on various platforms to help the students strengthen their coding skills. The Google Developer Student Clubs (GDSC) of NIT Patna and the Hackslash Club powered by Mozilla frequently organize workshops on trending technologies in Machine learning and Web/Android Development.',
   },
   {
     icon: workshop,
