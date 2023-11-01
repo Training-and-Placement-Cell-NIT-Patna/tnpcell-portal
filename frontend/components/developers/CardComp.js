@@ -4,9 +4,10 @@ function CardComp({ data }) {
   return (
     <>
       <div>
-        <div className="relative overflow-hidden transition duration-300 transform rounded shadow-lg lg:hover:-translate-y-2 hover:shadow-2xl">
+        <div className="relative mx-auto  sm:ml-0 w-[48%] sm:w-full overflow-hidden transition duration-300 transform rounded shadow-lg lg:hover:-translate-y-2 hover:shadow-2xl">
           <img
-            className="object-cover w-full h-64 md:h-64 xl:h-80"
+              align={""}
+            className="object-cover sm:px-0 sm:object-cover w-full h-64 md:h-64 xl:h-80"
             src={data.image}
             alt="Person"
           />
