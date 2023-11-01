@@ -3,7 +3,7 @@ import { useRouter } from 'next/router'
 import { toast } from 'react-toastify'
 import { API_URL } from '@/config/index'
 import 'react-toastify/dist/ReactToastify.css'
-import AuthContext from '@/context/AuthContext'
+// import AuthContext from '@/context/AuthContext'
 
 export default function AddCompany({ token = '' }) {
   const [values, setValues] = useState({
@@ -67,6 +67,31 @@ export default function AddCompany({ token = '' }) {
       } else {
         const profile = await res.json()
         toast.success('Company Added Successfully')
+        setValues({
+          ...values,
+          company_name: '',
+          company_address: '',
+          remarks: '',
+          status: 'approved',
+          contact1: {
+            name: '',
+            designation: '',
+            mail_id: '',
+            mobile_no: '',
+          },
+          contact2: {
+            name: '',
+            designation: '',
+            mail_id: '',
+            mobile_no: '',
+          },
+          contact3: {
+            name: '',
+            designation: '',
+            mail_id: '',
+            mobile_no: '',
+          },
+        })
       }
     }
   }

@@ -50,7 +50,7 @@ export default async (req, res) => {
 
     else {
 
-      res.status(data.error.status).json({ error: data.error.message })
+      res.status(data?.error?.status).json({ error: data?.error?.message })
     }
   }
 

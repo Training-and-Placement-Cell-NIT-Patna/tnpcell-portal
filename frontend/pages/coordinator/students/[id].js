@@ -45,7 +45,6 @@ export default function StudentProfilePage({
     })
       .then((res) => res.json())
       .then((resp) => {
-        console.log(resp.data)
         setApplications(resp.data)
       })
       .catch((err) => {
