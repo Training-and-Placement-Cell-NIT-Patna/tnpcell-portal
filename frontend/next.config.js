@@ -2,7 +2,7 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    domains: ['localhost', '192.168.78.21','10.1.24.93'],
+    domains: ['localhost', '192.168.1.42', '14.139.219.168', 'tpc.nitp.ac.in', 'https://tpc.nitp.ac.in','http://tpc.nitp.ac.in'],
   },
 }
 
