@@ -6,8 +6,8 @@ function Footer() {
     <div className="bg-[#510505] text-stone-400">
       <div className="grid grid-cols-2 md:grid-cols-6 ">
         <div className="col-span-2 p-4">
-          <h3 className="font-extrabold p-2 text-xl text-white">
-            Get in <span className="text-yellow-400"> Touch</span>
+          <h3 className="font-extrabold px-2 text-xl text-white">
+            T&P Cell<span className="text-yellow-400"> NIT Patna</span>
           </h3>
           <p>National Institute of Technology Patna</p>
           <p>Patna, Bihar (800005), India</p>
@@ -31,7 +31,7 @@ function Footer() {
                 <a target={"_tnp"}>
                   NIRF
                 </a>
-                </Link>
+              </Link>
             </li>
 
             {/*<li className={"py-1"}>*/}
@@ -54,27 +54,24 @@ function Footer() {
           <ul>
             <li className={"py-1"}>
               <Link href="https://www.nitp.ac.in/bwcminutes" >
-                <a  target={"_tnp"} >  BOG/FC/BWC Minutes</a>
-               </Link>
+                <a target={"_tnp"} >  BOG/FC/BWC Minutes</a>
+              </Link>
             </li>
-              <li className={"py-1"}>
+            <li className={"py-1"}>
               <Link href="https://www.nitp.ac.in/senateminutes"  >
-                <a  target={"_tnp"} >Senate Minutes</a>
-               </Link>
+                <a target={"_tnp"} >Senate Minutes</a>
+              </Link>
             </li>
             {/*  <li className={"py-1"}>*/}
             {/*  <Link href="https://www.nitp.ac.in/acadnotice">*/}
             {/*    <a  target={"_tnp"} >Academics Notices</a>*/}
             {/*  </Link>*/}
             {/*</li>*/}
-              <li className={"py-1"}>
+            <li className={"py-1"}>
               <Link href="https://www.nitp.ac.in/nit_act">
-                <a  target={"_tnp"} >NIT Act and Statutes</a>
+                <a target={"_tnp"} >NIT Act and Statutes</a>
               </Link>
             </li>
-
-
-
           </ul>
         </div>
         <div className="p-4">
@@ -94,7 +91,7 @@ function Footer() {
             <li className={"py-1"}>
               <Link href="https://www.nitp.ac.in/nit_act">
                 {/*field to be changed each year*/}
-                <a  target={"_tnp"} >Convocation 2021</a>
+                <a target={"_tnp"} >Convocation 2021</a>
               </Link>
             </li>
             {/*<li className={"py-1"}>*/}
@@ -131,20 +128,17 @@ function Footer() {
             <li className={"py-1"}>
               <Link href="https://www.nitp.ac.in/students/?tab=nss">
                 <a target={"_tnp"}>
-                 National Service Scheme
+                  National Service Scheme
                 </a>
               </Link>
             </li>
-
           </ul>
         </div>
       </div>
-      <hr/>
-      <div>
-        <p className="text-center font-medium">
-          National Institute of Technology Patna-800005, Bihar, INDIA ©2023 NIT
-          Patna
-        </p>
+      <hr />
+      <div className="text-center text-sm font-serif">
+        {/* Never remove the following line. No matter who the hell you are */}
+        <p>T&P Cell NIT Patna © 2023, Developed by <a href="https://www.linkedin.com/in/krcpr007/" target="_blank" rel="noreferrer" className="hover:underline">Rajan kumar</a>, <a href="https://www.linkedin.com/in/rajdeep-nagar-0873a7206/" target="_blank" rel="noreferrer" className="hover:underline">Rajdeep Nagar</a> & <a href="https://www.linkedin.com/in/ayushi-gupta-604646202/" target="_blank" rel="noreferrer" className="hover:underline">Ayushi Gupta</a></p>
       </div>
     </div>
   );
