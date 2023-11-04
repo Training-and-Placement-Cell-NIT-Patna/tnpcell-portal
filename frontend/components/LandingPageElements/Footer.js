@@ -7,7 +7,7 @@ function Footer() {
       <div className="grid grid-cols-2 md:grid-cols-6 ">
         <div className="col-span-2 p-4">
           <h3 className="font-extrabold px-2 text-xl text-white">
-            Get in <span className="text-yellow-400"> Touch</span>
+            T&P Cell<span className="text-yellow-400"> NIT Patna</span>
           </h3>
           <p>National Institute of Technology Patna</p>
           <p>Patna, Bihar (800005), India</p>
