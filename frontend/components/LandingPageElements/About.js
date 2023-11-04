@@ -13,13 +13,13 @@ function About() {
         <div className="text-center">
           <div className="text-center">
             <p className="px-5 md:px-10 pt-10 pb-28 md:indent-5 text-justify md:text-center">
-              The Training and Placement cell of NIT PATNA forms an integral
-              part in shaping the careers of the students of the institute. It
-              organizes and coordinates campus placement program to fulfill its
-              commitment of a job to every aspirant. Not only that it also
-              encourages and works towards the continuing education for the
-              college employees. National Institute of Technology, Patna , also
-              known as NIT Patna, is an Institute of National Importance . NIT
+              The Training and Placement cell of NIT Patna forms an integral
+              part of shaping the careers of the institute's students. It
+              organizes and coordinates campus placement programs to fulfil its
+              commitment to a job for every aspirant. Not only that it also
+              encourages and works towards continuing education for the
+              college employees. National Institute of Technology, Patna, also
+              known as NIT Patna, is an Institute of National Importance. NIT
               Patna marked its humble beginning in 1886 and it is the 6th Oldest
               Engineering Institute of India.
             </p>
@@ -41,17 +41,17 @@ function About() {
             </p>
           </div>
         </div>
-    </div>
+      </div>
 
       <div className="bg-[#510505] text-white pb-20">
         <div className="text-center py-10">
-          
+
           {/* here the changes are needed [pending] */}
           {/* contentBox */}
           {/* bg-[#f6a655] */}
-          
 
-         
+
+
 
 
           <h1 className="text-4xl  mx-auto leading-normal relative top-[3rem] font-bold mb-9">
