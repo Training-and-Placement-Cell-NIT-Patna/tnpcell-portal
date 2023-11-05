@@ -18,7 +18,7 @@ const nextConfig = {
       }
     ]
   },
-  // @important
+  // @important Never remove this
   async rewrites() {
     return [
       {
