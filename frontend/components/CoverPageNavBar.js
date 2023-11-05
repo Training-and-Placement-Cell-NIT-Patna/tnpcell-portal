@@ -32,9 +32,9 @@ function CoverPageNavBar() {
     const [isOpen, setIsOpen] = useState(false);
     return (
         <>
-            <div className=" top-0 z-50 ">
-                <div className="">
-                    <div className=" mx-auto z-50 bg-[#2c0707] backdrop-blur bg-opacity-30 p-1 flex justify-between w-screen">
+            <div className="top-0 z-50 ">
+                <div>
+                    <div className="mx-auto z-50 bg-[#2c0707] p-1 flex justify-between w-screen">
                         <div className="flex cursor-pointer">
                             <Link href="">
                                 <Image
