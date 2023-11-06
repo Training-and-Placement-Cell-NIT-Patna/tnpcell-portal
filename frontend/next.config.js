@@ -3,7 +3,7 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    domains: ['localhost', '192.168.1.42', '14.139.219.168', 'tpc.nitp.ac.in','https://tpc.nitp.ac.in','http://tpc.nitp.ac.in'],
+    domains: ['localhost', '192.168.1.42', '14.139.219.168', 'tpc.nitp.ac.in', 'https://tpc.nitp.ac.in', 'http://tpc.nitp.ac.in'],
   },
   async headers() {
     return [
@@ -25,6 +25,11 @@ const nextConfig = {
         source: '/api/:path*', // Define the path to match.
         destination: 'http://192.168.1.42:1337/api/:path*', //
       },
+      // For accessing multimedia files of backend strapi
+      {
+        source: '/uploads/:path*',
+        destination: 'http://192.168.1.42:1337/uploads/:path*',
+      }
     ]
   },
 }
