@@ -50,13 +50,8 @@ function Nav2() {
                                 src="/images/logo.png"
                                 className="w-[90%] h-[90%]"
                             />
-
                         </div>
-
-
                         <div className={"border h-[3rem] w-[12%] sm:w-[61%] md:w-[54%] lg:w-[42%] flex items-center justify-center border-solid border-transparent sm:backdrop-blur-2xl rounded-3xl"}>
-
-
                             <div className={"absolute hidden sm:flex px-5 h-[1.4rem] overflow-y-hidden "}>
 
                                 {MENU_LIST.map((ele) => {
@@ -72,8 +67,6 @@ function Nav2() {
                                     )
                                 })}
                             </div>
-
-
                             <div className="flex sm:hidden h-[100%] pt-2 sm:h-auto">
                                 <button
                                     onClick={() => setIsOpen(!isOpen)}
@@ -129,7 +122,6 @@ function Nav2() {
                                 </div>
                             </div>
                         </Link>
-
                     </div>
 
                     {isOpen ? (
@@ -138,13 +130,12 @@ function Nav2() {
                                 <div className="flex  flex-col justify-evenly  relative z-50 w-[100%]">
                                     <div className="bg-red-950">
                                         {MENU_LIST.map((menu) => (
-
-                                            <div className={"h-[1.5rem] m-2 overflow-y-hidden"}>
+                                            <div className={"h-[1.5rem] m-2 overflow-y-hidden"} key={menu.idx}>
                                                 <p className={`flex h-[3.9rem] overflow-y-hidden text-[#858383] lg:text-normal hover:text-white transition duration-[450ms] ease-out [&:nth-child(n)]:hover:translate-y-[-1.5rem] flex-col  mx-2 my-auto cursor-pointer `}>
-                                                    <Link href={menu.href} key={menu.idx} className={" text-[1rem] lg:text-sm  "}>
+                                                    <Link href={menu.href} className={" text-[1rem] lg:text-sm  "}>
                                                         {menu.text}
                                                     </Link>
-                                                    <Link href={menu.href} key={menu.idx} className={"text-[100%]"}>
+                                                    <Link href={menu.href} className={"text-[100%]"}>
                                                         {menu.text}
                                                     </Link>
                                                 </p>
@@ -155,13 +146,8 @@ function Nav2() {
                             </div>
                         </>
                     ) : null}
-
                 </div>
                 {/*Thinghs to be at the down*/}
-
-
-
-
             </div>
         </>
     )
