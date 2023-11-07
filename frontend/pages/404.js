@@ -11,7 +11,7 @@ export default function NotFound() {
         <main className="flex-grow flex flex-col justify-center text-4xl pt-9  max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8">
           <div className="py-16">
             <div className="text-center">
-              <p className="font-extrabold text-yellow-500 uppercase tracking-wide ">
+              <div className="font-extrabold text-yellow-500 uppercase tracking-wide ">
                 <div className="">
                   <Link href="/">
                     <span className="text-9xl ">
@@ -27,8 +27,8 @@ export default function NotFound() {
                     </span>
                   </Link>
                 </div>{" "}
-                error
-              </p>
+                error!
+              </div>
               <h1 className="mt-2 text-5xl font-extrabold text-gray-900 tracking-tight sm:text-5xl">
                 Page not found.
               </h1>

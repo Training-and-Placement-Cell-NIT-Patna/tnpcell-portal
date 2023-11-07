@@ -7,19 +7,27 @@ import { useRouter } from 'next/router'
 
 export default function ResetPassword() {
   const router = useRouter()
+
   const [code, setCode] = useState('')
   const [password, setPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
 
   useEffect(() => {
-    if (router.query.code) {
+    if (router.query.code === undefined) {
+      router.push('/loginPage')
+    }
+    else if (router.query.code) {
       setCode(router.query.code)
     }
   }, [router.query.code])
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    if (password !== confirmPassword) {
+    if(code===''){
+      toast.error('Secret Code is required')
+      return;
+    }
+    else if (password !== confirmPassword) {
       toast.error('Passwords do not match')
       return
     }
@@ -42,7 +50,7 @@ export default function ResetPassword() {
       // redirect to login page after 5 seconds
       setTimeout(() => {
         router.push('/loginPage')
-      }, 5000)
+      }, 3000)
     } else {
       console.log('error: ', res)
       const error = await res.json()
@@ -61,7 +69,7 @@ export default function ResetPassword() {
               width={100}
               height={100}
               alt='NIT Patna'
-              src='/images/logo.svg'
+              src='/images/logo.png'
             />
           </div>
 
@@ -79,7 +87,7 @@ export default function ResetPassword() {
         <div className='mt-8 sm:mx-auto sm:w-full sm:max-w-md'>
           <div className='bg-gray-50 py-8 px-4 shadow sm:rounded-lg sm:px-10'>
             <form className='space-y-6' onSubmit={handleSubmit}>
-              <div>
+              {/* <div>
                 <label
                   htmlFor='code'
                   className='block text-sm font-medium text-gray-700'
@@ -98,7 +106,7 @@ export default function ResetPassword() {
                     className='appearance-none block w-full px-3 py-2 border border-green-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-yellow-500 focus:border-yellow-500 sm:text-sm'
                   />
                 </div>
-              </div>
+              </div> */}
 
               <div>
                 <label
