@@ -69,6 +69,7 @@ export default function SignUpStudent() {
         </div>
 
         <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
+          <p className="text-red-500">{allowNewReg ? '' : 'Registrations are closed Right Now!'}</p>
           <div className="bg-gray-50 py-8 px-4 shadow sm:rounded-lg sm:px-10">
             <form className="space-y-6" onSubmit={handleSubmit}>
               <div>
@@ -171,6 +172,7 @@ export default function SignUpStudent() {
                 <button
                   type="submit"
                   className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-yellow-600 hover:bg-yellow-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500"
+                  disabled={!allowNewReg}
                 >
                   Register
                 </button>
