@@ -30,6 +30,7 @@ export const AuthProvider = ({ children }) => {
       setUser(data)
       setRole(data.role)
       toast.success('Registration Successful!')
+      toast.success('Please check your email to verify your account.')
       // redirect after 3 seconds
       setTimeout(() => {
         router.push('/loginPage')
