@@ -1,8 +1,11 @@
+
+import { FaEye } from "react-icons/fa";
 import { useEffect, useState } from "react";
 // import { useRouter } from "next/router";
 import { toast } from "react-toastify";
 import { API_URL } from "@/config/index";
 import { PaperClipIcon } from "@heroicons/react/solid";
+import Link from "next/link";
 
 export default function StudentProfileEdit({ token = "", student }) {
   const id = student?.id;
@@ -536,9 +539,12 @@ export default function StudentProfileEdit({ token = "", student }) {
                           htmlFor='category_link'
                           className='block text-sm font-medium text-gray-700'
                         >
-                          Category Certificate<span className='text-red-700'>*</span>
+                        Category Certificate<span className='text-red-700'>*</span> 
+                       
                         </label>
-                       <a href={values.category_link} target="_tnp" className=""> 
+                
+                     <div className="w-full flex ">
+                        
                         <input
                           value={values.category_link}
                           onChange={handleInputChange}
@@ -548,9 +554,17 @@ export default function StudentProfileEdit({ token = "", student }) {
                           placeholder='Drive Link'
                           autoComplete='tel-national'
                           required={values.category !== 'general' ? true : false}
-                          className='mt-0 block w-full px-0.5 border-0 border-b-2 border-gray-300 focus:ring-0 focus:border-stone-500 hover:cursor-pointer'
-                        />
-                       </a>
+                          className='mt-0 block w-[90%] px-0.5 border-0 border-b-2 border-gray-300 focus:ring-0 focus:border-stone-500 hover:cursor-pointer'
+                        /><span
+                          className="inline m-auto  "
+                        > {(values.category_link) ? (<a
+                          href={values.category_link}
+                          target="_tpc"
+                        ><FaEye  color="yellow" />
+                        </a>) : null}</span>
+
+                     </div>
+                      
                       </div>
                     </>) : null}
            
@@ -876,14 +890,17 @@ export default function StudentProfileEdit({ token = "", student }) {
                     />
                   </div>
 
-                  <div className="col-span-3 sm:col-span-1">
+                  <div className="col-span-3 sm:col-span-2">
                     <label
                       htmlFor="driving_licience_link"
                       className="block text-sm font-medium text-gray-700"
                     >
                       Driving license
+
+
                     </label>
-                    <a href={values.driving_licience_link} target="_tnp">
+                    
+                     <div className="flex w-full">
                       <input
                         value={values.driving_licience_link}
                         onChange={handleInputChange}
@@ -892,9 +909,18 @@ export default function StudentProfileEdit({ token = "", student }) {
                         id="driving_licience_link"
                         autoComplete="driving_licience_link"
                         placeholder="Drive Link"
-                        className="mt-0 block w-full px-0.5 border-0 border-b-2 text-sm text-gray-600 border-gray-300 focus:ring-0 focus:border-stone-500 hover:cursor-pointer"
+                        className="mt-0 block w-[90%] px-0.5 border-0 border-b-2 text-sm text-gray-600 border-gray-300 focus:ring-0 focus:border-stone-500 hover:cursor-pointer"
                       />
-                   </a>
+                      <span
+                        className="inline m-auto  "
+                      > {(values.driving_licience_link) ? (<a
+                          href={values.driving_licience_link}
+                        target="_tpc"
+                      ><FaEye color="yellow" />
+                      </a>) : null}</span>
+                     </div>
+
+                   
                   </div>
 
                   <div className="col-span-3 sm:col-span-1">
@@ -1112,14 +1138,17 @@ export default function StudentProfileEdit({ token = "", student }) {
                     />
                   </div>
 
-                  <div className="col-span-3 sm:col-span-1">
+                  <div className="col-span-3 sm:col-span-2">
                     <label
                       htmlFor="X_marksheet"
                       className="block text-sm font-medium text-gray-700"
                     >
                       X Marksheet
+
+                     
                     </label>
-                    <a href={values.X_marksheet} target="_tnp">
+                    
+                    <div className="flex w-full">
                       <input
                         value={values.X_marksheet}
                         onChange={handleInputChange}
@@ -1129,9 +1158,16 @@ export default function StudentProfileEdit({ token = "", student }) {
                         autoComplete="X_marksheet"
                         placeholder="Drive Link"
                         required
-                        className="mt-0 block w-full px-0.5 border-0 border-b-2 text-sm text-gray-600 border-gray-300 focus:ring-0 focus:border-stone-500 hover:cursor-pointer"
+                        className="mt-0 block w-[90%] px-0.5 border-0 border-b-2 text-sm text-gray-600 border-gray-300 focus:ring-0 focus:border-stone-500 hover:cursor-pointer"
                       />
-                    </a>
+                      <span
+                        className="inline m-auto  "
+                      > {(values.X_marksheet) ? (<a
+                          href={values.X_marksheet}
+                        target="_tpc"
+                      ><FaEye color="yellow" />
+                      </a>) : null}</span>
+                    </div>
                   </div>
 
                   <div className="col-span-3 sm:col-span-1">
@@ -1195,14 +1231,17 @@ export default function StudentProfileEdit({ token = "", student }) {
                     />
                   </div>
 
-                  <div className="col-span-3 sm:col-span-1">
+                  <div className="col-span-3 sm:col-span-2">
                     <label
                       htmlFor="XII_marksheet"
                       className="block text-sm font-medium text-gray-700"
                     >
                       XII Marksheet
+
+                 
                     </label>
-                    <a href={values.XII_marksheet} target="_tnp">
+                 
+                      <div className="w-full flex">
                       <input
                         value={values.XII_marksheet}
                         onChange={handleInputChange}
@@ -1212,9 +1251,17 @@ export default function StudentProfileEdit({ token = "", student }) {
                         autoComplete="XII_marksheet"
                         placeholder="Drive Link"
                         required
-                        className="mt-0 block w-full px-0.5 border-0 border-b-2 text-sm text-gray-600 border-gray-300 focus:ring-0 focus:border-stone-500 hover:cursor-pointer"
+                        className="mt-0 block w-[90%] px-0.5 border-0 border-b-2 text-sm text-gray-600 border-gray-300 focus:ring-0 focus:border-stone-500 hover:cursor-pointer"
                       />
-                    </a>
+                      <span
+                        className="inline m-auto  "
+                      > {(values.XII_marksheet) ? (<a
+                          href={values.XII_marksheet}
+                        target="_tpc"
+                      ><FaEye color="yellow" />
+                      </a>) : null}</span>
+                      </div>
+                  
                   </div>
 
                   <div className="col-span-6 sm:col-span-2">
@@ -1405,14 +1452,17 @@ export default function StudentProfileEdit({ token = "", student }) {
                     />
                   </div>
 
-                  <div className="col-span-3 sm:col-span-1">
+                  <div className="col-span-3 sm:col-span-2">
                     <label
                       htmlFor="all_sem_marksheet"
                       className="block text-sm font-medium text-gray-700"
                     >
                       All Sem Marksheets
+
+
                     </label>
-                    <a href={values.all_sem_marksheet} target="_tnp">
+             
+                     <div className="flex w-full">
                       <input
                         value={values.all_sem_marksheet}
                         onChange={handleInputChange}
@@ -1422,9 +1472,17 @@ export default function StudentProfileEdit({ token = "", student }) {
                         autoComplete="all_sem_marksheet"
                         placeholder="Drive Link"
                         required
-                        className="mt-0 block w-full px-0.5 border-0 border-b-2 text-sm text-gray-600 border-gray-300 focus:ring-0 focus:border-stone-500 hover:cursor-pointer"
+                        className="mt-0 block w-[90%] px-0.5 border-0 border-b-2 text-sm text-gray-600 border-gray-300 focus:ring-0 focus:border-stone-500 hover:cursor-pointer"
                       />
-                  </a>
+                      <span
+                        className="inline m-auto  "
+                      > {(values.all_sem_marksheet) ? (<a
+                          href={values.all_sem_marksheet}
+                        target="_tpc"
+                      ><FaEye color="yellow" />
+                      </a>) : null}</span>
+                     </div>
+                
                   </div>
 
                   <div className="col-span-3 sm:col-span-1">
