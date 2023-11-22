@@ -85,7 +85,8 @@ export default function SignUpStudent() {
                     onChange={(e) => setUsername(e.target.value.toLowerCase())}
                     id="username"
                     name="username"
-                    maxLength={7}
+                    maxLength={7} //2006001
+                    minLength={7}
                     type="text"
                     autoComplete="username"
                     required
