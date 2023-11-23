@@ -1,8 +1,11 @@
+
+import { FaEye } from "react-icons/fa";
 import { useEffect, useState } from "react";
 // import { useRouter } from "next/router";
 import { toast } from "react-toastify";
 import { API_URL } from "@/config/index";
 import { PaperClipIcon } from "@heroicons/react/solid";
+import Link from "next/link";
 
 export default function StudentProfileEdit({ token = "", student }) {
   const id = student?.id;
@@ -19,7 +22,10 @@ export default function StudentProfileEdit({ token = "", student }) {
     ...newStudent
   } = student.attributes;
 
+  // console.log("student: ",student.attributes)
+
   const [values, setValues] = useState(newStudent);
+  const [isPwd,setIsPwd] = useState(false);
   const [chosenCourse , setChosenCourse] = useState("");
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -63,9 +69,18 @@ export default function StudentProfileEdit({ token = "", student }) {
     }
   };
 
+  const handlePwdChange = (e) => {
+    const { name, value } = e.target
+    setValues({ ...values, [name]: !values.pwd })
+    setIsPwd(value);
+  }
+
   const handleInputChange = (e) => {
     const { name, value } = e.target;
+
     setValues({ ...values, [name]: value });
+    // console.log("name: ",name," value: ",value);
+   
   };
 
   const changePlacedStatus = async (e) => {
@@ -102,6 +117,11 @@ export default function StudentProfileEdit({ token = "", student }) {
 
   const [placedStatus, setPlacedStatus] = useState(placed_status);
 
+  useEffect(() => {
+    setIsPwd(values.pwd)
+    // console.log("values(UseEffect): ",values.pwd)
+  }, [values.pwd])
+
   //get courses of selected program
 
   useEffect(() => {
@@ -133,6 +153,7 @@ export default function StudentProfileEdit({ token = "", student }) {
   // },[])
 
   useEffect(() => {
+
     mainData.map((program) => {
 
       // if (program.id === parseInt(values.program)) {
@@ -511,6 +532,43 @@ export default function StudentProfileEdit({ token = "", student }) {
                     </select>
                   </div>
 
+                 
+                    {values.category !== 'general' ? (<>
+                    <div className='col-span-6 sm:col-span-3'>
+                        <label
+                          htmlFor='category_link'
+                          className='block text-sm font-medium text-gray-700'
+                        >
+                        Category Certificate<span className='text-red-700'>*</span> 
+                       
+                        </label>
+                
+                     <div className="w-full flex ">
+                        
+                        <input
+                          value={values.category_link}
+                          onChange={handleInputChange}
+                          type='text'
+                          name='category_link'
+                          id='category_link'
+                          placeholder='Drive Link'
+                          autoComplete='tel-national'
+                          required={values.category !== 'general' ? true : false}
+                          className='mt-0 block w-[90%] px-0.5 border-0 border-b-2 border-gray-300 focus:ring-0 focus:border-stone-500 hover:cursor-pointer'
+                        /><span
+                          className="inline m-auto  "
+                        > {(values.category_link) ? (<a
+                          href={values.category_link}
+                          target="_tpc"
+                        ><FaEye  color="yellow" />
+                        </a>) : null}</span>
+
+                     </div>
+                      
+                      </div>
+                    </>) : null}
+           
+
                   <div className="col-span-6 sm:col-span-3">
                     <label
                       htmlFor="pwd"
@@ -520,7 +578,7 @@ export default function StudentProfileEdit({ token = "", student }) {
                     </label>
                     <select
                       value={values.pwd}
-                      onChange={handleInputChange}
+                      onChange={handlePwdChange}
                       id="pwd"
                       name="pwd"
                       autoComplete="pwd"
@@ -533,58 +591,73 @@ export default function StudentProfileEdit({ token = "", student }) {
                     </select>
                   </div>
 
-                  <div className="col-span-9 sm:col-span-3">
-                    <label
-                      htmlFor="type_of_disability"
-                      className="block text-sm font-medium text-gray-700"
-                    >
-                      Type Of Disability (If PWD)
-                    </label>
-                    <input
-                      value={values.type_of_disability}
-                      type="text"
-                      name="type_of_disability"
-                      id="type_of_disability"
-                      autoComplete="type_of_disability"
-                      className="mt-0 block w-full px-0.5 border-0 border-b-2 border-blue-900 "
-                    />
-                  </div>
+                 {
+                   isPwd && (
+                      <div className="col-span-9 sm:col-span-3">
+                        <label
+                          htmlFor="type_of_disability"
+                          className="block text-sm font-medium text-gray-700"
+                        >
+                          Type Of Disability (If PWD)
+                        </label>
+                        <input
+                          value={values.type_of_disability}
+                          required={values.pwd ? true : false}
+                          type="text"
+                          name="type_of_disability"
+                          id="type_of_disability"
+                          autoComplete="type_of_disability"
+                          className="mt-0 block w-full px-0.5 border-0 border-b-2 border-blue-900 "
+                        />
+                      </div>
+                   )
+                 }
 
-                  <div className="col-span-9 sm:col-span-3">
-                    <label
-                      htmlFor="disability_percentage"
-                      className="block text-sm font-medium text-gray-700"
-                    >
-                      Disability Percentage (If PWD)
-                    </label>
-                    <input
-                      value={values.disability_percentage}
-                      type="text"
-                      name="disability_percentage"
-                      id="disability_percentage"
-                      autoComplete="disability_percentage"
-                      className="mt-0 block w-full px-0.5 border-0 border-b-2 border-blue-900 "
-                    />
-                  </div>
+                  {
+                    isPwd && (
+                      <div className="col-span-9 sm:col-span-3">
+                        <label
+                          htmlFor="disability_percentage"
+                          className="block text-sm font-medium text-gray-700"
+                        >
+                          Disability Percentage (If PWD)
+                        </label>
+                        <input
+                          value={values.disability_percentage}
+                          required={values.pwd ? true : false}
+                          type="text"
+                          name="disability_percentage"
+                          id="disability_percentage"
+                          autoComplete="disability_percentage"
+                          className="mt-0 block w-full px-0.5 border-0 border-b-2 border-blue-900 "
+                        />
+                      </div>
+                    )
+                  }
 
-                  <div className="col-span-3 sm:col-span-1">
-                    <label
-                      htmlFor="disability_certificate"
-                      className="block text-sm font-medium text-gray-700"
-                    >
-                      Disability Certificate (IF PWD)
-                    </label>
-                    <input
-                      value={values.disability_certificate}
-                      onChange={handleInputChange}
-                      type="text"
-                      name="disability_certificate"
-                      id="disability_certificate"
-                      autoComplete="disability_certificate"
-                      placeholder="Drive Link"
-                      className="mt-0 block w-full px-0.5 border-0 border-b-2 text-sm text-gray-600 border-gray-300 focus:ring-0 focus:border-stone-500"
-                    />
-                  </div>
+                  {
+                    isPwd && (
+                      <div className="col-span-3 sm:col-span-1">
+                        <label
+                          htmlFor="disability_certificate"
+                          className="block text-sm font-medium text-gray-700"
+                        >
+                          Disability Certificate (IF PWD)
+                        </label>
+                        <input
+                          value={values.disability_certificate}
+                          required={values.pwd ? true : false}
+                          onChange={handleInputChange}
+                          type="text"
+                          name="disability_certificate"
+                          id="disability_certificate"
+                          autoComplete="disability_certificate"
+                          placeholder="Drive Link"
+                          className="mt-0 block w-full px-0.5 border-0 border-b-2 text-sm text-gray-600 border-gray-300 focus:ring-0 focus:border-stone-500"
+                        />
+                      </div>
+                    )
+                  }
 
                   <div className="col-span-6 sm:col-span-3">
                     <label
@@ -817,23 +890,37 @@ export default function StudentProfileEdit({ token = "", student }) {
                     />
                   </div>
 
-                  <div className="col-span-3 sm:col-span-1">
+                  <div className="col-span-3 sm:col-span-2">
                     <label
                       htmlFor="driving_licience_link"
                       className="block text-sm font-medium text-gray-700"
                     >
                       Driving license
+
+
                     </label>
-                    <input
-                      value={values.driving_licience_link}
-                      onChange={handleInputChange}
-                      type="text"
-                      name="driving_licience_link"
-                      id="driving_licience_link"
-                      autoComplete="driving_licience_link"
-                      placeholder="Drive Link"
-                      className="mt-0 block w-full px-0.5 border-0 border-b-2 text-sm text-gray-600 border-gray-300 focus:ring-0 focus:border-stone-500"
-                    />
+                    
+                     <div className="flex w-full">
+                      <input
+                        value={values.driving_licience_link}
+                        onChange={handleInputChange}
+                        type="text"
+                        name="driving_licience_link"
+                        id="driving_licience_link"
+                        autoComplete="driving_licience_link"
+                        placeholder="Drive Link"
+                        className="mt-0 block w-[90%] px-0.5 border-0 border-b-2 text-sm text-gray-600 border-gray-300 focus:ring-0 focus:border-stone-500 hover:cursor-pointer"
+                      />
+                      <span
+                        className="inline m-auto  "
+                      > {(values.driving_licience_link) ? (<a
+                          href={values.driving_licience_link}
+                        target="_tpc"
+                      ><FaEye color="yellow" />
+                      </a>) : null}</span>
+                     </div>
+
+                   
                   </div>
 
                   <div className="col-span-3 sm:col-span-1">
@@ -880,6 +967,7 @@ export default function StudentProfileEdit({ token = "", student }) {
                       GATE / JEE / JAM Rank
                     </label>
                     <input
+                    required
                       value={values.rank}
                       onChange={handleInputChange}
                       type="number"
@@ -897,6 +985,7 @@ export default function StudentProfileEdit({ token = "", student }) {
                       Category Rank
                     </label>
                     <input
+                    required
                       value={values.categoryRank}
                       onChange={handleInputChange}
                       type="number"
@@ -1049,24 +1138,36 @@ export default function StudentProfileEdit({ token = "", student }) {
                     />
                   </div>
 
-                  <div className="col-span-3 sm:col-span-1">
+                  <div className="col-span-3 sm:col-span-2">
                     <label
                       htmlFor="X_marksheet"
                       className="block text-sm font-medium text-gray-700"
                     >
                       X Marksheet
+
+                     
                     </label>
-                    <input
-                      value={values.X_marksheet}
-                      onChange={handleInputChange}
-                      type="text"
-                      name="X_marksheet"
-                      id="X_marksheet"
-                      autoComplete="X_marksheet"
-                      placeholder="Drive Link"
-                      required
-                      className="mt-0 block w-full px-0.5 border-0 border-b-2 text-sm text-gray-600 border-gray-300 focus:ring-0 focus:border-stone-500"
-                    />
+                    
+                    <div className="flex w-full">
+                      <input
+                        value={values.X_marksheet}
+                        onChange={handleInputChange}
+                        type="text"
+                        name="X_marksheet"
+                        id="X_marksheet"
+                        autoComplete="X_marksheet"
+                        placeholder="Drive Link"
+                        required
+                        className="mt-0 block w-[90%] px-0.5 border-0 border-b-2 text-sm text-gray-600 border-gray-300 focus:ring-0 focus:border-stone-500 hover:cursor-pointer"
+                      />
+                      <span
+                        className="inline m-auto  "
+                      > {(values.X_marksheet) ? (<a
+                          href={values.X_marksheet}
+                        target="_tpc"
+                      ><FaEye color="yellow" />
+                      </a>) : null}</span>
+                    </div>
                   </div>
 
                   <div className="col-span-3 sm:col-span-1">
@@ -1130,24 +1231,37 @@ export default function StudentProfileEdit({ token = "", student }) {
                     />
                   </div>
 
-                  <div className="col-span-3 sm:col-span-1">
+                  <div className="col-span-3 sm:col-span-2">
                     <label
                       htmlFor="XII_marksheet"
                       className="block text-sm font-medium text-gray-700"
                     >
                       XII Marksheet
+
+                 
                     </label>
-                    <input
-                      value={values.XII_marksheet}
-                      onChange={handleInputChange}
-                      type="text"
-                      name="XII_marksheet"
-                      id="XII_marksheet"
-                      autoComplete="XII_marksheet"
-                      placeholder="Drive Link"
-                      required
-                      className="mt-0 block w-full px-0.5 border-0 border-b-2 text-sm text-gray-600 border-gray-300 focus:ring-0 focus:border-stone-500"
-                    />
+                 
+                      <div className="w-full flex">
+                      <input
+                        value={values.XII_marksheet}
+                        onChange={handleInputChange}
+                        type="text"
+                        name="XII_marksheet"
+                        id="XII_marksheet"
+                        autoComplete="XII_marksheet"
+                        placeholder="Drive Link"
+                        required
+                        className="mt-0 block w-[90%] px-0.5 border-0 border-b-2 text-sm text-gray-600 border-gray-300 focus:ring-0 focus:border-stone-500 hover:cursor-pointer"
+                      />
+                      <span
+                        className="inline m-auto  "
+                      > {(values.XII_marksheet) ? (<a
+                          href={values.XII_marksheet}
+                        target="_tpc"
+                      ><FaEye color="yellow" />
+                      </a>) : null}</span>
+                      </div>
+                  
                   </div>
 
                   <div className="col-span-6 sm:col-span-2">
@@ -1338,24 +1452,37 @@ export default function StudentProfileEdit({ token = "", student }) {
                     />
                   </div>
 
-                  <div className="col-span-3 sm:col-span-1">
+                  <div className="col-span-3 sm:col-span-2">
                     <label
                       htmlFor="all_sem_marksheet"
                       className="block text-sm font-medium text-gray-700"
                     >
                       All Sem Marksheets
+
+
                     </label>
-                    <input
-                      value={values.all_sem_marksheet}
-                      onChange={handleInputChange}
-                      type="text"
-                      name="all_sem_marksheet"
-                      id="all_sem_marksheet"
-                      autoComplete="all_sem_marksheet"
-                      placeholder="Drive Link"
-                      required
-                      className="mt-0 block w-full px-0.5 border-0 border-b-2 text-sm text-gray-600 border-gray-300 focus:ring-0 focus:border-stone-500"
-                    />
+             
+                     <div className="flex w-full">
+                      <input
+                        value={values.all_sem_marksheet}
+                        onChange={handleInputChange}
+                        type="text"
+                        name="all_sem_marksheet"
+                        id="all_sem_marksheet"
+                        autoComplete="all_sem_marksheet"
+                        placeholder="Drive Link"
+                        required
+                        className="mt-0 block w-[90%] px-0.5 border-0 border-b-2 text-sm text-gray-600 border-gray-300 focus:ring-0 focus:border-stone-500 hover:cursor-pointer"
+                      />
+                      <span
+                        className="inline m-auto  "
+                      > {(values.all_sem_marksheet) ? (<a
+                          href={values.all_sem_marksheet}
+                        target="_tpc"
+                      ><FaEye color="yellow" />
+                      </a>) : null}</span>
+                     </div>
+                
                   </div>
 
                   <div className="col-span-3 sm:col-span-1">
