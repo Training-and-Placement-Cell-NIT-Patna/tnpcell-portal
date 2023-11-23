@@ -22,7 +22,7 @@ export default function StudentProfileEdit({ token = "", student }) {
     ...newStudent
   } = student.attributes;
 
-  console.log("student: ",student.attributes)
+  // console.log("student: ",student.attributes)
 
   const [values, setValues] = useState(newStudent);
   const [isPwd,setIsPwd] = useState(false);
