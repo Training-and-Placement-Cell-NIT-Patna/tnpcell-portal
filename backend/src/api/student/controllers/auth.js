@@ -32,17 +32,20 @@ payload (user data) and a secret, and returned in the response to the client.
 
 */
 
-// const emailRegExp =
-//   /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
-const emailRegExp = /.*/;
+// email suffix ->    @nitp.ac.in 
+// (e.g rajdeepn.ug20.cse@nitp.ac.in)
 
-// ie. Roll number regex as suggested by Mayank sir
 
-// const userNameRegExp =
-//   /^[0-9]{4}[a-zA-Z]{2}[0-9]{2}$/;
+const emailRegExp = /^[a-zA-Z0-9._]+\.ug(19|20|21)\.cse@nitp.ac.in$/;
 
-const userNameRegExp = /.*/;
+
+// Username should be a number of 7 digit
+// if current year is 2023, then users of year 2019, 2020, 2021 are allowed so first 2 digits of username should be either 19, 20 or 21 and last 4 digit can be any.
+// so usernames can be of type 19____, 20____, 21____
+
+const userNameRegExp = /^(19|20|21)\d{5}$/;
+
 
 async function sanitizeUser(user, ctx) {
   // NOTE: @adig Returning role too, with the user
