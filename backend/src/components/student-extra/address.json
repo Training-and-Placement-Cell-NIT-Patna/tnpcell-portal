@@ -1,0 +1,14 @@
+{
+  "collectionName": "components_composite_address_addresses",
+  "info": {
+    "displayName": "Address",
+    "icon": "home",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "city": {
+      "type": "string"
+    }
+  }
+}

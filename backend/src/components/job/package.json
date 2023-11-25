@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_job_packages",
+  "info": {
+    "displayName": "package",
+    "icon": "angle-right"
+  },
+  "options": {},
+  "attributes": {
+    "basic_salary": {
+      "type": "string"
+    },
+    "allowance": {
+      "type": "text"
+    },
+    "perks": {
+      "type": "text"
+    },
+    "ctc": {
+      "type": "string"
+    }
+  }
+}

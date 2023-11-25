@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_job_course_lists",
+  "info": {
+    "displayName": "CourseList",
+    "icon": "align-left"
+  },
+  "options": {},
+  "attributes": {
+    "courses": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::course.course"
+    }
+  }
+}

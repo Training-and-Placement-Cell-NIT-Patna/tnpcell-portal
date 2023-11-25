@@ -1,0 +1,39 @@
+{
+  "name": "placement-portal-backend",
+  "private": true,
+  "version": "0.1.0",
+  "description": "A Strapi application",
+  "scripts": {
+    "dev": "strapi develop",
+    "develop": "strapi develop",
+    "start": "strapi start",
+    "build": "strapi build",
+    "strapi": "strapi"
+  },
+
+  "dependencies": {
+    "@strapi/plugin-i18n": "4.1.11",
+    "@strapi/plugin-users-permissions": "4.1.11",
+    "@strapi/provider-email-nodemailer": "^4.3.0",
+    "@strapi/strapi": "4.1.11",
+    "adm-zip": "^0.5.9",
+    "better-sqlite3": "7.4.6",
+    "jsonwebtoken": "^8.5.1",
+    "lodash": "^4.17.21",
+    "mysql": "^2.18.1",
+    "pg": "^8.11.1",
+    "sharp": "^0.32.6",
+    "strapi": "^3.6.11"
+  },
+  "author": {
+    "name": "A Strapi developer"
+  },
+  "strapi": {
+    "uuid": "6fce2093-b217-4177-8028-7a3f5b57fa22"
+  },
+  "engines": {
+    "node": ">=14.x.x <=18.x.x",
+    "npm": ">=6.0.0"
+  },
+  "license": "MIT"
+}

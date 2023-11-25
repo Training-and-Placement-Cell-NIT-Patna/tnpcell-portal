@@ -1,0 +1,36 @@
+{
+  "kind": "singleType",
+  "collectionName": "settings",
+  "info": {
+    "singularName": "setting",
+    "pluralName": "settings",
+    "displayName": "Settings",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "registrations_allowed": {
+      "type": "boolean",
+      "default": true,
+      "required": true
+    },
+    "cpi_change_allowed": {
+      "type": "boolean",
+      "default": true,
+      "required": true
+    },
+    "tpc_guidelines": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    }
+  }
+}

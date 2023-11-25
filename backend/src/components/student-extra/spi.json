@@ -1,0 +1,51 @@
+{
+  "collectionName": "components_spi_details_spis",
+  "info": {
+    "displayName": "spi",
+    "icon": "database",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "sem2": {
+      "type": "decimal",
+      "max": 10,
+      "min": 0
+    },
+    "sem1": {
+      "type": "decimal",
+      "max": 10,
+      "min": 0
+    },
+    "sem3": {
+      "type": "decimal",
+      "max": 10,
+      "min": 0
+    },
+    "sem4": {
+      "type": "decimal",
+      "max": 10,
+      "min": 0
+    },
+    "sem5": {
+      "type": "decimal",
+      "max": 10,
+      "min": 0
+    },
+    "sem6": {
+      "type": "decimal",
+      "max": 10,
+      "min": 0
+    },
+    "sem7": {
+      "type": "decimal",
+      "max": 10,
+      "min": 0
+    },
+    "sem8": {
+      "type": "decimal",
+      "max": 10,
+      "min": 0
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "collectionName": "components_applied_job_status_applied_jobs",
+  "info": {
+    "displayName": "Applied Job",
+    "icon": "address-card",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "status": {
+      "type": "enumeration",
+      "enum": [
+        "Applied",
+        "Shortlisted",
+        "Rejected",
+        "Selected"
+      ]
+    },
+    "job": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::job.job"
+    }
+  }
+}

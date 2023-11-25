@@ -1,0 +1,145 @@
+{
+  "kind": "collectionType",
+  "collectionName": "jobs",
+  "info": {
+    "singularName": "job",
+    "pluralName": "jobs",
+    "displayName": "Job",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "company": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::company.company"
+    },
+    "job_title": {
+      "type": "string",
+      "required": true,
+      "unique": false
+    },
+    "jaf": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files"
+      ]
+    },
+    "approval_status": {
+      "type": "enumeration",
+      "enum": [
+        "approved",
+        "pending",
+        "rejected"
+      ],
+      "required": true,
+      "default": "pending"
+    },
+    "job_status": {
+      "type": "enumeration",
+      "enum": [
+        "open",
+        "ongoing",
+        "results_declared",
+        "abandoned"
+      ]
+    },
+    "last_date": {
+      "required": false,
+      "type": "datetime"
+    },
+    "classification": {
+      "type": "enumeration",
+      "enum": [
+        "Tier1",
+        "Tier2",
+        "Tier3",
+        "none"
+      ],
+      "required": true
+    },
+    "min_X_marks": {
+      "type": "decimal",
+      "min": 0,
+      "max": 100,
+      "default": 0
+    },
+    "min_XII_marks": {
+      "type": "decimal",
+      "default": 0,
+      "min": 0,
+      "max": 100
+    },
+    "category": {
+      "type": "enumeration",
+      "enum": [
+        "Internship (2 Month)",
+        "Internship (6 Month)",
+        "Internship (6 Month)+FTE",
+        "FTE"
+      ],
+      "required": true
+    },
+    "start_date": {
+      "type": "datetime"
+    },
+    "min_cpi": {
+      "type": "decimal",
+      "required": true,
+      "min": 0
+    },
+    "only_for_pwd": {
+      "type": "boolean",
+      "default": false,
+      "required": true
+    },
+    "only_for_ews": {
+      "type": "boolean",
+      "default": false,
+      "required": true
+    },
+    "eligible_courses": {
+      "type": "string",
+      "required": true
+    },
+    "only_for_female": {
+      "type": "boolean",
+      "default": false,
+      "required": true
+    },
+    "POC1": {
+      "type": "component",
+      "repeatable": false,
+      "component": "company.contact-details"
+    },
+    "POC2": {
+      "type": "component",
+      "repeatable": false,
+      "component": "company.contact-details"
+    },
+    "company_category": {
+      "type": "string",
+      "default": "NA"
+    },
+    "industry_sector": {
+      "type": "string"
+    },
+    "details_of_pay_package": {
+      "displayName": "package",
+      "type": "component",
+      "repeatable": false,
+      "component": "job.package"
+    },
+    "hr": {
+      "type": "component",
+      "repeatable": false,
+      "component": "job.hr"
+    }
+  }
+}

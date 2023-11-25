@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_job_hrs",
+  "info": {
+    "displayName": "hr",
+    "icon": "arrow-right"
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "contact_number": {
+      "type": "biginteger"
+    },
+    "email": {
+      "type": "email"
+    }
+  }
+}

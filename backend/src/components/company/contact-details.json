@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_company_contact_details",
+  "info": {
+    "displayName": "Contact Details",
+    "icon": "address-book",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true,
+      "unique": false
+    },
+    "mail_id": {
+      "type": "email"
+    },
+    "mobile_no": {
+      "type": "string"
+    }
+  }
+}

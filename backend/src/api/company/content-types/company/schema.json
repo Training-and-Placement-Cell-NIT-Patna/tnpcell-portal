@@ -1,0 +1,57 @@
+{
+  "kind": "collectionType",
+  "collectionName": "companies",
+  "info": {
+    "singularName": "company",
+    "pluralName": "companies",
+    "displayName": "Company",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "company_name": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "contact1": {
+      "displayName": "Contact Details",
+      "type": "component",
+      "repeatable": false,
+      "component": "company.contact-details",
+      "required": false
+    },
+    "contact2": {
+      "type": "component",
+      "repeatable": false,
+      "component": "company.contact-details",
+      "required": false
+    },
+    "contact3": {
+      "type": "component",
+      "repeatable": false,
+      "component": "company.contact-details",
+      "required": false
+    },
+    "company_address": {
+      "type": "text"
+    },
+    "remarks": {
+      "type": "text"
+    },
+    "status": {
+      "type": "enumeration",
+      "enum": [
+        "pending",
+        "approved",
+        "rejected",
+        "deactivated"
+      ],
+      "default": "pending",
+      "required": true
+    }
+  }
+}

@@ -1,0 +1,381 @@
+{
+  "kind": "collectionType",
+  "collectionName": "students",
+  "info": {
+    "singularName": "student",
+    "pluralName": "students",
+    "displayName": "Student",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "roll": {
+      "type": "uid",
+      "required": true
+    },
+    "gender": {
+      "type": "enumeration",
+      "enum": [
+        "male",
+        "female",
+        "other"
+      ],
+      "required": true
+    },
+    "category": {
+      "type": "enumeration",
+      "enum": [
+        "general",
+        "obc",
+        "sc",
+        "st",
+        "ews"
+      ],
+      "required": true
+    },
+    "institute_email_id": {
+      "type": "email",
+      "unique": true,
+      "required": true
+    },
+    "personal_email_id": {
+      "type": "email",
+      "unique": true,
+      "required": false
+    },
+    "resume": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "files"
+      ]
+    },
+    "resume_link": {
+      "type": "string"
+    },
+    "mobile_number_1": {
+      "type": "biginteger"
+    },
+    "mobile_number_2": {
+      "type": "biginteger"
+    },
+    "date_of_birth": {
+      "type": "date",
+      "required": false
+    },
+    "X_marks": {
+      "type": "decimal",
+      "required": true
+    },
+    "XII_marks": {
+      "type": "decimal",
+      "required": true
+    },
+    "rank": {
+      "type": "string",
+      "required": false
+    },
+    "categoryRank": {
+      "type": "string",
+      "required": false
+    },
+    "admission_year": {
+      "type": "string",
+      "required": false
+    },
+    "approved": {
+      "type": "enumeration",
+      "enum": [
+        "created",
+        "pending",
+        "approved",
+        "rejected",
+        "debarred"
+      ],
+      "default": "pending",
+      "required": true
+    },
+    "bachelor_marks": {
+      "type": "string"
+    },
+    "master_marks": {
+      "type": "string"
+    },
+    "address": {
+      "type": "text",
+      "required": false
+    },
+    "user_relation": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::users-permissions.user"
+    },
+    "profile_pic": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "remarks": {
+      "type": "text",
+      "required": false,
+      "private": true
+    },
+    "pwd": {
+      "type": "boolean",
+      "required": true
+    },
+    "program": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::program.program",
+      "inversedBy": "students"
+    },
+    "course": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::course.course",
+      "inversedBy": "students"
+    },
+    "department": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::department.department",
+      "inversedBy": "students"
+    },
+    "placed_status": {
+      "type": "enumeration",
+      "enum": [
+        "unplaced",
+        "placed_tier1",
+        "placed_tier2",
+        "placed_tier3"
+      ],
+      "required": true,
+      "default": "unplaced"
+    },
+    "password_change_requested": {
+      "type": "boolean",
+      "default": false,
+      "required": true
+    },
+    "transcript_link": {
+      "type": "string"
+    },
+    "internship_status_2": {
+      "type": "boolean",
+      "default": false,
+      "required": false
+    },
+    "father_name": {
+      "type": "string"
+    },
+    "father_occupation": {
+      "type": "string"
+    },
+    "mother_name": {
+      "type": "string"
+    },
+    "mother_occupation": {
+      "type": "string"
+    },
+    "blood_group": {
+      "type": "string"
+    },
+    "type_of_disability": {
+      "type": "string"
+    },
+    "disability_percentage": {
+      "type": "string"
+    },
+    "domicile": {
+      "type": "string"
+    },
+    "city": {
+      "type": "string"
+    },
+    "state": {
+      "type": "string"
+    },
+    "pin_code": {
+      "type": "string"
+    },
+    "correspondance_address": {
+      "type": "text"
+    },
+    "X_board": {
+      "type": "string"
+    },
+    "X_YOP": {
+      "type": "string"
+    },
+    "XII_board": {
+      "type": "string"
+    },
+    "XII_YOP": {
+      "type": "string"
+    },
+    "current_status": {
+      "type": "string"
+    },
+    "aadhar_no": {
+      "type": "string"
+    },
+    "driving_licience_no": {
+      "type": "string"
+    },
+    "pancard_no": {
+      "type": "string"
+    },
+    "all_sem_marksheet": {
+      "type": "string"
+    },
+    "X_marksheet": {
+      "type": "string"
+    },
+    "XII_marksheet": {
+      "type": "string"
+    },
+    "disability_certificate": {
+      "type": "string",
+      "required": false
+    },
+    "driving_licience_link": {
+      "type": "string"
+    },
+    "placed_status_updated": {
+      "type": "datetime",
+      "unique": false
+    },
+    "cover_letter_link": {
+      "type": "string"
+    },
+    "spi_1": {
+      "type": "decimal"
+    },
+    "spi_2": {
+      "type": "decimal"
+    },
+    "spi_3": {
+      "type": "decimal"
+    },
+    "spi_4": {
+      "type": "decimal"
+    },
+    "spi_5": {
+      "type": "decimal"
+    },
+    "spi_6": {
+      "type": "decimal"
+    },
+    "spi_7": {
+      "type": "decimal"
+    },
+    "spi_8": {
+      "type": "decimal"
+    },
+    "spi_9": {
+      "type": "decimal"
+    },
+    "current_backlogs": {
+      "type": "integer"
+    },
+    "total_backlogs": {
+      "type": "integer"
+    },
+    "height": {
+      "type": "decimal"
+    },
+    "weight": {
+      "type": "decimal"
+    },
+    "cpi": {
+      "type": "decimal"
+    },
+    "internship_status_6": {
+      "type": "boolean",
+      "default": false
+    },
+    "fte_status": {
+      "type": "boolean",
+      "default": false
+    },
+    "category_link": {
+      "type": "string"
+    },
+    "casteCertificate": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "files"
+      ]
+    },
+    "tenthCertificate": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "files"
+      ]
+    },
+    "twelthCertificate": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "files"
+      ]
+    },
+    "drivingLicence": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "files"
+      ]
+    },
+    "aadharCard": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "files"
+      ]
+    },
+    "disabilityCertificate": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "files"
+      ]
+    },
+    "allSemMarksheet": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "files"
+      ]
+    },
+    "panCard": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "files"
+      ]
+    }
+  }
+}
