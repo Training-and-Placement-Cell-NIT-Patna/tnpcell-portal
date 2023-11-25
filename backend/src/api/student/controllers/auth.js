@@ -37,7 +37,7 @@ payload (user data) and a secret, and returned in the response to the client.
 // (e.g rajdeepn.ug20.cse@nitp.ac.in)
 
 
-const emailRegExp = /^[a-zA-Z0-9._]+\.ug(19|20|21)\.cse@nitp.ac.in$/;
+const emailRegExp = /^[a-zA-Z0-9._]+\.cse@nitp.ac.in$/;
 
 
 // Username should be a number of 7 digit
