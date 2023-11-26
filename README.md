@@ -1,7 +1,7 @@
 # NITP-PLACEMENT-CELL
 
 If getting Internal server error (fix npm and node version)
-
+If getting 403 then check user-role API permission
 npm uninstall -g npm
 
 npm install -g npm@8.5.5
