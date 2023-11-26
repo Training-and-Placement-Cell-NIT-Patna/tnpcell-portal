@@ -10,7 +10,7 @@ uninstall nodejs from downloads (If already installed)
 
 https://nodejs.org/download/release/v16.15.0/
 
-Download (node-v16.15.0-x86.msi )
+Download (node-v16.15.0-x86.msi ) or use node version manager (nvm)
 
 
 
