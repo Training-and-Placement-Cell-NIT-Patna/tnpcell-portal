@@ -1,7 +1,7 @@
 # NITP-PLACEMENT-CELL
 
 If getting Internal server error (fix npm and node version)
-
+If getting 403 then check user-role API permission
 npm uninstall -g npm
 
 npm install -g npm@8.5.5
@@ -10,14 +10,14 @@ uninstall nodejs from downloads (If already installed)
 
 https://nodejs.org/download/release/v16.15.0/
 
-Download (node-v16.15.0-x86.msi )
+Download (node-v16.15.0-x86.msi ) or use node version manager (nvm)
 
 
 
 
 # Backend settings: -> npm run develop
 
--> login to strapi’s administrative panel -
+-> login or signup to strapi’s administrative panel -
 
 go to settings options in left side bar. 
 
