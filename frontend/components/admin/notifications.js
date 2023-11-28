@@ -83,7 +83,7 @@ export default function Notifications({ token }) {
   };
 
   return (
-    <div className="container mx-auto py-8">
+    <div className="mx-auto py-8">
       <div className="max-w-md mx-auto">
         <div className="border-2 p-2 rounded shadow">
           <h1 className="text-2xl font-bold mb-4">Add Notification</h1>
@@ -139,7 +139,7 @@ export default function Notifications({ token }) {
         <div className="mb-4">
           {notifications && notifications.map((notify) => (
             <div key={notify?.id} className="mb-2">
-              <div className="flex justify-between items-center border border-gray-400 rounded-lg p-3">
+              <div className="flex justify-between items-center border border-gray-500 rounded-lg p-3">
                 <div>
                   <h2 className="text-lg font-bold">{notify.attributes.title}</h2>
                   <p className="text-gray-700">{notify.attributes.description}</p>
