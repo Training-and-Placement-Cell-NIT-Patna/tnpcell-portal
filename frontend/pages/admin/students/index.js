@@ -159,7 +159,7 @@ export default function Students({ token }) {
       },
     },
     {
-      headerName: 'Resume',
+      headerName: 'Resume Link',
       field: 'attributes.resume_link',
       cellRenderer: function (params) {
         return (
@@ -246,7 +246,7 @@ export default function Students({ token }) {
       field: 'attributes.all_sem_marksheet',
     },
     {
-      headerName: 'CGPA',
+      headerName: 'Overall CGPA',
       field: 'attributes.cpi',
       filter: 'agNumberColumnFilter',
     },
@@ -370,7 +370,7 @@ export default function Students({ token }) {
     },
 
     {
-      headerName: 'Address',
+      headerName: 'Permanent Address',
       field: 'attributes.address',
     },
 
