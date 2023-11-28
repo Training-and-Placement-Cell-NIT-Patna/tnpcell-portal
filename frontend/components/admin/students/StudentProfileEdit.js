@@ -743,7 +743,7 @@ export default function StudentProfileEdit({ token = "", student }) {
                       htmlFor="address"
                       className="block text-sm font-medium text-gray-700"
                     >
-                      Address
+                      Permanent Address
                     </label>
                     <textarea
                       value={values.address}
@@ -1269,7 +1269,7 @@ export default function StudentProfileEdit({ token = "", student }) {
                       htmlFor="spi_1"
                       className="block text-sm font-medium text-gray-700"
                     >
-                      SPI-1
+                      CGPA-1
                     </label>
                     <input
                       value={values.spi_1}
@@ -1288,7 +1288,7 @@ export default function StudentProfileEdit({ token = "", student }) {
                       htmlFor="spi_2"
                       className="block text-sm font-medium text-gray-700"
                     >
-                      SPI-2
+                      CGPA-2
                     </label>
                     <input
                       value={values.spi_2}
@@ -1307,7 +1307,7 @@ export default function StudentProfileEdit({ token = "", student }) {
                       htmlFor="spi_3"
                       className="block text-sm font-medium text-gray-700"
                     >
-                      SPI-3
+                      CGPA-3
                     </label>
                     <input
                       value={values.spi_3}
@@ -1325,7 +1325,7 @@ export default function StudentProfileEdit({ token = "", student }) {
                       htmlFor="spi_4"
                       className="block text-sm font-medium text-gray-700"
                     >
-                      SPI-4
+                      CGPA-4
                     </label>
                     <input
                       value={values.spi_4}
@@ -1343,7 +1343,7 @@ export default function StudentProfileEdit({ token = "", student }) {
                       htmlFor="spi_5"
                       className="block text-sm font-medium text-gray-700"
                     >
-                      SPI-5
+                      CGPA-5
                     </label>
                     <input
                       value={values.spi_5}
@@ -1361,7 +1361,7 @@ export default function StudentProfileEdit({ token = "", student }) {
                       htmlFor="spi_6"
                       className="block text-sm font-medium text-gray-700"
                     >
-                      SPI-6
+                      CGPA-6
                     </label>
                     <input
                       value={values.spi_6}
@@ -1379,7 +1379,7 @@ export default function StudentProfileEdit({ token = "", student }) {
                       htmlFor="spi_7"
                       className="block text-sm font-medium text-gray-700"
                     >
-                      SPI-7
+                      CGPA-7
                     </label>
                     <input
                       value={values.spi_7}
@@ -1397,7 +1397,7 @@ export default function StudentProfileEdit({ token = "", student }) {
                       htmlFor="spi_8"
                       className="block text-sm font-medium text-gray-700"
                     >
-                      SPI-8
+                      CGPA-8
                     </label>
                     <input
                       value={values.spi_8}
@@ -1416,7 +1416,7 @@ export default function StudentProfileEdit({ token = "", student }) {
                       htmlFor="spi_9"
                       className="block text-sm font-medium text-gray-700"
                     >
-                      SPI-9
+                      CGPA-9
                     </label>
                     <input
                       value={values.spi_9}
@@ -1432,13 +1432,33 @@ export default function StudentProfileEdit({ token = "", student }) {
                       className="mt-0 block w-full px-0.5 border-0 border-b-2 border-gray-300 focus:ring-0 focus:border-stone-500"
                     />
                   </div>
-
+                  <div className="col-span-2 sm:col-span-1">
+                    <label
+                      htmlFor="spi_9"
+                      className="block text-sm font-medium text-gray-700"
+                    >
+                      CGPA-10
+                    </label>
+                    <input
+                      value={values.spi_10}
+                      onChange={handleInputChange}
+                      type="number"
+                      min={2}
+                      max={10}
+                      step=".01"
+                      placeholder="Ex: 8.86"
+                      name="spi_10"
+                      id="spi_10"
+                      autoComplete="spi_10"
+                      className="mt-0 block w-full px-0.5 border-0 border-b-2 border-gray-300 focus:ring-0 focus:border-stone-500"
+                    />
+                  </div>
                   <div className="col-span-6 sm:col-span-2">
                     <label
                       htmlFor="cpi"
                       className="block text-sm font-medium text-gray-700"
                     >
-                      CPI
+                      Overall CGPA
                     </label>
                     <input
                       value={values.cpi}
@@ -1458,8 +1478,6 @@ export default function StudentProfileEdit({ token = "", student }) {
                       className="block text-sm font-medium text-gray-700"
                     >
                       All Sem Marksheets
-
-
                     </label>
              
                      <div className="flex w-full">
