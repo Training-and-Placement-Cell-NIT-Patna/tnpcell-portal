@@ -9,7 +9,7 @@ import axios from 'axios'
 import { API_URL } from '@/config/index'
 import Link from 'next/link'
 
-export default function Students({ token }) { 
+export default function Students({ token }) {
 
   const [rowData, setRowData] = useState([])
   const [columnDefs] = useState([
@@ -132,10 +132,10 @@ export default function Students({ token }) {
       headerName: 'Personal Email',
       field: 'attributes.personal_email_id',
     },
-      // {
-      //   headerName: 'Registered For',
-      //   field: 'attributes.registered_for',
-      // },
+    // {
+    //   headerName: 'Registered For',
+    //   field: 'attributes.registered_for',
+    // },
     {
       headerName: 'Resume',
       field: 'attributes.resume',
@@ -180,26 +180,188 @@ export default function Students({ token }) {
         )
       },
     },
+    {
+      headerName: 'CGPA 1',
+      field: 'attributes.spi_1',
+      filter: 'agNumberColumnFilter',
+
+    },
+
+    {
+      headerName: 'CGPA 2',
+      field: 'attributes.spi_2',
+      filter: 'agNumberColumnFilter',
+
+    },
+
+    {
+      headerName: 'CGPA 3',
+      field: 'attributes.spi_3',
+      filter: 'agNumberColumnFilter',
+
+    },
+
+    {
+      headerName: 'CGPA 4',
+      field: 'attributes.spi_4',
+      filter: 'agNumberColumnFilter',
+    },
+
+    {
+      headerName: 'CGPA 5',
+      field: 'attributes.spi_5',
+      filter: 'agNumberColumnFilter',
+    },
+
+    {
+      headerName: 'CGPA 6',
+      field: 'attributes.spi_6',
+      filter: 'agNumberColumnFilter',
+    },
+
+    {
+      headerName: 'CGPA 7',
+      field: 'attributes.spi_7',
+      filter: 'agNumberColumnFilter',
+    },
+
+    {
+      headerName: 'CGPA 8',
+      field: 'attributes.spi_8',
+      filter: 'agNumberColumnFilter',
+    },
+
+    {
+      headerName: 'CGPA 9',
+      field: 'attributes.spi_9',
+      filter: 'agNumberColumnFilter',
+    },
+    {
+      headerName: 'CGPA 10',
+      field: 'attributes.spi_10',
+      filter: 'agNumberColumnFilter',
+    },
+    {
+      headerName: 'All Semester Marksheets',
+      field: 'attributes.all_sem_marksheet',
+    },
+    {
+      headerName: 'CGPA',
+      field: 'attributes.cpi',
+      filter: 'agNumberColumnFilter',
+    },
+    {
+      headerName: 'Xth Marks',
+      field: 'attributes.X_marks',
+    },
+    {
+      headerName: 'XIIth Marks',
+      field: 'attributes.XII_marks',
+    },
+    {
+      headerName: 'Total Backlogs',
+      field: 'attributes.total_backlogs',
+      filter: 'agNumberColumnFilter',
+    },
+    {
+      headerName: 'Active Backlogs',
+      field: 'attributes.current_backlogs',
+      filter: 'agNumberColumnFilter',
+
+    },
+
+    {
+      headerName: 'Current Status',
+      field: 'attributes.current_status',
+    },
+    {
+      headerName: 'Category',
+      field: 'attributes.category',
+    },
+
+    {
+      headerName: 'PWD',
+      field: 'attributes.pwd',
+    },
+
+    {
+      headerName: 'Type Of Disability',
+      field: 'attributes.type_of_disability',
+    },
+
+    {
+      headerName: 'Disability Percentage (If PWD)',
+      field: 'attributes.disability_percentage',
+    },
 
 
     {
+      headerName: 'Disability Certificate (If PWD)',
+      field: 'attributes.disabilty_certificate',
+    },
+
+    {
+      headerName: 'Gender',
+      field: 'attributes.gender',
+
+    },
+    {
+      headerName: 'Date of Birth',
+      field: 'attributes.date_of_birth',
+    },
+    {
+      headerName: 'Bachelor Marks',
+      field: 'attributes.bachelor_marks',
+    },
+    {
+      headerName: 'X Marksheet',
+      field: 'attributes.X_marksheet',
+    },
+
+    {
+      headerName: 'XII Marksheet',
+      field: 'attributes.XII_marksheet',
+    },
+
+    {
+      headerName: 'X Board',
+      field: 'attributes.X_board',
+    },
+
+    {
+      headerName: 'X YOP',
+      field: 'attributes.X_YOP',
+      filter: 'agNumberColumnFilter',
+
+    },
+
+    {
+      headerName: 'XII Board',
+      field: 'attributes.XII_board',
+
+    },
+
+    {
+      headerName: 'XII YOP',
+      field: 'attributes.XII_YOP',
+      filter: 'agNumberColumnFilter',
+
+    },
+    {
       headerName: 'Blood Group',
       field: 'attributes.blood_group',
-
     },
 
     {
       headerName: 'Height',
       field: 'attributes.height',
       filter: 'agNumberColumnFilter',
-
     },
 
     {
       headerName: 'Weight',
       field: 'attributes.weight',
       filter: 'agNumberColumnFilter',
-
     },
 
     {
@@ -252,183 +414,6 @@ export default function Students({ token }) {
       field: 'attributes.pancard_no',
     },
 
-    {
-      headerName: 'All Semester Marksheets',
-      field: 'attributes.all_sem_marksheet',
-    },
-
-    {
-      headerName: 'X Marksheet',
-      field: 'attributes.X_marksheet',
-    },
-
-    {
-      headerName: 'XII Marksheet',
-      field: 'attributes.XII_marksheet',
-    },
-
-    {
-      headerName: 'X Board',
-      field: 'attributes.X_board',
-    },
-
-    {
-      headerName: 'X YOP',
-      field: 'attributes.X_YOP',
-      filter: 'agNumberColumnFilter',
-
-    },
-
-    {
-      headerName: 'XII Board',
-      field: 'attributes.XII_board',
-
-    },
-
-    {
-      headerName: 'XII YOP',
-      field: 'attributes.XII_YOP',
-      filter: 'agNumberColumnFilter',
-
-    },
-
-    {
-      headerName: 'SPI 1',
-      field: 'attributes.spi_1',
-      filter: 'agNumberColumnFilter',
-
-    },
-
-    {
-      headerName: 'SPI 2',
-      field: 'attributes.spi_2',
-      filter: 'agNumberColumnFilter',
-
-    },
-
-    {
-      headerName: 'SPI 3',
-      field: 'attributes.spi_3',
-      filter: 'agNumberColumnFilter',
-
-    },
-
-    {
-      headerName: 'SPI 4',
-      field: 'attributes.spi_4',
-      filter: 'agNumberColumnFilter',
-
-    },
-
-    {
-      headerName: 'SPI 5',
-      field: 'attributes.spi_5',
-      filter: 'agNumberColumnFilter',
-
-    },
-
-    {
-      headerName: 'SPI 6',
-      field: 'attributes.spi_6',
-      filter: 'agNumberColumnFilter',
-
-    },
-
-    {
-      headerName: 'SPI 7',
-      field: 'attributes.spi_7',
-      filter: 'agNumberColumnFilter',
-
-    },
-
-    {
-      headerName: 'SPI 8',
-      field: 'attributes.spi_8',
-      filter: 'agNumberColumnFilter',
-
-    },
-
-    {
-      headerName: 'SPI 9',
-      field: 'attributes.spi_9',
-      filter: 'agNumberColumnFilter',
-
-    },
-
-    {
-      headerName: 'Total Backlogs',
-      field: 'attributes.total_backlogs',
-      filter: 'agNumberColumnFilter',
-
-    },
-
-    {
-      headerName: 'Current Backlogs',
-      field: 'attributes.current_backlogs',
-      filter: 'agNumberColumnFilter',
-
-    },
-
-    {
-      headerName: 'Current Status',
-      field: 'attributes.current_status',
-    },
-
-    {
-      headerName: 'CPI',
-      field: 'attributes.cpi',
-      filter: 'agNumberColumnFilter',
-    },
-
-
-
-    {
-      headerName: 'Xth Marks',
-      field: 'attributes.X_marks',
-    },
-    {
-      headerName: 'XIIth Marks',
-      field: 'attributes.XII_marks',
-    },
-    {
-      headerName: 'Category',
-      field: 'attributes.category',
-    },
-
-    {
-      headerName: 'PWD',
-      field: 'attributes.pwd',
-    },
-
-    {
-      headerName: 'Type Of Disability',
-      field: 'attributes.type_of_disability',
-    },
-
-    {
-      headerName: 'Disability Percentage (If PWD)',
-      field: 'attributes.disability_percentage',
-    },
-
-
-    {
-      headerName: 'Disability Certificate (If PWD)',
-      field: 'attributes.disabilty_certificate',
-    },
-
-    {
-      headerName: 'Gender',
-      field: 'attributes.gender',
-
-    },
-    {
-      headerName: 'Date of Birth',
-      field: 'attributes.date_of_birth',
-    },
-    {
-      headerName: 'Bachelor Marks',
-      field: 'attributes.bachelor_marks',
-    },
   ])
 
 
