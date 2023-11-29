@@ -22,7 +22,7 @@ export default function StudentProfileEdit({ token = "", student }) {
     ...newStudent
   } = student.attributes;
 
-  // console.log("student: ",student.attributes)
+  console.log("student: ",token)
 
   const [values, setValues] = useState(newStudent);
   const [isPwd,setIsPwd] = useState(false);
@@ -50,7 +50,7 @@ export default function StudentProfileEdit({ token = "", student }) {
         body: JSON.stringify({ data: values }),
       });
 
-      // console.log("changed=>" + JSON.stringify({ data: values }));
+      console.log("changed=>" + JSON.stringify({ data: values }));
 
       if (!res.ok) {
         if (res.status === 403 || res.status === 401) {
@@ -885,7 +885,7 @@ export default function StudentProfileEdit({ token = "", student }) {
                       name="driving_licience_no"
                       id="driving_licience_no"
                       autoComplete="driving_licience_no"
-                      required
+                      // required
                       className="mt-0 block w-full px-0.5 border-0 border-b-2 text-sm text-gray-600 border-gray-300 focus:ring-0 focus:border-stone-500"
                     />
                   </div>
@@ -937,7 +937,7 @@ export default function StudentProfileEdit({ token = "", student }) {
                       name="pancard_no"
                       id="pancard_no"
                       autoComplete="pancard_no"
-                      required
+                      // required
                       className="mt-0 block w-full px-0.5 border-0 border-b-2 text-sm text-gray-600 border-gray-300 focus:ring-0 focus:border-stone-500"
                     />
                   </div>
