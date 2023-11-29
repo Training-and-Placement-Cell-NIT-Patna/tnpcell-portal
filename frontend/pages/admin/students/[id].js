@@ -45,7 +45,7 @@ export default function StudentProfilePage({
     })
       .then((res) => res.json())
       .then((resp) => {
-        console.log(resp.data);
+
         setApplications(resp.data);
       })
       .catch((err) => {
@@ -73,7 +73,7 @@ export default function StudentProfilePage({
   return (
     <Layout>
       <Breadcrumbs pages={pages} />
-      {/* <ApplicationDetails applications={applications} /> */}
+      <ApplicationDetails applications={applications} />
       <Eligiblejobs jobs={eligibleJobs} />
       <StudentProfileEdit student={student} token={token} />
     </Layout>
