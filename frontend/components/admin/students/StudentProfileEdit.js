@@ -22,7 +22,7 @@ export default function StudentProfileEdit({ token = "", student }) {
     ...newStudent
   } = student.attributes;
 
-  console.log("student: ",student)
+  // console.log("student: ",student.attributes)
 
   const [values, setValues] = useState(newStudent);
   const [isPwd,setIsPwd] = useState(false);
@@ -771,7 +771,7 @@ export default function StudentProfileEdit({ token = "", student }) {
                       htmlFor="address"
                       className="block text-sm font-medium text-gray-700"
                     >
-                      Address
+                      Permanent Address
                     </label>
                     <textarea
                       value={values.address}
@@ -1460,7 +1460,27 @@ export default function StudentProfileEdit({ token = "", student }) {
                       className="mt-0 block w-full px-0.5 border-0 border-b-2 border-gray-300 focus:ring-0 focus:border-stone-500"
                     />
                   </div>
-
+                  <div className="col-span-2 sm:col-span-1">
+                    <label
+                      htmlFor="spi_9"
+                      className="block text-sm font-medium text-gray-700"
+                    >
+                      CGPA-10
+                    </label>
+                    <input
+                      value={values.spi_10}
+                      onChange={handleInputChange}
+                      type="number"
+                      min={2}
+                      max={10}
+                      step=".01"
+                      placeholder="Ex: 8.86"
+                      name="spi_10"
+                      id="spi_10"
+                      autoComplete="spi_10"
+                      className="mt-0 block w-full px-0.5 border-0 border-b-2 border-gray-300 focus:ring-0 focus:border-stone-500"
+                    />
+                  </div>
                   <div className="col-span-6 sm:col-span-2">
                     <label
                       htmlFor="cpi"
@@ -1486,8 +1506,6 @@ export default function StudentProfileEdit({ token = "", student }) {
                       className="block text-sm font-medium text-gray-700"
                     >
                       All Sem Marksheets
-
-
                     </label>
              
                      <div className="flex w-full">

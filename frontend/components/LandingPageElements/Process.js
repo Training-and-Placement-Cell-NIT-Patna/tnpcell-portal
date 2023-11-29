@@ -27,7 +27,7 @@ const steps = [
     index: 3,
     title: "Step 3",
     description:
-      "With the credentials received via mail, the company representative are expected to select Account Type as “Company” on ",
+      "With the credentials received via mail, the company representative are expected to login with credentials to the login page ",
     links: "/loginPage",
   },
 

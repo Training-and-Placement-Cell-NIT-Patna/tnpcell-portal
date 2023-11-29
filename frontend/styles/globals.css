@@ -3,7 +3,7 @@
 @tailwind components;
 .link-underline {
   @apply
-  hover:before:scale-x-100 hover:before:origin-left relative before:w-full before:h-0.5 before:origin-right before:transition-transform before:duration-500 before:scale-x-0 before:bg-yellow-700 before:absolute before:left-0 before:bottom-0 
+ cursor-pointer hover:before:scale-x-100 hover:before:origin-left relative before:w-full before:h-0.5 before:origin-right before:transition-transform before:duration-500 before:scale-x-0 before:bg-yellow-700 before:absolute before:left-0 before:bottom-0 
 }
 @tailwind utilities;
 
