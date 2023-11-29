@@ -3,21 +3,49 @@ import { API_URL } from '@/config/index'
 import { toast } from 'react-toastify'
 import {BsFillEyeFill} from 'react-icons/bs'
 function UploadDocuments({ token, studentsData }) {
-    const [casteCertificate, setCasteCertificate] = useState();
-    const [tenthCertificate, setTenthCertificate] = useState();
-    const [twelthCertificate, setTwelthCertificate] = useState();
-    const [drivingLicence, setDrivingLicence] = useState();
-    const [aadharCard, setAadharCard] = useState();
-    const [panCard, setPanCard] = useState();
-    const [disabilityCertificate, setDisabilityCertificate] = useState();
-    const [allSemMarksheet, setAllSemMarksheet] = useState();
+
+    console.log("studentData: ", studentsData);
+    const [casteCertificate, setCasteCertificate] = useState(studentsData.casteCertificate);
+    const [tenthCertificate, setTenthCertificate] = useState(studentsData.tenthCertificate);
+    const [twelthCertificate, setTwelthCertificate] = useState(studentsData.twelthCertificate);
+    const [drivingLicence, setDrivingLicence] = useState(studentsData.drivingLicence);
+    const [aadharCard, setAadharCard] = useState(studentsData.aadharCard);
+    const [panCard, setPanCard] = useState(studentsData.panCard);
+    const [disabilityCertificate, setDisabilityCertificate] = useState(studentsData.disabilityCertificate);
+    const [allSemMarksheet, setAllSemMarksheet] = useState(studentsData.allSemMarksheet);
     const [loading, setLoading] = useState(false);
+
     const handleSubmit = async (e) => {
+
         e.preventDefault()
-        if(!casteCertificate || !tenthCertificate || !twelthCertificate || !drivingLicence || !aadharCard || !panCard || !disabilityCertificate || !allSemMarksheet){
+
+    
+
+        if (studentsData.category !== "general")
+        {
+            if(!casteCertificate)
+            {
+                toast.error('Please Upload All Documents')
+                return;
+            }
+        }
+
+        if(studentsData.pwd)
+        {
+            if(!disabilityCertificate)
+            {
+                toast.error('Please Upload All Documents')
+                return;
+            }
+        }
+
+        if (!tenthCertificate || !twelthCertificate || !drivingLicence || !aadharCard || !panCard || !allSemMarksheet) {
             toast.error('Please Upload All Documents')
             return;
-        }
+        }   
+
+
+       
         setLoading(true)
         const form = new FormData();
         form.append('casteCertificate', casteCertificate);
@@ -63,16 +91,16 @@ function UploadDocuments({ token, studentsData }) {
                         {studentsData.category !== 'general' ? <>
                             <div>
                                 <label htmlFor="casteCertificate" className='mb-1 block text-sm font-medium text-gray-700'>Caste Certificate</label>
-                                <input type="file" className='file-input file-input-bordered file-input-warning file-input-sm w-full max-w-xs' name="casteCertificate" id="casteCertificate" onChange={(e) => setCasteCertificate(e.target.files[0])} /> <a href={`${API_URL}`+studentsData.casteCertificate?.url} target='_blank' ><BsFillEyeFill className='inline text-2xl' /></a>
+                                <input type="file" className='file-input file-input-bordered file-input-warning file-input-sm w-full max-w-xs' required={studentsData.category !== 'general' ? true : false} name="casteCertificate" id="casteCertificate" onChange={(e) => setCasteCertificate(e.target.files[0])} /> <a href={`${API_URL}`+studentsData.casteCertificate?.url} target='_blank' ><BsFillEyeFill className='inline text-2xl' /></a>
                             </div>
                         </> : null}
                         <div>
                             <label htmlFor="tenthCertificate" className='mb-1 block text-sm font-medium text-gray-700'>Tenth Certificate</label>
-                            <input type="file" className='file-input file-input-bordered file-input-warning file-input-sm w-full max-w-xs' disabled={studentsData.tenthCertificate?.url} name="tenthCertificate" id="tenthCertificate" onChange={(e) => setTenthCertificate(e.target.files[0])} /> <a href={`${API_URL}`+studentsData.tenthCertificate?.url} target='_blank' ><BsFillEyeFill className='inline text-2xl' /></a>
+                            <input type="file" className='file-input file-input-bordered file-input-warning file-input-sm w-full max-w-xs'  disabled={studentsData.tenthCertificate?.url} name="tenthCertificate" id="tenthCertificate" onChange={(e) => setTenthCertificate(e.target.files[0])} /> <a href={`${API_URL}`+studentsData.tenthCertificate?.url} target='_blank' ><BsFillEyeFill className='inline text-2xl' /></a>
                         </div>
                         <div>
                             <label htmlFor="twelthCertificate" className='mb-1 block text-sm font-medium text-gray-700'>Twelth Certificate</label>
-                            <input type="file" className='file-input file-input-bordered file-input-warning file-input-sm w-full max-w-xs' disabled={studentsData.twelthCertificate?.url} name="twelthCertificate" id="twelthCertificate" onChange={(e) => setTwelthCertificate(e.target.files[0])} /> <a href={`${API_URL}`+studentsData.twelthCertificate?.url} target='_blank' ><BsFillEyeFill className='inline text-2xl' /></a>
+                            <input type="file" className='file-input file-input-bordered file-input-warning file-input-sm w-full max-w-xs'  disabled={studentsData.twelthCertificate?.url} name="twelthCertificate" id="twelthCertificate" onChange={(e) => setTwelthCertificate(e.target.files[0])} /> <a href={`${API_URL}`+studentsData.twelthCertificate?.url} target='_blank' ><BsFillEyeFill className='inline text-2xl' /></a>
                         </div>
                         <div>
                             <label htmlFor="aadharCard" className='mb-1 block text-sm font-medium text-gray-700'>Aadhar Card</label>
@@ -86,15 +114,18 @@ function UploadDocuments({ token, studentsData }) {
                             <label htmlFor="drivingLicence" className='mb-1 block text-sm font-medium text-gray-700'>Driving Licence</label>
                             <input type="file" className=' file-input file-input-bordered file-input-warning file-input-sm w-full max-w-xs' disabled={studentsData.drivingLicence?.url} name="drivingLicence" id="drivingLicence" onChange={(e) => setDrivingLicence(e.target.files[0])} /> <a href={`${API_URL}`+studentsData.drivingLicence?.url} target='_blank' ><BsFillEyeFill className='inline text-2xl' /></a>
                         </div>
+
                         {studentsData.pwd ? <>
                             <div>
                                 <label htmlFor="disabilityCertificate" className='mb-1 block text-sm font-medium text-gray-700'>Disability Certificate</label>
+
                                 <input type="file" className=' file-input file-input-bordered file-input-warning file-input-sm w-full max-w-xs' name="disabilityCertificate" id="disabilityCertificate" onChange={(e) => setDisabilityCertificate(e.target.files[0])} /> <a href={`${API_URL}`+studentsData.disabilityCertificate?.url} target='_blank' ><BsFillEyeFill className='inline text-2xl' /></a>
                             </div>
                         </> : null}
+
                         <div>
                             <label htmlFor="allSemMarksheet" className='mb-1 block text-sm font-medium text-gray-700'>All Sem Marksheet</label>
-                            <input type="file" className='file-input file-input-bordered file-input-warning file-input-sm w-full max-w-xs' name="allSemMarksheet" id="allSemMarksheet" onChange={(e) => setAllSemMarksheet(e.target.files[0])} /> 
+                            <input type="file" className='file-input file-input-bordered file-input-warning file-input-sm w-full max-w-xs'   name="allSemMarksheet" id="allSemMarksheet" onChange={(e) => setAllSemMarksheet(e.target.files[0])} /> 
                             <a href={`${API_URL}`+studentsData.allSemMarksheet?.url} target='_blank' ><BsFillEyeFill className='inline text-2xl' /></a>
                         </div>
                     </div>

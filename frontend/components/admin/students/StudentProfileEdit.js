@@ -16,13 +16,18 @@ export default function StudentProfileEdit({ token = "", student }) {
     user_relation,
     program,
     course,
-    resume,
     profile_pic,
     placed_status,
+    resume,casteCertificate, // here all the uploading docs destructuring is done such after api call i wont give internal server error
+    disabilityCertificate,
+    drivingLicence,panCard,
+    tenthCertificate,
+    twelthCertificate,
+    allSemMarksheet,
+    aadharCard,
     ...newStudent
   } = student.attributes;
 
-  console.log("student: ",token)
 
   const [values, setValues] = useState(newStudent);
   const [isPwd,setIsPwd] = useState(false);
@@ -38,7 +43,8 @@ export default function StudentProfileEdit({ token = "", student }) {
 
     // console.log("ID=>",id ,typeof(id) );
     // console.log(JSON.stringify({ data: values }))
-    id = String(id)
+    // id = String(id)
+    // console.log("ID=>",id ,typeof(id) );
 
     if (confirm("Are you sure you want to edit student profile?")) {
       const res = await fetch(`${API_URL}/api/students/${id}`, {
@@ -50,7 +56,7 @@ export default function StudentProfileEdit({ token = "", student }) {
         body: JSON.stringify({ data: values }),
       });
 
-      console.log("changed=>" + JSON.stringify({ data: values }));
+      // console.log("changed=>" + JSON.stringify({ data: values }));
 
       if (!res.ok) {
         if (res.status === 403 || res.status === 401) {
@@ -1562,7 +1568,7 @@ export default function StudentProfileEdit({ token = "", student }) {
                     />
                   </div>
 
-                  <div className="col-span-6 sm:col-span-2">
+                  {/* <div className="col-span-6 sm:col-span-2">
                     <label
                       htmlFor="bachelor_marks"
                       className="block text-sm font-medium text-gray-700"
@@ -1578,8 +1584,9 @@ export default function StudentProfileEdit({ token = "", student }) {
                       autoComplete=""
                       className="mt-1 focus:ring-yellow-500 focus:border-yellow-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                     />
-                  </div>
-                  <div className="col-span-6 sm:col-span-2">
+                  </div> */}
+
+                  {/* <div className="col-span-6 sm:col-span-2">
                     <label
                       htmlFor="master_marks"
                       className="block text-sm font-medium text-gray-700"
@@ -1595,7 +1602,7 @@ export default function StudentProfileEdit({ token = "", student }) {
                       autoComplete=""
                       className="mt-1 focus:ring-yellow-500 focus:border-yellow-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                     />
-                  </div>
+                  </div> */}
                   <div className="col-span-6 sm:col-span-2">
                     <label
                       htmlFor="admission_year"
@@ -1621,7 +1628,9 @@ export default function StudentProfileEdit({ token = "", student }) {
               </div>
             </div>
           </div>
-          <div className="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+
+     
+          {/* <div className="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
             <dt className="text-sm font-medium text-gray-500">Resume</dt>
             <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
               <ul
@@ -1635,14 +1644,14 @@ export default function StudentProfileEdit({ token = "", student }) {
                       aria-hidden="true"
                     />
                     <span className="ml-2 flex-1 w-0 truncate">
-                      {resume ? "resume.pdf" : "No resume found"}
+                      {newStudent.resume ? "resume.pdf" : "No resume found"}
                     </span>
                   </div>
                   <div className="ml-4 flex-shrink-0 space-x-4">
-                    {resume.data ? (
+                    {newStudent.resume.data ? (
                       <div className="">
                         <a
-                          href={`${API_URL}${resume.data.attributes.url}`}
+                          href={`${API_URL}${newStudent.resume.data.attributes.url}`}
                           target="_blank"
                           rel="noreferrer"
                           className="font-medium text-yellow-600 hover:text-yellow-500 px-2"
@@ -1667,7 +1676,70 @@ export default function StudentProfileEdit({ token = "", student }) {
                 </li>
               </ul>
             </dd>
-          </div>
+          </div> */}
+          
+        {/* for docs */}
+
+
+        {/* Note:- Beware that the "typee" is also responsible for the toogle effect of view of "google drive link"  */}
+
+
+          <Comp
+          uploadedDoc={newStudent.resume}
+            link={newStudent.resume_link}
+          typee={'Resume'}
+          />
+          <Comp
+          uploadedDoc={newStudent.tenthCertificate}
+            link={newStudent.X_marksheet}
+          typee={'Tenth Certificate'}
+          />
+
+        
+          <Comp
+          uploadedDoc={newStudent.twelthCertificate}
+            link={newStudent.XII_marksheet}
+          typee={'Twelth Certificate'}
+          />
+          <Comp
+          uploadedDoc={newStudent.aadharCard}
+          typee={'AadharCard'}
+          />
+          <Comp
+            uploadedDoc={newStudent.drivingLicence}
+            link={newStudent.driving_licience_no}
+          typee={'Driving Licence'}
+          />
+          <Comp
+            uploadedDoc={newStudent.allSemMarksheet}
+            link={newStudent.all_sem_marksheet}
+          typee={'All Sem Marksheet'}
+          />
+          <Comp
+            uploadedDoc={newStudent.panCard}
+          typee={'Pan Card'}
+          />
+
+          {/* Toggle effect docs */}
+
+         { (values.category !== 'general')? (
+            <Comp
+              uploadedDoc={newStudent.casteCertificate}
+              link={values.category_link}
+              typee={'Caste Certificate'}
+            />
+         ):null}
+
+         {isPwd  && (
+            <Comp
+              uploadedDoc={newStudent.disabilityCertificate}
+              link={values.disability_certificate}
+              typee={'Disability Certificate'}
+            />
+         )}
+
+
+          
           <div className="flex justify-end">
             <button
               type="submit"
@@ -1680,4 +1752,73 @@ export default function StudentProfileEdit({ token = "", student }) {
       </form>
     </>
   );
+}
+
+
+var Comp = function ({uploadedDoc,link,typee}){
+
+  //data = {resume , 10,12, AAdhar , Pan, Driving, all sem  }
+
+  //data = {of which I have to show all the attributes}
+  //li k
+
+  return (
+    <>
+      <div className="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+        <dt className="text-sm font-medium text-gray-500">{typee}</dt>
+        <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+          <ul
+            role="list"
+            className="border border-gray-200 rounded-md divide-y divide-gray-200"
+          >
+            <li className="pl-3 pr-4 py-3 flex items-center justify-between text-sm">
+              <div className="w-0 flex-1 flex items-center">
+                <PaperClipIcon
+                  className="flex-shrink-0 h-5 w-5 text-gray-400"
+                  aria-hidden="true"
+                />
+                <span className="ml-2 flex-1 w-0 truncate">
+                  {uploadedDoc ? typee+".pdf" : `No ${typee} found`}
+                </span>
+              </div>
+              <div className="ml-4 flex-shrink-0 space-x-4">
+                {uploadedDoc?.data ? (
+                  <div className="">
+                  <span>
+                      <a
+                        href={`${API_URL}${uploadedDoc.data.attributes.url}`}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="font-medium text-yellow-600 hover:text-yellow-500 px-2"
+                      >
+                        Download
+                      </a>
+                  </span>
+                    {
+                      link ? (
+                        <span>
+                          <a
+                            href={link}
+                            target="_blank"
+                            rel="noreferrer"
+                            className="font-medium text-yellow-600 hover:text-yellow-500 cursor-pointer"
+                          >
+                            Google Drive Link
+                          </a>
+                        </span>
+                      ):null
+                    }
+                  </div>
+                ) : (
+                  <p className="font-medium text-yellow-600 hover:text-yellow-500">
+                    NA
+                  </p>
+                )}
+              </div>
+            </li>
+          </ul>
+        </dd>
+      </div>
+    </>
+  )
 }

@@ -22,18 +22,18 @@ export default function Profile({ student, token }) {
     if (
       confirm(
         `
-        Are you sure you want to update CPI/SPI? 
+        Are you sure you want to update CPI/CGPA? 
         Details:
         CPI: ${studentData.cpi}
-        Sem 1 SPI: ${studentData.spi_1}
-        Sem 2 SPI: ${studentData.spi_2}
-        Sem 3 SPI: ${studentData.spi_3}
-        Sem 4 SPI: ${studentData.spi_4}
-        Sem 5 SPI: ${studentData.spi_5}
-        Sem 6 SPI: ${studentData.spi_6}
-        Sem 7 SPI: ${studentData.spi_7}
-        Sem 8 SPI: ${studentData.spi_8}
-        Sem 8 SPI: ${studentData.spi_9}
+        Sem 1 CGPA: ${studentData.spi_1}
+        Sem 2 CGPA: ${studentData.spi_2}
+        Sem 3 CGPA: ${studentData.spi_3}
+        Sem 4 CGPA: ${studentData.spi_4}
+        Sem 5 CGPA: ${studentData.spi_5}
+        Sem 6 CGPA: ${studentData.spi_6}
+        Sem 7 CGPA: ${studentData.spi_7}
+        Sem 8 CGPA: ${studentData.spi_8}
+        Sem 8 CGPA: ${studentData.spi_9}
 
         `
       )
@@ -360,7 +360,7 @@ export default function Profile({ student, token }) {
           <form onSubmit={handleSubmitCpi}>
             <div className="py-4 sm:py-5 sm:grid sm:grid-cols-4 sm:gap-4 sm:px-6">
               <dt className="text-sm font-medium text-gray-500 sm:col-span-1">
-                SPI Sem 1 (Current, leave blank if not applicable)
+                CGPA Sem 1 (Current, leave blank if not applicable)
               </dt>
               <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-1">
                 <input
@@ -378,7 +378,7 @@ export default function Profile({ student, token }) {
                 />
               </dd>
               <dt className="text-sm font-medium text-gray-500 sm:col-span-1">
-                SPI Sem 2 (Current, leave blank if not applicable)
+                CGPA Sem 2 (Current, leave blank if not applicable)
               </dt>
               <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-1">
                 <input
@@ -398,7 +398,7 @@ export default function Profile({ student, token }) {
             </div>
             <div className="py-4 sm:py-5 sm:grid sm:grid-cols-4 sm:gap-4 sm:px-6">
               <dt className="text-sm font-medium text-gray-500 sm:col-span-1">
-                SPI Sem 3 (Current, leave blank if not applicable)
+                CGPA Sem 3 (Current, leave blank if not applicable)
               </dt>
               <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-1">
                 <input
@@ -416,7 +416,7 @@ export default function Profile({ student, token }) {
                 />
               </dd>
               <dt className="text-sm font-medium text-gray-500 sm:col-span-1">
-                SPI Sem 4 (Current, leave blank if not applicable)
+                CGPA Sem 4 (Current, leave blank if not applicable)
               </dt>
               <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-1">
                 <input
@@ -436,7 +436,7 @@ export default function Profile({ student, token }) {
             </div>
             <div className="py-4 sm:py-5 sm:grid sm:grid-cols-4 sm:gap-4 sm:px-6">
               <dt className="text-sm font-medium text-gray-500 sm:col-span-1">
-                SPI Sem 5 (Current, leave blank if not applicable)
+                CGPA Sem 5 (Current, leave blank if not applicable)
               </dt>
               <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-1">
                 <input
@@ -454,7 +454,7 @@ export default function Profile({ student, token }) {
                 />
               </dd>
               <dt className="text-sm font-medium text-gray-500 sm:col-span-1">
-                SPI Sem 6 (Current, leave blank if not applicable)
+                CGPA Sem 6 (Current, leave blank if not applicable)
               </dt>
               <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-1">
                 <input
@@ -474,7 +474,7 @@ export default function Profile({ student, token }) {
             </div>
             <div className="py-4 sm:py-5 sm:grid sm:grid-cols-4 sm:gap-4 sm:px-6">
               <dt className="text-sm font-medium text-gray-500 sm:col-span-1">
-                SPI Sem 7 (Current, leave blank if not applicable)
+                CGPA Sem 7 (Current, leave blank if not applicable)
               </dt>
               <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-1">
                 <input
@@ -492,7 +492,7 @@ export default function Profile({ student, token }) {
                 />
               </dd>
               <dt className="text-sm font-medium text-gray-500 sm:col-span-1">
-                SPI Sem 8 (Current, leave blank if not applicable)
+                CGPA Sem 8 (Current, leave blank if not applicable)
               </dt>
               <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-1">
                 <input
@@ -512,7 +512,7 @@ export default function Profile({ student, token }) {
             </div>
             <div className="py-4 sm:py-5 sm:grid sm:grid-cols-4 sm:gap-4 sm:px-6">
               <dt className="text-sm font-medium text-gray-500 sm:col-span-1">
-                CPI (Current)
+                Overall CGPA (Current)
               </dt>
               <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-1">
                 <input
@@ -535,7 +535,7 @@ export default function Profile({ student, token }) {
                     type="submit"
                     className="inline-flex items-center px-3.5 py-2 mt-2 border border-transparent text-sm leading-4 font-medium rounded-full shadow-sm text-white bg-orange-600 hover:bg-orange-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500"
                   >
-                    Edit SPI/CPI
+                    Edit CGPA/Overall CGPA
                   </button>
                 ) : (
                   ""
