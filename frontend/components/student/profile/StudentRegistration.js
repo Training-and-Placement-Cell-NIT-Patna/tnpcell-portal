@@ -1264,7 +1264,7 @@ export default function StudentRegistration({ token = '' }) {
                   required
                   value={values.cpi}
                   onChange={handleInputChange}
-                  type='number'
+                  type='number' 
                   min={2}
                   max={10}
                   step='.01'
