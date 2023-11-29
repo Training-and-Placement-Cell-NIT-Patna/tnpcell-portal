@@ -47,6 +47,7 @@ export default function StudentRegistration({ token = '' }) {
     spi_7: '',
     spi_8: '',
     spi_9: '',
+    spi_10: '',
     cpi: '',
     X_board: '',
     X_YOP: '',
@@ -1264,7 +1265,7 @@ export default function StudentRegistration({ token = '' }) {
                   required
                   value={values.cpi}
                   onChange={handleInputChange}
-                  type='number' 
+                  type='number'
                   min={2}
                   max={10}
                   step='.01'
@@ -1514,7 +1515,27 @@ export default function StudentRegistration({ token = '' }) {
                   className='mt-0 block w-full px-0.5 border-0 border-b-2 border-gray-300 focus:ring-0 focus:border-stone-500'
                 />
               </div>
-
+              <div className='col-span-2 sm:col-span-1'>
+                <label
+                  htmlFor='spi_9'
+                  className='block text-sm font-medium text-gray-700'
+                >
+                  10th Sem CGPA
+                </label>
+                <input
+                  value={values.spi_10}
+                  onChange={handleInputChange}
+                  type='number'
+                  // min={2}
+                  max={10}
+                  step='.01'
+                  placeholder='Ex: 8.86'
+                  name='spi_10'
+                  id='spi_10'
+                  autoComplete='spi_10'
+                  className='mt-0 block w-full px-0.5 border-0 border-b-2 border-gray-300 focus:ring-0 focus:border-stone-500'
+                />
+              </div>
 
 
               <div className='col-span-3 sm:col-span-1'>
