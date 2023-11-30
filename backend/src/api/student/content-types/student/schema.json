@@ -287,6 +287,9 @@
     "spi_9": {
       "type": "decimal"
     },
+    "spi_10": {
+      "type": "decimal"
+    },
     "current_backlogs": {
       "type": "integer"
     },

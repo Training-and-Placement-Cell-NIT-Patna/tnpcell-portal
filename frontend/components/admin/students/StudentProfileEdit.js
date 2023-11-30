@@ -8,6 +8,7 @@ import { PaperClipIcon } from "@heroicons/react/solid";
 import Link from "next/link";
 
 export default function StudentProfileEdit({ token = "", student }) {
+  console.log("token", token)
   const id = student?.id;
   const {
     createdAt,
@@ -16,7 +17,6 @@ export default function StudentProfileEdit({ token = "", student }) {
     user_relation,
     program,
     course,
-    resume,
     profile_pic,
     placed_status,
     ...newStudent
@@ -27,6 +27,7 @@ export default function StudentProfileEdit({ token = "", student }) {
   const [values, setValues] = useState(newStudent);
   const [isPwd,setIsPwd] = useState(false);
   const [chosenCourse , setChosenCourse] = useState("");
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -38,34 +39,61 @@ export default function StudentProfileEdit({ token = "", student }) {
 
     // console.log("ID=>",id ,typeof(id) );
     // console.log(JSON.stringify({ data: values }))
-    id = String(id)
+    // id = String(id)
 
     if (confirm("Are you sure you want to edit student profile?")) {
-      const res = await fetch(`${API_URL}/api/students/${id}`, {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify({ data: values }),
-      });
 
-      // console.log("changed=>" + JSON.stringify({ data: values }));
+      try {
+        const form = new FormData()
+        form.append('data',values); 
+        console.log(form)
+        const dataBody = JSON.stringify({ data: values });
 
-      if (!res.ok) {
-        if (res.status === 403 || res.status === 401) {
-          toast.error("No token included");
-          return;
+        // console.log("mybody: ",dataBody);
+
+
+        try
+        {
+          const res = await fetch(`${API_URL}/api/students/${id}`, {
+            method: "PUT",
+            headers: {
+              "Content-type": "application/json",
+              Authorization: `Bearer ${token}`,
+            },
+            body: dataBody,
+          });
+
         }
+        catch(e){
+          console.log("my merror: ",e);
+        }
+        
 
-        const profile = await res.json();
 
+        console.log("my res: ", res);
 
-        toast.error(profile?.error.name);
-      } else {
-        const profile = await res.json();
-        toast.success("Profile Edited Successfully");
+        // console.log("changed=>" + JSON.stringify({ data: values }));
+
+        if (!res.ok) {
+          if (res.status === 403 || res.status === 401) {
+            toast.error("No token included");
+            return;
+          }
+
+          const profile = await res.json();
+
+          console.log("Edit error: ", profile?.error);
+
+          toast.error(profile?.error.name); // this is letting internal server error!!!
+        } else {
+          const profile = await res.json();
+          toast.success("Profile Edited Successfully");
+        }
+        
+      } catch (e) {
+        console.log("error while edit: ",e)
       }
+  
     }
   };
 
@@ -743,7 +771,7 @@ export default function StudentProfileEdit({ token = "", student }) {
                       htmlFor="address"
                       className="block text-sm font-medium text-gray-700"
                     >
-                      Address
+                      Permanent Address
                     </label>
                     <textarea
                       value={values.address}
@@ -1269,7 +1297,7 @@ export default function StudentProfileEdit({ token = "", student }) {
                       htmlFor="spi_1"
                       className="block text-sm font-medium text-gray-700"
                     >
-                      SPI-1
+                      CGPA-1
                     </label>
                     <input
                       value={values.spi_1}
@@ -1288,7 +1316,7 @@ export default function StudentProfileEdit({ token = "", student }) {
                       htmlFor="spi_2"
                       className="block text-sm font-medium text-gray-700"
                     >
-                      SPI-2
+                      CGPA-2
                     </label>
                     <input
                       value={values.spi_2}
@@ -1307,7 +1335,7 @@ export default function StudentProfileEdit({ token = "", student }) {
                       htmlFor="spi_3"
                       className="block text-sm font-medium text-gray-700"
                     >
-                      SPI-3
+                      CGPA-3
                     </label>
                     <input
                       value={values.spi_3}
@@ -1325,7 +1353,7 @@ export default function StudentProfileEdit({ token = "", student }) {
                       htmlFor="spi_4"
                       className="block text-sm font-medium text-gray-700"
                     >
-                      SPI-4
+                      CGPA-4
                     </label>
                     <input
                       value={values.spi_4}
@@ -1343,7 +1371,7 @@ export default function StudentProfileEdit({ token = "", student }) {
                       htmlFor="spi_5"
                       className="block text-sm font-medium text-gray-700"
                     >
-                      SPI-5
+                      CGPA-5
                     </label>
                     <input
                       value={values.spi_5}
@@ -1361,7 +1389,7 @@ export default function StudentProfileEdit({ token = "", student }) {
                       htmlFor="spi_6"
                       className="block text-sm font-medium text-gray-700"
                     >
-                      SPI-6
+                      CGPA-6
                     </label>
                     <input
                       value={values.spi_6}
@@ -1379,7 +1407,7 @@ export default function StudentProfileEdit({ token = "", student }) {
                       htmlFor="spi_7"
                       className="block text-sm font-medium text-gray-700"
                     >
-                      SPI-7
+                      CGPA-7
                     </label>
                     <input
                       value={values.spi_7}
@@ -1397,7 +1425,7 @@ export default function StudentProfileEdit({ token = "", student }) {
                       htmlFor="spi_8"
                       className="block text-sm font-medium text-gray-700"
                     >
-                      SPI-8
+                      CGPA-8
                     </label>
                     <input
                       value={values.spi_8}
@@ -1416,7 +1444,7 @@ export default function StudentProfileEdit({ token = "", student }) {
                       htmlFor="spi_9"
                       className="block text-sm font-medium text-gray-700"
                     >
-                      SPI-9
+                      CGPA-9
                     </label>
                     <input
                       value={values.spi_9}
@@ -1432,13 +1460,33 @@ export default function StudentProfileEdit({ token = "", student }) {
                       className="mt-0 block w-full px-0.5 border-0 border-b-2 border-gray-300 focus:ring-0 focus:border-stone-500"
                     />
                   </div>
-
+                  <div className="col-span-2 sm:col-span-1">
+                    <label
+                      htmlFor="spi_9"
+                      className="block text-sm font-medium text-gray-700"
+                    >
+                      CGPA-10
+                    </label>
+                    <input
+                      value={values.spi_10}
+                      onChange={handleInputChange}
+                      type="number"
+                      min={2}
+                      max={10}
+                      step=".01"
+                      placeholder="Ex: 8.86"
+                      name="spi_10"
+                      id="spi_10"
+                      autoComplete="spi_10"
+                      className="mt-0 block w-full px-0.5 border-0 border-b-2 border-gray-300 focus:ring-0 focus:border-stone-500"
+                    />
+                  </div>
                   <div className="col-span-6 sm:col-span-2">
                     <label
                       htmlFor="cpi"
                       className="block text-sm font-medium text-gray-700"
                     >
-                      CPI
+                      Overall CGPA
                     </label>
                     <input
                       value={values.cpi}
@@ -1458,8 +1506,6 @@ export default function StudentProfileEdit({ token = "", student }) {
                       className="block text-sm font-medium text-gray-700"
                     >
                       All Sem Marksheets
-
-
                     </label>
              
                      <div className="flex w-full">
@@ -1544,7 +1590,7 @@ export default function StudentProfileEdit({ token = "", student }) {
                     />
                   </div>
 
-                  <div className="col-span-6 sm:col-span-2">
+                  {/* <div className="col-span-6 sm:col-span-2">
                     <label
                       htmlFor="bachelor_marks"
                       className="block text-sm font-medium text-gray-700"
@@ -1560,8 +1606,9 @@ export default function StudentProfileEdit({ token = "", student }) {
                       autoComplete=""
                       className="mt-1 focus:ring-yellow-500 focus:border-yellow-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                     />
-                  </div>
-                  <div className="col-span-6 sm:col-span-2">
+                  </div> */}
+
+                  {/* <div className="col-span-6 sm:col-span-2">
                     <label
                       htmlFor="master_marks"
                       className="block text-sm font-medium text-gray-700"
@@ -1577,7 +1624,7 @@ export default function StudentProfileEdit({ token = "", student }) {
                       autoComplete=""
                       className="mt-1 focus:ring-yellow-500 focus:border-yellow-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                     />
-                  </div>
+                  </div> */}
                   <div className="col-span-6 sm:col-span-2">
                     <label
                       htmlFor="admission_year"
@@ -1603,7 +1650,9 @@ export default function StudentProfileEdit({ token = "", student }) {
               </div>
             </div>
           </div>
-          <div className="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+
+     
+          {/* <div className="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
             <dt className="text-sm font-medium text-gray-500">Resume</dt>
             <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
               <ul
@@ -1617,14 +1666,14 @@ export default function StudentProfileEdit({ token = "", student }) {
                       aria-hidden="true"
                     />
                     <span className="ml-2 flex-1 w-0 truncate">
-                      {resume ? "resume.pdf" : "No resume found"}
+                      {newStudent.resume ? "resume.pdf" : "No resume found"}
                     </span>
                   </div>
                   <div className="ml-4 flex-shrink-0 space-x-4">
-                    {resume.data ? (
+                    {newStudent.resume.data ? (
                       <div className="">
                         <a
-                          href={`${API_URL}${resume.data.attributes.url}`}
+                          href={`${API_URL}${newStudent.resume.data.attributes.url}`}
                           target="_blank"
                           rel="noreferrer"
                           className="font-medium text-yellow-600 hover:text-yellow-500 px-2"
@@ -1649,7 +1698,70 @@ export default function StudentProfileEdit({ token = "", student }) {
                 </li>
               </ul>
             </dd>
-          </div>
+          </div> */}
+          
+        {/* for docs */}
+
+
+        {/* Note:- Beware that the "typee" is also responsible for the toogle effect of view of "google drive link"  */}
+
+
+          <Comp
+          googleDoc={newStudent.resume}
+            link={newStudent.resume_link}
+          typee={'Resume'}
+          />
+          <Comp
+          googleDoc={newStudent.tenthCertificate}
+            link={newStudent.X_marksheet}
+          typee={'Tenth Certificate'}
+          />
+
+        
+          <Comp
+          googleDoc={newStudent.twelthCertificate}
+            link={newStudent.XII_marksheet}
+          typee={'Twelth Certificate'}
+          />
+          <Comp
+          googleDoc={newStudent.aadharCard}
+          typee={'AadharCard'}
+          />
+          <Comp
+            googleDoc={newStudent.drivingLicence}
+            link={newStudent.driving_licience_no}
+          typee={'Driving Licence'}
+          />
+          <Comp
+            googleDoc={newStudent.allSemMarksheet}
+            link={newStudent.all_sem_marksheet}
+          typee={'All Sem Marksheet'}
+          />
+          <Comp
+            googleDoc={newStudent.panCard}
+          typee={'Pan Card'}
+          />
+
+          {/* Toggle effect docs */}
+
+         { (values.category !== 'general')? (
+            <Comp
+              googleDoc={newStudent.casteCertificate}
+              link={values.category_link}
+              typee={'Caste Certificate'}
+            />
+         ):null}
+
+         {isPwd  && (
+            <Comp
+              googleDoc={newStudent.disabilityCertificate}
+              link={values.disability_certificate}
+              typee={'Disability Certificate'}
+            />
+         )}
+
+
+          
           <div className="flex justify-end">
             <button
               type="submit"
@@ -1662,4 +1774,73 @@ export default function StudentProfileEdit({ token = "", student }) {
       </form>
     </>
   );
+}
+
+
+var Comp = function ({googleDoc,link,typee}){
+
+  //data = {resume , 10,12, AAdhar , Pan, Driving, all sem  }
+
+  //data = {of which I have to show all the attributes}
+  //li k
+
+  return (
+    <>
+      <div className="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+        <dt className="text-sm font-medium text-gray-500">{typee}</dt>
+        <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+          <ul
+            role="list"
+            className="border border-gray-200 rounded-md divide-y divide-gray-200"
+          >
+            <li className="pl-3 pr-4 py-3 flex items-center justify-between text-sm">
+              <div className="w-0 flex-1 flex items-center">
+                <PaperClipIcon
+                  className="flex-shrink-0 h-5 w-5 text-gray-400"
+                  aria-hidden="true"
+                />
+                <span className="ml-2 flex-1 w-0 truncate">
+                  {googleDoc ? typee+".pdf" : `No ${typee} found`}
+                </span>
+              </div>
+              <div className="ml-4 flex-shrink-0 space-x-4">
+                {googleDoc.data ? (
+                  <div className="">
+                  <span>
+                      <a
+                        href={`${API_URL}${googleDoc.data.attributes.url}`}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="font-medium text-yellow-600 hover:text-yellow-500 px-2"
+                      >
+                        Download
+                      </a>
+                  </span>
+                    {
+                      link ? (
+                        <span>
+                          <a
+                            href={link}
+                            target="_blank"
+                            rel="noreferrer"
+                            className="font-medium text-yellow-600 hover:text-yellow-500 cursor-pointer"
+                          >
+                            Google Drive Link
+                          </a>
+                        </span>
+                      ):null
+                    }
+                  </div>
+                ) : (
+                  <p className="font-medium text-yellow-600 hover:text-yellow-500">
+                    NA
+                  </p>
+                )}
+              </div>
+            </li>
+          </ul>
+        </dd>
+      </div>
+    </>
+  )
 }
