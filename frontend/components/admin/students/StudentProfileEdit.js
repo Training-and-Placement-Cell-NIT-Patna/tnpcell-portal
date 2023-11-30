@@ -8,7 +8,7 @@ import { PaperClipIcon } from "@heroicons/react/solid";
 import Link from "next/link";
 
 export default function StudentProfileEdit({ token = "", student }) {
-  console.log("token", token)
+  // console.log("token", token)
   const id = student?.id;
   const {
     createdAt,
