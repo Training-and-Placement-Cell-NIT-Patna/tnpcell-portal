@@ -33,7 +33,9 @@ export default function Profile({ student, token }) {
         Sem 6 CGPA: ${studentData.spi_6}
         Sem 7 CGPA: ${studentData.spi_7}
         Sem 8 CGPA: ${studentData.spi_8}
-        Sem 8 CGPA: ${studentData.spi_9}
+        Sem 9 CGPA: ${studentData.spi_9}
+        Sem 10 CGPA: ${studentData.spi_10}
+
 
         `
       )
@@ -50,6 +52,7 @@ export default function Profile({ student, token }) {
       formData.append("spi_7", studentData.spi_7);
       formData.append("spi_8", studentData.spi_8);
       formData.append("spi_9", studentData.spi_9);
+      formData.append("spi_10", studentData.spi_10);
 
       const res = await fetch(`${API_URL}/api/student/modify`, {
         method: "PUT",
@@ -501,6 +504,44 @@ export default function Profile({ student, token }) {
                   type="number"
                   name="spi_8"
                   id="spi_8"
+                  // border red if editCPi is false
+                  className={`appearance-none border-1 ${
+                    editCpi ? "border-green-200" : "border-gray-200"
+                  } rounded w-full py-2 px-4 text-gray-900 text-sm leading-tight focus:outline-none focus:border-blue-500`}
+                  value={studentData.spi_8 || ""}
+                  onChange={handleChange}
+                />
+              </dd>
+            </div>
+            <div className="py-4 sm:py-5 sm:grid sm:grid-cols-4 sm:gap-4 sm:px-6">
+              <dt className="text-sm font-medium text-gray-500 sm:col-span-1">
+                CGPA Sem 9 (Current, leave blank if not applicable)
+              </dt>
+              <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-1">
+                <input
+                  //disable if editCpi is false
+                  disabled={!editCpi}
+                  type="number"
+                  name="spi_9"
+                  id="spi_9"
+                  // border red if editCPi is false
+                  className={`appearance-none border-1 ${
+                    editCpi ? "border-green-200" : "border-gray-200"
+                  } rounded w-full py-2 px-4 text-gray-900 text-sm leading-tight focus:outline-none focus:border-blue-500`}
+                  value={studentData.spi_7 || ""}
+                  onChange={handleChange}
+                />
+              </dd>
+              <dt className="text-sm font-medium text-gray-500 sm:col-span-1">
+                CGPA Sem 10 (Current, leave blank if not applicable)
+              </dt>
+              <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-1">
+                <input
+                  //disable if editCpi is false
+                  disabled={!editCpi}
+                  type="number"
+                  name="spi_10"
+                  id="spi_10"
                   // border red if editCPi is false
                   className={`appearance-none border-1 ${
                     editCpi ? "border-green-200" : "border-gray-200"

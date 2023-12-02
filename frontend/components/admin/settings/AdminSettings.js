@@ -90,11 +90,11 @@ export default function AdminSettings({ token = "" }) {
                           className="text-sm font-medium text-gray-900"
                           passive
                         >
-                          Allow editing CPI and SPI
+                          Allow editing Overall CGPA and Semester CGPA
                         </Switch.Label>
                         <Switch.Description className="text-sm text-gray-500">
-                          This will allow all students to edit their CPI and
-                          SPI.
+                          This will allow all students to edit their overall CGPA and
+                          Semester CGPA.
                         </Switch.Description>
                       </div>
                       <Switch
