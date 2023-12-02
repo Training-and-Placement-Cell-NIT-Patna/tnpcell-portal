@@ -309,68 +309,78 @@ export default function Students({ token }) {
     },
 
     {
-      headerName: 'SPI 1',
+      headerName: 'CGPA 1',
       field: 'attributes.spi_1',
       filter: 'agNumberColumnFilter',
 
     },
 
     {
-      headerName: 'SPI 2',
+      headerName: 'CGPA 2',
       field: 'attributes.spi_2',
       filter: 'agNumberColumnFilter',
 
     },
 
     {
-      headerName: 'SPI 3',
+      headerName: 'CGPA 3',
       field: 'attributes.spi_3',
       filter: 'agNumberColumnFilter',
 
     },
 
     {
-      headerName: 'SPI 4',
+      headerName: 'CGPA 4',
       field: 'attributes.spi_4',
       filter: 'agNumberColumnFilter',
 
     },
 
     {
-      headerName: 'SPI 5',
+      headerName: 'CGPA 5',
       field: 'attributes.spi_5',
       filter: 'agNumberColumnFilter',
 
     },
 
     {
-      headerName: 'SPI 6',
+      headerName: 'CGPA 6',
       field: 'attributes.spi_6',
       filter: 'agNumberColumnFilter',
 
     },
 
     {
-      headerName: 'SPI 7',
+      headerName: 'CGPA 7',
       field: 'attributes.spi_7',
       filter: 'agNumberColumnFilter',
 
     },
 
     {
-      headerName: 'SPI 8',
+      headerName: 'CGPA 8',
       field: 'attributes.spi_8',
       filter: 'agNumberColumnFilter',
 
     },
 
     {
-      headerName: 'SPI 9',
+      headerName: 'CGPA 9',
       field: 'attributes.spi_9',
       filter: 'agNumberColumnFilter',
 
     },
+    {
+      headerName: 'CGPA 10',
+      field: 'attributes.spi_10',
+      filter: 'agNumberColumnFilter',
 
+    },
+    {
+      headerName: 'Overall CGPA',
+      field: 'attributes.cpi',
+      filter: 'agNumberColumnFilter',
+    },
     {
       headerName: 'Total Backlogs',
       field: 'attributes.total_backlogs',
@@ -389,13 +399,6 @@ export default function Students({ token }) {
       headerName: 'Current Status',
       field: 'attributes.current_status',
     },
-
-    {
-      headerName: 'CPI',
-      field: 'attributes.cpi',
-      filter: 'agNumberColumnFilter',
-    },
-
 
 
     {

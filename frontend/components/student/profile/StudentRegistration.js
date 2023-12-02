@@ -1411,7 +1411,7 @@ export default function StudentRegistration({ token = '' }) {
                   htmlFor='spi_5'
                   className='block text-sm font-medium text-gray-700'
                 >
-                  5th Sem CGPA
+                  5th Sem CGPA<span className='text-red-700'>*</span>
                 </label>
                 <input
                   value={values.spi_5}
@@ -1432,7 +1432,7 @@ export default function StudentRegistration({ token = '' }) {
                   htmlFor='spi_6'
                   className='block text-sm font-medium text-gray-700'
                 >
-                  6th Sem CGPA
+                  6th Sem CGPA<span className='text-red-700'>*</span>
                 </label>
                 <input
                   value={values.spi_6}
