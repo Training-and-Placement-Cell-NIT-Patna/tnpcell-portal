@@ -7,7 +7,7 @@ const Developers = () => {
       aboutL: "lorem ipsum",
       role: "Full-Stack Developer || DevOps Engineer",
       twitter: "https://twitter.com/Cr7_rajan",
-      linkedin: "",
+      linkedin: "https://www.linkedin.com/in/krcpr007/",
       image: "/developers/rajan.jpg",
       portfolio: 'https://rajan.live'
     },
@@ -16,7 +16,7 @@ const Developers = () => {
       aboutL: "lorem ipsum",
       role: "Full-stack Developer ",
       twitter: "",
-      linkedin: "",
+      linkedin: "https://www.linkedin.com/in/rajdeep-nagar-0873a7206/",
       image: "/developers/rajdeep.jpg",
     },
     {
@@ -24,7 +24,7 @@ const Developers = () => {
       aboutL: "lorem ipsum",
       role: "Frontend Developer",
       twitter: "",
-      linkedin: "",
+      linkedin: "https://www.linkedin.com/in/ayushi-gupta-604646202/",
       image: "/developers/ayushi.jpeg",
     },
     {
