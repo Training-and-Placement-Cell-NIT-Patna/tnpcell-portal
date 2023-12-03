@@ -52,7 +52,7 @@ export default function StudentProfileEdit({ token = '', student }) {
               <p className='mt-1 text-sm text-gray-500'>
                 Student Personal Information, account will be active after your
                 approval.
-                <img  alt='Profile Picture' src={`${API_URL}${student?.attributes?.profile_pic?.data?.attributes?.url}`} />
+                <img alt='Profile Picture' src={`${API_URL}${student?.attributes?.profile_pic?.data?.attributes?.url}`} />
               </p>
             </div>
             <div className='mt-5 md:mt-0 md:col-span-2'>
@@ -957,7 +957,7 @@ export default function StudentProfileEdit({ token = '', student }) {
                     htmlFor='spi_1'
                     className='block text-sm font-medium text-gray-700'
                   >
-                    SPI-1
+                    CGPA-1
                   </label>
                   <input
                     disabled
@@ -977,7 +977,7 @@ export default function StudentProfileEdit({ token = '', student }) {
                     htmlFor='spi_2'
                     className='block text-sm font-medium text-gray-700'
                   >
-                    SPI-2
+                    CGPA-2
                   </label>
                   <input
                     disabled
@@ -997,7 +997,7 @@ export default function StudentProfileEdit({ token = '', student }) {
                     htmlFor='spi_3'
                     className='block text-sm font-medium text-gray-700'
                   >
-                    SPI-3
+                    CGPA-3
                   </label>
                   <input
                     disabled
@@ -1016,7 +1016,7 @@ export default function StudentProfileEdit({ token = '', student }) {
                     htmlFor='spi_4'
                     className='block text-sm font-medium text-gray-700'
                   >
-                    SPI-4
+                    CGPA-4
                   </label>
                   <input
                     disabled
@@ -1035,7 +1035,7 @@ export default function StudentProfileEdit({ token = '', student }) {
                     htmlFor='spi_5'
                     className='block text-sm font-medium text-gray-700'
                   >
-                    SPI-5
+                    CGPA-5
                   </label>
                   <input
                     disabled
@@ -1054,7 +1054,7 @@ export default function StudentProfileEdit({ token = '', student }) {
                     htmlFor='spi_6'
                     className='block text-sm font-medium text-gray-700'
                   >
-                    SPI-6
+                    CGPA-6
                   </label>
                   <input
                     disabled
@@ -1073,7 +1073,7 @@ export default function StudentProfileEdit({ token = '', student }) {
                     htmlFor='spi_7'
                     className='block text-sm font-medium text-gray-700'
                   >
-                    SPI-7
+                    CGPA-7
                   </label>
                   <input
                     disabled
@@ -1092,7 +1092,7 @@ export default function StudentProfileEdit({ token = '', student }) {
                     htmlFor='spi_8'
                     className='block text-sm font-medium text-gray-700'
                   >
-                    SPI-8
+                    CGPA-8
                   </label>
                   <input
                     disabled
@@ -1113,7 +1113,7 @@ export default function StudentProfileEdit({ token = '', student }) {
                     htmlFor='spi_9'
                     className='block text-sm font-medium text-gray-700'
                   >
-                    SPI-9
+                    CGPA-9
                   </label>
                   <input
                     disabled
@@ -1131,14 +1131,58 @@ export default function StudentProfileEdit({ token = '', student }) {
                     className='mt-0 block w-full px-0.5 border-0 border-b-2 border-gray-300 focus:ring-0 focus:border-stone-500'
                   />
                 </div>
+                <div className='col-span-2 sm:col-span-1'>
+                  <label
+                    htmlFor='spi_9'
+                    className='block text-sm font-medium text-gray-700'
+                  >
+                    CGPA-9
+                  </label>
+                  <input
+                    disabled
 
+                    value={values.spi_9}
+                    onChange={handleInputChange}
+                    type='number'
+                    min={2}
+                    max={10}
+                    step='.01'
+                    placeholder='Ex: 8.86'
+                    name='spi_9'
+                    id='spi_9'
+                    autoComplete='spi_9'
+                    className='mt-0 block w-full px-0.5 border-0 border-b-2 border-gray-300 focus:ring-0 focus:border-stone-500'
+                  />
+                </div>
+                <div className='col-span-2 sm:col-span-1'>
+                  <label
+                    htmlFor='spi_9'
+                    className='block text-sm font-medium text-gray-700'
+                  >
+                    CGPA-10
+                  </label>
+                  <input
+                    disabled
 
+                    value={values.spi_10}
+                    onChange={handleInputChange}
+                    type='number'
+                    min={2}
+                    max={10}
+                    step='.01'
+                    placeholder='Ex: 8.86'
+                    name='spi_9'
+                    id='spi_9'
+                    autoComplete='spi_9'
+                    className='mt-0 block w-full px-0.5 border-0 border-b-2 border-gray-300 focus:ring-0 focus:border-stone-500'
+                  />
+                </div>
                 <div className='col-span-6 sm:col-span-2'>
                   <label
                     htmlFor='cpi'
                     className='block text-sm font-medium text-gray-700'
                   >
-                    CPI
+                    Overall CGPA
                   </label>
                   <input
                     disabled

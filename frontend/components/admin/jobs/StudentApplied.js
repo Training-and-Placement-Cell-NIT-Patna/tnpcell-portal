@@ -724,7 +724,7 @@ export default function StudentApplied({ token = '', id = '' }) {
     },
 
     {
-      headerName: 'SPI 1',
+      headerName: 'CGPA 1',
       field: 'attributes.student.data.attributes.spi_1',
       filter: 'agNumberColumnFilter',
       cellStyle: (params) => ({ borderRight: '2px solid #ccc', }),
@@ -733,7 +733,7 @@ export default function StudentApplied({ token = '', id = '' }) {
     },
 
     {
-      headerName: 'SPI 2',
+      headerName: 'CGPA 2',
       field: 'attributes.student.data.attributes.spi_2',
       filter: 'agNumberColumnFilter',
       cellStyle: (params) => ({ borderRight: '2px solid #ccc', }),
@@ -742,7 +742,7 @@ export default function StudentApplied({ token = '', id = '' }) {
     },
 
     {
-      headerName: 'SPI 3',
+      headerName: 'CGPA 3',
       field: 'attributes.student.data.attributes.spi_3',
       filter: 'agNumberColumnFilter',
       cellStyle: (params) => ({ borderRight: '2px solid #ccc', }),
@@ -751,7 +751,7 @@ export default function StudentApplied({ token = '', id = '' }) {
     },
 
     {
-      headerName: 'SPI 4',
+      headerName: 'CGPA 4',
       field: 'attributes.student.data.attributes.spi_4',
       filter: 'agNumberColumnFilter',
       cellStyle: (params) => ({ borderRight: '2px solid #ccc', }),
@@ -760,7 +760,7 @@ export default function StudentApplied({ token = '', id = '' }) {
     },
 
     {
-      headerName: 'SPI 5',
+      headerName: 'CGPA 5',
       field: 'attributes.student.data.attributes.spi_5',
       filter: 'agNumberColumnFilter',
       cellStyle: (params) => ({ borderRight: '2px solid #ccc', }),
@@ -769,7 +769,7 @@ export default function StudentApplied({ token = '', id = '' }) {
     },
 
     {
-      headerName: 'SPI 6',
+      headerName: 'CGPA 6',
       field: 'attributes.student.data.attributes.spi_6',
       filter: 'agNumberColumnFilter',
       cellStyle: (params) => ({ borderRight: '2px solid #ccc', }),
@@ -778,7 +778,7 @@ export default function StudentApplied({ token = '', id = '' }) {
     },
 
     {
-      headerName: 'SPI 7',
+      headerName: 'CGPA 7',
       field: 'attributes.student.data.attributes.spi_7',
       filter: 'agNumberColumnFilter',
       cellStyle: (params) => ({ borderRight: '2px solid #ccc', }),
@@ -787,7 +787,7 @@ export default function StudentApplied({ token = '', id = '' }) {
     },
 
     {
-      headerName: 'SPI 8',
+      headerName: 'CGPA 8',
       field: 'attributes.student.data.attributes.spi_8',
       filter: 'agNumberColumnFilter',
       cellStyle: (params) => ({ borderRight: '2px solid #ccc', }),
@@ -796,14 +796,21 @@ export default function StudentApplied({ token = '', id = '' }) {
     },
 
     {
-      headerName: 'SPI 9',
+      headerName: 'CGPA 9',
       field: 'attributes.student.data.attributes.spi_9',
       filter: 'agNumberColumnFilter',
       cellStyle: (params) => ({ borderRight: '2px solid #ccc', }),
 
 
     },
+    {
+      headerName: 'CGPA 10',
+      field: 'attributes.student.data.attributes.spi_10',
+      filter: 'agNumberColumnFilter',
+      cellStyle: (params) => ({ borderRight: '2px solid #ccc', }),
 
+
+    },
     {
       headerName: 'Total Backlogs',
       field: 'attributes.student.data.attributes.total_backlogs',
@@ -830,7 +837,7 @@ export default function StudentApplied({ token = '', id = '' }) {
     },
 
     {
-      headerName: 'CPI',
+      headerName: 'Overall CGPA',
       field: 'attributes.student.data.attributes.cpi',
       filter: 'agNumberColumnFilter',
       cellStyle: (params) => ({ borderRight: '2px solid #ccc', }),

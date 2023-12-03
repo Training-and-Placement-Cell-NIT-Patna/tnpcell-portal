@@ -8,7 +8,7 @@ import { PaperClipIcon } from "@heroicons/react/solid";
 import Link from "next/link";
 
 export default function StudentProfileEdit({ token = "", student }) {
-  console.log("token", token)
+  // console.log("token", token)
   const id = student?.id;
   const {
     createdAt,
@@ -19,15 +19,20 @@ export default function StudentProfileEdit({ token = "", student }) {
     course,
     profile_pic,
     placed_status,
+    resume,casteCertificate, // here all the uploading docs destructuring is done such after api call i wont give internal server error
+    disabilityCertificate,
+    drivingLicence,panCard,
+    tenthCertificate,
+    twelthCertificate,
+    allSemMarksheet,
+    aadharCard,
     ...newStudent
   } = student.attributes;
 
-  // console.log("student: ",student.attributes)
 
   const [values, setValues] = useState(newStudent);
   const [isPwd,setIsPwd] = useState(false);
   const [chosenCourse , setChosenCourse] = useState("");
-
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -40,60 +45,34 @@ export default function StudentProfileEdit({ token = "", student }) {
     // console.log("ID=>",id ,typeof(id) );
     // console.log(JSON.stringify({ data: values }))
     // id = String(id)
+    // console.log("ID=>",id ,typeof(id) );
 
     if (confirm("Are you sure you want to edit student profile?")) {
+      const res = await fetch(`${API_URL}/api/students/${id}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({ data: values }),
+      });
 
-      try {
-        const form = new FormData()
-        form.append('data',values); 
-        console.log(form)
-        const dataBody = JSON.stringify({ data: values });
+      // console.log("changed=>" + JSON.stringify({ data: values }));
 
-        // console.log("mybody: ",dataBody);
-
-
-        try
-        {
-          const res = await fetch(`${API_URL}/api/students/${id}`, {
-            method: "PUT",
-            headers: {
-              "Content-type": "application/json",
-              Authorization: `Bearer ${token}`,
-            },
-            body: dataBody,
-          });
-
+      if (!res.ok) {
+        if (res.status === 403 || res.status === 401) {
+          toast.error("No token included");
+          return;
         }
-        catch(e){
-          console.log("my merror: ",e);
-        }
-        
+
+        const profile = await res.json();
 
 
-        console.log("my res: ", res);
-
-        // console.log("changed=>" + JSON.stringify({ data: values }));
-
-        if (!res.ok) {
-          if (res.status === 403 || res.status === 401) {
-            toast.error("No token included");
-            return;
-          }
-
-          const profile = await res.json();
-
-          console.log("Edit error: ", profile?.error);
-
-          toast.error(profile?.error.name); // this is letting internal server error!!!
-        } else {
-          const profile = await res.json();
-          toast.success("Profile Edited Successfully");
-        }
-        
-      } catch (e) {
-        console.log("error while edit: ",e)
+        toast.error(profile?.error.name);
+      } else {
+        const profile = await res.json();
+        toast.success("Profile Edited Successfully");
       }
-  
     }
   };
 
@@ -913,7 +892,7 @@ export default function StudentProfileEdit({ token = "", student }) {
                       name="driving_licience_no"
                       id="driving_licience_no"
                       autoComplete="driving_licience_no"
-                      required
+                      // required
                       className="mt-0 block w-full px-0.5 border-0 border-b-2 text-sm text-gray-600 border-gray-300 focus:ring-0 focus:border-stone-500"
                     />
                   </div>
@@ -965,7 +944,7 @@ export default function StudentProfileEdit({ token = "", student }) {
                       name="pancard_no"
                       id="pancard_no"
                       autoComplete="pancard_no"
-                      required
+                      // required
                       className="mt-0 block w-full px-0.5 border-0 border-b-2 text-sm text-gray-600 border-gray-300 focus:ring-0 focus:border-stone-500"
                     />
                   </div>
@@ -1707,38 +1686,38 @@ export default function StudentProfileEdit({ token = "", student }) {
 
 
           <Comp
-          googleDoc={newStudent.resume}
+          uploadedDoc={newStudent.resume}
             link={newStudent.resume_link}
           typee={'Resume'}
           />
           <Comp
-          googleDoc={newStudent.tenthCertificate}
+          uploadedDoc={newStudent.tenthCertificate}
             link={newStudent.X_marksheet}
           typee={'Tenth Certificate'}
           />
 
         
           <Comp
-          googleDoc={newStudent.twelthCertificate}
+          uploadedDoc={newStudent.twelthCertificate}
             link={newStudent.XII_marksheet}
           typee={'Twelth Certificate'}
           />
           <Comp
-          googleDoc={newStudent.aadharCard}
+          uploadedDoc={newStudent.aadharCard}
           typee={'AadharCard'}
           />
           <Comp
-            googleDoc={newStudent.drivingLicence}
+            uploadedDoc={newStudent.drivingLicence}
             link={newStudent.driving_licience_no}
           typee={'Driving Licence'}
           />
           <Comp
-            googleDoc={newStudent.allSemMarksheet}
+            uploadedDoc={newStudent.allSemMarksheet}
             link={newStudent.all_sem_marksheet}
           typee={'All Sem Marksheet'}
           />
           <Comp
-            googleDoc={newStudent.panCard}
+            uploadedDoc={newStudent.panCard}
           typee={'Pan Card'}
           />
 
@@ -1746,7 +1725,7 @@ export default function StudentProfileEdit({ token = "", student }) {
 
          { (values.category !== 'general')? (
             <Comp
-              googleDoc={newStudent.casteCertificate}
+              uploadedDoc={newStudent.casteCertificate}
               link={values.category_link}
               typee={'Caste Certificate'}
             />
@@ -1754,7 +1733,7 @@ export default function StudentProfileEdit({ token = "", student }) {
 
          {isPwd  && (
             <Comp
-              googleDoc={newStudent.disabilityCertificate}
+              uploadedDoc={newStudent.disabilityCertificate}
               link={values.disability_certificate}
               typee={'Disability Certificate'}
             />
@@ -1777,7 +1756,7 @@ export default function StudentProfileEdit({ token = "", student }) {
 }
 
 
-var Comp = function ({googleDoc,link,typee}){
+var Comp = function ({uploadedDoc,link,typee}){
 
   //data = {resume , 10,12, AAdhar , Pan, Driving, all sem  }
 
@@ -1800,15 +1779,15 @@ var Comp = function ({googleDoc,link,typee}){
                   aria-hidden="true"
                 />
                 <span className="ml-2 flex-1 w-0 truncate">
-                  {googleDoc ? typee+".pdf" : `No ${typee} found`}
+                  {uploadedDoc ? typee+".pdf" : `No ${typee} found`}
                 </span>
               </div>
               <div className="ml-4 flex-shrink-0 space-x-4">
-                {googleDoc.data ? (
+                {uploadedDoc?.data ? (
                   <div className="">
                   <span>
                       <a
-                        href={`${API_URL}${googleDoc.data.attributes.url}`}
+                        href={`${API_URL}${uploadedDoc.data.attributes.url}`}
                         target="_blank"
                         rel="noreferrer"
                         className="font-medium text-yellow-600 hover:text-yellow-500 px-2"
