@@ -4,7 +4,7 @@ import { toast } from 'react-toastify'
 import {BsFillEyeFill} from 'react-icons/bs'
 function UploadDocuments({ token, studentsData }) {
 
-    console.log("studentData: ", studentsData);
+    // console.log("studentData: ", studentsData);
     const [casteCertificate, setCasteCertificate] = useState(studentsData.casteCertificate);
     const [tenthCertificate, setTenthCertificate] = useState(studentsData.tenthCertificate);
     const [twelthCertificate, setTwelthCertificate] = useState(studentsData.twelthCertificate);
