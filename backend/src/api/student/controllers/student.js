@@ -213,6 +213,7 @@ module.exports = createCoreController("api::student.student", ({ strapi }) => ({
       "spi_7",
       "spi_8",
       "spi_9",
+      "spi_10",
       "cpi",
     ];
 
