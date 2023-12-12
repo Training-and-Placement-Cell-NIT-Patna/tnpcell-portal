@@ -46,6 +46,16 @@
       "type": "decimal",
       "max": 10,
       "min": 0
+    },
+    "sem9": {
+      "type": "decimal",
+      "max": 10,
+      "min": 0
+    },
+    "sem10": {
+      "type": "decimal",
+      "max": 10,
+      "min": 0
     }
   }
 }
