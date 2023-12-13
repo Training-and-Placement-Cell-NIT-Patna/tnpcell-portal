@@ -10,11 +10,11 @@
     "build": "strapi build",
     "strapi": "strapi"
   },
-
   "dependencies": {
     "@strapi/plugin-i18n": "4.1.11",
     "@strapi/plugin-users-permissions": "4.1.11",
     "@strapi/provider-email-nodemailer": "^4.3.0",
+    "strapi-prometheus": "^1.8.1",
     "@strapi/strapi": "4.1.11",
     "adm-zip": "^0.5.9",
     "better-sqlite3": "7.4.6",
