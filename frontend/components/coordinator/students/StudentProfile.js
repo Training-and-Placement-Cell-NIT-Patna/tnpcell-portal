@@ -1,11 +1,24 @@
 import { useEffect, useState } from 'react'
 // import { useRouter } from 'next/router'
 // import { toast } from 'react-toastify'
+import StudentDocs from '@/components/student/StudentDocs'
 import { API_URL } from '@/config/index'
 import { PaperClipIcon } from '@heroicons/react/solid'
 // import Image from 'next/image'
 export default function StudentProfileEdit({ token = '', student }) {
   const id = student.id
+  // const {
+  //   createdAt,
+  //   resume_link,
+  //   updatedAt,
+  //   user_relation,
+  //   program,
+  //   course,
+  //   resume,
+  //   profile_pic,
+  //   placed_status,
+  //   ...newStudent
+  // } = student.attributes;
   const {
     createdAt,
     resume_link,
@@ -13,9 +26,14 @@ export default function StudentProfileEdit({ token = '', student }) {
     user_relation,
     program,
     course,
-    resume,
     profile_pic,
-    placed_status,
+    resume, casteCertificate, // here all the uploading docs destructuring is done such after api call i wont give internal server error
+    disabilityCertificate,
+    drivingLicence, panCard,
+    tenthCertificate,
+    twelthCertificate,
+    allSemMarksheet,
+    aadharCard,
     ...newStudent
   } = student.attributes;
 
@@ -906,7 +924,7 @@ export default function StudentProfileEdit({ token = '', student }) {
                   <select
                     // onClick={setCourseAndP/rogram}
                     disabled
-                    value={values.program}
+                    value={program}
                     onChange={handleInputChange}
                     id='program'
                     name='program'
@@ -935,7 +953,7 @@ export default function StudentProfileEdit({ token = '', student }) {
                   </label>
                   <select
                     disabled
-                    value={values.course}
+                    value={course}
                     onChange={handleInputChange}
                     id="course"
                     name="course"
@@ -1547,7 +1565,93 @@ export default function StudentProfileEdit({ token = '', student }) {
             </div>
           </div>
         </div>
-        <div className='py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6'>
+
+
+
+
+        {/* for docs */}
+
+
+        {/* Note:- Beware that the "typee" is also responsible for the toogle effect of view of "google drive link"  */}
+
+
+
+        {/* <StudentDocs
+          key={1}
+          uploadedDoc={resume.data}
+          google_drive_link={resume_link}
+          doc_name={'Resume'}
+        /> */}
+        <StudentDocs
+          key={2}
+          uploadedDoc={tenthCertificate.data}
+          google_drive_link={newStudent.X_marksheet}
+          doc_name={'Tenth Certificate'}
+        />
+
+
+        <StudentDocs
+          key={3}
+          uploadedDoc={twelthCertificate.data}
+          google_drive_link={newStudent.XII_marksheet}
+          doc_name={'Twelth Certificate'}
+        />
+        <StudentDocs
+          key={4}
+          uploadedDoc={aadharCard.data}
+          doc_name={'AadharCard'}
+        />
+        <StudentDocs
+          key={5}
+          uploadedDoc={drivingLicence.data}
+          google_drive_link={newStudent.driving_licience_link}
+          doc_name={'Driving Licence'}
+        />
+        <StudentDocs
+          key={6}
+          uploadedDoc={allSemMarksheet.data}
+          google_drive_link={newStudent.all_sem_marksheet}
+          doc_name={'All Sem Marksheet'}
+        />
+        <StudentDocs
+          key={7}
+          uploadedDoc={panCard.data}
+          doc_name={'Pan Card'}
+        />
+
+        {/* Toggle effect docs */}
+
+        {(values.category !== 'general') ? (
+          <StudentDocs
+            key={8}
+            uploadedDoc={casteCertificate.data}
+            google_drive_link={values.category_link}
+            doc_name={'Caste Certificate'}
+          />
+        ) : null}
+
+        {values.pwd && (
+          <StudentDocs
+            key={9}
+            uploadedDoc={disabilityCertificate.data}
+            google_drive_link={values.disability_certificate}
+            doc_name={'Disability Certificate'}
+          />
+        )}
+
+
+
+        <div className="flex justify-end">
+          <button
+            type="submit"
+            className="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-yellow-600 hover:bg-yellow-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500"
+          >
+            Edit
+          </button>
+        </div>
+
+
+        {/* <div className='py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6'>
           <dt className='text-sm font-medium text-gray-500'>Resume</dt>
           <dd className='mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2'>
             <ul
@@ -1593,7 +1697,8 @@ export default function StudentProfileEdit({ token = '', student }) {
               </li>
             </ul>
           </dd>
-        </div>
+        </div> */}
+
       </div>
     </form>
   )
