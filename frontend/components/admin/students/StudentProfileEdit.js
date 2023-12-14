@@ -4,10 +4,14 @@ import { useEffect, useState } from "react";
 // import { useRouter } from "next/router";
 import { toast } from "react-toastify";
 import { API_URL } from "@/config/index";
+// import Up from "pages/student/upload-docs";
+import StudentDocs from "@/components/student/StudentDocs";
 import { PaperClipIcon } from "@heroicons/react/solid";
 import Link from "next/link";
 
 export default function StudentProfileEdit({ token = "", student }) {
+
+  // console.log("student: ",student);
   // console.log("token", token)
   const id = student?.id;
   const {
@@ -1685,60 +1689,69 @@ export default function StudentProfileEdit({ token = "", student }) {
         {/* Note:- Beware that the "typee" is also responsible for the toogle effect of view of "google drive link"  */}
 
 
-          <Comp
-          uploadedDoc={newStudent.resume}
-            link={newStudent.resume_link}
-          typee={'Resume'}
+
+          <StudentDocs
+            key={1}
+            uploadedDoc={resume.data}
+            google_drive_link={resume_link}
+            doc_name={'Resume'}
           />
-          <Comp
-          uploadedDoc={newStudent.tenthCertificate}
-            link={newStudent.X_marksheet}
-          typee={'Tenth Certificate'}
+          <StudentDocs
+            key={2}
+            uploadedDoc={tenthCertificate.data}
+            google_drive_link={newStudent.X_marksheet}
+            doc_name={'Tenth Certificate'}
           />
 
-        
-          <Comp
-          uploadedDoc={newStudent.twelthCertificate}
-            link={newStudent.XII_marksheet}
-          typee={'Twelth Certificate'}
+
+          <StudentDocs
+            key={3}
+            uploadedDoc={twelthCertificate.data}
+            google_drive_link={newStudent.XII_marksheet}
+            doc_name={'Twelth Certificate'}
           />
-          <Comp
-          uploadedDoc={newStudent.aadharCard}
-          typee={'AadharCard'}
+          <StudentDocs
+            key={4}
+            uploadedDoc={aadharCard.data}
+            doc_name={'AadharCard'}
           />
-          <Comp
-            uploadedDoc={newStudent.drivingLicence}
-            link={newStudent.driving_licience_no}
-          typee={'Driving Licence'}
+          <StudentDocs
+            key={5}
+            uploadedDoc={drivingLicence.data}
+            google_drive_link={newStudent.driving_licience_link}
+            doc_name={'Driving Licence'}
           />
-          <Comp
-            uploadedDoc={newStudent.allSemMarksheet}
-            link={newStudent.all_sem_marksheet}
-          typee={'All Sem Marksheet'}
+          <StudentDocs
+            key={6}
+            uploadedDoc={allSemMarksheet.data}
+            google_drive_link={newStudent.all_sem_marksheet}
+            doc_name={'All Sem Marksheet'}
           />
-          <Comp
-            uploadedDoc={newStudent.panCard}
-          typee={'Pan Card'}
+          <StudentDocs
+            key={7}
+            uploadedDoc={panCard.data}
+            doc_name={'Pan Card'}
           />
 
           {/* Toggle effect docs */}
 
-         { (values.category !== 'general')? (
-            <Comp
-              uploadedDoc={newStudent.casteCertificate}
-              link={values.category_link}
-              typee={'Caste Certificate'}
+          {(values.category !== 'general') ? (
+            <StudentDocs
+              key={8}
+              uploadedDoc={casteCertificate.data}
+              google_drive_link={values.category_link}
+              doc_name={'Caste Certificate'}
             />
-         ):null}
+          ) : null}
 
-         {isPwd  && (
-            <Comp
-              uploadedDoc={newStudent.disabilityCertificate}
-              link={values.disability_certificate}
-              typee={'Disability Certificate'}
+          {isPwd && (
+            <StudentDocs
+              key={9}
+              uploadedDoc={disabilityCertificate.data}
+              google_drive_link={values.disability_certificate}
+              doc_name={'Disability Certificate'}
             />
-         )}
-
+          )}
 
           
           <div className="flex justify-end">
@@ -1749,6 +1762,8 @@ export default function StudentProfileEdit({ token = "", student }) {
               Edit
             </button>
           </div>
+
+          
         </div>
       </form>
     </>
@@ -1756,70 +1771,70 @@ export default function StudentProfileEdit({ token = "", student }) {
 }
 
 
-var Comp = function ({uploadedDoc,link,typee}){
+// var Comp = function ({uploadedDoc,link,typee}){
 
-  //data = {resume , 10,12, AAdhar , Pan, Driving, all sem  }
+//   //data = {resume , 10,12, AAdhar , Pan, Driving, all sem  }
 
-  //data = {of which I have to show all the attributes}
-  //li k
+//   //data = {of which I have to show all the attributes}
+//   //li k
 
-  return (
-    <>
-      <div className="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-        <dt className="text-sm font-medium text-gray-500">{typee}</dt>
-        <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-          <ul
-            role="list"
-            className="border border-gray-200 rounded-md divide-y divide-gray-200"
-          >
-            <li className="pl-3 pr-4 py-3 flex items-center justify-between text-sm">
-              <div className="w-0 flex-1 flex items-center">
-                <PaperClipIcon
-                  className="flex-shrink-0 h-5 w-5 text-gray-400"
-                  aria-hidden="true"
-                />
-                <span className="ml-2 flex-1 w-0 truncate">
-                  {uploadedDoc ? typee+".pdf" : `No ${typee} found`}
-                </span>
-              </div>
-              <div className="ml-4 flex-shrink-0 space-x-4">
-                {uploadedDoc?.data ? (
-                  <div className="">
-                  <span>
-                      <a
-                        href={`${API_URL}${uploadedDoc.data.attributes.url}`}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="font-medium text-yellow-600 hover:text-yellow-500 px-2"
-                      >
-                        Download
-                      </a>
-                  </span>
-                    {
-                      link ? (
-                        <span>
-                          <a
-                            href={link}
-                            target="_blank"
-                            rel="noreferrer"
-                            className="font-medium text-yellow-600 hover:text-yellow-500 cursor-pointer"
-                          >
-                            Google Drive Link
-                          </a>
-                        </span>
-                      ):null
-                    }
-                  </div>
-                ) : (
-                  <p className="font-medium text-yellow-600 hover:text-yellow-500">
-                    NA
-                  </p>
-                )}
-              </div>
-            </li>
-          </ul>
-        </dd>
-      </div>
-    </>
-  )
-}
+//   return (
+//     <>
+//       <div className="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+//         <dt className="text-sm font-medium text-gray-500">{typee}</dt>
+//         <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+//           <ul
+//             role="list"
+//             className="border border-gray-200 rounded-md divide-y divide-gray-200"
+//           >
+//             <li className="pl-3 pr-4 py-3 flex items-center justify-between text-sm">
+//               <div className="w-0 flex-1 flex items-center">
+//                 <PaperClipIcon
+//                   className="flex-shrink-0 h-5 w-5 text-gray-400"
+//                   aria-hidden="true"
+//                 />
+//                 <span className="ml-2 flex-1 w-0 truncate">
+//                   {uploadedDoc ? typee+".pdf" : `No ${typee} found`}
+//                 </span>
+//               </div>
+//               <div className="ml-4 flex-shrink-0 space-x-4">
+//                 {uploadedDoc?.data ? (
+//                   <div className="">
+//                   <span>
+//                       <a
+//                         href={`${API_URL}${uploadedDoc.data.attributes.url}`}
+//                         target="_blank"
+//                         rel="noreferrer"
+//                         className="font-medium text-yellow-600 hover:text-yellow-500 px-2"
+//                       >
+//                         Download
+//                       </a>
+//                   </span>
+//                     {
+//                       link ? (
+//                         <span>
+//                           <a
+//                             href={link}
+//                             target="_blank"
+//                             rel="noreferrer"
+//                             className="font-medium text-yellow-600 hover:text-yellow-500 cursor-pointer"
+//                           >
+//                             Google Drive Link
+//                           </a>
+//                         </span>
+//                       ):null
+//                     }
+//                   </div>
+//                 ) : (
+//                   <p className="font-medium text-yellow-600 hover:text-yellow-500">
+//                     NA
+//                   </p>
+//                 )}
+//               </div>
+//             </li>
+//           </ul>
+//         </dd>
+//       </div>
+//     </>
+//   )
+// }
