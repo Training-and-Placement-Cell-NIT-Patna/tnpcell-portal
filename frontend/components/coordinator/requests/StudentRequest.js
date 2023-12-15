@@ -34,6 +34,10 @@ export default function StudentRequest({ token = '' }) {
 
 
   const handleReject = async (id) => {
+    const yes = window.confirm('Are you sure you want to reject this student? Inform the student!!')
+    if (!yes) {
+      return;
+    }
     const res = await fetch(`${API_URL}/api/students/${id}`, {
       method: 'PUT',
       headers: {
