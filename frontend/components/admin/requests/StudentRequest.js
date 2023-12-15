@@ -34,6 +34,11 @@ export default function StudentRequest({ token = '' }) {
 
 
   const handleReject = async (id) => {
+    const yes = window.confirm('Are you sure you want to reject this student? Inform the student!!')
+    if (!yes) {
+      return;
+    }
+
     const res = await fetch(`${API_URL}/api/students/${id}`, {
       method: 'PUT',
       headers: {
@@ -119,13 +124,13 @@ export default function StudentRequest({ token = '' }) {
         return (
           <div>
             <Link href={`/admin/unapproved_students/${params.data.id}`}>
-            <button
-              type='button'
-              // onClick={() => handleApprove(params.value)}
-              className='inline-flex items-center px-3 py-1.5 border border-transparent text-xs font-medium rounded-full shadow-sm text-white bg-yellow-500 hover:bg-yellow-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-600'
-            >
-              Details
-            </button>
+              <button
+                type='button'
+                // onClick={() => handleApprove(params.value)}
+                className='inline-flex items-center px-3 py-1.5 border border-transparent text-xs font-medium rounded-full shadow-sm text-white bg-yellow-500 hover:bg-yellow-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-600'
+              >
+                Details
+              </button>
             </Link>
           </div>
         )
@@ -175,7 +180,7 @@ export default function StudentRequest({ token = '' }) {
           </h2>
         </div>
       </div>
-      <div className='ag-theme-alpine mt-4' style={{height:'400px'}}>
+      <div className='ag-theme-alpine mt-4' style={{ height: '400px' }}>
         <AgGridReact
           rowData={students}
           columnDefs={columnDefs}
