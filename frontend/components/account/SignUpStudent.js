@@ -9,6 +9,7 @@ import Link from "next/link";
 export default function SignUpStudent() {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
+  const [confirmEmail, setConfirmEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [allowNewReg, setAllowNewReg] = useState(false);
@@ -26,7 +27,10 @@ export default function SignUpStudent() {
   }, []);
   const handleSubmit = (e) => {
     e.preventDefault();
-
+    if (confirmEmail !== email) {
+      toast.error("Emails do not match!");
+      return;
+    }
     if (password !== confirmPassword && email !== "" && username !== "") {
       toast.error("Passwords do not match!");
       return;
@@ -109,6 +113,28 @@ export default function SignUpStudent() {
                     onChange={(e) => setEmail(e.target.value.toLowerCase())}
                     id="email"
                     name="email"
+                    pattern=".+@nitp\.ac\.in"
+                    type="password"
+                    autoComplete="email"
+                    required
+                    className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-yellow-500 focus:border-yellow-500 sm:text-sm"
+                    placeholder="Institute email address"
+                  />
+                </div>
+              </div>
+              <div>
+                <label
+                  htmlFor="confirmEmail"
+                  className="block text-sm font-medium text-gray-700"
+                >
+                  Confirm Email
+                </label>
+                <div className="mt-1">
+                  <input
+                    value={confirmEmail}
+                    onChange={(e) => setConfirmEmail(e.target.value.toLowerCase())}
+                    id="confirmEmail"
+                    name="confirmEmail"
                     pattern=".+@nitp\.ac\.in"
                     type="email"
                     autoComplete="email"
