@@ -44,7 +44,7 @@ const emailRegExp = /^[a-zA-Z0-9._]+@nitp\.ac\.in$/;
 // if current year is 2023, then users of year 2019, 2020, 2021 are allowed so first 2 digits of username should be either 19, 20 or 21 and last 4 digit can be any.
 // so usernames can be of type 19____, 20____, 21____
 
-const userNameRegExp = /^(19|20|21)\d{5}$/;
+const userNameRegExp = /^(19|20|21|23)\d{5}$/;
 
 
 async function sanitizeUser(user, ctx) {
