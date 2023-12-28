@@ -68,7 +68,16 @@ export default function StudentRegistration({ token = '' }) {
     pancard_no: '',
     all_sem_marksheet: '',
     X_marksheet: '',
-    XII_marksheet: ''
+    XII_marksheet: '',
+    is_mtech:'',
+      mtech_spi_1:"",
+      mtech_spi_2: '',
+      mtech_spi_3: '',
+      mtech_spi_4: 'jai ho',
+      mtech_gate_score:'',
+      mtech_gate_rank:'',
+      mtech_college_name:'',
+      mtech_YOP:''
   })
 
   const router = useRouter()
@@ -77,6 +86,8 @@ export default function StudentRegistration({ token = '' }) {
     values.roll = user.username
     values.institute_email_id = user.email
   }
+
+  const [isMtech, setIsMtech] = useState(false);
 
   // // const [flag,setFlag] = useState(true);
   // const enterAddress= (e)=>{
@@ -92,6 +103,9 @@ export default function StudentRegistration({ token = '' }) {
 
     // })
 
+  //  useEffect(()=>{
+  //   console.log("values: ",values);
+  //  },[])
     if (confirm('Are you sure you want to submit for approval?')) {
       const res = await fetch(`${API_URL}/api/student/submit-for-approval`, {
         method: 'POST',
@@ -130,6 +144,8 @@ export default function StudentRegistration({ token = '' }) {
     const { name, value } = e.target
     setValues({ ...values, [name]: !values.pwd })
   }
+
+
   const [programs, setPrograms] = useState([])
 
   const [courses, setCourses] = useState([])
@@ -149,6 +165,47 @@ export default function StudentRegistration({ token = '' }) {
       })
   }, [])
 
+  //for clearing the data if the student deselect the mtech checkbox
+
+  useEffect(()=>{
+
+  //  console.log("values: ",values)
+
+    // console.log("\n\n*******before: ")
+    // for(let keys of Object.keys(values))
+    //     {
+    //       if(keys.match(/^mtech/))
+    //       {
+    //         console.log(`${keys}: `,values[keys]);
+    //       }
+    //     }
+
+    if(!isMtech)
+    {
+        for(let keys of Object.keys(values))
+        {
+          if(keys.match(/^mtech/))
+          {
+           values[keys] = '';
+          }
+        }
+    }
+
+    // console.log("\n\n***after: ")
+    // for(let keys of Object.keys(values))
+    //     {
+    //       if(keys.match(/^mtech/))
+    //       {
+    //         console.log(`${keys}: `,values[keys]);
+    //       }
+    //     }
+
+
+        //updating the values of is_mtech
+        values.is_mtech = isMtech;
+
+  },[isMtech])
+
   useEffect(() => {
     programs.map((program) => {
       if (program.id === parseFloat(values.program)) {
@@ -164,6 +221,9 @@ export default function StudentRegistration({ token = '' }) {
       disability_certificate: '',
     }));
   }, [values.pwd])
+
+
+  console.log("values: ",values)
   return (
     <form onSubmit={handleSubmit}>
       <div className=' min-h-full mt-2'>
@@ -1057,6 +1117,8 @@ export default function StudentRegistration({ token = '' }) {
                 />
               </div>
 
+             
+
 
 
               <div className='col-span-4 sm:col-span-1'>
@@ -1239,6 +1301,12 @@ export default function StudentRegistration({ token = '' }) {
                   required
                   className='mt-0 block w-full px-0.5 border-0 border-b-2 border-gray-300 focus:ring-0 focus:border-stone-500'
                 />
+              </div>
+
+
+
+              <div>
+
               </div>
 
             </div>
@@ -1537,7 +1605,6 @@ export default function StudentRegistration({ token = '' }) {
                 />
               </div>
 
-
               <div className='col-span-3 sm:col-span-1'>
                 <label
                   htmlFor='all_sem_marksheet'
@@ -1623,7 +1690,216 @@ export default function StudentRegistration({ token = '' }) {
                   className='mt-0 block w-full px-0.5 border-0 border-b-2 text-sm text-gray-600 border-gray-300 focus:ring-0 focus:border-stone-500'
                 />
               </div>
+
+              <div className='col-span-5 sm:col-span-2'>
+
+                <div className="flex items-center ps-4 border border-gray-200 rounded-xl dark:border-gray-700">
+                  <input id="bordered-checkbox-1" type="checkbox" value={isMtech} name="bordered-checkbox" onChange={(e) => { setIsMtech(e.target.checked); }} className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 m-1  mx-2 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
+                  <label for="bordered-checkbox-1" className="w-full py-4 ms-2 text-sm font-Medium text-black dark:text-black">Are You a M.Tech Student</label>
+
+                </div>
+              </div>
+
+
+
+
             </div>
+
+            {isMtech && (
+              <>
+              <div className='py-5'>
+              <h3 className='text-2xl font-bold leading-6 text-blue-900 py-2'>
+                Mtech Academic Details
+              </h3>
+              <p className='mt-1 text-sm font-medium text-rose-700'>
+                Student Academic Information, account will be active after admin
+                approval.
+              </p>
+            </div>
+            <div className='grid grid-cols-6 gap-6'>
+
+
+            <div className='col-span-10 md:col-span-3'>
+
+                <label
+                  htmlFor='mtech_college_name'
+                  className='block text-sm font-medium text-gray-700'
+                >
+                  College Name (Btech)<span className='text-red-700'>*</span>
+                </label>
+                <input
+                  type='text'
+                  value={values.mtech_college_name}
+                  onChange={handleInputChange}
+                  rows={2}
+                  name='mtech_college_name'
+                  id='mtech_college_name'
+                  placeholder={`Enter the College Name From Where You Pursued Btech`}
+                  autoComplete='mtech_college_name'
+                  required
+                  className='mt-0 block w-full px-0.5 border-0 border-b-2 text-sm text-gray-600 border-gray-300 focus:ring-0 focus:border-stone-500'
+                />
+            </div>
+
+
+            <div className='col-span-5 sm:col-span-3'>
+                <label
+                  htmlFor='mtech_YOP'
+                  className='block text-sm font-medium text-gray-700'
+                >
+                  Year of Passing<span className='text-red-700'>*</span>
+                </label>
+                <input
+                  value={values.mtech_YOP}
+                  onChange={handleInputChange}
+                  type='number'
+                  min={2000}
+                  max={2200}
+                  name='mtech_YOP'
+                  id='mtech_YOP'
+                  autoComplete='mtech_YOP'
+                  placeholder='Ex: 2022'
+                  required
+                  className='mt-0 block w-full px-0.5 border-0 border-b-2 border-gray-300 focus:ring-0 focus:border-stone-500'
+                />
+              </div>
+
+
+
+            <div className='col-span-2 sm:col-span-1'>
+                <label
+                  htmlFor='mtech_spi_1'
+                  className='block text-sm font-medium text-gray-700'
+                >
+                  1st Sem CGPA<span className='text-red-700'>*</span>
+                </label>
+                <input
+                  value={values.mtech_spi_1}
+                  onChange={handleInputChange}
+                  type='number'
+                  min={2}
+                  max={10}
+                  step='.01'
+                  placeholder='Ex: 8.86'
+                  name='mtech_spi_1'
+                  id='mtech_spi_1'
+                  autoComplete=''
+                  className='mt-0 block w-full px-0.5 border-0 border-b-2 border-gray-300 focus:ring-0 focus:border-stone-500'
+                />
+              </div>
+
+              <div className='col-span-2 sm:col-span-1'>
+                <label
+                  htmlFor='mtech_spi_2'
+                  className='block text-sm font-medium text-gray-700'
+                >
+                  2nd Sem CGPA<span className='text-red-700'>*</span>
+                </label>
+                <input
+                  value={values.mtech_spi_2}
+                  onChange={handleInputChange}
+                  type='number'
+                  min={2}
+                  max={10}
+                  step='.01'
+                  placeholder='Ex: 8.86'
+                  name='mtech_spi_2'
+                  id='mtech_spi_2'
+                  autoComplete=''
+                  className='mt-0 block w-full px-0.5 border-0 border-b-2 border-gray-300 focus:ring-0 focus:border-stone-500'
+                />
+              </div>
+
+              <div className='col-span-2 sm:col-span-1'>
+                <label
+                  htmlFor='mtech_spi_3'
+                  className='block text-sm font-medium text-gray-700'
+                >
+                  3rd Sem CGPA<span className='text-red-700'>*</span>
+                </label>
+                <input
+                  value={values.mtech_spi_3}
+                  onChange={handleInputChange}
+                  type='number'
+                  min={2}
+                  max={10}
+                  step='.01'
+                  placeholder='Ex: 8.86'
+                  name='mtech_spi_3'
+                  id='mtech_spi_3'
+                  autoComplete=''
+                  className='mt-0 block w-full px-0.5 border-0 border-b-2 border-gray-300 focus:ring-0 focus:border-stone-500'
+                />
+              </div>
+              <div className='col-span-2 sm:col-span-1'>
+                <label
+                  htmlFor='mtech_spi_4'
+                  className='block text-sm font-medium text-gray-700'
+                >
+                  4th Sem CGPA<span className='text-red-700'>*</span>
+                </label>
+                <input
+                  value={values.mtech_spi_4}
+                  onChange={handleInputChange}
+                  type='number'
+                  // min={2}
+                  max={10}
+                  step='.01'
+                  placeholder='Ex: 8.86'
+                  name='mtech_spi_4'
+                  id='mtech_spi_4'
+                  autoComplete=''
+                  className='mt-0 block w-full px-0.5 border-0 border-b-2 border-gray-300 focus:ring-0 focus:border-stone-500'
+                />
+              </div>
+
+              <div className='col-span-8 sm:col-span-2'>
+                <label
+                  htmlFor='mtech_gate_rank'
+                  className='block text-sm font-medium text-gray-700'
+                >
+                  Gate Rank<span className='text-red-700'>*</span>
+                </label>
+                <input
+                  required
+                  value={values.mtech_gate_rank}
+                  onChange={handleInputChange}
+                  type='number'
+                  name='mtech_gate_rank'
+                  placeholder={`Enter your Gate rank`}
+                  id='mtech_gate_rank'
+                  autoComplete='mtech_gate_rank'
+                  className='mt-0 block w-full px-0.5 border-0 border-b-2 border-gray-300 focus:ring-0 focus:border-stone-500'
+                />
+              </div>
+
+              <div className='col-span-8 sm:col-span-2'>
+                <label
+                  htmlFor='mtech_gate_score'
+                  className='block text-sm font-medium text-gray-700'
+                >
+                  Gate Score<span className='text-red-700'>*</span>
+                </label>
+                <input
+                  required
+                  value={values.mtech_gate_score}
+                  onChange={handleInputChange}
+                  type='number'
+                  name='mtech_gate_score'
+                  placeholder={`Enter your Gate Score`}
+                  id='mtech_gate_score'
+                  autoComplete='mtech_gate_score'
+                  className='mt-0 block w-full px-0.5 border-0 border-b-2 border-gray-300 focus:ring-0 focus:border-stone-500'
+                />
+              </div>
+
+
+              
+
+
+              </div>
+              </>
+            )}
           </div>
         </div>
       </div>
