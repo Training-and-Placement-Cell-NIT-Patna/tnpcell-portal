@@ -216,6 +216,7 @@ export default function StudentProfileEdit({ token = "", student }) {
               </div>
               <div className="mt-5 md:mt-0 md:col-span-2">
                 <div className="grid grid-cols-6 gap-6">
+
                   <div className="col-span-6 sm:col-span-3">
                     <label
                       htmlFor="approved"
@@ -1661,9 +1662,37 @@ export default function StudentProfileEdit({ token = "", student }) {
                   </div>
 
 
-                  {
+                  
+
+                 
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+
+                  
+          
+
+                {
                     values.is_mtech && (
                       <>
+
+<div className="bg-white shadow px-4 py-5 sm:rounded-lg sm:p-6">
+            <div className="md:grid md:grid-cols-3 md:gap-6">
+              <div className="md:col-span-1">
+                <h3 className="text-lg font-medium leading-6 text-gray-900">
+                  Mtech Academic Details
+                </h3>
+                <p className="mt-1 text-sm text-gray-500">
+                  Student Personal Information, account will be active after
+                  admin approval.
+                </p>
+              </div>
+              <div className="mt-5 md:mt-0 md:col-span-2">
+                <div className="grid grid-cols-6 gap-6">
+                  
 
 <div className="col-span-6 sm:col-span-3">
                     <label
@@ -1706,7 +1735,7 @@ export default function StudentProfileEdit({ token = "", student }) {
                     />
                   </div>
 
-                  <div className="col-span-2 sm:col-span-">
+                  <div className="col-span-2 sm:col-span-1">
                     <label
                       htmlFor="mtech_spi_1"
                       className="block text-sm font-medium text-gray-700"
@@ -1728,7 +1757,7 @@ export default function StudentProfileEdit({ token = "", student }) {
                     />
                   </div>
 
-                  <div className="col-span-2 sm:col-span-">
+                  <div className="col-span-2 sm:col-span-1">
                     <label
                       htmlFor="mtech_spi_2"
                       className="block text-sm font-medium text-gray-700"
@@ -1750,7 +1779,7 @@ export default function StudentProfileEdit({ token = "", student }) {
                     />
                   </div>
 
-                  <div className="col-span-2 sm:col-span-">
+                  <div className="col-span-2 sm:col-span-1">
                     <label
                       htmlFor="mtech_spi_3"
                       className="block text-sm font-medium text-gray-700"
@@ -1772,7 +1801,7 @@ export default function StudentProfileEdit({ token = "", student }) {
                     />
                   </div>
 
-                  <div className="col-span-2 sm:col-span-">
+                  <div className="col-span-2 sm:col-span-1">
                     <label
                       htmlFor="mtech_spi_4"
                       className="block text-sm font-medium text-gray-700"
@@ -1823,7 +1852,7 @@ export default function StudentProfileEdit({ token = "", student }) {
                     <input
                     required
                       value={values.mtech_gate_score}
-                      onChange={handleInputChange}
+                      onChange={handleInputChange}  
                       type="number"
                       name="mtech_gate_score"
                       id="mtech_gate_score"
@@ -1832,16 +1861,22 @@ export default function StudentProfileEdit({ token = "", student }) {
                     />
                   </div>
 
+                  </div>
+              </div>
+            </div>
+          </div>
+
+
                       </>
 
                     )
                   }
 
-                 
-                </div>
-              </div>
-            </div>
-          </div>
+
+
+            
+
+        
 
      
           {/* <div className="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
