@@ -683,13 +683,13 @@ export default function Profile({ student, token }) {
               </dt>
               <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-1">
                 <input
-                  //disable if editCpi is false
-                  disabled={true}
+                 
+                  disabled
                   type="number"
                   name="mtech_YOP"
                   id="mtech_YOP"
-                  // border red if editCPi is false
-                  className={`appearance-none border-1 rounded w-full py-2 px-4 text-gray-900 text-sm leading-tight focus:outline-none focus:border-blue-500`}
+                  
+                  className={`appearance-none border-1 border-gray-200 rounded w-full py-2 px-4 text-gray-900 text-sm leading-tight focus:outline-none focus:border-blue-500`}
                   value={studentData.mtech_YOP}
                   // onChange={handleChange}
                 />
@@ -700,14 +700,16 @@ export default function Profile({ student, token }) {
               </dt>
               <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-1">
                 <input
-                  disabled={true}
+                    disabled={!editCpi}
                   type="number"
                   name="mtech_spi_1"
                   id="mtech_spi_1"
                   // border red if editCPi is false
-                  className={`appearance-none border-1 rounded w-full py-2 px-4 text-gray-900 text-sm leading-tight focus:outline-none focus:border-blue-500`}
+                  className={`appearance-none border-1 ${
+                    editCpi ? "border-green-200" : "border-gray-200"
+                  } rounded w-full py-2 px-4 text-gray-900 text-sm leading-tight focus:outline-none focus:border-blue-500`}
                   value={studentData.mtech_spi_1}
-                  // onChange={handleChange}
+                  onChange={handleChange}
                 />
               </dd>
 
@@ -717,13 +719,15 @@ export default function Profile({ student, token }) {
               <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-1">
                 <input
                   //disable if editCpi is false
-                  disabled={true}
+                    disabled={!editCpi}
                   type="number"
                   name="mtech_spi_2"
                   id="mtech_spi_2"
-                  className={`appearance-none border-1 rounded w-full py-2 px-4 text-gray-900 text-sm leading-tight focus:outline-none focus:border-blue-500`}
+                  className={`appearance-none border-1 ${
+                    editCpi ? "border-green-200" : "border-gray-200"
+                  } rounded w-full py-2 px-4 text-gray-900 text-sm leading-tight focus:outline-none focus:border-blue-500`}
                   value={studentData.mtech_spi_2}
-                  // onChange={handleChange}
+                  onChange={handleChange}
                 />
               </dd>
 
@@ -733,13 +737,15 @@ export default function Profile({ student, token }) {
               <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-1">
                 <input
                   //disable if editCpi is false
-                  disabled={true}
+                    disabled={!editCpi}
                   type="number"
                   name="mtech_spi_3"
                   id="mtech_spi_3"
-                  className={`appearance-none border-1 rounded w-full py-2 px-4 text-gray-900 text-sm leading-tight focus:outline-none focus:border-blue-500`}
+                  className={`appearance-none border-1 ${
+                    editCpi ? "border-green-200" : "border-gray-200"
+                  } rounded w-full py-2 px-4 text-gray-900 text-sm leading-tight focus:outline-none focus:border-blue-500`}
                   value={studentData.mtech_spi_3}
-                  // onChange={handleChange}
+                  onChange={handleChange}
                 />
               </dd>
 
@@ -749,13 +755,15 @@ export default function Profile({ student, token }) {
               <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-1">
                 <input
                   //disable if editCpi is false
-                  disabled={true}
+                    disabled={!editCpi}
                   type="number"
                   name="mtech_spi_4"
                   id="mtech_spi_4"
-                  className={`appearance-none border-1 rounded w-full py-2 px-4 text-gray-900 text-sm leading-tight focus:outline-none focus:border-blue-500`}
+                  className={`appearance-none border-1 ${
+                    editCpi ? "border-green-200" : "border-gray-200"
+                  } rounded w-full py-2 px-4 text-gray-900 text-sm leading-tight focus:outline-none focus:border-blue-500`}
                   value={studentData.mtech_spi_4}
-                  // onChange={handleChange}
+                  onChange={handleChange}
                 />
               </dd>
 
@@ -766,12 +774,11 @@ export default function Profile({ student, token }) {
               </dt>
               <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-1">
                 <input
-                  //disable if editCpi is false
-                  disabled={true}
+                disabled
                   type="number"
                   name="mtech_gate_rank"
                   id="mtech_gate_rank"
-                  className={`appearance-none border-1 rounded w-full py-2 px-4 text-gray-900 text-sm leading-tight focus:outline-none focus:border-blue-500`}
+                  className={`appearance-none border-1 border-gray-200 rounded w-full py-2 px-4 text-gray-900 text-sm leading-tight focus:outline-none focus:border-blue-500`}
                   value={studentData.mtech_gate_rank}
                   // onChange={handleChange}
                 />
@@ -784,12 +791,11 @@ export default function Profile({ student, token }) {
               </dt>
               <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-1">
                 <input
-                  //disable if editCpi is false
-                  disabled={true}
+                  disabled
                   type="number"
                   name="mtech_gate_score"
                   id="mtech_gate_score"
-                  className={`appearance-none border-1 rounded w-full py-2 px-4 text-gray-900 text-sm leading-tight focus:outline-none focus:border-blue-500`}
+                  className={`appearance-none border-1 border-gray-200 rounded w-full py-2 px-4 text-gray-900 text-sm leading-tight focus:outline-none focus:border-blue-500`}
                   value={studentData.mtech_gate_score}
                   // onChange={handleChange}
                 />
