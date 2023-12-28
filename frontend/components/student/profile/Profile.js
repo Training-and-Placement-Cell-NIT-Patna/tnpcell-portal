@@ -8,8 +8,12 @@ import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import { useRouter } from "next/router";
 
+
 export default function Profile({ student, token }) {
+  
   const [studentData, setStudentData] = useState(student);
+
+  // studentData.is_mtech = false;e
 
   // console.log("data: ",student)
   const router = useRouter();
@@ -619,8 +623,51 @@ export default function Profile({ student, token }) {
 
           {/* got this */}
 
-            {studentData.is_mtech && (
-              <>
+
+
+          {studentData.is_mtech && (
+            <>
+          <div className="bg-white shadow overflow-hidden sm:rounded-lg mt-4">
+      <div className="px-4 py-5 sm:px-6 flex justify-between">
+          <div className="m-2">
+          <h3 className="text-lg leading-6 font-medium text-gray-900">
+            Mtech Academic Details{" "}
+            {student.approved == "pending" && (
+              <span className="px-2 mx-2 py-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-orange-100 text-orange-800">
+                <svg
+                  className="animate-spin  ml-1 mr-3 h-5 w-5 text-green-800"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                >
+                  <circle
+                    className="opacity-15"
+                    cx="12"
+                    cy="12"
+                    r="10"
+                    stroke="currentColor"
+                    strokeWidth="4"
+                  ></circle>
+                  <path
+                    className="opacity-75"
+                    fill="currentColor"
+                    d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                  ></path>
+                </svg>
+                Approval Pending
+              </span>
+            )}
+            
+          </h3>
+          <p className="mt-1 max-w-2xl text-sm text-gray-500">
+           Mtech Academic Details
+          </p>
+        </div>
+
+        </div>
+        </div>
+
+
               <div className="py-4 sm:py-5 sm:grid sm:grid-cols-4 sm:gap-4 sm:px-6">
             <dt className="text-sm font-medium text-gray-500">
             College Name (Btech)
@@ -752,7 +799,9 @@ export default function Profile({ student, token }) {
           </div>
               
               </>
-            )}
+         )}
+
+
           <div className="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
             <dt className="text-sm font-medium text-gray-500">Resume</dt>
             <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
