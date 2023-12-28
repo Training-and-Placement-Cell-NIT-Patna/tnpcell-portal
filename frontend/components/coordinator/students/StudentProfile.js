@@ -1470,7 +1470,7 @@ export default function StudentProfileEdit({ token = '', student }) {
 
 
 
-                <div className='col-span-3 sm:col-span-1'>
+                <div className='col-span-3 sm:col-span-2'>
                   <label
                     htmlFor='all_sem_marksheet'
                     className='block text-sm font-medium text-gray-700'
@@ -1493,7 +1493,7 @@ export default function StudentProfileEdit({ token = '', student }) {
                 </div>
 
 
-                <div className='col-span-3 sm:col-span-1'>
+                <div className='col-span-3 sm:col-span-2'>
                   <label
                     htmlFor='total_backlogs'
                     className='block text-sm font-medium text-gray-700'
@@ -1517,7 +1517,7 @@ export default function StudentProfileEdit({ token = '', student }) {
 
 
 
-                <div className='col-span-3 sm:col-span-1'>
+                <div className='col-span-3 sm:col-span-2'>
                   <label
                     htmlFor='current_backlogs'
                     className='block text-sm font-medium text-gray-700'
@@ -1539,7 +1539,7 @@ export default function StudentProfileEdit({ token = '', student }) {
                 </div>
 
 
-                <div className='col-span-3 sm:col-span-1'>
+                <div className='col-span-3 sm:col-span-2'>
                   <label
                     htmlFor='current_status'
                     className='block text-sm font-medium text-gray-700'
@@ -1560,6 +1560,183 @@ export default function StudentProfileEdit({ token = '', student }) {
                     className='mt-0 block w-full px-0.5 border-0 border-b-2 text-sm text-gray-600 border-gray-300 focus:ring-0 focus:border-stone-500'
                   />
                 </div>
+
+
+                {
+                    values.is_mtech && (
+                      <>
+
+<div className="col-span-6 sm:col-span-3">
+                    <label
+                      htmlFor="mtech_college_name"
+                      className="block text-sm font-medium text-gray-700"
+                    >
+                      College Name (Btech)
+                    </label>
+                    <input
+                      value={values.mtech_college_name}
+                      onChange={handleInputChange}
+                      type="text"
+                      name="mtech_college_name"
+                      id="mtech_college_name"
+                      autoComplete="email"
+                      required
+                      className="mt-1 focus:ring-yellow-500 focus:border-yellow-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                    />
+                  </div>
+                      
+                      <div className="col-span-6 sm:col-span-3">
+                    <label
+                      htmlFor="mtech_YOP"
+                      className="block text-sm font-medium text-gray-700"
+                    >
+                      Year of Passing
+                    </label>
+                    <input
+                      value={values.mtech_YOP}
+                      onChange={handleInputChange}
+                      type="number"
+                      min={2000}
+                      max={2200}
+                      name="mtech_YOP"
+                      id="mtech_YOP"
+                      autoComplete="mtech_YOP"
+                      placeholder="Ex: 2022"
+                      required
+                      className="mt-1 focus:ring-yellow-500 focus:border-yellow-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                    />
+                  </div>
+
+                  <div className="col-span-2 sm:col-span-1">
+                    <label
+                      htmlFor="mtech_spi_1"
+                      className="block text-sm font-medium text-gray-700"
+                    >
+                      1st Sem CGPA
+                    </label>
+                    <input
+                      value={values.mtech_spi_1}
+                      onChange={handleInputChange}
+                      type="number"
+                      min={2}
+                      max={10}
+                      step=".01"
+                      placeholder="Ex: 8.86"
+                      name="mtech_spi_1"
+                      id="mtech_spi_1"
+                      autoComplete="mtech_spi_1"
+                      className="mt-0 block w-full px-0.5 border-0 border-b-2 border-gray-300 focus:ring-0 focus:border-stone-500"
+                    />
+                  </div>
+
+                  <div className="col-span-2 sm:col-span-1">
+                    <label
+                      htmlFor="mtech_spi_2"
+                      className="block text-sm font-medium text-gray-700"
+                    >
+                      2nd Sem CGPA
+                    </label>
+                    <input
+                      value={values.mtech_spi_2}
+                      onChange={handleInputChange}
+                      type="number"
+                      min={2}
+                      max={10}
+                      step=".01"
+                      placeholder="Ex: 8.86"
+                      name="mtech_spi_2"
+                      id="mtech_spi_2"
+                      autoComplete="mtech_spi_2"
+                      className="mt-0 block w-full px-0.5 border-0 border-b-2 border-gray-300 focus:ring-0 focus:border-stone-500"
+                    />
+                  </div>
+
+                  <div className="col-span-2 sm:col-span-1">
+                    <label
+                      htmlFor="mtech_spi_3"
+                      className="block text-sm font-medium text-gray-700"
+                    >
+                      3rd Sem CGPA
+                    </label>
+                    <input
+                      value={values.mtech_spi_3}
+                      onChange={handleInputChange}
+                      type="number"
+                      min={2}
+                      max={10}
+                      step=".01"
+                      placeholder="Ex: 8.86"
+                      name="mtech_spi_3"
+                      id="mtech_spi_3"
+                      autoComplete="mtech_spi_3"
+                      className="mt-0 block w-full px-0.5 border-0 border-b-2 border-gray-300 focus:ring-0 focus:border-stone-500"
+                    />
+                  </div>
+
+                  <div className="col-span-2 sm:col-span-1">
+                    <label
+                      htmlFor="mtech_spi_4"
+                      className="block text-sm font-medium text-gray-700"
+                    >
+                      4th Sem CGPA
+                    </label>
+                    <input
+                      value={values.mtech_spi_4}
+                      onChange={handleInputChange}
+                      type="number"
+                      min={2}
+                      max={10}
+                      step=".01"
+                      placeholder="Ex: 8.86"
+                      name="mtech_spi_4"
+                      id="mtech_spi_4"
+                      autoComplete="mtech_spi_4"
+                      className="mt-0 block w-full px-0.5 border-0 border-b-2 border-gray-300 focus:ring-0 focus:border-stone-500"
+                    />
+                  </div>
+
+                  <div className="col-span-6 sm:col-span-3">
+                    <label
+                      htmlFor="mtech_gate_rank"
+                      className="block text-sm font-medium text-gray-700"
+                    >
+                      Gate Rank
+                    </label>
+                    <input
+                    required
+                      value={values.mtech_gate_rank}
+                      onChange={handleInputChange}
+                      type="number"
+                      name="mtech_gate_rank"
+                      id="mtech_gate_rank"
+                      autoComplete="mtech_gate_rank"
+                      className="mt-1 focus:ring-yellow-500 focus:border-yellow-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                    />
+                  </div>
+
+                  <div className="col-span-6 sm:col-span-3">
+                    <label
+                      htmlFor="mtech_gate_score"
+                      className="block text-sm font-medium text-gray-700"
+                    >
+                      Gate Score
+                    </label>
+                    <input
+                    required
+                      value={values.mtech_gate_score}
+                      onChange={handleInputChange}
+                      type="number"
+                      name="mtech_gate_score"
+                      id="mtech_gate_score"
+                      autoComplete="mtech_gate_score"
+                      className="mt-1 focus:ring-yellow-500 focus:border-yellow-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                    />
+                  </div>
+
+                      </>
+
+                    )
+                  }
 
               </div>
             </div>
@@ -1644,7 +1821,7 @@ export default function StudentProfileEdit({ token = '', student }) {
         <div className="flex justify-end">
           <button
             type="submit"
-            className="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-yellow-600 hover:bg-yellow-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500"
+            className="ml-3 inline-flex justify-center py-2 xpx-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-yellow-600 hover:bg-yellow-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500"
           >
             Edit
           </button>
