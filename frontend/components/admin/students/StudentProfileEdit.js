@@ -6,8 +6,8 @@ import { toast } from "react-toastify";
 import { API_URL } from "@/config/index";
 // import Up from "pages/student/upload-docs";
 import StudentDocs from "@/components/student/StudentDocs";
-import { PaperClipIcon } from "@heroicons/react/solid";
-import Link from "next/link";
+// import { PaperClipIcon } from "@heroicons/react/solid";
+// import Link from "next/link";
 
 export default function StudentProfileEdit({ token = "", student }) {
 
@@ -30,6 +30,7 @@ export default function StudentProfileEdit({ token = "", student }) {
     twelthCertificate,
     allSemMarksheet,
     aadharCard,
+    department, // in the production this filed i.e was giving error 
     ...newStudent
   } = student.attributes;
 
@@ -48,7 +49,7 @@ export default function StudentProfileEdit({ token = "", student }) {
 
     // console.log("ID=>",id ,typeof(id) );
     // console.log(JSON.stringify({ data: values }))
-    // id = String(id)
+    id = String(id)
     // console.log("ID=>",id ,typeof(id) );
 
     if (confirm("Are you sure you want to edit student profile?")) {
