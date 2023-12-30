@@ -18,7 +18,7 @@ Download (node-v16.15.0-x86.msi ) or use node version manager (nvm)
 # Backend start: 
 go to the /backend dir and run <br>
 ```npm install```
-no run 
+now run <br>
 ```npm run dev``` <br>
 -> login or signup to strapi’s administrative panel -
 
