@@ -16,6 +16,7 @@ import Statics from "./LandingPageElements/Statics";
 import CompaniesMarquee from "./LandingPageElements/CompaniesMarquee";
 // import CoverPageNavBar from "./CoverPageNavBar";
 import Nav2 from "@/components/Nav2";
+import CoardinatorsList from "./LandingPageElements/CoardinatorsList";
 
 const MENU_LIST = [
   {
@@ -165,6 +166,9 @@ function CoverPage() {
       </div>
       <div>
         <ProfessorIncharge />
+      </div>
+      <div>
+        <CoardinatorsList/>
       </div>
       <div>
         <Statics />
