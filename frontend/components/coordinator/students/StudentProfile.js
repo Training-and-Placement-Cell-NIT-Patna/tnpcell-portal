@@ -266,7 +266,7 @@ export default function StudentProfileEdit({ token = '', student }) {
                     htmlFor='mother_name'
                     className='block text-sm font-medium text-gray-700'
                   >
-                    Maa&apos;s Name
+                    Mother&apos;s Name
                   </label>
                   <input
                     disabled
@@ -1598,6 +1598,7 @@ export default function StudentProfileEdit({ token = '', student }) {
                       College Name (Btech)
                     </label>
                     <input
+                      disabled
                       value={values.mtech_college_name}
                       onChange={handleInputChange}
                       type="text"
@@ -1617,6 +1618,7 @@ export default function StudentProfileEdit({ token = '', student }) {
                       Year of Passing
                     </label>
                     <input
+                    disabled
                       value={values.mtech_YOP}
                       onChange={handleInputChange}
                       type="number"
@@ -1639,6 +1641,7 @@ export default function StudentProfileEdit({ token = '', student }) {
                       1st Sem CGPA
                     </label>
                     <input
+                    disabled
                       value={values.mtech_spi_1}
                       onChange={handleInputChange}
                       type="number"
@@ -1661,6 +1664,7 @@ export default function StudentProfileEdit({ token = '', student }) {
                       2nd Sem CGPA
                     </label>
                     <input
+                    disabled
                       value={values.mtech_spi_2}
                       onChange={handleInputChange}
                       type="number"
@@ -1683,6 +1687,7 @@ export default function StudentProfileEdit({ token = '', student }) {
                       3rd Sem CGPA
                     </label>
                     <input
+                    disabled
                       value={values.mtech_spi_3}
                       onChange={handleInputChange}
                       type="number"
@@ -1705,6 +1710,7 @@ export default function StudentProfileEdit({ token = '', student }) {
                       4th Sem CGPA
                     </label>
                     <input
+                    disabled
                       value={values.mtech_spi_4}
                       onChange={handleInputChange}
                       type="number"
@@ -1727,6 +1733,7 @@ export default function StudentProfileEdit({ token = '', student }) {
                       Gate Rank
                     </label>
                     <input
+                    disabled
                     required
                       value={values.mtech_gate_rank}
                       onChange={handleInputChange}
@@ -1747,6 +1754,7 @@ export default function StudentProfileEdit({ token = '', student }) {
                     </label>
                     <input
                     required
+                    disabled
                       value={values.mtech_gate_score}
                       onChange={handleInputChange}  
                       type="number"
