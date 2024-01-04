@@ -5,6 +5,7 @@ import { API_URL } from '@/config/index'
 import AuthContext from '@/context/AuthContext'
 
 export default function StudentRegistration({ token = '' }) {
+ 
   const [values, setValues] = useState({
     name: 'Vijay Kumar',
     roll: '8',
@@ -62,6 +63,7 @@ export default function StudentRegistration({ token = '' }) {
     current_backlogs: '0',
     current_status: 'P',
     disability_certificate: '',
+<<<<<<< HEAD
     aadhar_no: '873350497929',
     driving_licience_no: 'DL233012345678901',
     driving_licience_link: 'https://drive.google.com/file/d/1GNA_-MUMMgWSy2KEbGAtmrWJyq3L1zhx/view?usp=sharing',
@@ -74,6 +76,20 @@ export default function StudentRegistration({ token = '' }) {
       mtech_spi_2: '',
       mtech_spi_3: '',
       mtech_spi_4: '',
+=======
+    aadhar_no: '',
+    driving_licience_no: '',
+    driving_licience_link: '',
+    pancard_no: '',
+    all_sem_marksheet: '',
+    X_marksheet: '',
+    XII_marksheet: '',
+    is_mtech:'',
+      mtech_spi_1:0,
+      mtech_spi_2: 0,
+      mtech_spi_3: 0,
+      mtech_spi_4: 0,
+>>>>>>> br1
       mtech_gate_score:'',
       mtech_gate_rank:'',
       mtech_college_name:'',

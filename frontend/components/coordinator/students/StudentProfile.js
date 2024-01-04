@@ -7,6 +7,7 @@ import { PaperClipIcon } from '@heroicons/react/solid'
 // import Image from 'next/image'
 export default function StudentProfileEdit({ token = '', student }) {
 
+
   const id = student.id
   // const {
   //   createdAt,
@@ -266,7 +267,7 @@ export default function StudentProfileEdit({ token = '', student }) {
                     htmlFor='mother_name'
                     className='block text-sm font-medium text-gray-700'
                   >
-                    Maa&apos;s Name
+                    Mother&apos;s Name
                   </label>
                   <input
                     disabled
@@ -1604,7 +1605,7 @@ export default function StudentProfileEdit({ token = '', student }) {
                       name="mtech_college_name"
                       id="mtech_college_name"
                       autoComplete="email"
-                      required
+                      required = {values.is_mtech}
                       className="mt-1 focus:ring-yellow-500 focus:border-yellow-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                     />
                   </div>
@@ -1626,7 +1627,7 @@ export default function StudentProfileEdit({ token = '', student }) {
                       id="mtech_YOP"
                       autoComplete="mtech_YOP"
                       placeholder="Ex: 2022"
-                      required
+                      required = {values.is_mtech}
                       className="mt-1 focus:ring-yellow-500 focus:border-yellow-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                     />
                   </div>
@@ -1641,6 +1642,7 @@ export default function StudentProfileEdit({ token = '', student }) {
                     <input
                       value={values.mtech_spi_1}
                       onChange={handleInputChange}
+                      required = {values.is_mtech}
                       type="number"
                       min={2}
                       max={10}
@@ -1663,6 +1665,7 @@ export default function StudentProfileEdit({ token = '', student }) {
                     <input
                       value={values.mtech_spi_2}
                       onChange={handleInputChange}
+                      required = {values.is_mtech}
                       type="number"
                       min={2}
                       max={10}
@@ -1684,6 +1687,7 @@ export default function StudentProfileEdit({ token = '', student }) {
                     </label>
                     <input
                       value={values.mtech_spi_3}
+                      required = {values.is_mtech}
                       onChange={handleInputChange}
                       type="number"
                       min={2}
@@ -1707,6 +1711,7 @@ export default function StudentProfileEdit({ token = '', student }) {
                     <input
                       value={values.mtech_spi_4}
                       onChange={handleInputChange}
+                      required = {values.is_mtech}
                       type="number"
                       min={2}
                       max={10}
@@ -1727,7 +1732,7 @@ export default function StudentProfileEdit({ token = '', student }) {
                       Gate Rank
                     </label>
                     <input
-                    required
+                    required = {values.is_mtech}
                       value={values.mtech_gate_rank}
                       onChange={handleInputChange}
                       type="number"
@@ -1746,7 +1751,7 @@ export default function StudentProfileEdit({ token = '', student }) {
                       Gate Score
                     </label>
                     <input
-                    required
+                    required = {values.is_mtech}
                       value={values.mtech_gate_score}
                       onChange={handleInputChange}  
                       type="number"

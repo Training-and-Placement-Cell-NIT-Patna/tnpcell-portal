@@ -6,8 +6,8 @@ import { toast } from "react-toastify";
 import { API_URL } from "@/config/index";
 // import Up from "pages/student/upload-docs";
 import StudentDocs from "@/components/student/StudentDocs";
-import { PaperClipIcon } from "@heroicons/react/solid";
-import Link from "next/link";
+// import { PaperClipIcon } from "@heroicons/react/solid";
+// import Link from "next/link";
 
 export default function StudentProfileEdit({ token = "", student }) {
 
@@ -30,6 +30,7 @@ export default function StudentProfileEdit({ token = "", student }) {
     twelthCertificate,
     allSemMarksheet,
     aadharCard,
+    department,
     ...newStudent
   } = student.attributes;
 
@@ -1460,7 +1461,7 @@ export default function StudentProfileEdit({ token = "", student }) {
                       value={values.spi_9}
                       onChange={handleInputChange}
                       type="number"
-                      min={2}
+                      // min={2}
                       max={10}
                       step=".01"
                       placeholder="Ex: 8.86"
@@ -1483,7 +1484,7 @@ export default function StudentProfileEdit({ token = "", student }) {
                       value={values.spi_10}
                       onChange={handleInputChange}
                       type="number"
-                      min={2}
+                      // min={2}
                       max={10}
                       step=".01"
                       placeholder="Ex: 8.86"
