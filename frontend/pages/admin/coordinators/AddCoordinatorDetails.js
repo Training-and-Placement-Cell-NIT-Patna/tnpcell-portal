@@ -51,6 +51,7 @@ export default function AddCoordinatorDetails({ token }) {
       linkedin: formData.linkedin,
       twitter: formData.twitter,
     };
+   
     formDataToSend.append('data', JSON.stringify(userData));
     formDataToSend.append('files.image', image);
     try {
@@ -80,6 +81,10 @@ export default function AddCoordinatorDetails({ token }) {
     setPrev({...prev, [e.target.name]: e.target.value })
 
   }
+  const handleimage = (e) => {
+    setImage(e.target.files[0]);
+  };
+ 
   const deleteCoordinator = async (id) => {
     const yes = window.confirm('Are you sure you want to delete this coordinator?')
     if (!yes) {
@@ -176,7 +181,7 @@ export default function AddCoordinatorDetails({ token }) {
 
                   <div className='m-2 flex w-[100%] sm:w-[90%] md:w-[60%]  flex-col '>
                     <label className="block mb-2 text-gray-900 dark:text-black " htmlFor="file_input">Upload file</label>
-                    <input className="block  w-full sm:text-md md:text-lg text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:ring-0 focus:border-2 focus:border-solid focus:border-yellow-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" aria-describedby="file_input_help" id="file_input" type="file"></input>
+                    <input onChange={handleimage} className="block  w-full sm:text-md md:text-lg text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:ring-0 focus:border-2 focus:border-solid focus:border-yellow-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" aria-describedby="file_input_help" id="file_input" type="file"></input>
                     {/*<p className="mt-1 text-sm text-gray-500 dark:text-gray-300" id="file_input_help"></p>*/}
                   </div>
 
