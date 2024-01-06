@@ -380,6 +380,9 @@
         "files"
       ]
     },
+    "lastUpdatedBy": {
+      "type": "json"
+    },
     "is_mtech": {
       "type": "boolean",
       "required": true
