@@ -8,14 +8,21 @@ import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import { useRouter } from "next/router";
 
+
 export default function Profile({ student, token }) {
+  
   const [studentData, setStudentData] = useState(student);
+
+  // studentData.is_mtech = false;e
+
+  // console.log("data: ",student)
   const router = useRouter();
   const [profilePic, setProfilePic] = useState(null);
   const [editCpi, setEditCpi] = useState(false);
-  const handleFileChange = (e) => {
+  const handleFileChange = (e) => { 
     setProfilePic(e.target.files[0]);
   };
+
 
   const handleSubmitCpi = async (e) => {
     e.preventDefault();
@@ -598,6 +605,7 @@ export default function Profile({ student, token }) {
               {student.XII_marks}
             </dd>
           </div>
+
           <div className="py-4 sm:py-5 sm:grid sm:grid-cols-4 sm:gap-4 sm:px-6">
             <dt className="text-sm font-medium text-gray-500 sm:col-span-1">
               Bachelor&apos;s Marks (if completed)
@@ -612,6 +620,194 @@ export default function Profile({ student, token }) {
               {student.master_marks}
             </dd>
           </div>
+
+          {/* got this */}
+
+
+
+          {studentData.is_mtech && (
+            <>
+          <div className="bg-white shadow overflow-hidden sm:rounded-lg mt-4">
+      <div className="px-4 py-5 sm:px-6 flex justify-between">
+          <div className="m-2">
+          <h3 className="text-lg leading-6 font-medium text-gray-900">
+            Mtech Academic Details{" "}
+            {student.approved == "pending" && (
+              <span className="px-2 mx-2 py-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-orange-100 text-orange-800">
+                <svg
+                  className="animate-spin  ml-1 mr-3 h-5 w-5 text-green-800"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                >
+                  <circle
+                    className="opacity-15"
+                    cx="12"
+                    cy="12"
+                    r="10"
+                    stroke="currentColor"
+                    strokeWidth="4"
+                  ></circle>
+                  <path
+                    className="opacity-75"
+                    fill="currentColor"
+                    d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                  ></path>
+                </svg>
+                Approval Pending
+              </span>
+            )}
+            
+          </h3>
+          <p className="mt-1 max-w-2xl text-sm text-gray-500">
+           Mtech Academic Details
+          </p>
+        </div>
+
+        </div>
+        </div>
+
+
+              <div className="py-4 sm:py-5 sm:grid sm:grid-cols-4 sm:gap-4 sm:px-6">
+            <dt className="text-sm font-medium text-gray-500">
+            College Name (Btech)
+            </dt>
+            <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-1">
+              {student.mtech_college_name}
+            </dd>
+
+              {/* year */}
+
+              <dt className="text-sm font-medium text-gray-500 sm:col-span-1">
+              Year of Passing
+              </dt>
+              <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-1">
+                <input
+                 
+                  disabled
+                  type="number"
+                  name="mtech_YOP"
+                  id="mtech_YOP"
+                  
+                  className={`appearance-none border-1 border-gray-200 rounded w-full py-2 px-4 text-gray-900 text-sm leading-tight focus:outline-none focus:border-blue-500`}
+                  value={studentData.mtech_YOP}
+                  // onChange={handleChange}
+                />
+              </dd>
+
+              <dt className="text-sm font-medium text-gray-500 sm:col-span-1">
+               1st Sem CGPA
+              </dt>
+              <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-1">
+                <input
+                    disabled={!editCpi}
+                  type="number"
+                  name="mtech_spi_1"
+                  id="mtech_spi_1"
+                  // border red if editCPi is false
+                  className={`appearance-none border-1 ${
+                    editCpi ? "border-green-200" : "border-gray-200"
+                  } rounded w-full py-2 px-4 text-gray-900 text-sm leading-tight focus:outline-none focus:border-blue-500`}
+                  value={studentData.mtech_spi_1}
+                  onChange={handleChange}
+                />
+              </dd>
+
+              <dt className="text-sm font-medium text-gray-500 sm:col-span-1">
+              2nd Sem CGPA
+              </dt>
+              <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-1">
+                <input
+                  //disable if editCpi is false
+                    disabled={!editCpi}
+                  type="number"
+                  name="mtech_spi_2"
+                  id="mtech_spi_2"
+                  className={`appearance-none border-1 ${
+                    editCpi ? "border-green-200" : "border-gray-200"
+                  } rounded w-full py-2 px-4 text-gray-900 text-sm leading-tight focus:outline-none focus:border-blue-500`}
+                  value={studentData.mtech_spi_2}
+                  onChange={handleChange}
+                />
+              </dd>
+
+              <dt className="text-sm font-medium text-gray-500 sm:col-span-1">
+              3rd Sem CGPA
+              </dt>
+              <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-1">
+                <input
+                  //disable if editCpi is false
+                    disabled={!editCpi}
+                  type="number"
+                  name="mtech_spi_3"
+                  id="mtech_spi_3"
+                  className={`appearance-none border-1 ${
+                    editCpi ? "border-green-200" : "border-gray-200"
+                  } rounded w-full py-2 px-4 text-gray-900 text-sm leading-tight focus:outline-none focus:border-blue-500`}
+                  value={studentData.mtech_spi_3}
+                  onChange={handleChange}
+                />
+              </dd>
+
+              <dt className="text-sm font-medium text-gray-500 sm:col-span-1">
+              4th Sem CGPA
+              </dt>
+              <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-1">
+                <input
+                  //disable if editCpi is false
+                    disabled={!editCpi}
+                  type="number"
+                  name="mtech_spi_4"
+                  id="mtech_spi_4"
+                  className={`appearance-none border-1 ${
+                    editCpi ? "border-green-200" : "border-gray-200"
+                  } rounded w-full py-2 px-4 text-gray-900 text-sm leading-tight focus:outline-none focus:border-blue-500`}
+                  value={studentData.mtech_spi_4}
+                  onChange={handleChange}
+                />
+              </dd>
+
+              
+
+              <dt className="text-sm font-medium text-gray-500 sm:col-span-1">
+              Gate Rank
+              </dt>
+              <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-1">
+                <input
+                disabled
+                  type="number"
+                  name="mtech_gate_rank"
+                  id="mtech_gate_rank"
+                  className={`appearance-none border-1 border-gray-200 rounded w-full py-2 px-4 text-gray-900 text-sm leading-tight focus:outline-none focus:border-blue-500`}
+                  value={studentData.mtech_gate_rank}
+                  // onChange={handleChange}
+                />
+              </dd>
+
+
+              <dt className="text-sm font-medium text-gray-500 sm:col-span-1">
+
+              Gate Score
+              </dt>
+              <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-1">
+                <input
+                  disabled
+                  type="number"
+                  name="mtech_gate_score"
+                  id="mtech_gate_score"
+                  className={`appearance-none border-1 border-gray-200 rounded w-full py-2 px-4 text-gray-900 text-sm leading-tight focus:outline-none focus:border-blue-500`}
+                  value={studentData.mtech_gate_score}
+                  // onChange={handleChange}
+                />
+              </dd>
+
+
+          </div>
+              
+              </>
+         )}
+
+
           <div className="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
             <dt className="text-sm font-medium text-gray-500">Resume</dt>
             <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
