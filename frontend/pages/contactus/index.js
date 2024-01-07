@@ -103,7 +103,7 @@ function ContactUS() {
                         </div>
                         <div className="  w-[500px] relative p-2  h-[50%] lg:h-[100%]">
                             {/*card*/}
-                            <div className=" transition ease-in-out duration-300 hover:translate-y-[-0.3rem] bg-[url('/images/chandan.jpg')] bg-center bg-no-repeat w-3/4 mx-auto h-full lg:h-full bg-cover border-0 border-neutral rounded-xl">                        {/*</Image src={"/../public/images/deepak.jpg"}  width={"180rem"} height={"180rem"}></Image>*/}
+                            <div className=" transition ease-in-out duration-300 hover:translate-y-[-0.3rem] bg-[url('/images/chandansir.jpg')] bg-center bg-no-repeat w-3/4 mx-auto h-full lg:h-full bg-cover border-0 border-neutral rounded-xl">                        {/*</Image src={"/../public/images/deepak.jpg"}  width={"180rem"} height={"180rem"}></Image>*/}
                                 <div className={"bg-black transition ease-in-out duration-500 font-sans  opacity-0 hover:opacity-100 hover:bg-opacity-75 w-full h-full text-white flex flex-col items-center justify-center border-[1px] border-black border-solid rounded-lg profileDetails"}>
 
                                     <div className={"flex flex-wrap animate-appear"}>
