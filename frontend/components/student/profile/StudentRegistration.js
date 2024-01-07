@@ -5,9 +5,10 @@ import { API_URL } from '@/config/index'
 import AuthContext from '@/context/AuthContext'
 
 export default function StudentRegistration({ token = '' }) {
+ 
   const [values, setValues] = useState({
     name: '',
-    roll: '',
+    roll: '8',
     personal_email_id: '',
     institute_email_id: '',
     mobile_number_1: '',
@@ -37,7 +38,7 @@ export default function StudentRegistration({ token = '' }) {
     program: '',
     pwd: false,
     // department: '',
-    course: '',
+    course: "",
     spi_1: '',
     spi_2: '',
     spi_3: '',
@@ -68,8 +69,92 @@ export default function StudentRegistration({ token = '' }) {
     pancard_no: '',
     all_sem_marksheet: '',
     X_marksheet: '',
-    XII_marksheet: ''
+    XII_marksheet: '',
+    is_mtech:'',
+      mtech_spi_1:0,
+      mtech_spi_2: 0,
+      mtech_spi_3: 0,
+      mtech_spi_4: 0,
+      mtech_gate_score:'',
+      mtech_gate_rank:'',
+      mtech_college_name:'',
+      mtech_YOP:''
   })
+
+  // const [values, setValues] = useState({
+  //   name: 'Vijay Kumar',
+  //   roll: '',
+  //   personal_email_id: '',
+  //   institute_email_id: '',
+  //   mobile_number_1: '',
+  //   mobile_number_2: '',
+  //   gender: '',
+  //   category: '',
+  //   category_link: '',
+  //   father_name: 'vijay father',
+  //   father_occupation: 'Occupation',
+  //   mother_name: 'vijay mother',
+  //   mother_occupation: 'Occupation',
+  //   blood_group: 'O+',
+  //   height: '68',
+  //   weight: '68',
+  //   type_of_disability: '',
+  //   disability_percentage: '',
+  //   address: 'sehatpur, faridabad',
+  //   domicile: '',
+  //   city: '',
+  //   state: '',
+  //   pin_code: '121003',
+  //   correspondance_address: 'sehatpur, faridabad',
+  //   date_of_birth: '',
+  //   rank: '',
+  //   categoryRank: '',
+  //   // registered_for: '',
+  //   program: '',
+  //   pwd: false,
+  //   // department: '',
+  //   course: '',
+  //   spi_1: '',
+  //   spi_2: '',
+  //   spi_3: '',
+  //   spi_4: '',
+  //   spi_5: '',
+  //   spi_6: '',
+  //   spi_7: '',
+  //   spi_8: '',
+  //   spi_9: '',
+  //   spi_10: '',
+  //   cpi: '',
+  //   X_board: '',
+  //   X_YOP: '',
+  //   X_marks: '',
+  //   XII_board: '',
+  //   XII_YOP: '',
+  //   XII_marks: '',
+  //   bachelor_marks: '',
+  //   master_marks: '',
+  //   admission_year: '',
+  //   total_backlogs: '',
+  //   current_backlogs: '',
+  //   current_status: '',
+  //   disability_certificate: '',
+  //   aadhar_no: '',
+  //   driving_licience_no: '',
+  //   driving_licience_link: '',
+  //   pancard_no: '',
+  //   all_sem_marksheet: '',
+  //   X_marksheet: '',
+  //   XII_marksheet: '',
+  //   is_mtech:'',
+  //     mtech_spi_1:0,
+  //     mtech_spi_2: 0,
+  //     mtech_spi_3: 0,
+  //     mtech_spi_4: 0,
+  //     mtech_gate_score:'',
+  //     mtech_gate_rank:'',
+  //     mtech_college_name:'',
+  //     mtech_YOP:''
+  // })
 
   const router = useRouter()
   const { user } = useContext(AuthContext)
@@ -77,6 +162,8 @@ export default function StudentRegistration({ token = '' }) {
     values.roll = user.username
     values.institute_email_id = user.email
   }
+
+  const [isMtech, setIsMtech] = useState(false);
 
   // // const [flag,setFlag] = useState(true);
   // const enterAddress= (e)=>{
@@ -92,6 +179,9 @@ export default function StudentRegistration({ token = '' }) {
 
     // })
 
+  //  useEffect(()=>{
+  //   console.log("values: ",values);
+  //  },[])
     if (confirm('Are you sure you want to submit for approval?')) {
       const res = await fetch(`${API_URL}/api/student/submit-for-approval`, {
         method: 'POST',
@@ -130,6 +220,8 @@ export default function StudentRegistration({ token = '' }) {
     const { name, value } = e.target
     setValues({ ...values, [name]: !values.pwd })
   }
+
+
   const [programs, setPrograms] = useState([])
 
   const [courses, setCourses] = useState([])
@@ -149,6 +241,54 @@ export default function StudentRegistration({ token = '' }) {
       })
   }, [])
 
+  //for clearing the data if the student deselect the mtech checkbox
+
+  useEffect(()=>{
+
+  //  console.log("values: ",values)
+
+    // console.log("\n\n*******before: ")
+    // for(let keys of Object.keys(values))
+    //     {
+    //       if(keys.match(/^mtech/))
+    //       {
+    //         console.log(`${keys}: `,values[keys]);
+    //       }
+    //     }
+
+    if(!isMtech)
+    {
+        for(let keys of Object.keys(values))
+        {
+
+
+          if(keys.match(/^mtech/))
+          {
+            if(keys.match(/spi/)){
+              values[keys] = 0;
+            }
+            else{
+              values[keys] = '';
+            }
+          }
+        }
+    }
+
+    // console.log("\n\n***after: ")
+    // for(let keys of Object.keys(values))
+    //     {
+    //       if(keys.match(/^mtech/))
+    //       {
+    //         console.log(`${keys}: `,values[keys]);
+    //       }
+    //     }
+
+
+        //updating the values of is_mtech
+        values.is_mtech = isMtech;
+
+  },[isMtech])
+
   useEffect(() => {
     programs.map((program) => {
       if (program.id === parseFloat(values.program)) {
@@ -164,6 +304,9 @@ export default function StudentRegistration({ token = '' }) {
       disability_certificate: '',
     }));
   }, [values.pwd])
+
+
+  console.log("values: ",values)
   return (
     <form onSubmit={handleSubmit}>
       <div className=' min-h-full mt-2'>
@@ -952,7 +1095,7 @@ export default function StudentRegistration({ token = '' }) {
                   placeholder={`Enter your category rank`}
                   autoComplete='categoryRank'
                   required
-                  className='mt-0 block w-full px-0.5 border-0 border-b-2 border-gray-300 focus:ring-0 focus:border-stone-500'
+                  className='mt-0 block w-full px-0.5 border- border-b-2 border-gray-300 focus:ring-0 focus:border-stone-500'
                 />
               </div>
 
@@ -1056,6 +1199,8 @@ export default function StudentRegistration({ token = '' }) {
                   className='mt-0 block w-full px-0.5 border-0 border-b-2 border-gray-300 focus:ring-0 focus:border-stone-500'
                 />
               </div>
+
+             
 
 
 
@@ -1239,6 +1384,12 @@ export default function StudentRegistration({ token = '' }) {
                   required
                   className='mt-0 block w-full px-0.5 border-0 border-b-2 border-gray-300 focus:ring-0 focus:border-stone-500'
                 />
+              </div>
+
+
+
+              <div>
+
               </div>
 
             </div>
@@ -1537,7 +1688,6 @@ export default function StudentRegistration({ token = '' }) {
                 />
               </div>
 
-
               <div className='col-span-3 sm:col-span-1'>
                 <label
                   htmlFor='all_sem_marksheet'
@@ -1623,7 +1773,263 @@ export default function StudentRegistration({ token = '' }) {
                   className='mt-0 block w-full px-0.5 border-0 border-b-2 text-sm text-gray-600 border-gray-300 focus:ring-0 focus:border-stone-500'
                 />
               </div>
+
+              <div className='col-span-5 sm:col-span-2'>
+
+                <div className="flex items-center ps-4 border border-gray-200 rounded-xl dark:border-gray-700">
+                  <input id="bordered-checkbox-1" type="checkbox" value={values.is_mtech} name="bordered-checkbox" onChange={(e) => { setIsMtech(e.target.checked); }} clxzassName="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 m-1  mx-2 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
+                  <label for="bordered-checkbox-1" className="w-full py-4 ms-2 text-sm font-Medium text-black dark:text-black">Are You a M.Tech Student</label>
+
+                </div>
+              </div>
+
+
+
+
             </div>
+
+            {isMtech && (
+              <>
+              <div className='py-5'>
+              <h3 className='text-2xl font-bold leading-6 text-blue-900 py-2'>
+                Mtech Academic Details
+              </h3>
+              <p className='mt-1 text-sm font-medium text-rose-700'>
+                Student Academic Information, account will be active after admin
+                approval.
+              </p>
+            </div>
+            <div className='grid grid-cols-6 gap-6'>
+
+
+            <div className='col-span-10 md:col-span-3'>
+
+
+            
+                    <label
+                      htmlFor='mtech_college_name'
+                      className='block text-sm font-medium text-gray-700'
+                    >
+                      College Name (Btech)<span className='text-red-700'>*</span>
+                    </label>
+                    <input
+                      // disabled={values.is_mtech ? false : true}
+                      onChange={handleInputChange}
+                      placeholder={`Enter the College Name From Where You Pursued Btech`}
+                      value={values.mtech_college_name}
+                      required={values.is_mtech ? true : false}
+                      type='text'
+                      name='mtech_college_name'
+                      id='mtech_college_name'
+                      autoComplete='mtech_college_name'
+                      className='mt-0 block w-full px-0.5 border-0 border-b-2 border-blue-900 '
+                    />
+
+                {/* <labeltype_of_disability
+type_of_disability
+                  htmlFor='mtech_college_name'
+                  className='block text-sm font-medium text-gray-700'
+                >
+                  College Name (Btech)<span className='text-red-700'>*</span>
+                </labeltype_of_disability>
+                <input
+                  disabled={values.is_mtech ? false : true}
+                  type='text'
+                  value={values.mtech_college_name}
+                  onChange={handleInputChange}
+                  name='mtech_college_name'
+                  id='mtech_college_name'
+                  placeholder={`Enter the College Name From Where You Pursued Btech`}
+                  autoComplete='mtech_college_name'
+                  required = {values.is_mtech ? true:false}
+                  className='mt-0 block w-full px-0.5 border-0 border-b-2 text-sm text-gray-600 border-gray-300 focus:ring-0 focus:border-stone-500'
+                /> */}
+                {/* <input
+                      disabled={values.pwd ? false : true}
+                      onChange={handleInputChange}
+                      value={values.type_of_disability}
+                      required={values.pwd ? true : false}
+                      type='text'
+                      name='type_of_disability'
+                      id='type_of_disability'
+                      autoComplete='type_of_disability'
+                      className='mt-0 block w-full px-0.5 border-0 border-b-2 border-blue-900 '
+                    /> */}
+            {/* </> */}
+
+            </div>
+
+
+            <div className='col-span-5 sm:col-span-3'>
+                <label
+                  htmlFor='mtech_YOP'
+                  className='block text-sm font-medium text-gray-700'
+                >
+                  Year of Passing<span className='text-red-700'>*</span>
+                </label>
+                <input 
+                 disabled={values.is_mtech ? false:true}
+                  value={values.mtech_YOP}
+                  onChange={handleInputChange}
+                  type='number'
+                  min={2000}
+                  max={2200}
+                  name='mtech_YOP'
+                  id='mtech_YOP'
+                  autoComplete='mtech_YOP'
+                  placeholder='Ex: 2022'
+                  required = {values.is_mtech ? true:false}
+                  className='mt-0 block w-full px-0.5 border-0 border-b-2 border-gray-300 focus:ring-0 focus:border-stone-500'
+                />
+              </div>
+
+
+
+            <div className='col-span-2 sm:col-span-1'>
+                <label
+                  htmlFor='mtech_spi_1'
+                  className='block text-sm font-medium text-gray-700'
+                >
+                  1st Sem CGPA<span className='text-red-700'>*</span>
+                </label>
+                <input
+                  disabled={values.is_mtech ? false:true}
+                  value={values.mtech_spi_1}
+                  onChange={handleInputChange}
+                  type='number'
+                  min={2}
+                  max={10}
+                  step='.01'
+                  placeholder='Ex: 8.86'
+                  name='mtech_spi_1'
+                  id='mtech_spi_1'
+                  autoComplete=''
+                  className='mt-0 block w-full px-0.5 border-0 border-b-2 border-gray-300 focus:ring-0 focus:border-stone-500'
+                />
+              </div>
+
+              <div className='col-span-2 sm:col-span-1'>
+                <label
+                  htmlFor='mtech_spi_2'
+                  className='block text-sm font-medium text-gray-700'
+                >
+                  2nd Sem CGPA<span className='text-red-700'>*</span>
+                </label>
+                
+                <input
+                  disabled={values.is_mtech ? false:true}
+                  value={values.mtech_spi_2}
+                  onChange={handleInputChange}
+                  type='number'
+                  min={2}
+                  max={10}
+                  step='.01'
+                  placeholder='Ex: 8.86'
+                  name='mtech_spi_2'
+                  id='mtech_spi_2'
+                  autoComplete=''
+                  className='mt-0 block w-full px-0.5 border-0 border-b-2 border-gray-300 focus:ring-0 focus:border-stone-500'
+                />
+              </div>
+
+              <div className='col-span-2 sm:col-span-1'>
+                <label
+                  htmlFor='mtech_spi_3'
+                  className='block text-sm font-medium text-gray-700'
+                >
+                  3rd Sem CGPA<span className='text-red-700'>*</span>
+                </label>
+             
+                <input
+                disabled={values.is_mtech ? false:true}
+                  value={values.mtech_spi_3}
+                  onChange={handleInputChange}
+                  type='number'
+                  min={2}
+                  max={10}
+                  step='.01'
+                  placeholder='Ex: 8.86'
+                  name='mtech_spi_3'
+                  id='mtech_spi_3'
+                  required = {values.is_mtech ? true:false}
+                  autoComplete=''
+                  className='mt-0 block w-full px-0.5 border-0 border-b-2 border-gray-300 focus:ring-0 focus:border-stone-500'
+                />
+              </div>
+              <div className='col-span-2 sm:col-span-1'>
+                <label
+                  htmlFor='mtech_spi_4'
+                  className='block text-sm font-medium text-gray-700'
+                >
+                  4th Sem CGPA<span className='text-red-700'>*</span>
+                </label>
+                  
+                <input
+                disabled={values.is_mtech ? false:true}
+                  value={values.mtech_spi_4}
+                  onChange={handleInputChange}
+                  type='number'
+                  // min={2}
+                  max={10}
+                  step='.01'
+                  placeholder='Ex: 8.86'
+                  name='mtech_spi_4'
+                  id='mtech_spi_4'
+                  autoComplete=''
+                  required = {values.is_mtech ? true:false}
+                  className='mt-0 block w-full px-0.5 border-0 border-b-2 border-gray-300 focus:ring-0 focus:border-stone-500'
+                />
+              </div>
+
+              <div className='col-span-8 sm:col-span-2'>
+                <label
+                  htmlFor='mtech_gate_rank'
+                  className='block text-sm font-medium text-gray-700'
+                >
+                  Gate Rank<span className='text-red-700'>*</span>
+                </label>
+                <input
+                  disabled={values.is_mtech ? false:true}
+                  required = {values.is_mtech ? true:false}
+                  value={values.mtech_gate_rank}
+                  onChange={handleInputChange}
+                  type='number'
+                  name='mtech_gate_rank'
+                  placeholder={`Enter your Gate rank`}
+                  id='mtech_gate_rank'
+                  autoComplete='mtech_gate_rank'
+                  className='mt-0 block w-full px-0.5 border-0 border-b-2 border-gray-300 focus:ring-0 focus:border-stone-500'
+                />
+              </div>
+
+              <div className='col-span-8 sm:col-span-2'>
+                <label
+                  htmlFor='mtech_gate_score'
+                  className='block text-sm font-medium text-gray-700'
+                >
+                  Gate Score<span className='text-red-700'>*</span>
+                </label>
+                <input
+                  disabled={values.is_mtech ? false:true}
+                  required = {values.is_mtech ? true:false}
+                  value={values.mtech_gate_score}
+                  onChange={handleInputChange}
+                  type='number'
+                  name='mtech_gate_score'
+                  placeholder={`Enter your Gate Score`}
+                  id='mtech_gate_score'
+                  autoComplete='mtech_gate_score'
+                  className='mt-0 block w-full px-0.5 border-0 border-b-2 border-gray-300 focus:ring-0 focus:border-stone-500'
+                />
+              </div>
+
+
+              
+
+
+              </div>
+              </>
+            )}
           </div>
         </div>
       </div>
