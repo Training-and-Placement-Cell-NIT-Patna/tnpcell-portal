@@ -98,8 +98,8 @@ export default function AddJob({ token = "" }) {
     if (jaf && jaf !== "") {
       formData.append("files.jaf", jaf, jaf.name);
     }
-    console.log(FormData);
-    console.log(values);
+    // console.log(FormData);
+    // console.log(values);
 
     const companyName = user && user.username;
     values["company_name"] = companyName;
