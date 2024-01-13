@@ -28,6 +28,11 @@ export default function StudentRequest({ token = '' }) {
       toast.success('Something Went Wrong!')
     } else {
       toast.success('Successfully Approved')
+
+      // to log the info of the coordinator approval
+
+      lastUpdatedBy({ selectedStudentId:id , token:token});
+
     }
     fetchData()
   }
