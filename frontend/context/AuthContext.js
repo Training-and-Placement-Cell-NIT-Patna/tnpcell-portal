@@ -4,7 +4,7 @@ import { API_URL, NEXT_URL } from '@/config/index'
 import { toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 
-const AuthContext = createContext()                              
+const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
   const router = useRouter()
@@ -137,9 +137,46 @@ export const AuthProvider = ({ children }) => {
     }
   }
 
+  // last updated by funciton
+
+  const lastUpdatedBy = async (changedBy) =>{
+    
+    try {
+      
+          const {selectedStudentId , token} = changedBy;
+      
+          const data = {
+            'lastUpdatedBy': {
+              username: user.username,
+              email: user.email,
+              timeStamp: (new Date()).toLocaleString(),
+            }
+          }
+
+      const res = await fetch(`${API_URL}/api/students/${selectedStudentId}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({'data':data})
+      });
+
+      const resp = await res.json();
+
+      console.log("resp: ",resp);
+
+    } catch (e) {
+
+      console.log("Error: ",e)
+      
+    }
+  
+    
+  }
   return (
     <AuthContext.Provider
-      value={{ user, register, login, logout, checkUserLoggedIn, loading }}
+      value={{ user, register, login, logout, checkUserLoggedIn, loading , lastUpdatedBy }}
     >
       {children}
     </AuthContext.Provider>

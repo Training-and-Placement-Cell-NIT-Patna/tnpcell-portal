@@ -1,7 +1,8 @@
 
 import { FaEye } from "react-icons/fa";
-import { useEffect, useState } from "react";
+import { useEffect, useState ,useContext } from "react";
 // import { useRouter } from "next/router";
+import AuthContext from "@/context/AuthContext";
 import { toast } from "react-toastify";
 import { API_URL } from "@/config/index";
 // import Up from "pages/student/upload-docs";
@@ -13,6 +14,13 @@ export default function StudentProfileEdit({ token = "", student }) {
 
   // console.log("student: ",student);
   // console.log("token", token)
+
+  // console.log("user: ",AuthContext.Provider.getUser);
+
+  const {user , lastUpdatedBy} = useContext(AuthContext);
+
+
+  // console.log('user: ',user);
   const id = student?.id;
   const {
     createdAt,
@@ -56,6 +64,7 @@ export default function StudentProfileEdit({ token = "", student }) {
       // console.log("values: ",values);
 
      try {
+      // console.log("myId: ",id);
       const res = await fetch(`${API_URL}/api/students/${id}`, {
         method: "PUT",
         headers: {
@@ -79,6 +88,9 @@ export default function StudentProfileEdit({ token = "", student }) {
         toast.error(profile?.error.name);
       } else {
         const profile = await res.json();
+
+        lastUpdatedBy({ selectedStudentId:id , token:token});
+
         toast.success("Profile Edited Successfully");
       }
      } catch (e) {
