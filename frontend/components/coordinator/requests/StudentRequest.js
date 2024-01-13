@@ -1,13 +1,16 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useContext, useState } from 'react'
 import { AgGridReact } from 'ag-grid-react'
 import 'ag-grid-community/dist/styles/ag-grid.css'
 import 'ag-grid-community/dist/styles/ag-theme-alpine.css'
 import { API_URL } from '@/config/index'
 import { toast } from 'react-toastify'
+import AuthContext from '@/context/AuthContext'
 import Link from 'next/link'
 
 export default function StudentRequest({ token = '' }) {
   const [students, setStudents] = useState([])
+
+  const {lastUpdatedBy} = useContext(AuthContext);
 
   const handleApprove = async (id) => {
     // console.log('student', students)
@@ -28,6 +31,9 @@ export default function StudentRequest({ token = '' }) {
       toast.success('Something Went Wrong!')
     } else {
       toast.success('Successfully Approved')
+
+      lastUpdatedBy({ selectedStudentId:id , token:token});
+ 
     }
     fetchData()
   }
