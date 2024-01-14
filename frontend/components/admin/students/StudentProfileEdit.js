@@ -1963,74 +1963,19 @@ export default function StudentProfileEdit({ token = "", student }) {
           </div>
         </div>
       </form>
+      <div>
+      {student.attributes.lastUpdatedBy?(
+      <>
+              <div> <h1 className="text-red-700">Last Updated by</h1> </div>
+              <div className="text-red-900"> 
+                <p>Role : {student.attributes.lastUpdatedBy.role}</p>
+                <p>User Name : {student.attributes.lastUpdatedBy.username}</p>
+                <p>Email : {student.attributes.lastUpdatedBy.email}</p>
+                <p>At : {student.attributes.lastUpdatedBy.timeStamp}</p>
+              </div>
+      </>
+      ):null}
+      </div>
     </>
   );
 }
-
-// var Comp = function ({uploadedDoc,link,typee}){
-
-//   //data = {resume , 10,12, AAdhar , Pan, Driving, all sem  }
-
-//   //data = {of which I have to show all the attributes}
-//   //li k
-
-//   return (
-//     <>
-//       <div className="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-//         <dt className="text-sm font-medium text-gray-500">{typee}</dt>
-//         <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-//           <ul
-//             role="list"
-//             className="border border-gray-200 rounded-md divide-y divide-gray-200"
-//           >
-//             <li className="pl-3 pr-4 py-3 flex items-center justify-between text-sm">
-//               <div className="w-0 flex-1 flex items-center">
-//                 <PaperClipIcon
-//                   className="flex-shrink-0 h-5 w-5 text-gray-400"
-//                   aria-hidden="true"
-//                 />
-//                 <span className="ml-2 flex-1 w-0 truncate">
-//                   {uploadedDoc ? typee+".pdf" : `No ${typee} found`}
-//                 </span>
-//               </div>
-//               <div className="ml-4 flex-shrink-0 space-x-4">
-//                 {uploadedDoc?.data ? (
-//                   <div className="">
-//                   <span>
-//                       <a
-//                         href={`${API_URL}${uploadedDoc.data.attributes.url}`}
-//                         target="_blank"
-//                         rel="noreferrer"
-//                         className="font-medium text-yellow-600 hover:text-yellow-500 px-2"
-//                       >
-//                         Download
-//                       </a>
-//                   </span>
-//                     {
-//                       link ? (
-//                         <span>
-//                           <a
-//                             href={link}
-//                             target="_blank"
-//                             rel="noreferrer"
-//                             className="font-medium text-yellow-600 hover:text-yellow-500 cursor-pointer"
-//                           >
-//                             Google Drive Link
-//                           </a>
-//                         </span>
-//                       ):null
-//                     }
-//                   </div>
-//                 ) : (
-//                   <p className="font-medium text-yellow-600 hover:text-yellow-500">
-//                     NA
-//                   </p>
-//                 )}
-//               </div>
-//             </li>
-//           </ul>
-//         </dd>
-//       </div>
-//     </>
-//   )
-// }
