@@ -10,7 +10,7 @@ import { useRouter } from "next/router";
 import AuthContext from "@/context/AuthContext";
 
 export default function Profile({ student, token }) {
-  const { lastUpdatedBy } = useContext(AuthContext);
+  const { handleLastUpdatedBy } = useContext(AuthContext);
   const [studentData, setStudentData] = useState(student);
   // function to convert float to 2 decimal places either its string or number
   const convertToIntegers = (cpi) => {
@@ -68,7 +68,7 @@ export default function Profile({ student, token }) {
 
       // @important lastUpdateBy should be called before this api call its important to save logs first and then do changes in student profile
       if (
-        !(await lastUpdatedBy({ selectedStudentId: student.id, token: token }))
+        !(await handleLastUpdatedBy({ selectedStudentId: student.id, token: token }))
       ) {
         toast.error("Something went wrong");
         console.log("Unable to update logs in student profile");

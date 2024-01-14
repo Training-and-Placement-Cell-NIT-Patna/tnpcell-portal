@@ -10,7 +10,7 @@ import StudentDocs from "@/components/student/StudentDocs";
 // import Link from "next/link";
 
 export default function StudentProfileEdit({ token = "", student }) {
-  const { lastUpdatedBy } = useContext(AuthContext);
+  const { handleLastUpdatedBy } = useContext(AuthContext);
 
   const id = student?.id;
   const {
@@ -32,6 +32,7 @@ export default function StudentProfileEdit({ token = "", student }) {
     allSemMarksheet,
     aadharCard,
     department,
+    lastUpdatedBy,
     ...newStudent
   } = student.attributes;
 
@@ -54,7 +55,7 @@ export default function StudentProfileEdit({ token = "", student }) {
 
     if (confirm("Are you sure you want to edit student profile?")) {
       // @important lastUpdateBy should be called before this api call its important to save logs first and then do changes in student profile
-      if (!(await lastUpdatedBy({ selectedStudentId: id, token: token }))) {
+      if (!(await handleLastUpdatedBy({ selectedStudentId: id, token: token }))) {
         toast.error("Something went wrong");
         console.log("Unable to update logs in student profile");
         return;
@@ -103,7 +104,7 @@ export default function StudentProfileEdit({ token = "", student }) {
     e.preventDefault();
     if (confirm("Are you sure you want to change placed status?")) {
       // @important lastUpdateBy should be called before this api call its important to save logs first and then do changes in student profile
-      if (await lastUpdatedBy({ selectedStudentId: id, token: token })) {
+      if (await handleLastUpdatedBy({ selectedStudentId: id, token: token })) {
         // api/student/set-placed-status?roll=2111mc02&placed_status=placed_a2
         const res = await fetch(
           `${API_URL}/api/student/set-placed-status?roll=${values.roll}&placed_status=${placedStatus}`,
@@ -253,7 +254,7 @@ export default function StudentProfileEdit({ token = "", student }) {
                       <option value="unplaced">Not Placed</option>
                       <option value="placed_tier1">Placed in Tier1</option>
                       <option value="placed_tier2">Placed in Tier2</option>
-                      <option value="placed_tier">Placed in Tier3</option>
+                      <option value="placed_tier3">Placed in Tier3</option>
                     </select>
                     <button
                       type="submit"
@@ -294,7 +295,7 @@ export default function StudentProfileEdit({ token = "", student }) {
                       name="internship_status_6_m"
                       id="internship_status_6_m"
                       className="block w-full px-3 py-2 rounded-md text-gray-700 bg-white border border-gray-300 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 sm:text-sm sm:leading-5"
-                      value={values.internship_status_6_m}
+                      value={values.internship_status_6}
                       onChange={handleInputChange}
                     >
                       <option value="false">Not Got Internship</option>
@@ -1964,14 +1965,14 @@ export default function StudentProfileEdit({ token = "", student }) {
         </div>
       </form>
       <div>
-      {student.attributes.lastUpdatedBy?(
+      {lastUpdatedBy?(
       <>
               <div> <h1 className="text-red-700">Last Updated by</h1> </div>
               <div className="text-red-900"> 
-                <p>Role : {student.attributes.lastUpdatedBy.role}</p>
-                <p>User Name : {student.attributes.lastUpdatedBy.username}</p>
-                <p>Email : {student.attributes.lastUpdatedBy.email}</p>
-                <p>At : {student.attributes.lastUpdatedBy.timeStamp}</p>
+                <p>Role : {lastUpdatedBy.role}</p>
+                <p>User Name : {lastUpdatedBy.username}</p>
+                <p>Email : {lastUpdatedBy.email}</p>
+                <p>At : {lastUpdatedBy.timeStamp}</p>
               </div>
       </>
       ):null}
