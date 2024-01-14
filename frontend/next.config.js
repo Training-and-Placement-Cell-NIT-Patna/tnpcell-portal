@@ -21,6 +21,7 @@ const nextConfig = {
   // @important Never remove this
   async rewrites() {
     return [
+      // for accessing api of backend strapi
       {
         source: '/api/:path*', // Define the path to match.
         destination: 'http://192.168.1.42:1337/api/:path*', //
@@ -29,7 +30,12 @@ const nextConfig = {
       {
         source: '/uploads/:path*',
         destination: 'http://192.168.1.42:1337/uploads/:path*',
-      }
+      },
+      // for accessing the server monitoring grafana and prometheus
+      {
+        source: '/d/:path*',
+        destination: 'http://192.168.1.42:5000/:path*'
+      } 
     ]
   },
 }
