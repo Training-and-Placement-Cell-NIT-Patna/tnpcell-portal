@@ -1,7 +1,7 @@
-import { useEffect, useState } from "react";
-// import { useRouter } from 'next/router'
-// import { toast } from 'react-toastify'
+import { useEffect, useState, useContext } from "react"
 import StudentDocs from "@/components/student/StudentDocs";
+import { toast } from "react-toastify";
+import AuthContext from '@/context/AuthContext';
 import { API_URL } from "@/config/index";
 import { PaperClipIcon } from "@heroicons/react/solid";
 // import Image from 'next/image'
@@ -41,6 +41,8 @@ export default function StudentProfileEdit({ token = "", student }) {
   } = student.attributes;
 
   const [values, setValues] = useState(newStudent);
+
+  const {lastUpdatedBy} = useContext(AuthContext);
 
   // const router = useRouter()
 
