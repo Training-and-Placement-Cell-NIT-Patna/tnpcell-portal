@@ -14,7 +14,7 @@ export const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(false);
   useEffect(() => {
     checkUserLoggedIn();
-  }, []);
+  }, [role]); // if role changes then it will check the user logged in or not @temporary solution of the problem
 
   //register user
   const register = async (user) => {
@@ -96,7 +96,7 @@ export const AuthProvider = ({ children }) => {
         router.push("coordinator/home");
         setLoading(false);
       } else if (data.role === "company") {
-        // error are there check the componenet or page
+        // error are there check the component or page
         router.push("company/add");
         setLoading(false);
       } else {
@@ -127,19 +127,14 @@ export const AuthProvider = ({ children }) => {
     const data = await res.json();
 
     if (res.ok) {
-      console.log(user);
-      setUser(data.user); // idk why its not setting the user if user refreshes the page and try to alter any student data it will failed because its not setting the user
+      setUser(data.user); // idk why its not setting up the user if user refreshes the page and try to alter any student data it will failed because its not setting the user. in the useEffect array dependency user added so that if user changes here then again it will call again checkUserLoggedIn function and set the user and role
       setRole(data.role);
-      console.log(user);
     } else {
       setUser(null);
       setRole("");
     }
   };
 
-  // useEffect(() => {
-  //   checkUserLoggedIn(); // this is for the temporary fix of the user not being logged in after refresh
-  // }, [role]);
 
   // last updated by function
 

@@ -1,6 +1,5 @@
-
 import { FaEye } from "react-icons/fa";
-import { useEffect, useState ,useContext } from "react";
+import { useEffect, useState, useContext } from "react";
 // import { useRouter } from "next/router";
 import AuthContext from "@/context/AuthContext";
 import { toast } from "react-toastify";
@@ -11,16 +10,8 @@ import StudentDocs from "@/components/student/StudentDocs";
 // import Link from "next/link";
 
 export default function StudentProfileEdit({ token = "", student }) {
+  const { lastUpdatedBy } = useContext(AuthContext);
 
-  // console.log("student: ",student);
-  // console.log("token", token)
-
-  // console.log("user: ",AuthContext.Provider.getUser);
-
-  const {user , lastUpdatedBy} = useContext(AuthContext);
-
-
-  // console.log('user: ',user);
   const id = student?.id;
   const {
     createdAt,
@@ -31,9 +22,11 @@ export default function StudentProfileEdit({ token = "", student }) {
     course,
     profile_pic,
     placed_status,
-    resume,casteCertificate, // here all the uploading docs destructuring is done such after api call i wont give internal server error
+    resume,
+    casteCertificate, // here all the uploading docs destructuring is done such after api call i wont give internal server error
     disabilityCertificate,
-    drivingLicence,panCard,
+    drivingLicence,
+    panCard,
     tenthCertificate,
     twelthCertificate,
     allSemMarksheet,
@@ -42,10 +35,9 @@ export default function StudentProfileEdit({ token = "", student }) {
     ...newStudent
   } = student.attributes;
 
-
   const [values, setValues] = useState(newStudent);
-  const [isPwd,setIsPwd] = useState(false);
-  const [chosenCourse , setChosenCourse] = useState("");
+  const [isPwd, setIsPwd] = useState(false);
+  const [chosenCourse, setChosenCourse] = useState("");
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -61,98 +53,96 @@ export default function StudentProfileEdit({ token = "", student }) {
     // console.log("ID=>",id ,typeof(id) );
 
     if (confirm("Are you sure you want to edit student profile?")) {
-      // console.log("values: ",values);
-
-     try {
-      // console.log("myId: ",id);
-      const res = await fetch(`${API_URL}/api/students/${id}`, {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify({ data: values }),
-      });
-
-  
-      if (!res.ok) {
-        if (res.status === 403 || res.status === 401) {
-          toast.error("No token included");
-          return;
-        }
-
-        const profile = await res.json();
-
-        // console.log("res: ",res);
-
-        toast.error(profile?.error.name);
-      } else {
-        const profile = await res.json();
-
-        lastUpdatedBy({ selectedStudentId:id , token:token});
-
-        toast.success("Profile Edited Successfully");
+      // @important lastUpdateBy should be called before this api call its important to save logs first and then do changes in student profile
+      if (!(await lastUpdatedBy({ selectedStudentId: id, token: token }))) {
+        toast.error("Something went wrong");
+        console.log("Unable to update logs in student profile");
+        return;
       }
-     } catch (e) {
-      console.log("Error while editing: ",e);
-     }
-    }
-  };
 
-  const handlePwdChange = (e) => {
-    const { name, value } = e.target
-    setValues({ ...values, [name]: !values.pwd })
-    setIsPwd(value);
-  }
-
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-
-    // console.log("typeof : ",typeof value)
-    // console.log("name: ",name);
-
-    setValues({ ...values, [name]: value });
-   
-  };
-
-  const changePlacedStatus = async (e) => {
-    if (confirm("Are you sure you want to change placed status?")) {
-      e.preventDefault();
-      // api/student/set-placed-status?roll=2111mc02&placed_status=placed_a2
-      const res = await fetch(
-        `${API_URL}/api/student/set-placed-status?roll=${values.roll}&placed_status=${placedStatus}`,
-        {
+      try {
+        const res = await fetch(`${API_URL}/api/students/${id}`, {
           method: "PUT",
           headers: {
             "Content-Type": "application/json",
             Authorization: `Bearer ${token}`,
           },
-        }
-      );
+          body: JSON.stringify({ data: values }),
+        });
 
-      if (!res.ok) {
-        if (res.status === 403 || res.status === 401) {
-          toast.error("Forbidden");
-          return;
+        if (!res.ok) {
+          if (res.status === 403 || res.status === 401) {
+            toast.error("No token included");
+            return;
+          }
+
+          const profile = await res.json();
+          toast.error(profile?.error.name);
+        } else {
+          const profile = await res.json();
+          toast.success("Profile Edited Successfully");
         }
-      } else {
-        toast.success("Placed Status Updated");
+      } catch (e) {
+        console.log("Error while editing: ", e);
       }
     }
   };
 
-  const [programs, setPrograms] = useState([program.data]);//this contains an object consists of two properties {id: , attributes: } and the attributes further contain the program_name
+  const handlePwdChange = (e) => {
+    const { name, value } = e.target;
+    setValues({ ...values, [name]: !values.pwd });
+    setIsPwd(value);
+  };
 
-  const [courses, setCourses] = useState([course?.data]); //this conatin an object consists of two properties {id:  , attributes: } and the attributes has the course_name
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setValues({ ...values, [name]: value });
+  };
 
-  const [mainData , setMainData] = useState([]); // data which is filled by student 
+  const changePlacedStatus = async (e) => {
+    e.preventDefault();
+    if (confirm("Are you sure you want to change placed status?")) {
+      // @important lastUpdateBy should be called before this api call its important to save logs first and then do changes in student profile
+      if (await lastUpdatedBy({ selectedStudentId: id, token: token })) {
+        // api/student/set-placed-status?roll=2111mc02&placed_status=placed_a2
+        const res = await fetch(
+          `${API_URL}/api/student/set-placed-status?roll=${values.roll}&placed_status=${placedStatus}`,
+          {
+            method: "PUT",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
+
+        if (!res.ok) {
+          if (res.status === 403 || res.status === 401) {
+            toast.error("Forbidden");
+            return;
+          }
+        } else {
+          toast.success("Placed Status Updated");
+        }
+      } else {
+        toast.error("Something went wrong");
+        console.log("Unable to update logs in student profile");
+      }
+    }
+  };
+
+  const [programs, setPrograms] = useState([program.data]); //this contains an object consists of two properties {id: , attributes: } and the attributes further contain the program_name
+
+  const [courses, setCourses] = useState([course?.data]); //this contain an object consists of two properties {id:  , attributes: } and the attributes has the course_name
+
+  const [mainData, setMainData] = useState([]); // data which is filled by student
 
   const [placedStatus, setPlacedStatus] = useState(placed_status);
 
   useEffect(() => {
-    setIsPwd(values.pwd)
+    setIsPwd(values.pwd);
     // console.log("values(UseEffect): ",values.pwd)
-  }, [values.pwd])
+  }, [values.pwd]);
 
   //get courses of selected program
 
@@ -166,8 +156,7 @@ export default function StudentProfileEdit({ token = "", student }) {
       .then((res) => res.json())
       .then((data) => {
         setMainData(data.data);
-        setPrograms(data.data)
-
+        setPrograms(data.data);
       });
   }, []);
 
@@ -185,27 +174,24 @@ export default function StudentProfileEdit({ token = "", student }) {
   // },[])
 
   useEffect(() => {
-
     mainData.map((program) => {
-
       // if (program.id === parseInt(values.program)) {
       //   setCourses(program?.attributes?.courses?.data);
       // }
 
       if (program.id === parseInt(values.program)) {
-       if (program?.attributes?.courses?.data?.attributes?.course_name != course.data.attributes.course_name) {
-
-         setCourses([course?.data]);
+        if (
+          program?.attributes?.courses?.data?.attributes?.course_name !=
+          course.data.attributes.course_name
+        ) {
+          setCourses([course?.data]);
           setCourses((pre) => {
-            
             // if(program.attributes.courses.data.attributes.course_name != )
-            return (
-              [...pre, ...program?.attributes?.courses?.data]
-            )
+            return [...pre, ...program?.attributes?.courses?.data];
           });
         }
       }
-    })
+    });
   }, [values.program]);
 
   return (
@@ -224,12 +210,13 @@ export default function StudentProfileEdit({ token = "", student }) {
                 <p className="mt-1 text-sm text-gray-500">
                   Student Personal Information, account will be active after
                   admin approval.
-                  <img src={`${API_URL}${student?.attributes?.profile_pic?.data?.attributes?.url}`} />
+                  <img
+                    src={`${API_URL}${student?.attributes?.profile_pic?.data?.attributes?.url}`}
+                  />
                 </p>
               </div>
               <div className="mt-5 md:mt-0 md:col-span-2">
                 <div className="grid grid-cols-6 gap-6">
-
                   <div className="col-span-6 sm:col-span-3">
                     <label
                       htmlFor="approved"
@@ -565,42 +552,43 @@ export default function StudentProfileEdit({ token = "", student }) {
                     </select>
                   </div>
 
-                 
-                    {values.category !== 'general' ? (<>
-                    <div className='col-span-6 sm:col-span-3'>
+                  {values.category !== "general" ? (
+                    <>
+                      <div className="col-span-6 sm:col-span-3">
                         <label
-                          htmlFor='category_link'
-                          className='block text-sm font-medium text-gray-700'
+                          htmlFor="category_link"
+                          className="block text-sm font-medium text-gray-700"
                         >
-                        Category Certificate<span className='text-red-700'>*</span> 
-                       
+                          Category Certificate
+                          <span className="text-red-700">*</span>
                         </label>
-                
-                     <div className="w-full flex ">
-                        
-                        <input
-                          value={values.category_link}
-                          onChange={handleInputChange}
-                          type='text'
-                          name='category_link'
-                          id='category_link'
-                          placeholder='Drive Link'
-                          autoComplete='tel-national'
-                          required={values.category !== 'general' ? true : false}
-                          className='mt-0 block w-[90%] px-0.5 border-0 border-b-2 border-gray-300 focus:ring-0 focus:border-stone-500 hover:cursor-pointer'
-                        /><span
-                          className="inline m-auto  "
-                        > {(values.category_link) ? (<a
-                          href={values.category_link}
-                          target="_tpc"
-                        ><FaEye  color="yellow" />
-                        </a>) : null}</span>
 
-                     </div>
-                      
+                        <div className="w-full flex ">
+                          <input
+                            value={values.category_link}
+                            onChange={handleInputChange}
+                            type="text"
+                            name="category_link"
+                            id="category_link"
+                            placeholder="Drive Link"
+                            autoComplete="tel-national"
+                            required={
+                              values.category !== "general" ? true : false
+                            }
+                            className="mt-0 block w-[90%] px-0.5 border-0 border-b-2 border-gray-300 focus:ring-0 focus:border-stone-500 hover:cursor-pointer"
+                          />
+                          <span className="inline m-auto  ">
+                            {" "}
+                            {values.category_link ? (
+                              <a href={values.category_link} target="_tpc">
+                                <FaEye color="yellow" />
+                              </a>
+                            ) : null}
+                          </span>
+                        </div>
                       </div>
-                    </>) : null}
-           
+                    </>
+                  ) : null}
 
                   <div className="col-span-6 sm:col-span-3">
                     <label
@@ -624,73 +612,67 @@ export default function StudentProfileEdit({ token = "", student }) {
                     </select>
                   </div>
 
-                 {
-                   isPwd && (
-                      <div className="col-span-9 sm:col-span-3">
-                        <label
-                          htmlFor="type_of_disability"
-                          className="block text-sm font-medium text-gray-700"
-                        >
-                          Type Of Disability (If PWD)
-                        </label>
-                        <input
-                          value={values.type_of_disability}
-                          required={values.pwd ? true : false}
-                          type="text"
-                          name="type_of_disability"
-                          id="type_of_disability"
-                          autoComplete="type_of_disability"
-                          className="mt-0 block w-full px-0.5 border-0 border-b-2 border-blue-900 "
-                        />
-                      </div>
-                   )
-                 }
+                  {isPwd && (
+                    <div className="col-span-9 sm:col-span-3">
+                      <label
+                        htmlFor="type_of_disability"
+                        className="block text-sm font-medium text-gray-700"
+                      >
+                        Type Of Disability (If PWD)
+                      </label>
+                      <input
+                        value={values.type_of_disability}
+                        required={values.pwd ? true : false}
+                        type="text"
+                        name="type_of_disability"
+                        id="type_of_disability"
+                        autoComplete="type_of_disability"
+                        className="mt-0 block w-full px-0.5 border-0 border-b-2 border-blue-900 "
+                      />
+                    </div>
+                  )}
 
-                  {
-                    isPwd && (
-                      <div className="col-span-9 sm:col-span-3">
-                        <label
-                          htmlFor="disability_percentage"
-                          className="block text-sm font-medium text-gray-700"
-                        >
-                          Disability Percentage (If PWD)
-                        </label>
-                        <input
-                          value={values.disability_percentage}
-                          required={values.pwd ? true : false}
-                          type="text"
-                          name="disability_percentage"
-                          id="disability_percentage"
-                          autoComplete="disability_percentage"
-                          className="mt-0 block w-full px-0.5 border-0 border-b-2 border-blue-900 "
-                        />
-                      </div>
-                    )
-                  }
+                  {isPwd && (
+                    <div className="col-span-9 sm:col-span-3">
+                      <label
+                        htmlFor="disability_percentage"
+                        className="block text-sm font-medium text-gray-700"
+                      >
+                        Disability Percentage (If PWD)
+                      </label>
+                      <input
+                        value={values.disability_percentage}
+                        required={values.pwd ? true : false}
+                        type="text"
+                        name="disability_percentage"
+                        id="disability_percentage"
+                        autoComplete="disability_percentage"
+                        className="mt-0 block w-full px-0.5 border-0 border-b-2 border-blue-900 "
+                      />
+                    </div>
+                  )}
 
-                  {
-                    isPwd && (
-                      <div className="col-span-3 sm:col-span-1">
-                        <label
-                          htmlFor="disability_certificate"
-                          className="block text-sm font-medium text-gray-700"
-                        >
-                          Disability Certificate (IF PWD)
-                        </label>
-                        <input
-                          value={values.disability_certificate}
-                          required={values.pwd ? true : false}
-                          onChange={handleInputChange}
-                          type="text"
-                          name="disability_certificate"
-                          id="disability_certificate"
-                          autoComplete="disability_certificate"
-                          placeholder="Drive Link"
-                          className="mt-0 block w-full px-0.5 border-0 border-b-2 text-sm text-gray-600 border-gray-300 focus:ring-0 focus:border-stone-500"
-                        />
-                      </div>
-                    )
-                  }
+                  {isPwd && (
+                    <div className="col-span-3 sm:col-span-1">
+                      <label
+                        htmlFor="disability_certificate"
+                        className="block text-sm font-medium text-gray-700"
+                      >
+                        Disability Certificate (IF PWD)
+                      </label>
+                      <input
+                        value={values.disability_certificate}
+                        required={values.pwd ? true : false}
+                        onChange={handleInputChange}
+                        type="text"
+                        name="disability_certificate"
+                        id="disability_certificate"
+                        autoComplete="disability_certificate"
+                        placeholder="Drive Link"
+                        className="mt-0 block w-full px-0.5 border-0 border-b-2 text-sm text-gray-600 border-gray-300 focus:ring-0 focus:border-stone-500"
+                      />
+                    </div>
+                  )}
 
                   <div className="col-span-6 sm:col-span-3">
                     <label
@@ -715,24 +697,25 @@ export default function StudentProfileEdit({ token = "", student }) {
                     <label
                       htmlFor="blood_group"
                       className="block text-sm font-medium text-gray-700"
-                    ><div className="col-span-6 sm:col-span-3">
-                    <label
-                      htmlFor="institute_email_id"
-                      className="block text-sm font-medium text-gray-700"
                     >
-                      Institute Email
-                    </label>
-                    <input
-                      value={values.institute_email_id}
-                      onChange={handleInputChange}
-                      type="text"
-                      name="institute_email_id"
-                      id="institute_email_id"
-                      autoComplete="email"
-                      required
-                      className="mt-1 focus:ring-yellow-500 focus:border-yellow-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
-                    />
-                  </div>
+                      <div className="col-span-6 sm:col-span-3">
+                        <label
+                          htmlFor="institute_email_id"
+                          className="block text-sm font-medium text-gray-700"
+                        >
+                          Institute Email
+                        </label>
+                        <input
+                          value={values.institute_email_id}
+                          onChange={handleInputChange}
+                          type="text"
+                          name="institute_email_id"
+                          id="institute_email_id"
+                          autoComplete="email"
+                          required
+                          className="mt-1 focus:ring-yellow-500 focus:border-yellow-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                        />
+                      </div>
                       Blood Group
                     </label>
                     <input
@@ -946,11 +929,9 @@ export default function StudentProfileEdit({ token = "", student }) {
                       className="block text-sm font-medium text-gray-700"
                     >
                       Driving license
-
-
                     </label>
-                    
-                     <div className="flex w-full">
+
+                    <div className="flex w-full">
                       <input
                         value={values.driving_licience_link}
                         onChange={handleInputChange}
@@ -961,16 +942,15 @@ export default function StudentProfileEdit({ token = "", student }) {
                         placeholder="Drive Link"
                         className="mt-0 block w-[90%] px-0.5 border-0 border-b-2 text-sm text-gray-600 border-gray-300 focus:ring-0 focus:border-stone-500 hover:cursor-pointer"
                       />
-                      <span
-                        className="inline m-auto  "
-                      > {(values.driving_licience_link) ? (<a
-                          href={values.driving_licience_link}
-                        target="_tpc"
-                      ><FaEye color="yellow" />
-                      </a>) : null}</span>
-                     </div>
-
-                   
+                      <span className="inline m-auto  ">
+                        {" "}
+                        {values.driving_licience_link ? (
+                          <a href={values.driving_licience_link} target="_tpc">
+                            <FaEye color="yellow" />
+                          </a>
+                        ) : null}
+                      </span>
+                    </div>
                   </div>
 
                   <div className="col-span-3 sm:col-span-1">
@@ -1017,7 +997,7 @@ export default function StudentProfileEdit({ token = "", student }) {
                       GATE / JEE / JAM Rank
                     </label>
                     <input
-                    required
+                      required
                       value={values.rank}
                       onChange={handleInputChange}
                       type="number"
@@ -1035,7 +1015,7 @@ export default function StudentProfileEdit({ token = "", student }) {
                       Category Rank
                     </label>
                     <input
-                    required
+                      required
                       value={values.categoryRank}
                       onChange={handleInputChange}
                       type="number"
@@ -1078,7 +1058,6 @@ export default function StudentProfileEdit({ token = "", student }) {
                       Program
                     </label>
                     <select
-                     
                       // value={program.value}
                       onChange={handleInputChange}
                       id="program"
@@ -1194,10 +1173,8 @@ export default function StudentProfileEdit({ token = "", student }) {
                       className="block text-sm font-medium text-gray-700"
                     >
                       X Marksheet
-
-                     
                     </label>
-                    
+
                     <div className="flex w-full">
                       <input
                         value={values.X_marksheet}
@@ -1210,13 +1187,14 @@ export default function StudentProfileEdit({ token = "", student }) {
                         required
                         className="mt-0 block w-[90%] px-0.5 border-0 border-b-2 text-sm text-gray-600 border-gray-300 focus:ring-0 focus:border-stone-500 hover:cursor-pointer"
                       />
-                      <span
-                        className="inline m-auto  "
-                      > {(values.X_marksheet) ? (<a
-                          href={values.X_marksheet}
-                        target="_tpc"
-                      ><FaEye color="yellow" />
-                      </a>) : null}</span>
+                      <span className="inline m-auto  ">
+                        {" "}
+                        {values.X_marksheet ? (
+                          <a href={values.X_marksheet} target="_tpc">
+                            <FaEye color="yellow" />
+                          </a>
+                        ) : null}
+                      </span>
                     </div>
                   </div>
 
@@ -1287,11 +1265,9 @@ export default function StudentProfileEdit({ token = "", student }) {
                       className="block text-sm font-medium text-gray-700"
                     >
                       XII Marksheet
-
-                 
                     </label>
-                 
-                      <div className="w-full flex">
+
+                    <div className="w-full flex">
                       <input
                         value={values.XII_marksheet}
                         onChange={handleInputChange}
@@ -1303,15 +1279,15 @@ export default function StudentProfileEdit({ token = "", student }) {
                         required
                         className="mt-0 block w-[90%] px-0.5 border-0 border-b-2 text-sm text-gray-600 border-gray-300 focus:ring-0 focus:border-stone-500 hover:cursor-pointer"
                       />
-                      <span
-                        className="inline m-auto  "
-                      > {(values.XII_marksheet) ? (<a
-                          href={values.XII_marksheet}
-                        target="_tpc"
-                      ><FaEye color="yellow" />
-                      </a>) : null}</span>
-                      </div>
-                  
+                      <span className="inline m-auto  ">
+                        {" "}
+                        {values.XII_marksheet ? (
+                          <a href={values.XII_marksheet} target="_tpc">
+                            <FaEye color="yellow" />
+                          </a>
+                        ) : null}
+                      </span>
+                    </div>
                   </div>
 
                   <div className="col-span-6 sm:col-span-2">
@@ -1319,7 +1295,6 @@ export default function StudentProfileEdit({ token = "", student }) {
                       htmlFor="spi_1"
                       className="block text-sm font-medium text-gray-700"
                     >
-
                       CGPA-1
                     </label>
                     <input
@@ -1484,7 +1459,6 @@ export default function StudentProfileEdit({ token = "", student }) {
                     />
                   </div>
 
-
                   <div className="col-span-2 sm:col-span-1">
                     <label
                       htmlFor="spi_9"
@@ -1506,7 +1480,6 @@ export default function StudentProfileEdit({ token = "", student }) {
                       className="mt-0 block w-full px-0.5 border-0 border-b-2 border-gray-300 focus:ring-0 focus:border-stone-500"
                     />
                   </div>
-
 
                   <div className="col-span-6 sm:col-span-2">
                     <label
@@ -1534,8 +1507,8 @@ export default function StudentProfileEdit({ token = "", student }) {
                     >
                       All Sem Marksheets
                     </label>
-             
-                     <div className="flex w-full">
+
+                    <div className="flex w-full">
                       <input
                         value={values.all_sem_marksheet}
                         onChange={handleInputChange}
@@ -1547,15 +1520,15 @@ export default function StudentProfileEdit({ token = "", student }) {
                         required
                         className="mt-0 block w-[90%] px-0.5 border-0 border-b-2 text-sm text-gray-600 border-gray-300 focus:ring-0 focus:border-stone-500 hover:cursor-pointer"
                       />
-                      <span
-                        className="inline m-auto  "
-                      > {(values.all_sem_marksheet) ? (<a
-                          href={values.all_sem_marksheet}
-                        target="_tpc"
-                      ><FaEye color="yellow" />
-                      </a>) : null}</span>
-                     </div>
-                
+                      <span className="inline m-auto  ">
+                        {" "}
+                        {values.all_sem_marksheet ? (
+                          <a href={values.all_sem_marksheet} target="_tpc">
+                            <FaEye color="yellow" />
+                          </a>
+                        ) : null}
+                      </span>
+                    </div>
                   </div>
 
                   <div className="col-span-3 sm:col-span-1">
@@ -1673,225 +1646,199 @@ export default function StudentProfileEdit({ token = "", student }) {
                       className="mt-1 focus:ring-yellow-500 focus:border-yellow-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                     />
                   </div>
-
-
-                  
-
-                 
                 </div>
               </div>
             </div>
           </div>
 
-
-
-                  
-          
-
-                {
-                    values.is_mtech && (
-                      <>
-
-<div className="bg-white shadow px-4 py-5 sm:rounded-lg sm:p-6">
-            <div className="md:grid md:grid-cols-3 md:gap-6">
-              <div className="md:col-span-1">
-                <h3 className="text-lg font-medium leading-6 text-gray-900">
-                  Mtech Academic Details
-                </h3>
-                <p className="mt-1 text-sm text-gray-500">
-                  Student Personal Information, account will be active after
-                  admin approval.
-                </p>
-              </div>
-              <div className="mt-5 md:mt-0 md:col-span-2">
-                <div className="grid grid-cols-6 gap-6">
-                  
-
-<div className="col-span-6 sm:col-span-3">
-                    <label
-                      htmlFor="mtech_college_name"
-                      className="block text-sm font-medium text-gray-700"
-                    >
-                      College Name (Btech)
-                    </label>
-                    <input
-                      value={values.mtech_college_name}
-                      onChange={handleInputChange}
-                      type="text"
-                      name="mtech_college_name"
-                      id="mtech_college_name"
-                      autoComplete="email"
-                      required
-                      className="mt-1 focus:ring-yellow-500 focus:border-yellow-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
-                    />
+          {values.is_mtech && (
+            <>
+              <div className="bg-white shadow px-4 py-5 sm:rounded-lg sm:p-6">
+                <div className="md:grid md:grid-cols-3 md:gap-6">
+                  <div className="md:col-span-1">
+                    <h3 className="text-lg font-medium leading-6 text-gray-900">
+                      Mtech Academic Details
+                    </h3>
+                    <p className="mt-1 text-sm text-gray-500">
+                      Student Personal Information, account will be active after
+                      admin approval.
+                    </p>
                   </div>
-                      
+                  <div className="mt-5 md:mt-0 md:col-span-2">
+                    <div className="grid grid-cols-6 gap-6">
                       <div className="col-span-6 sm:col-span-3">
-                    <label
-                      htmlFor="mtech_YOP"
-                      className="block text-sm font-medium text-gray-700"
-                    >
-                      Year of Passing
-                    </label>
-                    <input
-                      value={values.mtech_YOP}
-                      onChange={handleInputChange}
-                      type="number"
-                      min={2000}
-                      max={2200}
-                      name="mtech_YOP"
-                      id="mtech_YOP"
-                      autoComplete="mtech_YOP"
-                      placeholder="Ex: 2022"
-                      required
-                      className="mt-1 focus:ring-yellow-500 focus:border-yellow-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
-                    />
-                  </div>
+                        <label
+                          htmlFor="mtech_college_name"
+                          className="block text-sm font-medium text-gray-700"
+                        >
+                          College Name (Btech)
+                        </label>
+                        <input
+                          value={values.mtech_college_name}
+                          onChange={handleInputChange}
+                          type="text"
+                          name="mtech_college_name"
+                          id="mtech_college_name"
+                          autoComplete="email"
+                          required
+                          className="mt-1 focus:ring-yellow-500 focus:border-yellow-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                        />
+                      </div>
 
-                  <div className="col-span-2 sm:col-span-1">
-                    <label
-                      htmlFor="mtech_spi_1"
-                      className="block text-sm font-medium text-gray-700"
-                    >
-                      1st Sem CGPA
-                    </label>
-                    <input
-                      value={values.mtech_spi_1}
-                      onChange={handleInputChange}
-                      type="number"
-                      min={2}
-                      max={10}
-                      step=".01"
-                      placeholder="Ex: 8.86"
-                      name="mtech_spi_1"
-                      id="mtech_spi_1"
-                      autoComplete="mtech_spi_1"
-                      className="mt-0 block w-full px-0.5 border-0 border-b-2 border-gray-300 focus:ring-0 focus:border-stone-500"
-                    />
-                  </div>
+                      <div className="col-span-6 sm:col-span-3">
+                        <label
+                          htmlFor="mtech_YOP"
+                          className="block text-sm font-medium text-gray-700"
+                        >
+                          Year of Passing
+                        </label>
+                        <input
+                          value={values.mtech_YOP}
+                          onChange={handleInputChange}
+                          type="number"
+                          min={2000}
+                          max={2200}
+                          name="mtech_YOP"
+                          id="mtech_YOP"
+                          autoComplete="mtech_YOP"
+                          placeholder="Ex: 2022"
+                          required
+                          className="mt-1 focus:ring-yellow-500 focus:border-yellow-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                        />
+                      </div>
 
-                  <div className="col-span-2 sm:col-span-1">
-                    <label
-                      htmlFor="mtech_spi_2"
-                      className="block text-sm font-medium text-gray-700"
-                    >
-                      2nd Sem CGPA
-                    </label>
-                    <input
-                      value={values.mtech_spi_2}
-                      onChange={handleInputChange}
-                      type="number"
-                      min={2}
-                      max={10}
-                      step=".01"
-                      placeholder="Ex: 8.86"
-                      name="mtech_spi_2"
-                      id="mtech_spi_2"
-                      autoComplete="mtech_spi_2"
-                      className="mt-0 block w-full px-0.5 border-0 border-b-2 border-gray-300 focus:ring-0 focus:border-stone-500"
-                    />
-                  </div>
+                      <div className="col-span-2 sm:col-span-1">
+                        <label
+                          htmlFor="mtech_spi_1"
+                          className="block text-sm font-medium text-gray-700"
+                        >
+                          1st Sem CGPA
+                        </label>
+                        <input
+                          value={values.mtech_spi_1}
+                          onChange={handleInputChange}
+                          type="number"
+                          min={2}
+                          max={10}
+                          step=".01"
+                          placeholder="Ex: 8.86"
+                          name="mtech_spi_1"
+                          id="mtech_spi_1"
+                          autoComplete="mtech_spi_1"
+                          className="mt-0 block w-full px-0.5 border-0 border-b-2 border-gray-300 focus:ring-0 focus:border-stone-500"
+                        />
+                      </div>
 
-                  <div className="col-span-2 sm:col-span-1">
-                    <label
-                      htmlFor="mtech_spi_3"
-                      className="block text-sm font-medium text-gray-700"
-                    >
-                      3rd Sem CGPA
-                    </label>
-                    <input
-                      value={values.mtech_spi_3}
-                      onChange={handleInputChange}
-                      type="number"
-                      min={2}
-                      max={10}
-                      step=".01"
-                      placeholder="Ex: 8.86"
-                      name="mtech_spi_3"
-                      id="mtech_spi_3"
-                      autoComplete="mtech_spi_3"
-                      className="mt-0 block w-full px-0.5 border-0 border-b-2 border-gray-300 focus:ring-0 focus:border-stone-500"
-                    />
-                  </div>
+                      <div className="col-span-2 sm:col-span-1">
+                        <label
+                          htmlFor="mtech_spi_2"
+                          className="block text-sm font-medium text-gray-700"
+                        >
+                          2nd Sem CGPA
+                        </label>
+                        <input
+                          value={values.mtech_spi_2}
+                          onChange={handleInputChange}
+                          type="number"
+                          min={2}
+                          max={10}
+                          step=".01"
+                          placeholder="Ex: 8.86"
+                          name="mtech_spi_2"
+                          id="mtech_spi_2"
+                          autoComplete="mtech_spi_2"
+                          className="mt-0 block w-full px-0.5 border-0 border-b-2 border-gray-300 focus:ring-0 focus:border-stone-500"
+                        />
+                      </div>
 
-                  <div className="col-span-2 sm:col-span-1">
-                    <label
-                      htmlFor="mtech_spi_4"
-                      className="block text-sm font-medium text-gray-700"
-                    >
-                      4th Sem CGPA
-                    </label>
-                    <input
-                      value={values.mtech_spi_4}
-                      onChange={handleInputChange}
-                      type="number"
-                      min={2}
-                      max={10}
-                      step=".01"
-                      placeholder="Ex: 8.86"
-                      name="mtech_spi_4"
-                      id="mtech_spi_4"
-                      autoComplete="mtech_spi_4"
-                      className="mt-0 block w-full px-0.5 border-0 border-b-2 border-gray-300 focus:ring-0 focus:border-stone-500"
-                    />
-                  </div>
+                      <div className="col-span-2 sm:col-span-1">
+                        <label
+                          htmlFor="mtech_spi_3"
+                          className="block text-sm font-medium text-gray-700"
+                        >
+                          3rd Sem CGPA
+                        </label>
+                        <input
+                          value={values.mtech_spi_3}
+                          onChange={handleInputChange}
+                          type="number"
+                          min={2}
+                          max={10}
+                          step=".01"
+                          placeholder="Ex: 8.86"
+                          name="mtech_spi_3"
+                          id="mtech_spi_3"
+                          autoComplete="mtech_spi_3"
+                          className="mt-0 block w-full px-0.5 border-0 border-b-2 border-gray-300 focus:ring-0 focus:border-stone-500"
+                        />
+                      </div>
 
-                  <div className="col-span-6 sm:col-span-3">
-                    <label
-                      htmlFor="mtech_gate_rank"
-                      className="block text-sm font-medium text-gray-700"
-                    >
-                      Gate Rank
-                    </label>
-                    <input
-                    required
-                      value={values.mtech_gate_rank}
-                      onChange={handleInputChange}
-                      type="number"
-                      name="mtech_gate_rank"
-                      id="mtech_gate_rank"
-                      autoComplete="mtech_gate_rank"
-                      className="mt-1 focus:ring-yellow-500 focus:border-yellow-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
-                    />
-                  </div>
+                      <div className="col-span-2 sm:col-span-1">
+                        <label
+                          htmlFor="mtech_spi_4"
+                          className="block text-sm font-medium text-gray-700"
+                        >
+                          4th Sem CGPA
+                        </label>
+                        <input
+                          value={values.mtech_spi_4}
+                          onChange={handleInputChange}
+                          type="number"
+                          min={2}
+                          max={10}
+                          step=".01"
+                          placeholder="Ex: 8.86"
+                          name="mtech_spi_4"
+                          id="mtech_spi_4"
+                          autoComplete="mtech_spi_4"
+                          className="mt-0 block w-full px-0.5 border-0 border-b-2 border-gray-300 focus:ring-0 focus:border-stone-500"
+                        />
+                      </div>
 
-                  <div className="col-span-6 sm:col-span-3">
-                    <label
-                      htmlFor="mtech_gate_score"
-                      className="block text-sm font-medium text-gray-700"
-                    >
-                      Gate Score
-                    </label>
-                    <input
-                    required
-                      value={values.mtech_gate_score}
-                      onChange={handleInputChange}  
-                      type="number"
-                      name="mtech_gate_score"
-                      id="mtech_gate_score"
-                      autoComplete="mtech_gate_score"
-                      className="mt-1 focus:ring-yellow-500 focus:border-yellow-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
-                    />
-                  </div>
+                      <div className="col-span-6 sm:col-span-3">
+                        <label
+                          htmlFor="mtech_gate_rank"
+                          className="block text-sm font-medium text-gray-700"
+                        >
+                          Gate Rank
+                        </label>
+                        <input
+                          required
+                          value={values.mtech_gate_rank}
+                          onChange={handleInputChange}
+                          type="number"
+                          name="mtech_gate_rank"
+                          id="mtech_gate_rank"
+                          autoComplete="mtech_gate_rank"
+                          className="mt-1 focus:ring-yellow-500 focus:border-yellow-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                        />
+                      </div>
 
+                      <div className="col-span-6 sm:col-span-3">
+                        <label
+                          htmlFor="mtech_gate_score"
+                          className="block text-sm font-medium text-gray-700"
+                        >
+                          Gate Score
+                        </label>
+                        <input
+                          required
+                          value={values.mtech_gate_score}
+                          onChange={handleInputChange}
+                          type="number"
+                          name="mtech_gate_score"
+                          id="mtech_gate_score"
+                          autoComplete="mtech_gate_score"
+                          className="mt-1 focus:ring-yellow-500 focus:border-yellow-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                        />
+                      </div>
+                    </div>
                   </div>
+                </div>
               </div>
-            </div>
-          </div>
+            </>
+          )}
 
-
-                      </>
-
-                    )
-                  }
-
-
-
-            
-
-        
-
-     
           {/* <div className="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
             <dt className="text-sm font-medium text-gray-500">Resume</dt>
             <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
@@ -1939,65 +1886,61 @@ export default function StudentProfileEdit({ token = "", student }) {
               </ul>
             </dd>
           </div> */}
-          
-        {/* for docs */}
 
+          {/* for docs */}
 
-        {/* Note:- Beware that the "typee" is also responsible for the toogle effect of view of "google drive link"  */}
-
-
+          {/* Note:- Beware that the "typee" is also responsible for the toogle effect of view of "google drive link"  */}
 
           <StudentDocs
             key={1}
             uploadedDoc={resume.data}
             google_drive_link={resume_link}
-            doc_name={'Resume'}
+            doc_name={"Resume"}
           />
           <StudentDocs
             key={2}
             uploadedDoc={tenthCertificate.data}
             google_drive_link={newStudent.X_marksheet}
-            doc_name={'Tenth Certificate'}
+            doc_name={"Tenth Certificate"}
           />
-
 
           <StudentDocs
             key={3}
             uploadedDoc={twelthCertificate.data}
             google_drive_link={newStudent.XII_marksheet}
-            doc_name={'Twelth Certificate'}
+            doc_name={"Twelth Certificate"}
           />
           <StudentDocs
             key={4}
             uploadedDoc={aadharCard.data}
-            doc_name={'AadharCard'}
+            doc_name={"AadharCard"}
           />
           <StudentDocs
             key={5}
             uploadedDoc={drivingLicence.data}
             google_drive_link={newStudent.driving_licience_link}
-            doc_name={'Driving Licence'}
+            doc_name={"Driving Licence"}
           />
           <StudentDocs
             key={6}
             uploadedDoc={allSemMarksheet.data}
             google_drive_link={newStudent.all_sem_marksheet}
-            doc_name={'All Sem Marksheet'}
+            doc_name={"All Sem Marksheet"}
           />
           <StudentDocs
             key={7}
             uploadedDoc={panCard.data}
-            doc_name={'Pan Card'}
+            doc_name={"Pan Card"}
           />
 
           {/* Toggle effect docs */}
 
-          {(values.category !== 'general') ? (
+          {values.category !== "general" ? (
             <StudentDocs
               key={8}
               uploadedDoc={casteCertificate.data}
               google_drive_link={values.category_link}
-              doc_name={'Caste Certificate'}
+              doc_name={"Caste Certificate"}
             />
           ) : null}
 
@@ -2006,11 +1949,10 @@ export default function StudentProfileEdit({ token = "", student }) {
               key={9}
               uploadedDoc={disabilityCertificate.data}
               google_drive_link={values.disability_certificate}
-              doc_name={'Disability Certificate'}
+              doc_name={"Disability Certificate"}
             />
           )}
 
-          
           <div className="flex justify-end">
             <button
               type="submit"
@@ -2019,14 +1961,11 @@ export default function StudentProfileEdit({ token = "", student }) {
               Edit
             </button>
           </div>
-
-          
         </div>
       </form>
     </>
   );
 }
-
 
 // var Comp = function ({uploadedDoc,link,typee}){
 
