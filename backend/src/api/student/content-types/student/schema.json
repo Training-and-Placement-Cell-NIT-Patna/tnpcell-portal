@@ -385,39 +385,39 @@
     },
     "is_mtech": {
       "type": "boolean",
-      "required": true
+      "required": false
     },
     "mtech_college_name": {
       "type": "text",
-      "required": "false"
+      "required": false
     },
     "mtech_YOP": {
       "type": "string",
-      "required": "false"
+      "required": false
     },
     "mtech_spi_1": {
       "type": "decimal",
-      "required": "false"
+      "required": false
     },
     "mtech_spi_2": {
       "type": "decimal",
-      "required": "false"
+      "required": false
     },
     "mtech_spi_3": {
       "type": "decimal",
-      "required": "false"
+      "required": false
     },
     "mtech_spi_4": {
       "type": "decimal",
-      "required": "false"
+      "required": false
     },
     "mtech_gate_rank": {
       "type": "string",
-      "required": "false"
+      "required": false
     },
     "mtech_gate_score": {
       "type": "string",
-      "required": "false"
+      "required": false
     }
   }
 }
