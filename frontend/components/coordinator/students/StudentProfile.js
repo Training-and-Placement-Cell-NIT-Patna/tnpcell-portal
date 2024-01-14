@@ -42,7 +42,7 @@ export default function StudentProfileEdit({ token = "", student }) {
 
   const [values, setValues] = useState(newStudent);
 
-  const {lastUpdateBy} = useContext(AuthContext);
+  const {lastUpdatedBy} = useContext(AuthContext);
 
   // const router = useRouter()
 
