@@ -10,11 +10,11 @@ import Link from "next/link";
 export default function StudentRequest({ token = "" }) {
   const [students, setStudents] = useState([]);
 
-  const { lastUpdatedBy } = useContext(AuthContext);
+  const { handleLastUpdatedBy } = useContext(AuthContext);
 
   const handleApprove = async (id) => {
     // @important lastUpdateBy should be called before this api call its important to save logs first and then do changes in student profile
-    if (!(await lastUpdatedBy({ selectedStudentId: id, token: token }))) {
+    if (!(await handleLastUpdatedBy({ selectedStudentId: id, token: token }))) {
       toast.error("Something went wrong");
       console.log("Unable to update logs in student profile");
       return;
