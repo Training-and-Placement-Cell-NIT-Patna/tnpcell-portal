@@ -1897,7 +1897,7 @@ type_of_disability
                   value={values.mtech_spi_1}
                   onChange={handleInputChange}
                   type='number'
-                  min={2}
+                  min={0}
                   max={10}
                   step='.01'
                   placeholder='Ex: 8.86'
@@ -1921,7 +1921,7 @@ type_of_disability
                   value={values.mtech_spi_2}
                   onChange={handleInputChange}
                   type='number'
-                  min={2}
+                  min={0}
                   max={10}
                   step='.01'
                   placeholder='Ex: 8.86'
@@ -1945,7 +1945,7 @@ type_of_disability
                   value={values.mtech_spi_3}
                   onChange={handleInputChange}
                   type='number'
-                  min={2}
+                  min={0}
                   max={10}
                   step='.01'
                   placeholder='Ex: 8.86'
