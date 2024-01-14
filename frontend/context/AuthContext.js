@@ -146,7 +146,7 @@ export const AuthProvider = ({ children }) => {
           role: role,
           username: user.username,
           email: user.email,
-          timeStamp: new Date().toLocaleString(),
+          timeStamp: new Date().toLocaleString('en-IN'),
         },
       };
 
