@@ -135,10 +135,9 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
-
   // last updated by function
 
-  const lastUpdatedBy = async (changedBy) => {
+  const handleLastUpdatedBy = async (changedBy) => {
     try {
       const { selectedStudentId, token } = changedBy;
       const data = {
@@ -146,7 +145,7 @@ export const AuthProvider = ({ children }) => {
           role: role,
           username: user.username,
           email: user.email,
-          timeStamp: new Date().toLocaleString('en-IN'),
+          timeStamp: new Date().toLocaleString("en-IN"),
         },
       };
 
@@ -161,7 +160,7 @@ export const AuthProvider = ({ children }) => {
       const resp = await res.json();
       // @important
 
-      if (resp.data.attributes.lastUpdatedBy) {
+      if (res.ok) {
         return true;
       } else {
         return false;
@@ -179,7 +178,7 @@ export const AuthProvider = ({ children }) => {
         logout,
         checkUserLoggedIn,
         loading,
-        lastUpdatedBy,
+        handleLastUpdatedBy,
       }}
     >
       {children}
