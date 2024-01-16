@@ -1951,7 +1951,6 @@ type_of_disability
                   placeholder='Ex: 8.86'
                   name='mtech_spi_3'
                   id='mtech_spi_3'
-                  required = {values.is_mtech ? true:false}
                   autoComplete=''
                   className='mt-0 block w-full px-0.5 border-0 border-b-2 border-gray-300 focus:ring-0 focus:border-stone-500'
                 />
@@ -1976,7 +1975,6 @@ type_of_disability
                   name='mtech_spi_4'
                   id='mtech_spi_4'
                   autoComplete=''
-                  required = {values.is_mtech ? true:false}
                   className='mt-0 block w-full px-0.5 border-0 border-b-2 border-gray-300 focus:ring-0 focus:border-stone-500'
                 />
               </div>
