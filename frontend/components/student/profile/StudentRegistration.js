@@ -774,6 +774,7 @@ export default function StudentRegistration({ token = '' }) {
                     required
                     className='mt-0 block w-full px-0.5 border-0 border-b-2 text-sm text-gray-600 border-gray-300 focus:ring-0 focus:border-stone-500'
                   />
+                  
                 </div>
 
 
@@ -837,7 +838,6 @@ export default function StudentRegistration({ token = '' }) {
                     id='driving_licience_link'
                     autoComplete='driving_licience_link'
                     placeholder='Drive Link'
-
                     className='mt-0 block w-full px-0.5 border-0 border-b-2 text-sm text-gray-600 border-gray-300 focus:ring-0 focus:border-stone-500'
                   />
                 </div>
@@ -860,7 +860,6 @@ export default function StudentRegistration({ token = '' }) {
                     autoComplete='pancard_no'
                     pattern="[A-Z]{5}[0-9]{4}[A-Z]"
                     maxLength={10}
-                    // required
                     className='mt-0 block w-full px-0.5 border-0 border-b-2 text-sm text-gray-600 border-gray-300 focus:ring-0 focus:border-stone-500'
                   />
                 </div>
@@ -2020,10 +2019,6 @@ type_of_disability
                   className='mt-0 block w-full px-0.5 border-0 border-b-2 border-gray-300 focus:ring-0 focus:border-stone-500'
                 />
               </div>
-
-
-              
-
 
               </div>
               </>
