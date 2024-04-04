@@ -1,0 +1,28 @@
+name: Build on PR
+
+on:
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Use Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16.15.0'
+
+      - name: Install Frontend Dependencies
+        run: cd frontend && npm install
+      - name: Install Backend Dependencies 
+        run: cd backend && npm install
+      # - name: Generate prisma client
+      #   run: npm run db:generate
+        
+      - name: Run Frontend Build
+        run: cd frontend && npm run build
+      - name: Run Backend Build
+        run: cd backend && npm run build
