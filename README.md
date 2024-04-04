@@ -13,24 +13,23 @@ https://nodejs.org/download/release/v16.15.0/
 Download (node-v16.15.0-x86.msi ) or use node version manager (nvm)
 
 
+# Backend start:
 
-
-# Backend start: 
 go to the /backend dir and run <br>
-```npm install```
-now run <br>
-```npm run dev``` <br>
+`npm install`
+<br/>now run <br>
+`npm run dev` <br>
 -> login or signup to strapi’s administrative panel -
 
-go to settings options in left side bar. 
+go to settings options in left side bar.
 
--under USERS & PERMISSIONS PLUGIN in roles: 
+-under USERS & PERMISSIONS PLUGIN in roles:
 
 -add new role
 
 -Enter name - admin
 
-- give required permissions 
+- give required permissions
 
 - save it
 
@@ -57,4 +56,3 @@ go to settings options in left side bar.
 - give required permissions
 
 - save it
-
