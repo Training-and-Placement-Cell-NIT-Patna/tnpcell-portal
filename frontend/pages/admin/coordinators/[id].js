@@ -27,8 +27,11 @@ export async function getServerSideProps({ req, params }) {
     headers: { Authorization: `Bearer ${token}` },
   }
 
-  const res = await axios.get(`${API_URL}/api/users/${id}?populate=*`, config)
-  console.log(res.data)
+  let res;
+
+  // change in the route suggest to fetch the TPC and coordinators data as per the "isTpc"
+
+  res = await axios.get(`${API_URL}/api/users/${params.id}?populate=*`, config)
 
   return {
     props: { data: res.data, statusCode: res.status, token: token }, // will be passed to the page component as props
