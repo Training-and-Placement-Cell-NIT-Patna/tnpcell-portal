@@ -119,7 +119,7 @@ export default function AddCoordinatorDetails({ token }) {
     const resp = await fetch(`${API_URL}/api/coordinators/${id}`, {
       method: 'DELETE',
       headers: {
-        'Authorization': `Bearhttp://localhost:1337/api/coordinatorser ${token}`
+        'Authorization': `Bearer ${token}`
       }
     })
     if (resp.ok) {

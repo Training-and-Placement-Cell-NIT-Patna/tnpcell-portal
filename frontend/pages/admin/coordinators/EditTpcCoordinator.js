@@ -35,8 +35,6 @@ export default function EditTpcCoordinator({ token, user }) {
   })
 
 
-  // uploading the image
-
 
 
   // removing bg logic
