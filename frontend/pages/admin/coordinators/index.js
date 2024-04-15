@@ -59,7 +59,7 @@ export default function Coordinators({ token }) {
           <div>
             <button
               type='button'
-              onClick={() => handleDelete(params.value)}
+              onClick={() => handleDelete(params.value, false)}
               className='inline-flex items-center px-3 py-1.5 border border-transparent text-xs font-medium rounded-full shadow-sm text-white bg-red-500 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-re-600'
             >
               Delete
@@ -105,6 +105,24 @@ export default function Coordinators({ token }) {
         )
       },
     },
+    {
+      headerName: 'Delete',
+      field: 'id',
+      cellStyle: (params) => ({ borderRight: '2px solid #ccc', }),
+      cellRenderer: function (params) {
+        return (
+          <div>
+            <button
+              type='button'
+              onClick={() => handleDelete(params.value,true)}
+              className='inline-flex items-center px-3 py-1.5 border border-transparent text-xs font-medium rounded-full shadow-sm text-white bg-red-500 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-re-600'
+            >
+              Delete
+            </button>
+          </div>
+        )
+      },
+    }
   ])
 
 
@@ -174,20 +192,37 @@ export default function Coordinators({ token }) {
   }, [])
 
 
-  const handleDelete = async (id) => {
+  const handleDelete = async (id , isTpc) => {
+
+    console.log("got the request : ", typeof isTpc)
     const config = {
       headers: { Authorization: `Bearer ${token}` },
       method: 'DELETE',
     }
-    if (confirm('Are you sure you want to delete this recruiter?')) {
-      const res = await fetch(`${API_URL}/api/users/${id}`, config)
-      if (res.status === 200) {
-        toast.info('Coordinator deleted successfully!')
-        getAllCoordinators();
+    
+    try {
+      if (confirm('Are you sure you want to delete this coordinator?')) {
+        
+        let res;
 
-      } else {
-        toast.error('Error deleting Coordinator!')
+        if(isTpc){
+           res = await fetch(`${API_URL}/api/users/${id}`, config);
+        } else {
+           res = await fetch(`${API_URL}/api/coordinators/${id}`, config)
+        }
+
+
+        if (res.status === 200) {
+          toast.info('Coordinator deleted successfully!')
+          getAllCoordinators();
+  
+        } else {
+          toast.error('Error deleting Coordinator!')
+        }
+
       }
+    } catch (err) {
+      toast.error('Error deleting Coordinator!');
     }
   }
   return (
@@ -271,7 +306,7 @@ export default function Coordinators({ token }) {
           </div>
         </div>
       </div>
-      <div className='ag-theme-alpine mt-4' style={{ margin: "auto", height: 400, width: 800 }}>
+      <div className='ag-theme-alpine mt-4' style={{ margin: "auto", height: 400, width: 1000 }}>
         <AgGridReact
           ref={gridRef} 
           rowMultiSelectWithClick={true}
