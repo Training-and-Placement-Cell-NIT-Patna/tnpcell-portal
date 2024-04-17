@@ -20,9 +20,9 @@ export default function EditTpcCoordinator({ token, user }) {
     twitter: user.twitter,
     imgId: ''
   })
-  const [toUpdateImg , setToUpdateImg] = useState(false);
+  const [toUpdateImg, setToUpdateImg] = useState(false);
   const [image, setImage] = useState(null);
-  const [fetchedImage , setFetchedImage] = useState(null);
+  const [fetchedImage, setFetchedImage] = useState(null);
   const [loading, setLoading] = useState(false)
   const [prev, setPrev] = useState({
     name: 'Name',
@@ -39,70 +39,101 @@ export default function EditTpcCoordinator({ token, user }) {
 
   // removing bg logic
 
-async function removeBg(){
+  async function removeBg() {
 
-  try {
-    const res = await axios(`http://localhost:1337/api/upload/files/${formData.imgId}`,{
-    method:'delete',
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },  })
+    try {
+      const res = await axios(`http://localhost:1337/api/upload/files/${formData.imgId}`, {
+        method: 'delete',
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
 
 
 
-    if(res.data.id){
-      toast.success("Image has been successfully deleted");
-    } else {
-      toast.error("Something went wrong"); // when the problems is from server side
+      if (res.data.id) {
+        toast.success("Image has been successfully deleted");
+      } else {
+        toast.error("Something went wrong"); // when the problems is from server side
+      }
+    } catch (err) {
+      toast.error("Something went wrong") // when the problems is from client side
     }
-  } catch (err) {
-    toast.error("Something went wrong") // when the problems is from client side
   }
-}
 
   const fetchAllCoordinators = async (id) => {
 
-    fetch(`http://localhost:1337/api/coordinators/${id}?populate=*`, {
-      headers: {
-        'Authorization': `Bearer ${token}`
-      },
-    })
-      .then((res) => {
-        return res.json();
-      }).then((res) => {
-
-        const image = res.data.attributes.image;
-
-
-        const data = res.data.attributes;
-
-
-        setFormData(
-          {
-            name: data.name,
-            email: data.email,
-            mobile: data.mobile,
-            year: data.year,
-            linkedin: data.linkedin,
-            twitter: data.twitter,
-            imgId: (image.data) ? (image.data?.id):null
-          }
-        )
-
-        setFetchedImage(image.data?.attributes)
-
+    try {
+      const res = await axios(`http://localhost:1337/api/coordinators/${id}?populate=*`, {
+        headers: {
+          'Authorization': `Bearer ${token}`
+        },
       })
-      .catch((err) => {
-        throw new Error(err.message);
-        
-      })
+      const image = res.data.attributes.image;
+
+
+      const data = res.data.attributes;
+
+
+      setFormData(
+        {
+          name: data.name,
+          email: data.email,
+          mobile: data.mobile,
+          year: data.year,
+          linkedin: data.linkedin,
+          twitter: data.twitter,
+          imgId: (image.data) ? (image.data?.id) : null
+        }
+      )
+
+      setFetchedImage(image.data?.attributes)
+
+    } catch (err) {
+
+      throw new Error(err.message);
+    }
+
+
+
+    // fetch(`http://localhost:1337/api/coordinators/${id}?populate=*`, {
+    //   headers: {
+    //     'Authorization': `Bearer ${token}`
+    //   },
+    // })
+    // .then((res) => {
+    //     return res.json();
+    //   }).then((res) => {
+
+    //     const image = res.data.attributes.image;
+
+
+    //     const data = res.data.attributes;
+
+
+    //     setFormData(
+    //       {
+    //         name: data.name,
+    //         email: data.email,
+    //         mobile: data.mobile,
+    //         year: data.year,
+    //         linkedin: data.linkedin,
+    //         twitter: data.twitter,
+    //         imgId: (image.data) ? (image.data?.id):null
+    //       }
+    //     )
+
+    //     setFetchedImage(image.data?.attributes)
+
+    //   })
+    //   .catch((err) => {
+    //     
+
+    //   })
   }
 
 
 
-  useEffect(() => {
-    fetchAllCoordinators(user.id)
-  }, [])
 
 
   const pages = [
@@ -114,46 +145,38 @@ async function removeBg(){
     setImage(e.target.files[0]);
   };
 
-  const handleSubmit = async (e) => { 
+  const handleSubmit = async (e) => {
+    try {
 
-    e.preventDefault();
+      e.preventDefault();
 
-    if (!formData.name || !formData.email || !formData.mobile || !formData.year || !formData.linkedin || !formData.twitter ) {
+      if (!formData.name || !formData.email || !formData.mobile || !formData.year || !formData.linkedin || !formData.twitter) {
 
-      // console.log("check something below: ")
-      // console.log("name: ",formData.name," email: ",formData.email, " mobile: ",formData.mobile, " twitter: ",formData.twitter, " linkedin: ",formData.linkedin," year: ",formData.year , " image: ",image)
+        toast.error('Please fill all the fields')
+        return;
+      }
 
-      toast.error('Please fill all the fields')
-      return;
-    }
+      if (fetchedImage && image) { // prevent the admin for uploading more than one image for single coordinator
+        toast.error("Image is already uploaded")
+        return;
+      }
 
-    if(fetchedImage && image){ // prevent the admin for uploading more than one image for single coordinator
-      toast.error("Image is already uploaded")
-      return;
-    }
-
-    setLoading(true)
-    const formDataToSend = new FormData();
-
-    // const preview=
+      setLoading(true)
+      const formDataToSend = new FormData();
 
 
-    const userData = {
-      name: formData.name,
-      email: formData.email,
-      mobile: formData.mobile,
-      year: formData.year,
-      linkedin: formData.linkedin,
-      twitter: formData.twitter,
-    };
+      const userData = {
+        name: formData.name,
+        email: formData.email,
+        mobile: formData.mobile,
+        year: formData.year,
+        linkedin: formData.linkedin,
+        twitter: formData.twitter,
+      };
 
-    formDataToSend.append('data', JSON.stringify(userData));
-   if(!fetchedImage) formDataToSend.append('files.image', image); // update the image only when there is none
-    try 
-    {
-      /**
-       * this thing have to change
-       */
+      formDataToSend.append('data', JSON.stringify(userData));
+      if (!fetchedImage) formDataToSend.append('files.image', image); // update the image only when there is none
+
 
       const resp = await fetch(`${API_URL}/api/coordinators/${user.id}`, {
         method: 'PUT',
@@ -185,6 +208,9 @@ async function removeBg(){
   }
 
 
+  useEffect(() => {
+    fetchAllCoordinators(user.id)
+  }, [])
 
 
 
@@ -219,7 +245,7 @@ async function removeBg(){
 
                 </div>
 
-              
+
 
                 <button type="button" onClick={removeBg} className="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mt-4 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">Remove Image</button>
               </div>
@@ -261,7 +287,7 @@ async function removeBg(){
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2" />
                       </svg>
 
-                        <p className="mb-2 text-sm text-gray-500 dark:text-gray-400"><span className="font-semibold">{(image) ? (image.name):"Click to upload"}</span> {image ? null:("or drag and drop")}</p>
+                      <p className="mb-2 text-sm text-gray-500 dark:text-gray-400"><span className="font-semibold">{(image) ? (image.name) : "Click to upload"}</span> {image ? null : ("or drag and drop")}</p>
 
                     </div>
                     <input onChange={handleImage} id="dropzone-file" aria-describedby="file_input_help" type="file" className="hidden" />
@@ -295,7 +321,7 @@ async function removeBg(){
   )
 }
 
-export async function getServerSideProps({ req , query}) {
+export async function getServerSideProps({ req, query }) {
   const { token } = parseCookies(req)
 
   return {

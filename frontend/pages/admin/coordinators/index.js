@@ -114,7 +114,7 @@ export default function Coordinators({ token }) {
           <div>
             <button
               type='button'
-              onClick={() => handleDelete(params.value,true)}
+              onClick={() => handleDelete(params.value, true)}
               className='inline-flex items-center px-3 py-1.5 border border-transparent text-xs font-medium rounded-full shadow-sm text-white bg-red-500 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-re-600'
             >
               Delete
@@ -127,95 +127,111 @@ export default function Coordinators({ token }) {
 
 
   const gridRef = useRef()
-  const getAllCoordinators = () => {
-    const config = {
-      headers: { Authorization: `Bearer ${token}` },
-    };
+  const getAllCoordinators = async () => {
 
-    const query = qs.stringify({
-      filters: {
-        role: {
-          type: {
-            $eq: 'coordinator',
+    try {
+      const config = {
+        headers: { Authorization: `Bearer ${token}` },
+      };
+  
+      const query = qs.stringify({
+        filters: {
+          role: {
+            type: {
+              $eq: 'coordinator',
+            },
           },
         },
+        populate: ['role'],
       },
-      populate: ['role'],
-    },
-      {
-        encodeValuesOnly: true, // prettify url
-      })
-
-    axios.get(`${API_URL}/api/users?${query}`, config)
-      .then(async res => {
+        {
+          encodeValuesOnly: true, // prettify url
+        })
+  
+        const res = await axios.get(`${API_URL}/api/users?${query}`, config);
+  
         setRowData(res.data);
-      })
-      .catch(err => {
-        toast.error("Error while fetching data");
+    } catch (err) {
+      toast.error("Error while fetching data");
         console.error(err);
-      });
-  }
-
-
-  const getAllTpcCoordinators = async ()=>{
+    }
     
-    const config = {
-      headers: { Authorization: `Bearer ${token}` },
-    };
-
-
-    axios.get(`${API_URL}/api/coordinators`, config)
-      .then(async res => {
-
-        
-
-      let data = res.data.data;
-
-      // setting the data
-
-      data = data.map(function(res){
-        return({id: res.id, ...(res.attributes)})
-      })
-
-      
-
-        setRowDataTpc(data);
-      })
-      .catch(err => {
-        toast.error("Error while fetching data");
-        console.error(err);
-      });
+    // axios.get(`${API_URL}/api/users?${query}`, config)
+    //   .then(async res => {
+    //     setRowData(res.data);
+    //   })
+    //   .catch(err => {
+    //     toast.error("Error while fetching data");
+    //     console.error(err);
+    //   });
   }
-  useEffect(() => {
-    getAllCoordinators();
-    getAllTpcCoordinators();
-  }, [])
 
 
-  const handleDelete = async (id , isTpc) => {
+  const getAllTpcCoordinators = async () => {
 
-    console.log("got the request : ", typeof isTpc)
+      try {
+        const config = {
+          headers: { Authorization: `Bearer ${token}` },
+        };
+    
+        const res = await axios.get(`${API_URL}/api/coordinators`, config);
+    
+        let data = res.data.data;
+    
+        data = data.map(function (res) {
+          return ({ id: res.id, ...(res.attributes) })
+        })
+        
+        setRowDataTpc(data);
+      } catch (err) {
+        toast.error("Error while fetching data");
+            console.error(err);
+      }
+
+    // axios.get(`${API_URL}/api/coordinators`, config)
+
+    //   .then(async res => {
+    //     let data = res.data.data;
+
+    //     data = data.map(function (res) {
+    //       return ({ id: res.id, ...(res.attributes) })
+    //     })
+
+    //     setRowDataTpc(data);
+    //   })
+    //   .catch(err => {
+    //     toast.error("Error while fetching data");
+    //     console.error(err);
+    //   });
+  }
+
+
+
+  const handleDelete = async (id, isTpc) => {
+    
+    try{
+
     const config = {
       headers: { Authorization: `Bearer ${token}` },
       method: 'DELETE',
     }
-    
-    try {
+
+
       if (confirm('Are you sure you want to delete this coordinator?')) {
-        
+
         let res;
 
-        if(isTpc){
-           res = await fetch(`${API_URL}/api/users/${id}`, config);
+        if (isTpc) {
+          res = await fetch(`${API_URL}/api/users/${id}`, config);
         } else {
-           res = await fetch(`${API_URL}/api/coordinators/${id}`, config)
+          res = await fetch(`${API_URL}/api/coordinators/${id}`, config)
         }
 
 
         if (res.status === 200) {
           toast.info('Coordinator deleted successfully!')
           getAllCoordinators();
-  
+
         } else {
           toast.error('Error deleting Coordinator!')
         }
@@ -225,6 +241,13 @@ export default function Coordinators({ token }) {
       toast.error('Error deleting Coordinator!');
     }
   }
+
+
+  useEffect(() => {
+    getAllCoordinators();
+    getAllTpcCoordinators();
+  }, [])
+
   return (
     <Layout>
       <div className=' px-4 py-5 border-b border-gray-200 sm:px-6'>
@@ -260,7 +283,7 @@ export default function Coordinators({ token }) {
       </div>
       <div className='ag-theme-alpine mt-4' style={{ margin: "auto", height: 400, width: 1000 }}>
         <AgGridReact
-          ref={gridRef} 
+          ref={gridRef}
           rowMultiSelectWithClick={true}
           rowData={rowData}
           columnDefs={columnDefs}
@@ -272,7 +295,7 @@ export default function Coordinators({ token }) {
         ></AgGridReact>
       </div>
 
-      
+
       {/* Tpc coordinators */}
 
       <div className='m-5 px-4 py-5 border-b border-gray-200 sm:px-6'>
@@ -308,7 +331,7 @@ export default function Coordinators({ token }) {
       </div>
       <div className='ag-theme-alpine mt-4' style={{ margin: "auto", height: 400, width: 1000 }}>
         <AgGridReact
-          ref={gridRef} 
+          ref={gridRef}
           rowMultiSelectWithClick={true}
           rowData={rowDataTpc}
           columnDefs={columnDefsTpc}

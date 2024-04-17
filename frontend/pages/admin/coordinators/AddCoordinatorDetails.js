@@ -11,33 +11,6 @@ import { parseCookies } from '@/helpers/index'
 export default function AddCoordinatorDetails({ token }) {
 
 
-  // console.log("tokens: ", token)
-
-
-  const fetchAllCoordinators = async (token) => {
-
-    fetch("http://localhost:1337/api/coordinators", {
-      headers: {
-        'Authorization': `Bearer ${token}`
-      },
-    })
-      .then((res) => {
-        return res.json();
-      }).then((res)=>{
-        // console.log("all coordinators: " , res)
-      })
-      .catch((err) => {
-        throw new Error(err.message);
-      })
-  }
-
-
-
-  useEffect(() => {
-  fetchAllCoordinators(token)
-  }, [])
-
-
   const pages = [
     { name: 'Coordinators', href: '/admin/coordinators', current: false },
     { name: `Add Coordinator Details`, href: '#', current: true },
@@ -59,6 +32,39 @@ export default function AddCoordinatorDetails({ token }) {
     mobile: 'Mobile',
     year: 'Year',
   })
+
+  const fetchAllCoordinators = async (token) => {
+
+    try {
+      const res = await fetch("http://localhost:1337/api/coordinators", {
+        headers: {
+          'Authorization': `Bearer ${token}`
+        },
+      })
+
+    } catch (err) {
+      throw new Error(err.message)
+    }
+      
+
+    // fetch("http://localhost:1337/api/coordinators", {
+    //   headers: {
+    //     'Authorization': `Bearer ${token}`
+    //   },
+    // })
+    //   .then((res) => {
+    //     return res.json();
+    //   }).then((res)=>{
+    //   })
+    //   .catch((err) => {
+    //     throw new Error(err.message);
+    //   })
+  }
+
+
+
+  
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!formData.name || !formData.email || !formData.mobile || !formData.year || !formData.linkedin || !formData.twitter || !image) {
@@ -106,29 +112,36 @@ export default function AddCoordinatorDetails({ token }) {
   const handleOnChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value })
     setPrev({ ...prev, [e.target.name]: e.target.value })
-
+    
   }
   const handleimage = (e) => {
     setImage(e.target.files[0]);
   };
   const deleteCoordinator = async (id) => {
-    const yes = window.confirm('Are you sure you want to delete this coordinator?')
-    if (!yes) {
-      return
-    }
-    const resp = await fetch(`${API_URL}/api/coordinators/${id}`, {
-      method: 'DELETE',
-      headers: {
-        'Authorization': `Bearer ${token}`
+    try {
+      const yes = window.confirm('Are you sure you want to delete this coordinator?')
+      if (!yes) {
+        return
       }
-    })
-    if (resp.ok) {
-      console.log("Coordinator Deleted Successfully")
-    } else {
-      console.log("Something Went Wrong")
+      const resp = await fetch(`${API_URL}/api/coordinators/${id}`, {
+        method: 'DELETE',
+        headers: {
+          'Authorization': `Bearer ${token}`
+        }
+      })
+      if (resp.ok) {
+        console.log("Coordinator Deleted Successfully")
+      } else {
+        console.log("Something Went Wrong")
+      }
+    } catch (err) {
+      console.log("error: ",err);
     }
   }
-
+  
+  useEffect(() => {
+  fetchAllCoordinators(token)
+  }, [])
 
 
   return (
