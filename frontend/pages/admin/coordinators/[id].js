@@ -41,14 +41,17 @@ export async function getServerSideProps({ req, params,query }) {
 
   // change in the route suggest to fetch the TPC and coordinators data as per the "isTpc"
 
-  res = await axios.get(`${API_URL}/api/users/${params.id}?populate=*`, config)
-
-  if(query.isTpc) {
+  if(query.isTpc === "true") {
+    res = await axios.get(`${API_URL}/api/coordinators/${params.id}`, config)
     res.data['id'] = id;
-  }
+  } 
 
+  if(query.isTpc === "false"){
+    res = await axios.get(`${API_URL}/api/users/${params.id}?populate=*`, config)
+  }
+  
   return {
-    props: { data: res.data, statusCode: res.status, token: token , isTpc: query.isTpc }, // will be passed to the page component as props
+    props: { data: res.data, statusCode: res.status, token: token , isTpc: query.isTpc=="true" }, // will be passed to the page component as props
   }
 }
 

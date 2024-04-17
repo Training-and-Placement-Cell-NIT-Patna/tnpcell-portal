@@ -156,14 +156,6 @@ export default function Coordinators({ token }) {
         console.error(err);
     }
     
-    // axios.get(`${API_URL}/api/users?${query}`, config)
-    //   .then(async res => {
-    //     setRowData(res.data);
-    //   })
-    //   .catch(err => {
-    //     toast.error("Error while fetching data");
-    //     console.error(err);
-    //   });
   }
 
 
@@ -208,7 +200,8 @@ export default function Coordinators({ token }) {
 
 
   const handleDelete = async (id, isTpc) => {
-    
+
+
     try{
 
     const config = {
@@ -219,14 +212,16 @@ export default function Coordinators({ token }) {
 
       if (confirm('Are you sure you want to delete this coordinator?')) {
 
+        console.log("deleting the coordinator: ")
         let res;
 
         if (isTpc) {
-          res = await fetch(`${API_URL}/api/users/${id}`, config);
-        } else {
           res = await fetch(`${API_URL}/api/coordinators/${id}`, config)
+        } else {
+          res = await fetch(`${API_URL}/api/users/${id}`, config);
         }
 
+        
 
         if (res.status === 200) {
           toast.info('Coordinator deleted successfully!')
@@ -238,6 +233,7 @@ export default function Coordinators({ token }) {
 
       }
     } catch (err) {
+      console.log("error deleting Coordinator: ",err)
       toast.error('Error deleting Coordinator!');
     }
   }

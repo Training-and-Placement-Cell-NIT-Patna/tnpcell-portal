@@ -12,7 +12,7 @@ export default function EditTpcCoordinator({ token, user }) {
 
 
   const [formData, setFormData] = useState({
-    name: user.username,
+    name: user.name,
     email: user.email,
     mobile: user.mobile,
     year: user.year,
@@ -69,11 +69,13 @@ export default function EditTpcCoordinator({ token, user }) {
           'Authorization': `Bearer ${token}`
         },
       })
-      const image = res.data.attributes.image;
 
+      const image = res.data.data.attributes.image;
 
-      const data = res.data.attributes;
-
+      setFetchedImage(image.data?.attributes)
+      
+      
+      const data = res.data.data.attributes;
 
       setFormData(
         {
@@ -87,60 +89,21 @@ export default function EditTpcCoordinator({ token, user }) {
         }
       )
 
-      setFetchedImage(image.data?.attributes)
 
     } catch (err) {
-
+      console.log("error:(edit page): ",err)
       throw new Error(err.message);
     }
 
-
-
-    // fetch(`http://localhost:1337/api/coordinators/${id}?populate=*`, {
-    //   headers: {
-    //     'Authorization': `Bearer ${token}`
-    //   },
-    // })
-    // .then((res) => {
-    //     return res.json();
-    //   }).then((res) => {
-
-    //     const image = res.data.attributes.image;
-
-
-    //     const data = res.data.attributes;
-
-
-    //     setFormData(
-    //       {
-    //         name: data.name,
-    //         email: data.email,
-    //         mobile: data.mobile,
-    //         year: data.year,
-    //         linkedin: data.linkedin,
-    //         twitter: data.twitter,
-    //         imgId: (image.data) ? (image.data?.id):null
-    //       }
-    //     )
-
-    //     setFetchedImage(image.data?.attributes)
-
-    //   })
-    //   .catch((err) => {
-    //     
-
-    //   })
   }
 
+  useEffect(() => {
+    fetchAllCoordinators(user.id)
+  }, [])
 
 
 
-
-  const pages = [
-    { name: 'Coordinators', href: '/admin/coordinators', current: false },
-    { name: `Add Coordinator Details`, href: '#', current: true },
-  ]
-
+  console.log("formdataimageId: ",formData.imgId)
   const handleImage = (e) => {
     setImage(e.target.files[0]);
   };
@@ -208,9 +171,6 @@ export default function EditTpcCoordinator({ token, user }) {
   }
 
 
-  useEffect(() => {
-    fetchAllCoordinators(user.id)
-  }, [])
 
 
 

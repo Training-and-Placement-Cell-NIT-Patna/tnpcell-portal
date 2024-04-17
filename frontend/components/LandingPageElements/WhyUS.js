@@ -10,7 +10,8 @@ import {
 } from '@heroicons/react/solid'
 import AOS from 'aos';
 import 'aos/dist/aos.css'
-import Lottie from "lottie-react";
+import Lottie from 'lottie-react';
+import loadingAnimation from "public/lottie/loadingAnimation";
 import culture from '/public/lottie/culture.json'
 import coding from '/public/lottie/coding.json'
 import workshop from '/public/lottie/workshop.json'
