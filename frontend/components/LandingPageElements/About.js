@@ -1,6 +1,5 @@
 import React from "react";
 import Lottie from "lottie-react";
-
 import loadingAnimation from "public/lottie/loadingAnimation";
 import eye from "public/lottie/eye.json";
 import aim from "public/lottie/aim.json";
