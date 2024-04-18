@@ -179,22 +179,6 @@ export default function Coordinators({ token }) {
         toast.error("Error while fetching data");
             console.error(err);
       }
-
-    // axios.get(`${API_URL}/api/coordinators`, config)
-
-    //   .then(async res => {
-    //     let data = res.data.data;
-
-    //     data = data.map(function (res) {
-    //       return ({ id: res.id, ...(res.attributes) })
-    //     })
-
-    //     setRowDataTpc(data);
-    //   })
-    //   .catch(err => {
-    //     toast.error("Error while fetching data");
-    //     console.error(err);
-    //   });
   }
 
 

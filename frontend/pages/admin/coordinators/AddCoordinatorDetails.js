@@ -36,7 +36,7 @@ export default function AddCoordinatorDetails({ token }) {
   const fetchAllCoordinators = async (token) => {
 
     try {
-      const res = await fetch("http://localhost:1337/api/coordinators", {
+      const res = await fetch(`${API_URL}/api/coordinators`, {
         headers: {
           'Authorization': `Bearer ${token}`
         },
@@ -45,20 +45,7 @@ export default function AddCoordinatorDetails({ token }) {
     } catch (err) {
       throw new Error(err.message)
     }
-      
 
-    // fetch("http://localhost:1337/api/coordinators", {
-    //   headers: {
-    //     'Authorization': `Bearer ${token}`
-    //   },
-    // })
-    //   .then((res) => {
-    //     return res.json();
-    //   }).then((res)=>{
-    //   })
-    //   .catch((err) => {
-    //     throw new Error(err.message);
-    //   })
   }
 
 

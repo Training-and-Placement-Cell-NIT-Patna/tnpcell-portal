@@ -11,6 +11,7 @@ export default function EditTpcCoordinator({ token, user }) {
 
 
 
+
   const [formData, setFormData] = useState({
     name: user.name,
     email: user.email,
@@ -42,7 +43,7 @@ export default function EditTpcCoordinator({ token, user }) {
   async function removeBg() {
 
     try {
-      const res = await axios(`http://localhost:1337/api/upload/files/${formData.imgId}`, {
+      const res = await axios(`${API_URL}/api/upload/files/${formData.imgId}`, {
         method: 'delete',
         headers: {
           Authorization: `Bearer ${token}`,
@@ -64,7 +65,7 @@ export default function EditTpcCoordinator({ token, user }) {
   const fetchAllCoordinators = async (id) => {
 
     try {
-      const res = await axios(`http://localhost:1337/api/coordinators/${id}?populate=*`, {
+      const res = await axios(`${API_URL}/api/coordinators/${id}?populate=*`, {
         headers: {
           'Authorization': `Bearer ${token}`
         },
