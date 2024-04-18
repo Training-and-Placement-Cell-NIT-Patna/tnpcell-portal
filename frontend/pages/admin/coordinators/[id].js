@@ -9,10 +9,12 @@ import axios from 'axios'
 
 export default function EditCompanyPage({ data, token , isTpc }) {
 
-  const [show , setShow]  = React.useState(isTpc==="true")
+  console.log("data: ",data)
+
+
   const pages = [
     { name: 'Coordinators', href: '/admin/coordinators', current: false },
-    { name: `${data.username}`, href: '#', current: true },
+    { name: `${isTpc ? (data.data.attributes.name):(data.username)}`, href: '#', current: true },
   ]
 
   
@@ -44,6 +46,7 @@ export async function getServerSideProps({ req, params,query }) {
   if(query.isTpc === "true") {
     res = await axios.get(`${API_URL}/api/coordinators/${params.id}`, config)
     res.data['id'] = id;
+    console.log("res.data ",res.data)
   } 
 
   if(query.isTpc === "false"){
