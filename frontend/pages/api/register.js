@@ -21,7 +21,7 @@ export default async (req, res) => {
 
     try {
       const data = await strapiRes.json()
-      console.log('data', data)
+      // console.log('data', data)
       if (strapiRes.ok) {
         //console.log('Ok');
         res.setHeader(

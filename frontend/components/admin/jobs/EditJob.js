@@ -194,7 +194,7 @@ export default function EditJob({ token = '', job = '' }) {
       },
       body: formData,
     })
-    console.log('res', res)
+    // console.log('res', res)
     if (res.status === 200) {
       toast.success('JAF uploaded successfully')
       // reload after 3 seconds

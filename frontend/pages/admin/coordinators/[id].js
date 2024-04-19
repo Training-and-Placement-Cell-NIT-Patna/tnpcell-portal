@@ -9,7 +9,7 @@ import axios from 'axios'
 
 export default function EditCompanyPage({ data, token , isTpc }) {
 
-  console.log("data: ",data)
+  // console.log("data: ",data)
 
 
   const pages = [

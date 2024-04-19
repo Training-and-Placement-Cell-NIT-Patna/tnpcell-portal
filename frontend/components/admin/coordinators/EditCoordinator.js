@@ -10,7 +10,6 @@ import { API_URL } from '@/config/index'
 
 export default function EditCoordinator({ token = '', user }) {
 
-  console.log("from editcoordinator: ", user)
   const [username, setUsername] = useState(user.username)
   const [email, setEmail] = useState(user.email)
   const [password, setPassword] = useState('')

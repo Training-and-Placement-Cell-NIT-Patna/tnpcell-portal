@@ -200,7 +200,7 @@ export default function StudentRegistration({ token = '' }) {
           return
         }
         const profile = await res.json()
-        console.log(JSON.stringify(profile, null, 2))
+        // console.log(JSON.stringify(profile, null, 2))
         toast.error(profile?.error.name)
       } else {
         const profile = await res.json()

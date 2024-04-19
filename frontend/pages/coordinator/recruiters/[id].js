@@ -31,7 +31,7 @@ export async function getServerSideProps({ req, params }) {
 
   const res = await axios.get(`${API_URL}/api/users/${id}?populate=*`, config)
 
-  console.log(res.data)
+  // console.log(res.data)
 
   return {
     props: { data: res.data, statusCode: res.status, token: token }, // will be passed to the page component as props
