@@ -1,6 +1,6 @@
 import Breadcrumbs from '@/components/admin/Breadcrumbs'
 import EditCoordinator from '@/components/admin/coordinators/EditCoordinator'
-import EditTpcCoordinator from './EditTpcCoordinator'
+import EditTpcCoordinator from './editTpcCoordinator'
 import Layout from '@/components/admin/Layout'
 import React from 'react'
 import { API_URL } from '@/config/index'
@@ -46,7 +46,7 @@ export async function getServerSideProps({ req, params,query }) {
   if(query.isTpc === "true") {
     res = await axios.get(`${API_URL}/api/coordinators/${params.id}`, config)
     res.data['id'] = id;
-    console.log("res.data ",res.data)
+    // console.log("res.data ",res.data)
   } 
 
   if(query.isTpc === "false"){
