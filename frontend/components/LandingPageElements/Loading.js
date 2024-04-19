@@ -1,9 +1,6 @@
-'use-client'
-
 import React from "react";
 import Head from "next/head";
 import Lottie from "lottie-react";
-
 import loadingAnimation from "public/lottie/loadingAnimation";
 function Loading({
   keywords = 'NIT Patna || Training || Placement || Cell || NIT Patna || NIT Patna Average Package',
