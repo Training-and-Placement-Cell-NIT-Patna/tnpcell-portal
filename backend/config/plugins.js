@@ -72,7 +72,7 @@ module.exports = ({ env }) => ({
       },
 
       // interval at which rate metrics are collected in ms
-      interval: 1_000,
+      interval: 10_000,
 
       // set custom/default labels to all the prometheus metrics
       customLabels: {
