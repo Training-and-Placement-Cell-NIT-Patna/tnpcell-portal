@@ -14,7 +14,7 @@ export default function RecruitersSection({ recruiters = '', token = '' }) {
     }
     if (confirm('Are you sure you want to delete this recruiter?')) {
       const res = await fetch(`${API_URL}/api/users/${id}`, config)
-      console.log(token)
+      // console.log(token)
       if (res.status === 200) {
         toast.info('Recruiter deleted successfully!')
         router.reload()

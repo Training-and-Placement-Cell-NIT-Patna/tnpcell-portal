@@ -179,9 +179,7 @@ export default function StudentRegistration({ token = '' }) {
 
     // })
 
-  //  useEffect(()=>{
-  //   console.log("values: ",values);
-  //  },[])
+
     if (confirm('Are you sure you want to submit for approval?')) {
       const res = await fetch(`${API_URL}/api/student/submit-for-approval`, {
         method: 'POST',
@@ -200,7 +198,6 @@ export default function StudentRegistration({ token = '' }) {
           return
         }
         const profile = await res.json()
-        console.log(JSON.stringify(profile, null, 2))
         toast.error(profile?.error.name)
       } else {
         const profile = await res.json()
@@ -245,16 +242,7 @@ export default function StudentRegistration({ token = '' }) {
 
   useEffect(()=>{
 
-  //  console.log("values: ",values)
 
-    // console.log("\n\n*******before: ")
-    // for(let keys of Object.keys(values))
-    //     {
-    //       if(keys.match(/^mtech/))
-    //       {
-    //         console.log(`${keys}: `,values[keys]);
-    //       }
-    //     }
 
     if(!isMtech)
     {
@@ -274,14 +262,6 @@ export default function StudentRegistration({ token = '' }) {
         }
     }
 
-    // console.log("\n\n***after: ")
-    // for(let keys of Object.keys(values))
-    //     {
-    //       if(keys.match(/^mtech/))
-    //       {
-    //         console.log(`${keys}: `,values[keys]);
-    //       }
-    //     }
 
 
         //updating the values of is_mtech
@@ -306,7 +286,6 @@ export default function StudentRegistration({ token = '' }) {
   }, [values.pwd])
 
 
-  console.log("values: ",values)
   return (
     <form onSubmit={handleSubmit}>
       <div className=' min-h-full mt-2'>
@@ -774,6 +753,7 @@ export default function StudentRegistration({ token = '' }) {
                     required
                     className='mt-0 block w-full px-0.5 border-0 border-b-2 text-sm text-gray-600 border-gray-300 focus:ring-0 focus:border-stone-500'
                   />
+                  
                 </div>
 
 
@@ -837,7 +817,6 @@ export default function StudentRegistration({ token = '' }) {
                     id='driving_licience_link'
                     autoComplete='driving_licience_link'
                     placeholder='Drive Link'
-
                     className='mt-0 block w-full px-0.5 border-0 border-b-2 text-sm text-gray-600 border-gray-300 focus:ring-0 focus:border-stone-500'
                   />
                 </div>
@@ -860,7 +839,6 @@ export default function StudentRegistration({ token = '' }) {
                     autoComplete='pancard_no'
                     pattern="[A-Z]{5}[0-9]{4}[A-Z]"
                     maxLength={10}
-                    // required
                     className='mt-0 block w-full px-0.5 border-0 border-b-2 text-sm text-gray-600 border-gray-300 focus:ring-0 focus:border-stone-500'
                   />
                 </div>
@@ -1897,7 +1875,7 @@ type_of_disability
                   value={values.mtech_spi_1}
                   onChange={handleInputChange}
                   type='number'
-                  min={2}
+                  min={0}
                   max={10}
                   step='.01'
                   placeholder='Ex: 8.86'
@@ -1921,7 +1899,7 @@ type_of_disability
                   value={values.mtech_spi_2}
                   onChange={handleInputChange}
                   type='number'
-                  min={2}
+                  min={0}
                   max={10}
                   step='.01'
                   placeholder='Ex: 8.86'
@@ -1945,13 +1923,12 @@ type_of_disability
                   value={values.mtech_spi_3}
                   onChange={handleInputChange}
                   type='number'
-                  min={2}
+                  min={0}
                   max={10}
                   step='.01'
                   placeholder='Ex: 8.86'
                   name='mtech_spi_3'
                   id='mtech_spi_3'
-                  required = {values.is_mtech ? true:false}
                   autoComplete=''
                   className='mt-0 block w-full px-0.5 border-0 border-b-2 border-gray-300 focus:ring-0 focus:border-stone-500'
                 />
@@ -1976,7 +1953,6 @@ type_of_disability
                   name='mtech_spi_4'
                   id='mtech_spi_4'
                   autoComplete=''
-                  required = {values.is_mtech ? true:false}
                   className='mt-0 block w-full px-0.5 border-0 border-b-2 border-gray-300 focus:ring-0 focus:border-stone-500'
                 />
               </div>
@@ -2022,10 +1998,6 @@ type_of_disability
                   className='mt-0 block w-full px-0.5 border-0 border-b-2 border-gray-300 focus:ring-0 focus:border-stone-500'
                 />
               </div>
-
-
-              
-
 
               </div>
               </>

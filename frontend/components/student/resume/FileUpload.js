@@ -66,7 +66,6 @@ export default function FileUpload({ token }) {
       for (var pair of formData.entries()) {
         console.log(pair[0] + ', ' + pair[1])
       }
-      console.log(await res.json())
       toast.success('Successfully Updated')
     } else {
       toast.error('Something Went Wrong')

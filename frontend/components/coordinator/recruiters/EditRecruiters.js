@@ -38,7 +38,7 @@ export default function EditCoordinator({ token = '', user }) {
       })
 
       const data = await res.json()
-      console.log(data)
+      // console.log(data)
 
       if (res.ok) {
         toast.success('Recruiter edited successfully!')
