@@ -46,7 +46,13 @@ export default function AddCoordinatorComponent({ token = '' }) {
         setEmail(''); 
         setPassword('');
         setConfirmPassword('')
-      } else {
+      }
+      if (res.status === 400) {
+        console.log('error: ', res)
+        const error = await res.json()
+        toast.error(error.error.message)
+      } 
+      else {
         toast.error('Something went wrong!')
       }
     }
