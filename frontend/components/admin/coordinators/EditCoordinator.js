@@ -17,8 +17,8 @@ export default function EditCoordinator({ token = '', user }) {
   const [role, setRole] = useState('coordinator')
 
   const handleSubmit = async (e) => {
+    e.preventDefault()
     try {
-      e.preventDefault()
 
       if (password !== confirmPassword) {
         toast.error('Passwords do not match!')
