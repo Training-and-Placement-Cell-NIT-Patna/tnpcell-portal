@@ -9,6 +9,7 @@ import axios from 'axios'
 import { API_URL } from '@/config/index'
 
 export default function EditCoordinator({ token = '', user }) {
+
   const [username, setUsername] = useState(user.username)
   const [email, setEmail] = useState(user.email)
   const [password, setPassword] = useState('')
@@ -17,34 +18,39 @@ export default function EditCoordinator({ token = '', user }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
+    try {
 
-    if (password !== confirmPassword) {
-      toast.error('Passwords do not match!')
-      return
-    }
-
-    if (confirm('Are you sure you want to edit this coordinator?')) {
-      const res = await fetch(`${API_URL}/api/users/${user.id}`, {
-        method: 'PUT',
-        headers: {
-          Authorization: `Bearer ${token}`,
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          username,
-          email,
-          password,
-        }),
-      })
-
-      const data = await res.json()
-      // console.log(data)
-
-      if (res.ok) {
-        toast.success('Coordinator edited successfully!')
-      } else {
-        toast.error('Something went wrong!')
+      if (password !== confirmPassword) {
+        toast.error('Passwords do not match!')
+        return
       }
+
+      if (confirm('Are you sure you want to edit this coordinator?')) {
+        const res = await fetch(`${API_URL}/api/users/${user.id}`, {
+          method: 'PUT',
+          headers: {
+            Authorization: `Bearer ${token}`,
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            username,
+            email,
+            password,
+          }),
+        })
+
+        const data = await res.json()
+
+
+        if (res.ok) {
+          toast.success('Coordinator edited successfully!')
+        } else {
+          toast.error('Something went wrong!')
+        }
+      }
+    } catch (err) {
+      console.log("error: ", err);
+      toast.error('Something went wrong');
     }
   }
   return (

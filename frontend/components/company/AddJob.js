@@ -69,7 +69,7 @@ export default function AddJob({ token = "" }) {
     let { name, value } = e.target;
     // value = moment(value).local().format('yyyy-MM-DDThh:mm:ss.SSS')
     value = moment(value).utcOffset("+0530", true);
-    console.log(value);
+    // console.log(value);
     setValues({ ...values, [name]: value === "" ? undefined : value });
   };
 
@@ -127,7 +127,7 @@ export default function AddJob({ token = "" }) {
         body: formData,
       });
 
-      console.log(res);
+      // console.log(res);
 
       if (!res.ok) {
         if (res.status === 403 || res.status === 401) {
@@ -136,11 +136,11 @@ export default function AddJob({ token = "" }) {
         }
         const err = await res.json();
 
-        console.log("Not showing");
+        // console.log("Not showing");
 
         // toast.error('Error: ' + err.error.details.errors[0].message)
       } else {
-        console.log("showing");
+        // console.log("showing");
         toast.success("Job Added Successfully");
       }
     }

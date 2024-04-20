@@ -32,7 +32,7 @@ export async function getServerSideProps({ req, params }) {
     `${API_URL}/api/companies/${id}?populate=*`,
     config
   )
-  console.log(res.data)
+
   return {
     props: { token: token, data: res.data }, // will be passed to the page component as props
   }
