@@ -69,7 +69,6 @@ export default function AddJob({ token = '' }) {
     let { name, value } = e.target
     // value = moment(value).local().format('yyyy-MM-DDThh:mm:ss.SSS')
     value = moment(value).utcOffset('+0530', true)
-    // console.log(value)
     setValues({ ...values, [name]: value === '' ? undefined : value })
   }
 
@@ -123,7 +122,6 @@ export default function AddJob({ token = '' }) {
         body: formData,
       })
 
-      // console.log(JSON.stringify({ data: values }))
       if (!res.ok) {
         if (res.status === 403 || res.status === 401) {
           toast.error('No token included')

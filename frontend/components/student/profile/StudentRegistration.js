@@ -179,9 +179,7 @@ export default function StudentRegistration({ token = '' }) {
 
     // })
 
-  //  useEffect(()=>{
-  //   console.log("values: ",values);
-  //  },[])
+
     if (confirm('Are you sure you want to submit for approval?')) {
       const res = await fetch(`${API_URL}/api/student/submit-for-approval`, {
         method: 'POST',
@@ -200,7 +198,6 @@ export default function StudentRegistration({ token = '' }) {
           return
         }
         const profile = await res.json()
-        // console.log(JSON.stringify(profile, null, 2))
         toast.error(profile?.error.name)
       } else {
         const profile = await res.json()
@@ -245,16 +242,7 @@ export default function StudentRegistration({ token = '' }) {
 
   useEffect(()=>{
 
-  //  console.log("values: ",values)
 
-    // console.log("\n\n*******before: ")
-    // for(let keys of Object.keys(values))
-    //     {
-    //       if(keys.match(/^mtech/))
-    //       {
-    //         console.log(`${keys}: `,values[keys]);
-    //       }
-    //     }
 
     if(!isMtech)
     {
@@ -274,14 +262,6 @@ export default function StudentRegistration({ token = '' }) {
         }
     }
 
-    // console.log("\n\n***after: ")
-    // for(let keys of Object.keys(values))
-    //     {
-    //       if(keys.match(/^mtech/))
-    //       {
-    //         console.log(`${keys}: `,values[keys]);
-    //       }
-    //     }
 
 
         //updating the values of is_mtech
@@ -306,7 +286,6 @@ export default function StudentRegistration({ token = '' }) {
   }, [values.pwd])
 
 
-  console.log("values: ",values)
   return (
     <form onSubmit={handleSubmit}>
       <div className=' min-h-full mt-2'>

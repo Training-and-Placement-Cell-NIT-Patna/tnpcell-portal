@@ -104,7 +104,6 @@ export default function EditTpcCoordinator({ token, user }) {
 
 
 
-  // console.log("formdataimageId: ",formData.imgId)
   const handleImage = (e) => {
     setImage(e.target.files[0]);
   };
@@ -154,7 +153,6 @@ export default function EditTpcCoordinator({ token, user }) {
         toast.success('Coordinator Updated Successfully');
       }
       else {
-        // console.log("resp: ",resp)
         setLoading(false)
         toast.error('Something Went Wrong');
       }
