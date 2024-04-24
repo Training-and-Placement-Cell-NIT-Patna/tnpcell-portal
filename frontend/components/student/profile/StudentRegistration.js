@@ -5,10 +5,10 @@ import { API_URL } from '@/config/index'
 import AuthContext from '@/context/AuthContext'
 
 export default function StudentRegistration({ token = '' }) {
- 
+
   const [values, setValues] = useState({
     name: '',
-    roll: '8',
+    roll: '',
     personal_email_id: '',
     institute_email_id: '',
     mobile_number_1: '',
@@ -39,13 +39,13 @@ export default function StudentRegistration({ token = '' }) {
     pwd: false,
     // department: '',
     course: "",
-    spi_1: '',
-    spi_2: '',
-    spi_3: '',
-    spi_4: '',
-    spi_5: '',
-    spi_6: '',
-    spi_7: '',
+    spi_1: 9,
+    spi_2: 9,
+    spi_3: 9,
+    spi_4: 9,
+    spi_5: 9,
+    spi_6: 9,
+    spi_7: 9,
     spi_8: '',
     spi_9: '',
     spi_10: '',
@@ -63,7 +63,7 @@ export default function StudentRegistration({ token = '' }) {
     current_backlogs: '',
     current_status: '',
     disability_certificate: '',
-    aadhar_no: '',
+    aadhar_no: 873354497929,
     driving_licience_no: '',
     driving_licience_link: '',
     pancard_no: '',
@@ -173,38 +173,49 @@ export default function StudentRegistration({ token = '' }) {
   const handleSubmit = async (e) => {
     e.preventDefault()
 
-    // Validation
-    // const hasEmptyFields = Object.values(values).some((element) => {
-    //   element === ''
 
-    // })
+  if(!values.spi_1 || !values.spi_2 || !values.spi_3 || !values.spi_4 || !values.spi_5 || !values.spi_6 || !values.spi_7 || !values.spi_8 || !values.spi_9 || !values.spi_10){
+    toast.error("You have left some CGPA fields vacant, if you don't have the CGPA kindly fill zero instead of leaving it");
+  }
 
 
-    if (confirm('Are you sure you want to submit for approval?')) {
-      const res = await fetch(`${API_URL}/api/student/submit-for-approval`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify({ data: values }),
-      })
+  if(values.current_status != 'P' && values.current_status != 'F'){
+    toast.error("You have to fill the current status with either 'P' or 'F' only")
+  }
 
 
 
-      if (!res.ok) {
-        if (res.status === 403 || res.status === 401) {
-          toast.error('No token included')
-          return
-        }
-        const profile = await res.json()
-        toast.error(profile?.error.name)
-      } else {
-        const profile = await res.json()
-        toast.success('Profile Submitted for Approval')
-        router.push(`/student/profile`)
+try {
+  
+  if (confirm('Are you sure you want to submit for approval?')) {
+    const res = await fetch(`${API_URL}/api/student/submit-for-approval`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify({ data: values }),
+    })
+
+
+
+    if (!res.ok) {
+      if (res.status === 403 || res.status === 401) {
+        toast.error('No token included')
+        return
       }
+      const profile = await res.json()
+      toast.error(profile?.error.name)
+
+    } else {
+      const profile = await res.json()
+      toast.success('Profile Submitted for Approval')
+      router.push(`/student/profile`)
     }
+  }
+} catch (err) {
+  console.log("error(submitting): ",err)
+}
   }
 
 
@@ -217,7 +228,6 @@ export default function StudentRegistration({ token = '' }) {
     const { name, value } = e.target
     setValues({ ...values, [name]: !values.pwd })
   }
-
 
   const [programs, setPrograms] = useState([])
 
@@ -242,8 +252,6 @@ export default function StudentRegistration({ token = '' }) {
 
   useEffect(()=>{
 
-
-
     if(!isMtech)
     {
         for(let keys of Object.keys(values))
@@ -262,15 +270,13 @@ export default function StudentRegistration({ token = '' }) {
         }
     }
 
-
-
         //updating the values of is_mtech
         values.is_mtech = isMtech;
 
   },[isMtech])
 
   useEffect(() => {
-    programs.map((program) => {
+    console.log  programs.map((program) => {
       if (program.id === parseFloat(values.program)) {
         setCourses(program?.attributes?.courses?.data)
       }
