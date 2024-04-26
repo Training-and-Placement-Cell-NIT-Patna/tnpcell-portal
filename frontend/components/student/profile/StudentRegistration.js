@@ -276,7 +276,7 @@ try {
   },[isMtech])
 
   useEffect(() => {
-    console.log  programs.map((program) => {
+     programs.map((program) => {
       if (program.id === parseFloat(values.program)) {
         setCourses(program?.attributes?.courses?.data)
       }
