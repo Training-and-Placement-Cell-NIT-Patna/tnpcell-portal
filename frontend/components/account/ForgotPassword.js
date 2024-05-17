@@ -74,7 +74,7 @@ export default function ForgotPassword() {
                   htmlFor='email'
                   className='block text-sm font-medium text-gray-700'
                 >
-                  Institute Email Address
+                  Email Address
                 </label>
                 <div className='mt-1'>
                   <input
@@ -82,12 +82,12 @@ export default function ForgotPassword() {
                     onChange={(e) => setEmail(e.target.value.toLowerCase())}
                     id='email'
                     name='email'
-                    pattern='.+@nitp\.ac\.in'
+                    // pattern='.+@nitp\.ac\.in' //  @important this should be off because may be coordinator or admin with their personal email wants to reset password
                     type='text'
                     autoComplete='email'
                     required
                     className='appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-yellow-500 focus:border-yellow-500 sm:text-sm'
-                    placeholder='Institute email address'
+                    placeholder='Email address'
                   />
                 </div>
               </div>
