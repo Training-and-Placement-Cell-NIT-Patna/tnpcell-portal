@@ -36,8 +36,6 @@ module.exports = (plugin) => {
 
       const { identifier } = params;
 
-    //   console.log("params: ",identifier);
-
       // Check if the user exists.
       const user = await strapi
         .query("plugin::users-permissions.user")
@@ -105,9 +103,6 @@ module.exports = (plugin) => {
   plugin.controllers.auth.register = async (ctx) => {
     const _password = ctx.request.body.password;
     const _email = ctx.request.body.email;
-    // Remember to remove those!
-    console.debug("email", _email);
-    console.debug("password", _password);
 
     const pluginStore = await strapi.store({
       type: "plugin",
