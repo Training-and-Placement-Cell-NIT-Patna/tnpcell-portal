@@ -95,6 +95,6 @@ const Lottie = dynamic(()=>import("lottie-react"),{ssr:false})
 - Make a new branch for every new bug fixing or feature.
 - Your local master || main branch should always be updated with the remote's main branch
 - Never make a pull request in the master branch, use test branch for it.
-- Pull request must have a detailed description about its intent.
+- Pull request must have a detailed description about its intent, you can check the pull request template in **pull_request_template.md**.
 - The commits' messages and pull requests titles must be clear about the purpose they serve.
 - Watch the official repository so you will be informed about every actions there.
