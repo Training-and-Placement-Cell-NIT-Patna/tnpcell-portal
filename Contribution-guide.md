@@ -1,14 +1,37 @@
+
+
 Welcome contributors, this is the official site of the Training-Placement-Cell.
-Below is the setup-guide for this project.
+This is the setup-guide for this project.
 
 
 ## Backend-setup
 
 1. Navigate to : *backend/config/database.js*
 		and apply these changes
+		
+```
+connection: {
+host: env('DATABASE_HOST', 'localhost'),
+
+port: env.int('DATABASE_PORT', 5432),
+
+database: env('DATABASE_NAME', 'tnp-test'),
+
+user: env('DATABASE_USERNAME', 'postgres'),
+
+password: env('DATABASE_PASSWORD', '2006001'),
+
+schema: env('DATABASE_SCHEMA', 'public'), 
+
+}
+```
+
 
 2. Navigate to : *backend/config/server.js*
 		and apply these changes
+```
+host: env('HOST', 'localhost'),
+```
 
 3. To run backend:
 	```
@@ -21,6 +44,16 @@ Below is the setup-guide for this project.
 
 1. Navigate to: *frontend/config/index.js*
 		and apply these changes
+```
+export const API_URL =
+
+process.env.NEXT_PUBLIC_API_URL || "http://localhost:1337"
+
+export const NEXT_URL =
+
+process.env.NEXT_PUBLIC_FRONTEND_URL || 'http:localhost:3000'
+```
+
 
 2. To run frontend:
    ```
@@ -32,7 +65,7 @@ Below is the setup-guide for this project.
 
 1. Firstly, you have to signup to the strapi,
 
-2. Navigate to: *Settings/Roles*: it should look like this,
+2. Navigate to: *Settings/Roles*: it will look like [this](https://i.imgur.com/9hAhJyI.png) 
 
 3. Now for [roles and permissions configuration](https://docs.google.com/document/d/1D64h39SjRC3-Fcw2RU-U49l82BDDOIVuUudIiUJ9YNk/edit?usp=sharing):
 
@@ -54,7 +87,6 @@ const Lottie = dynamic(()=>import("lottie-react"),{ssr:false})
 ```
 
 - **Never commit these changes this is only to remove the development error, it is not an error at the production**
-- ****
 
 ## Do's and Don'ts
 - Always remove the console.logs which you have created while developing any feature or fixing bugs.
@@ -63,7 +95,6 @@ const Lottie = dynamic(()=>import("lottie-react"),{ssr:false})
 - Make a new branch for every new bug fixing or feature.
 - Your local master || main branch should always be updated with the remote's main branch
 - Never make a pull request in the master branch, use test branch for it.
-- Pull request must have a detailed description about its intent you can find a template at **pull_request_template.md**.
+- Pull request must have a detailed description about its intent.
 - The commits' messages and pull requests titles must be clear about the purpose they serve.
 - Watch the official repository so you will be informed about every actions there.
-
